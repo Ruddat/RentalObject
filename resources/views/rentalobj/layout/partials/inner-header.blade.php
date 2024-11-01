@@ -7,7 +7,7 @@
                                 <div class="inner-header">
                                     <div class="inner-header-left">
                                         <div class="logo-box d-flex">
-                                            <div class="logo"><a href="{{ url('index') }}"><img src="{{ URL::asset('/build/images/logo/logo@2x.png') }}" alt="logo" width="174" height="44"></a></div>
+                                            <div class="logo"><a href="{{ url('/') }}"><img src="{{ URL::asset('/build/images/logo/logo@2x.png') }}" alt="logo" width="174" height="44"></a></div>
                                             <div class="button-show-hide">
                                                 <span class="icon icon-categories"></span>
                                             </div>
@@ -19,7 +19,7 @@
                                                     <ul class="navigation clearfix">
                                                         <li class="dropdown2 home"><a href="#">Home</a>
                                                             <ul>
-                                                                <li><a href="{{ url('index') }}">Homepage 01</a></li>
+                                                                <li><a href="{{ url('/') }}">Homepage 01</a></li>
                                                                 <li><a href="{{ url('home-02') }}">Homepage 02</a></li>
                                                                 <li><a href="home-03.html">Homepage 03</a></li>
                                                                 <li><a href="home-04.html">Homepage 04</a></li>

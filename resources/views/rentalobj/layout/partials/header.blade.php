@@ -18,7 +18,7 @@
                                                             <ul>
 
                                                                 <li class="{{ Request::is('start-page') ? 'current' : '' }}">
-                                                                    <a href="{{ url('index') }}">Homepage 01</a>
+                                                                    <a href="{{ url('/') }}">Homepage 01</a>
                                                                 </li>
                                                                 <li class="{{ Request::is('home-02') ? 'current' : '' }}">
                                                                     <a href="{{ url('home-02') }}">Homepage 02</a>
