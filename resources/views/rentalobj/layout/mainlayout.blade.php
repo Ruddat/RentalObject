@@ -47,6 +47,12 @@
 @if(isset($page) && ($page === 'start-page' || $page === 'home-02'))
 @include('rentalobj.layout.partials.header')
 @endif
+
+@if(isset($page) && ($page === 'home-03' || $page === 'home-04'))
+@include('rentalobj.layout.partials.fixed-header')
+@endif
+
+
 @if(isset($page) && $page === 'add-property')
 @include('rentalobj.layout.partials.inner-header')
 @include('rentalobj.layout.partials.sidebar-dashboard')
