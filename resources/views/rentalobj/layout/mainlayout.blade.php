@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="{{ env('APP_LOCALE', 'en') }}" lang="{{ env('APP_LOCALE', 'en') }}">
+
 
 <head>
     <meta charset="utf-8">
@@ -23,13 +24,18 @@
 @endcomponent
 
 
-@if (!Route::is(['index']))
+@if(isset($page) && ($page === 'start-page'))
 <body class="body">
 @endif
 
-@if (!Route::is(['add-property']))
+@if(isset($page) && ($page === 'add-property' || $page === 'home-02'))
 <body class="body bg-surface">
 @endif
+
+@if(isset($page) && ($page === 'dashboard' || $page === 'home-02'))
+<body class="body bg-surface counter-scroll">
+@endif
+
 
 @if(isset($page) && $page === 'start-page')
 <div id="wrapper">
@@ -37,7 +43,7 @@
 @endif
 
 
-@if (Route::is('add-property'))
+@if (Route::is('add-property', 'dashboard'))
     <div id="wrapper">
         <div id="page" class="clearfix">
             <div class="layout-wrap">

@@ -1,6 +1,6 @@
                 <!-- sidebar dashboard -->
                 <div class="sidebar-menu-dashboard">
-                    <a href="{{ url('index') }}" class="logo-box">
+                    <a href="{{ url('/') }}" class="logo-box">
                         <img src="{{ URL::asset('/build/images/logo/logo-footer@2x.png') }}" alt="">
                     </a>
                     <div class="user-box">

@@ -1,56 +1,22 @@
+<?php $page = 'dashboard'; ?>
+@extends('rentalobj.layout.mainlayout')
+@section('content')
 
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<!-- dashboard -->
 
-<head>
-    <meta charset="utf-8">
-    <title>Homelengo - Real Estate HTML Template</title>
-    <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap">
-    <meta name="description" content="Real Estate HTML Template">
 
-    <meta name="author" content="themesflat.com">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-   <!-- font -->
-   <link rel="stylesheet" href="fonts/fonts.css">
-   <!-- Icons -->
-   <link rel="stylesheet" href="fonts/font-icons.css">
-   <link rel="stylesheet" href="css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="css/jqueryui.min.css"/>
-   <link rel="stylesheet" type="text/css" href="css/styles.css"/>
-
-    <!-- Favicon and Touch Icons  -->
-    <link rel="shortcut icon" href="images/logo/favicon.png">
-    <link rel="apple-touch-icon-precomposed" href="images/logo/favicon.png">
-
-</head>
-
-<body class="body bg-surface counter-scroll">
-
-    <!-- preload -->
-    <div class="preload preload-container">
-        <div class="preload-logo">
-            <div class="spinner"></div>
-            <span class="icon icon-villa-fill"></span>
-        </div>
-    </div>
-    <!-- /preload -->
-
-    <div id="wrapper">
-        <div id="page" class="clearfix">
-            <div class="layout-wrap">
                 <!-- header -->
                 <header class="main-header fixed-header header-dashboard">
                     <!-- Header Lower -->
                     <div class="header-lower">
-                        <div class="row">                      
-                            <div class="col-lg-12">         
+                        <div class="row">
+                            <div class="col-lg-12">
                                 <div class="inner-header">
                                     <div class="inner-header-left">
                                         <div class="logo-box d-flex">
-                                            <div class="logo"><a href="index.html"><img src="images/logo/logo@2x.png" alt="logo" width="174" height="44"></a></div>
+                                            <div class="logo"><a href="index.html"><img src="{{ URL::asset('/build/images/logo/logo@2x.png') }}" alt="logo" width="174" height="44"></a></div>
                                             <div class="button-show-hide">
                                                 <span class="icon icon-categories"></span>
                                             </div>
@@ -78,7 +44,7 @@
                                                                 <li><a href="topmap-list.html">Find Topmap List</a></li>
                                                                 <li><a href="sidebar-grid.html">Find Sidebar Grid</a></li>
                                                                 <li><a href="sidebar-list.html">Find Sidebar List</a></li>
-    
+
                                                             </ul>
                                                         </li>
                                                         <li class="dropdown2"><a href="#">Properties</a>
@@ -97,7 +63,7 @@
                                                                 <li><a href="contact.html">Contact Us</a></li>
                                                                 <li><a href="faq.html">FAQs</a></li>
                                                                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                                
+
                                                             </ul>
                                                         </li>
                                                         <li class="dropdown2"><a href="#">Blog</a>
@@ -107,7 +73,7 @@
                                                                 <li><a href="blog-detail.html">Blog Post Details</a></li>
                                                             </ul>
                                                         </li>
-                                                        
+
                                                         <li class="dropdown2 current"><a href="#">Dashboard</a>
                                                             <ul>
                                                                 <li class="current"><a href="dashboard.html">Dashboard</a></li>
@@ -125,12 +91,12 @@
                                             <!-- Main Menu End-->
                                         </div>
                                     </div>
-                                    
-                                    
+
+
                                     <div class="header-account inner-header-right">
                                         <div class="box-avatar dropdown-toggle" data-bs-toggle="dropdown">
                                             <div class="avatar avt-34 round">
-                                                <img src="images/avatar/avt-5.jpg" alt="avt">
+                                                <img src="{{ URL::asset('/build/images/avatar/avt-5.jpg') }}" alt="avt">
                                             </div>
                                             <p class="name">Themesflat<span class="icon icon-arr-down"></span></p>
                                             <div class="dropdown-menu">
@@ -150,28 +116,28 @@
                                                 </svg>
                                                 Submit Property
                                             </a>
-                                        </div>  
+                                        </div>
                                     </div>
-                                    
+
                                     <div class="mobile-nav-toggler mobile-button"><span></span></div>
-                                    
+
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- End Header Lower -->
-                
+
                     <!-- Mobile Menu  -->
-                    <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>    
+                    <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
                     <div class="mobile-menu">
-                        <div class="menu-backdrop"></div>                            
+                        <div class="menu-backdrop"></div>
                         <nav class="menu-box">
-                            <div class="nav-logo"><a href="index.html"><img src="images/logo/logo@2x.png" alt="nav-logo" width="174" height="44"></a></div>
+                            <div class="nav-logo"><a href="index.html"><img src="{{ URL::asset('/build/images/logo/logo@2x.png') }}" alt="nav-logo" width="174" height="44"></a></div>
                             <div class="bottom-canvas">
                                 <div class="menu-outer"></div>
                                 <div class="button-mobi-sell">
                                     <a class="tf-btn primary" href="add-property.html">Submit Property</a>
-                                </div> 
+                                </div>
                                 <div class="mobi-icon-box">
                                     <div class="box d-flex align-items-center">
                                         <span class="icon icon-phone2"></span>
@@ -183,16 +149,18 @@
                                     </div>
                                 </div>
                             </div>
-                        </nav>                
+                        </nav>
                     </div>
                     <!-- End Mobile Menu -->
-                
+
                 </header>
                 <!-- end header -->
+
+
                 <!-- sidebar dashboard -->
                 <div class="sidebar-menu-dashboard">
                     <a href="index.html" class="logo-box">
-                        <img src="images/logo/logo-footer@2x.png" alt="">
+                        <img src="{{ URL::asset('/build/images/logo/logo-footer@2x.png') }}" alt="">
                     </a>
                     <div class="user-box">
                         <p class="fw-6">Profile</p>
@@ -208,8 +176,8 @@
                                     <rect width="18.9091" height="18.9091" fill="white" transform="translate(0.546875 0.544922)"/>
                                     </clipPath>
                                     </defs>
-                                </svg> 
-                            </div>  
+                                </svg>
+                            </div>
                             <div class="content">
                                 <div class="caption-2 text">Account</div>
                                 <div class="text-white fw-6">themesflat@gmail...</div>
@@ -228,7 +196,7 @@
                                         <path d="M15.2412 12.6758V15.6412" stroke="#F1FAEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M15.2939 1.83398H6.70346C3.70902 1.83398 1.83203 3.95339 1.83203 6.95371V15.0476C1.83203 18.0479 3.70029 20.1673 6.70346 20.1673H15.2939C18.2971 20.1673 20.1654 18.0479 20.1654 15.0476V6.95371C20.1654 3.95339 18.2971 1.83398 15.2939 1.83398Z" stroke="#F1FAEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
-                                    </svg> 
+                                    </svg>
                                     Dashboards
                                 </a>
                             </li>
@@ -250,11 +218,11 @@
                                             <path d="M16.4076 8.11328L12.3346 11.4252C11.5651 12.0357 10.4824 12.0357 9.71285 11.4252L5.60547 8.11328" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.4985 19.25C18.2864 19.2577 20.1654 16.9671 20.1654 14.1518V7.85584C20.1654 5.04059 18.2864 2.75 15.4985 2.75H6.49891C3.711 2.75 1.83203 5.04059 1.83203 7.85584V14.1518C1.83203 16.9671 3.711 19.2577 6.49891 19.25H15.4985Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
-                                    </svg>   
+                                    </svg>
                                     Reviews
                                 </a>
                             </li>
-                            <!-- <li class="nav-menu-item">
+                            <li class="nav-menu-item">
                                 <a class="nav-menu-link" href="message.html">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g opacity="0.2">
@@ -263,10 +231,10 @@
                                         <path d="M10.9347 11.3802H10.9429" stroke="#F1FAEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M7.2589 11.3802H7.26715" stroke="#F1FAEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
-                                    </svg>  
+                                    </svg>
                                     Message
                                 </a>
-                            </li> -->
+                            </li>
                             <li class="nav-menu-item">
                                 <a class="nav-menu-link" href="my-property.html">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -275,7 +243,7 @@
                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.09012 10.0111L14.9404 3.16086C15.7938 2.30836 17.177 2.30836 18.0305 3.16086L19.146 4.27644C19.9995 5.12986 19.9995 6.51403 19.146 7.36653L12.2628 14.2498C11.8897 14.6229 11.3837 14.8328 10.8557 14.8328H7.42188L7.50804 11.3678C7.52087 10.8581 7.72896 10.3723 8.09012 10.0111Z" stroke="#F1FAEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M13.8984 4.21875L18.0839 8.40425" stroke="#F1FAEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
-                                    </svg>   
+                                    </svg>
                                     My properties
                                 </a>
                             </li>
@@ -310,7 +278,7 @@
                                         <path d="M10.9347 11.3802H10.9429" stroke="#F1FAEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         <path d="M7.2589 11.3802H7.26715" stroke="#F1FAEE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                         </g>
-                                    </svg>  
+                                    </svg>
                                     Message
                                 </a>
                             </li>
@@ -321,7 +289,7 @@
                                             <path d="M19.5 3H4.5C4.10218 3 3.72064 3.15804 3.43934 3.43934C3.15804 3.72064 3 4.10218 3 4.5V19.5C3 19.8978 3.15804 20.2794 3.43934 20.5607C3.72064 20.842 4.10218 21 4.5 21H19.5C19.8978 21 20.2794 20.842 20.5607 20.5607C20.842 20.2794 21 19.8978 21 19.5V4.5C21 4.10218 20.842 3.72064 20.5607 3.43934C20.2794 3.15804 19.8978 3 19.5 3ZM19.5 19.5H4.5V4.5H19.5V19.5ZM16.5 12C16.5 12.1989 16.421 12.3897 16.2803 12.5303C16.1397 12.671 15.9489 12.75 15.75 12.75H12.75V15.75C12.75 15.9489 12.671 16.1397 12.5303 16.2803C12.3897 16.421 12.1989 16.5 12 16.5C11.8011 16.5 11.6103 16.421 11.4697 16.2803C11.329 16.1397 11.25 15.9489 11.25 15.75V12.75H8.25C8.05109 12.75 7.86032 12.671 7.71967 12.5303C7.57902 12.3897 7.5 12.1989 7.5 12C7.5 11.8011 7.57902 11.6103 7.71967 11.4697C7.86032 11.329 8.05109 11.25 8.25 11.25H11.25V8.25C11.25 8.05109 11.329 7.86032 11.4697 7.71967C11.6103 7.57902 11.8011 7.5 12 7.5C12.1989 7.5 12.3897 7.57902 12.5303 7.71967C12.671 7.86032 12.75 8.05109 12.75 8.25V11.25H15.75C15.9489 11.25 16.1397 11.329 16.2803 11.4697C16.421 11.6103 16.5 11.8011 16.5 12Z" fill="#F1FAEE"></path>
                                         </g>
                                     </svg>
-                                         
+
                                     Add Property
                                 </a>
                             </li>
@@ -339,7 +307,7 @@
                             </li>
                         </ul>
                     </div>
-                    
+
                 </div>
                 <!-- end sidebar dashboard -->
                 <div class="main-content">
@@ -356,9 +324,9 @@
                                     <div class="title-count text-variant-1">Your listing</div>
                                     <div class="box-count d-flex align-items-end">
                                         <!-- <h3 class="number fw-8" data-speed="2000" data-to="17" data-inviewport="yes">32</h3>       -->
-                                        <h3 class="fw-8">32</h3>                                   
+                                        <h3 class="fw-8">32</h3>
                                         <span class="text">/50 remaining</span>
-                                    </div>                              
+                                    </div>
 
                                 </div>
                             </div>
@@ -369,8 +337,8 @@
                                 <div class="content-box">
                                     <div class="title-count text-variant-1">Pending</div>
                                     <div class="box-count d-flex align-items-end">
-                                        <h3 class="fw-8">02</h3>                                   
-                                    </div>                              
+                                        <h3 class="fw-8">02</h3>
+                                    </div>
                                 </div>
                             </div>
                             <div class="counter-box">
@@ -381,8 +349,8 @@
                                     <div class="title-count text-variant-1">Favorites</div>
                                     <div class="d-flex align-items-end">
                                         <!-- <h6 class="number" data-speed="2000" data-to="1" data-inviewport="yes">1</h6>  -->
-                                        <h3 class="fw-8">06</h3>                                   
-                                    </div>                              
+                                        <h3 class="fw-8">06</h3>
+                                    </div>
 
                                 </div>
                             </div>
@@ -393,8 +361,8 @@
                                 <div class="content-box">
                                     <div class="title-count text-variant-1">Reviews</div>
                                     <div class="d-flex align-items-end">
-                                        <h3 class="fw-8">1.483</h3>                                   
-                                    </div>                              
+                                        <h3 class="fw-8">1.483</h3>
+                                    </div>
 
                                 </div>
                             </div>
@@ -416,7 +384,7 @@
                                         </div>
                                         <div class="ip-group">
                                             <div class="nice-select" tabindex="0"><span class="current">Select</span>
-                                                <ul class="list"> 
+                                                <ul class="list">
                                                     <li data-value="1" class="option selected">Select</li>
                                                     <li data-value="2" class="option">Today</li>
                                                     <li data-value="3" class="option">Yesterday</li>
@@ -441,12 +409,12 @@
                                                     <td>
                                                         <div class="listing-box">
                                                             <div class="images">
-                                                                <img src="images/home/house-18.jpg" alt="images">
+                                                                <img src="{{ URL::asset('/build/images/home/house-18.jpg') }}" alt="images">
                                                             </div>
                                                             <div class="content">
                                                                 <div class="title"><a href="property-details-v1.html" class="link">Gorgeous Apartment Building</a> </div>
                                                                 <div class="text-date">Posting date: March 22, 2024</div>
-                                                                <div class="text-btn text-primary">$7,500</div> 
+                                                                <div class="text-btn text-primary">$7,500</div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -460,20 +428,20 @@
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M11.2413 2.9915L12.366 1.86616C12.6005 1.63171 12.9184 1.5 13.25 1.5C13.5816 1.5 13.8995 1.63171 14.134 1.86616C14.3685 2.10062 14.5002 2.4186 14.5002 2.75016C14.5002 3.08173 14.3685 3.39971 14.134 3.63416L4.55467 13.2135C4.20222 13.5657 3.76758 13.8246 3.29 13.9668L1.5 14.5002L2.03333 12.7102C2.17552 12.2326 2.43442 11.7979 2.78667 11.4455L11.242 2.9915H11.2413ZM11.2413 2.9915L13 4.75016" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg> 
+                                                                </svg>
                                                                 Edit</a>
                                                             </li>
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M12.2427 12.2427C13.3679 11.1175 14.0001 9.59135 14.0001 8.00004C14.0001 6.40873 13.3679 4.8826 12.2427 3.75737C11.1175 2.63214 9.59135 2 8.00004 2C6.40873 2 4.8826 2.63214 3.75737 3.75737M12.2427 12.2427C11.1175 13.3679 9.59135 14.0001 8.00004 14.0001C6.40873 14.0001 4.8826 13.3679 3.75737 12.2427C2.63214 11.1175 2 9.59135 2 8.00004C2 6.40873 2.63214 4.8826 3.75737 3.75737M12.2427 12.2427L3.75737 3.75737" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                                                 </svg>
-                                                                    
+
                                                                 Sold</a>
                                                             </li>
                                                             <li><a class="remove-file item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg>  
+                                                                </svg>
                                                                 Delete</a>
                                                             </li>
                                                         </ul>
@@ -484,12 +452,12 @@
                                                     <td>
                                                         <div class="listing-box">
                                                             <div class="images">
-                                                                <img src="images/home/house-33.jpg" alt="images">
+                                                                <img src="{{ URL::asset('/build/images/home/house-33.jpg') }}" alt="images">
                                                             </div>
                                                             <div class="content">
                                                                 <div class="title"><a href="property-details-v1.html" class="link">Mountain Mist Retreat, Aspen</a> </div>
                                                                 <div class="text-date">Posting date: March 22, 2024</div>
-                                                                <div class="text-btn text-primary">$7,500</div> 
+                                                                <div class="text-btn text-primary">$7,500</div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -503,20 +471,20 @@
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M11.2413 2.9915L12.366 1.86616C12.6005 1.63171 12.9184 1.5 13.25 1.5C13.5816 1.5 13.8995 1.63171 14.134 1.86616C14.3685 2.10062 14.5002 2.4186 14.5002 2.75016C14.5002 3.08173 14.3685 3.39971 14.134 3.63416L4.55467 13.2135C4.20222 13.5657 3.76758 13.8246 3.29 13.9668L1.5 14.5002L2.03333 12.7102C2.17552 12.2326 2.43442 11.7979 2.78667 11.4455L11.242 2.9915H11.2413ZM11.2413 2.9915L13 4.75016" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg> 
+                                                                </svg>
                                                                 Edit</a>
                                                             </li>
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M12.2427 12.2427C13.3679 11.1175 14.0001 9.59135 14.0001 8.00004C14.0001 6.40873 13.3679 4.8826 12.2427 3.75737C11.1175 2.63214 9.59135 2 8.00004 2C6.40873 2 4.8826 2.63214 3.75737 3.75737M12.2427 12.2427C11.1175 13.3679 9.59135 14.0001 8.00004 14.0001C6.40873 14.0001 4.8826 13.3679 3.75737 12.2427C2.63214 11.1175 2 9.59135 2 8.00004C2 6.40873 2.63214 4.8826 3.75737 3.75737M12.2427 12.2427L3.75737 3.75737" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                                                 </svg>
-                                                                    
+
                                                                 Sold</a>
                                                             </li>
                                                             <li><a class="remove-file item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg>  
+                                                                </svg>
                                                                 Delete</a>
                                                             </li>
                                                         </ul>
@@ -527,12 +495,12 @@
                                                     <td>
                                                         <div class="listing-box">
                                                             <div class="images">
-                                                                <img src="images/home/house-15.jpg" alt="images">
+                                                                <img src="{{ URL::asset('/build/images/home/house-15.jpg') }}" alt="images">
                                                             </div>
                                                             <div class="content">
                                                                 <div class="title"><a href="property-details-v1.html" class="link">Lakeview Haven, Lake Tahoe</a> </div>
                                                                 <div class="text-date">Posting date: March 22, 2024</div>
-                                                                <div class="text-btn text-primary">$7,500</div>  
+                                                                <div class="text-btn text-primary">$7,500</div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -546,20 +514,20 @@
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M11.2413 2.9915L12.366 1.86616C12.6005 1.63171 12.9184 1.5 13.25 1.5C13.5816 1.5 13.8995 1.63171 14.134 1.86616C14.3685 2.10062 14.5002 2.4186 14.5002 2.75016C14.5002 3.08173 14.3685 3.39971 14.134 3.63416L4.55467 13.2135C4.20222 13.5657 3.76758 13.8246 3.29 13.9668L1.5 14.5002L2.03333 12.7102C2.17552 12.2326 2.43442 11.7979 2.78667 11.4455L11.242 2.9915H11.2413ZM11.2413 2.9915L13 4.75016" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg> 
+                                                                </svg>
                                                                 Edit</a>
                                                             </li>
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M12.2427 12.2427C13.3679 11.1175 14.0001 9.59135 14.0001 8.00004C14.0001 6.40873 13.3679 4.8826 12.2427 3.75737C11.1175 2.63214 9.59135 2 8.00004 2C6.40873 2 4.8826 2.63214 3.75737 3.75737M12.2427 12.2427C11.1175 13.3679 9.59135 14.0001 8.00004 14.0001C6.40873 14.0001 4.8826 13.3679 3.75737 12.2427C2.63214 11.1175 2 9.59135 2 8.00004C2 6.40873 2.63214 4.8826 3.75737 3.75737M12.2427 12.2427L3.75737 3.75737" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                                                 </svg>
-                                                                    
+
                                                                 Sold</a>
                                                             </li>
                                                             <li><a class="remove-file item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg>  
+                                                                </svg>
                                                                 Delete</a>
                                                             </li>
                                                         </ul>
@@ -570,12 +538,12 @@
                                                 <td>
                                                     <div class="listing-box">
                                                         <div class="images">
-                                                            <img src="images/home/house-23.jpg" alt="images">
+                                                            <img src="{{ URL::asset('/build/images/home/house-23.jpg') }}" alt="images">
                                                         </div>
                                                         <div class="content">
                                                             <div class="title"><a href="property-details-v1.html" class="link">Coastal Serenity Cottage</a> </div>
                                                             <div class="text-date">Posting date: March 22, 2024</div>
-                                                            <div class="text-btn text-primary">$7,500</div> 
+                                                            <div class="text-btn text-primary">$7,500</div>
                                                         </div>
                                                     </div>
                                                 </td>
@@ -589,20 +557,20 @@
                                                         <li><a class="item">
                                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M11.2413 2.9915L12.366 1.86616C12.6005 1.63171 12.9184 1.5 13.25 1.5C13.5816 1.5 13.8995 1.63171 14.134 1.86616C14.3685 2.10062 14.5002 2.4186 14.5002 2.75016C14.5002 3.08173 14.3685 3.39971 14.134 3.63416L4.55467 13.2135C4.20222 13.5657 3.76758 13.8246 3.29 13.9668L1.5 14.5002L2.03333 12.7102C2.17552 12.2326 2.43442 11.7979 2.78667 11.4455L11.242 2.9915H11.2413ZM11.2413 2.9915L13 4.75016" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                            </svg> 
+                                                            </svg>
                                                             Edit</a>
                                                         </li>
                                                         <li><a class="item">
                                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M12.2427 12.2427C13.3679 11.1175 14.0001 9.59135 14.0001 8.00004C14.0001 6.40873 13.3679 4.8826 12.2427 3.75737C11.1175 2.63214 9.59135 2 8.00004 2C6.40873 2 4.8826 2.63214 3.75737 3.75737M12.2427 12.2427C11.1175 13.3679 9.59135 14.0001 8.00004 14.0001C6.40873 14.0001 4.8826 13.3679 3.75737 12.2427C2.63214 11.1175 2 9.59135 2 8.00004C2 6.40873 2.63214 4.8826 3.75737 3.75737M12.2427 12.2427L3.75737 3.75737" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                                             </svg>
-                                                                
+
                                                             Sold</a>
                                                         </li>
                                                         <li><a class="remove-file item">
                                                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                            </svg>  
+                                                            </svg>
                                                             Delete</a>
                                                         </li>
                                                     </ul>
@@ -613,12 +581,12 @@
                                                     <td>
                                                         <div class="listing-box">
                                                             <div class="images">
-                                                                <img src="images/home/house-32.jpg" alt="images">
+                                                                <img src="{{ URL::asset('/build/images/home/house-32.jpg') }}" alt="images">
                                                             </div>
                                                             <div class="content">
                                                                 <div class="title"><a href="property-details-v1.html" class="link">Sunset Heights Estate</a> </div>
                                                                 <div class="text-date">Posting date: March 22, 2024</div>
-                                                                <div class="text-btn text-primary">$7,500</div> 
+                                                                <div class="text-btn text-primary">$7,500</div>
                                                             </div>
                                                         </div>
                                                     </td>
@@ -632,27 +600,27 @@
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M11.2413 2.9915L12.366 1.86616C12.6005 1.63171 12.9184 1.5 13.25 1.5C13.5816 1.5 13.8995 1.63171 14.134 1.86616C14.3685 2.10062 14.5002 2.4186 14.5002 2.75016C14.5002 3.08173 14.3685 3.39971 14.134 3.63416L4.55467 13.2135C4.20222 13.5657 3.76758 13.8246 3.29 13.9668L1.5 14.5002L2.03333 12.7102C2.17552 12.2326 2.43442 11.7979 2.78667 11.4455L11.242 2.9915H11.2413ZM11.2413 2.9915L13 4.75016" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg> 
+                                                                </svg>
                                                                 Edit</a>
                                                             </li>
                                                             <li><a class="item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M12.2427 12.2427C13.3679 11.1175 14.0001 9.59135 14.0001 8.00004C14.0001 6.40873 13.3679 4.8826 12.2427 3.75737C11.1175 2.63214 9.59135 2 8.00004 2C6.40873 2 4.8826 2.63214 3.75737 3.75737M12.2427 12.2427C11.1175 13.3679 9.59135 14.0001 8.00004 14.0001C6.40873 14.0001 4.8826 13.3679 3.75737 12.2427C2.63214 11.1175 2 9.59135 2 8.00004C2 6.40873 2.63214 4.8826 3.75737 3.75737M12.2427 12.2427L3.75737 3.75737" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                                                 </svg>
-                                                                    
+
                                                                 Sold</a>
                                                             </li>
                                                             <li><a class="remove-file item">
                                                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                     <path d="M9.82667 6.00035L9.596 12.0003M6.404 12.0003L6.17333 6.00035M12.8187 3.86035C13.0467 3.89501 13.2733 3.93168 13.5 3.97101M12.8187 3.86035L12.1067 13.1157C12.0776 13.4925 11.9074 13.8445 11.63 14.1012C11.3527 14.3579 10.9886 14.5005 10.6107 14.5003H5.38933C5.0114 14.5005 4.64735 14.3579 4.36999 14.1012C4.09262 13.8445 3.92239 13.4925 3.89333 13.1157L3.18133 3.86035M12.8187 3.86035C12.0492 3.74403 11.2758 3.65574 10.5 3.59568M3.18133 3.86035C2.95333 3.89435 2.72667 3.93101 2.5 3.97035M3.18133 3.86035C3.95076 3.74403 4.72416 3.65575 5.5 3.59568M10.5 3.59568V2.98501C10.5 2.19835 9.89333 1.54235 9.10667 1.51768C8.36908 1.49411 7.63092 1.49411 6.89333 1.51768C6.10667 1.54235 5.5 2.19901 5.5 2.98501V3.59568M10.5 3.59568C8.83581 3.46707 7.16419 3.46707 5.5 3.59568" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg>  
+                                                                </svg>
                                                                 Delete</a>
                                                             </li>
                                                         </ul>
                                                     </td>
                                                 </tr>
-                                           
-                                                
+
+
                                             </tbody>
                                             </table>
                                         </div>
@@ -685,8 +653,8 @@
                                                 <input type="text" id="datepicker4" class="ip-datepicker icon" placeholder="To Date">
                                             </div>
                                         </div>
-                                        
-                                        
+
+
                                     </div>
                                     <div class="chart-box">
                                         <canvas id="lineChart"></canvas>
@@ -700,7 +668,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png9.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png9.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Themesflat</div>
@@ -712,7 +680,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png10.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png10.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">ThemeMu</div>
@@ -724,7 +692,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png11.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png11.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Cameron Williamson</div>
@@ -736,7 +704,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png12.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png12.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Esther Howard</div>
@@ -753,7 +721,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png13.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png13.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Bessie Cooper</div>
@@ -772,7 +740,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png14.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png14.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Annette Black</div>
@@ -791,7 +759,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png15.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png15.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Ralph Edwards</div>
@@ -810,7 +778,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png16.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png16.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Jerome Bell</div>
@@ -829,7 +797,7 @@
                                         <li class="mess-item">
                                             <div class="user-box">
                                                 <div class="avatar">
-                                                    <img src="images/avatar/avt-png17.png" alt="avt">
+                                                    <img src="{{ URL::asset('/build/images/avatar/avt-png17.png') }}" alt="avt">
                                                 </div>
                                                 <div class="content">
                                                     <div class="name fw-6">Albert Flores</div>
@@ -847,7 +815,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                                
+
                             </div>
                         </div>
                     </div>
@@ -870,19 +838,4 @@
         </svg>
     </div>
 
-    <!-- Javascript -->
-    
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/jquery.min.js"></script>
-    <script type="text/javascript" src="js/plugin.js"></script>
-    <script type="text/javascript" src="js/chart.js"></script>
-    <script type="text/javascript" src="js/chart-init.js"></script>
-    <script type="text/javascript" src="js/jquery.nice-select.min.js"></script>
-    <script type="text/javascript" src="js/countto.js"></script>
-    <script type="text/javascript" src="js/shortcodes.js"></script>
-    <script type="text/javascript" src="js/jqueryui.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
-  
-</body>
-
-</html>
+    @endsection

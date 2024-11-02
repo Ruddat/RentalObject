@@ -7,6 +7,10 @@
 
                 <div class="main-content">
                     <div class="main-content-inner">
+
+
+                        @livewire('image-upload')
+
                         <div class="button-show-hide show-mb">
                             <span class="body-1">Show Dashboard</span>
                         </div>
@@ -123,7 +127,7 @@
                                         <input type="text" class="form-control" value="None">
                                         <a href="#" class="btn-location"><i class="icon icon-location"></i></a>
                                     </div>
-                                    <iframe class="map" src="{{ URL::asset('/build/https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d135905.11693909427!2d-73.95165795400088!3d41.17584829642291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1727094281524!5m2!1sen!2s" height="456" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d135905.11693909427!2d-73.95165795400088!3d41.17584829642291!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1727094281524!5m2!1sen!2s" height="456" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
                                 </div>
 

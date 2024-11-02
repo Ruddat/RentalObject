@@ -11,3 +11,8 @@
     <script type="text/javascript" src="{{ URL::asset('/build/js/animation_heading.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/lazysize.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/main.js') }}"></script>
+
+
+    <script type="text/javascript" src="{{ URL::asset('/build/js/jqueryui.min.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('/build/js/chart.js') }}"></script>
+    <script type="text/javascript" src="{{ URL::asset('/build/js/chart-init.js') }}"></script>
