@@ -52,6 +52,69 @@
                                     Profile
                                 </a>
                             </li>
+                            <div class="title fw-6">Nebenkostenabrechnung</div>
+                            <li class="nav-menu-item with-border-top {{ Request::is('utility-cost-table','edit-product') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('utility-cost-table') }}">
+                                    <i data-feather="dollar-sign"></i><span>Utility Costs Table</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-menu-item {{ Request::is('billing-header-form') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('billing-header-form') }}">
+                                    <i data-feather="settings"></i><span>Abrechnungskopf hinzufügen</span>
+
+                                </a>
+                            </li>
+
+                            <li class="nav-menu-item {{ Request::is('rental-object-table','edit-product') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('rental-object-table') }}">
+                                    <i data-feather="home"></i><span>Mietobjekte verwalten</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-menu-item {{ Request::is('tenant-table') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('tenant-table') }}">
+                                    <i data-feather="users"></i><span>Mieter verwalten</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-menu-item {{ Request::is('tenant-payments') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('tenant-payments') }}">
+                                    <i data-feather="file-text"></i><span>Nebenkostenzahlungen verwalten</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-menu-item {{ Request::is('utility-cost-recording') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('utility-cost-recording') }}">
+                                    <i data-feather="clipboard"></i><span>Nebenkosten erfassen</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-menu-item {{ Request::is('billing-calculation') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('billing-calculation') }}">
+                                    <i data-feather="layers"></i><span>Abrechnung für das Jahr und Mietobjekt</span>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-menu-item {{ Request::is('heating-cost-management') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('heating-cost-management') }}">
+                                    <i data-feather="thermometer"></i><span>Heizkostenverwaltung</span>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-menu-item with-border-bottom {{ Request::is('billing-generation') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('billing-generation') }}">
+                                    <i data-feather="check-circle"></i><span>Abrechhung erstellen</span>
+                                </a>
+                            </li>
+
+
+
+
+
+
                             <li class="nav-menu-item">
                                 <a class="nav-menu-link" href="reviews.html">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,6 +126,9 @@
                                     Reviews
                                 </a>
                             </li>
+
+
+
                             <!-- <li class="nav-menu-item">
                                 <a class="nav-menu-link" href="message.html">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -135,7 +201,7 @@
                                 </a>
                             </li>
                             <li class="nav-menu-item">
-                                <a class="nav-menu-link" href="index.html">
+                                <a class="nav-menu-link" href="/">
                                     <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <g opacity="0.2">
                                         <path d="M13.7627 6.77418V5.91893C13.7627 4.05352 12.2502 2.54102 10.3848 2.54102H5.91606C4.05156 2.54102 2.53906 4.05352 2.53906 5.91893V16.1214C2.53906 17.9868 4.05156 19.4993 5.91606 19.4993H10.394C12.2539 19.4993 13.7627 17.9914 13.7627 16.1315V15.2671" stroke="#F1FAEE" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -151,3 +217,15 @@
 
                 </div>
                 <!-- end sidebar dashboard -->
+
+
+<style>
+    .with-border-top {
+    border-top: 1px dashed cornflowerblue; /* Farbe der oberen Linie */
+    padding: 2px 0; /* optionaler Abstand für besseren Abstand */
+}
+    .with-border-bottom {
+    border-bottom: 1px dashed #666262; /* Farbe der unteren Linie */
+    padding: 2px 0; /* optionaler Abstand für besseren Abstand */
+}
+</style>

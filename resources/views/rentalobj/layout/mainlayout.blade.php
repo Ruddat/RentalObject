@@ -43,7 +43,7 @@
 @endif
 
 
-@if (Route::is('add-property', 'dashboard'))
+@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments'))
     <div id="wrapper">
         <div id="page" class="clearfix">
             <div class="layout-wrap">

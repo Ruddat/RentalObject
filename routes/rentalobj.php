@@ -39,3 +39,50 @@ Route::get('/dashboard', function () {
 Route::get('/add-property', function () {
     return view('rentalobj.add-property');
 })->name('add-property');
+
+
+/*
+----------------------------------------------------------------
+| Utility Costs
+----------------------------------------------------------------
+*/
+
+Route::get('/utility-cost-table', function () {
+    return view('rentalobj.pageslivewire._utilitycosts');
+})->name('utility-cost-table');
+
+Route::get('/rental-object-table', function () {
+    return view('rentalobj.pageslivewire._rental-object-table');
+})->name('rental-object-table');
+
+
+Route::get('/tenant-table', function () {
+    return view('rentalobj.pageslivewire._tenant-table');
+})->name('tenant-table');
+
+
+Route::get('/utility-cost-recording', function () {
+    return view('rentalobj.pageslivewire._utility-cost-recording');
+})->name('utility-cost-recording');
+
+Route::get('/billing-calculation', function () {
+    return view('rentalobj.pageslivewire._billing-calculation');
+})->name('billing-calculation');
+
+
+Route::get('/billing-header-form', function () {
+    return view('rentalobj.pageslivewire._billing-header-form');
+})->name('billing-header-form');
+
+
+Route::get('/heating-cost-management', function () {
+    return view('rentalobj.pageslivewire._heating-cost-management');
+})->name('heating-cost-management');
+
+Route::get('/tenant-payments', function () {
+    return view('rentalobj.pageslivewire._tenant-payments');
+})->name('tenant-payments');
+
+Route::get('/billing-generation', function () {
+    return view('rentalobj.pageslivewire._billing-generation');
+})->name('billing-generation');
