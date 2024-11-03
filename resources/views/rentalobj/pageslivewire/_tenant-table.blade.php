@@ -1,4 +1,4 @@
-<?php $page = 'add-property'; ?>
+<?php $page = 'tenant-table'; ?>
 @extends('rentalobj.layout.mainlayout')
 @section('content')
 

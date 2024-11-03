@@ -92,3 +92,15 @@ Route::get('/tenant-payments', function () {
 Route::get('/billing-generation', function () {
     return view('rentalobj.pageslivewire._billing-generation');
 })->name('billing-generation');
+
+
+/*
+----------------------------------------------------------------
+|
+Settings
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/backup-manager', function () {
+    return view('rentalobj.pageslivewire.settings._backup-manager');
+})->name('sys-settings');

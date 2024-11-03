@@ -28,7 +28,7 @@
 <body class="body">
 @endif
 
-@if(isset($page) && ($page === 'add-property' || $page === 'home-02'|| $page === 'heating-cost-management'))
+@if(isset($page) && ($page === 'add-property' || $page === 'home-02'|| $page === 'utility-cost-table' || $page === 'heating-cost-management' || $page === 'billing-header-form' || $page === 'tenant-payments' || $page === 'rental-object-table' || $page === 'billing-generation' || $page === 'billing-calculation' || $page === 'tenant-table' || $page === 'sys-settings'))
 <body class="body bg-surface">
 @endif
 
@@ -43,7 +43,7 @@
 @endif
 
 
-@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management'))
+@if (Route::is('add-property', 'sys-settings', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-table', 'tenant-table', 'utility-cost-recording'))
     <div id="wrapper">
         <div id="page" class="clearfix">
             <div class="layout-wrap">
@@ -59,7 +59,7 @@
 @endif
 
 
-@if(isset($page) && $page === 'add-property' || $page === 'dashboard' || $page === 'heating-cost-management' || $page === 'billing-header-form' || $page === 'tenant-payments' || $page === 'rental-object-table' || $page === 'billing-generation' || $page === 'billing-calculation')
+@if(isset($page) && $page === 'add-property' || $page === 'sys-settings' || $page === 'dashboard' || $page === 'utility-cost-table' || $page === 'heating-cost-management' || $page === 'billing-header-form' || $page === 'tenant-payments' || $page === 'rental-object-table' || $page === 'billing-generation' || $page === 'billing-calculation' || $page === 'tenant-table')
 @include('rentalobj.layout.partials.inner-header')
 @include('rentalobj.layout.partials.sidebar-dashboard')
 @endif

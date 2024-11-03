@@ -110,8 +110,12 @@
                                 </a>
                             </li>
 
-
-
+                            <div class="title fw-6">Settings</div>
+                            <li class="nav-menu-item with-border-bottom {{ Request::is('backup-manager') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('backup-manager') }}">
+                                    <i data-feather="database"></i><span>Backup Manager</span>
+                                </a>
+                            </li>
 
 
 

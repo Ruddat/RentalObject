@@ -2,61 +2,43 @@
 
 namespace App\Console\Commands;
 
+use DB;
+use Exception;
+use Carbon\Carbon;
+use App\Models\SysBackups;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
-use Carbon\Carbon;
-use DB;
+use Spatie\Backup\Tasks\Backup\BackupJobFactory;
 
 class BackupCron extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'backup:cron';
+    protected $description = 'Executes a database backup and stores it using Spatie Backup';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
-    protected $description = 'Executes a database backup and stores it in a specified location';
-
-    /**
-     * Execute the console command.
-     */
     public function handle()
     {
         $this->info('Starting database backup...');
 
-        // Set the backup file path and name with a timestamp
-        $backupFile = 'backups/db-backup-' . Carbon::now()->format('Y-m-d_H-i-s') . '.sql';
+        try {
+            $this->call('backup:run');
 
-        // Execute the mysqldump command
-        $database = config('database.connections.mysql.database');
-        $username = config('database.connections.mysql.username');
-        $password = config('database.connections.mysql.password');
-        $host = config('database.connections.mysql.host');
+            // Retrieve the latest backup file from the `private/RentalObject` directory
+            $latestBackup = collect(Storage::disk('private')->files('RentalObject'))->last();
 
-        // Construct the mysqldump command
-        $command = "mysqldump -u{$username} -p{$password} -h{$host} {$database} > " . storage_path($backupFile);
+            // Save backup details in the SysBackups table
+            SysBackups::create([
+                'file_name' => basename($latestBackup),
+                'path' => $latestBackup,
+                'created_at' => Carbon::now(),
+            ]);
 
-        // Run the command and handle errors
-        $result = null;
-        $output = null;
-        exec($command, $output, $result);
+            $this->info('Backup completed and saved to database successfully!');
+            Log::info("Database backup completed and logged at " . Carbon::now());
 
-        if ($result === 0) {
-            $this->info('Backup completed successfully!');
-            Log::info("Database backup completed successfully at " . Carbon::now());
-
-            // Optionally, move the backup to a cloud storage (e.g., S3, if configured)
-            Storage::disk('local')->put($backupFile, file_get_contents(storage_path($backupFile)));
-        } else {
-            $this->error('Backup failed.');
-            Log::error("Database backup failed at " . Carbon::now());
+        } catch (\Exception $e) {
+            $this->error('Backup failed: ' . $e->getMessage());
+            Log::error("Database backup failed at " . Carbon::now() . ' with error: ' . $e->getMessage());
         }
     }
 }

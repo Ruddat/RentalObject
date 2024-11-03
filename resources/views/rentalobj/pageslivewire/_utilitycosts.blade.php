@@ -1,7 +1,7 @@
 
 
 
-<?php $page = 'add-property'; ?>
+<?php $page = 'utility-cost-table'; ?>
 @extends('rentalobj.layout.mainlayout')
 @section('content')
 
