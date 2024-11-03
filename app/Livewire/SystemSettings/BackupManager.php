@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Storage;
 
 class BackupManager extends Component
 {
-
     public function render()
     {
         return view('livewire.system-settings.backup-manager', [
@@ -36,5 +35,4 @@ class BackupManager extends Component
         Artisan::call('backup:cron');
         session()->flash('message', 'Backup initiated successfully.');
     }
-
 }
