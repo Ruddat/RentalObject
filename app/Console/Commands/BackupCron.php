@@ -2,14 +2,12 @@
 
 namespace App\Console\Commands;
 
-use DB;
-use Exception;
 use Carbon\Carbon;
 use App\Models\SysBackups;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Storage;
-use Spatie\Backup\Tasks\Backup\BackupJobFactory;
+use Illuminate\Support\Facades\Event;
+use Spatie\Backup\Events\BackupZipWasCreated;
 
 class BackupCron extends Command
 {
@@ -21,17 +19,18 @@ class BackupCron extends Command
         $this->info('Starting database backup...');
 
         try {
+            // Set up an event listener for the backup completion
+            Event::listen(BackupZipWasCreated::class, function (BackupZipWasCreated $event) {
+                // Use the event data to get the file path
+                SysBackups::create([
+                    'file_name' => basename($event->pathToZip),
+                    'path' => $event->pathToZip,
+                    'created_at' => Carbon::now(),
+                ]);
+            });
+
+            // Run the Spatie backup command
             $this->call('backup:run');
-
-            // Retrieve the latest backup file from the `private/RentalObject` directory
-            $latestBackup = collect(Storage::disk('private')->files('RentalObject'))->last();
-
-            // Save backup details in the SysBackups table
-            SysBackups::create([
-                'file_name' => basename($latestBackup),
-                'path' => $latestBackup,
-                'created_at' => Carbon::now(),
-            ]);
 
             $this->info('Backup completed and saved to database successfully!');
             Log::info("Database backup completed and logged at " . Carbon::now());
