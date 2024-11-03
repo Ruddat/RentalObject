@@ -1,4 +1,4 @@
-<?php $page = 'add-property'; ?>
+<?php $page = 'billing-generation'; ?>
 @extends('rentalobj.layout.mainlayout')
 @section('content')
 

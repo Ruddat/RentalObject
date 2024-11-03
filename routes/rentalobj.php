@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Utility\NewsletterController;
+
+
+Route::post('/newsletter-signup', [NewsletterController::class, 'signup'])->name('newsletter.signup');
+
+
 
 //Route::get('/', function () {
 //    return view('welcome');

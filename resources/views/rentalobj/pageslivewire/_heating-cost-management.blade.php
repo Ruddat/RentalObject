@@ -1,4 +1,4 @@
-<?php $page = 'add-property'; ?>
+<?php $page = 'heating-cost-management'; ?>
 @extends('rentalobj.layout.mainlayout')
 @section('content')
 

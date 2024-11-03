@@ -19,8 +19,12 @@
     <script type="text/javascript" src="{{ URL::asset('/build/js/jqueryui.min.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/chart.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/chart-init.js') }}"></script>
-    
+
 
     <script>
         feather.replace();
     </script>
+
+@if (Route::is(['sales-dashboard']))
+
+ @endif

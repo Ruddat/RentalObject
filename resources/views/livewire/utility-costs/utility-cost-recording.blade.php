@@ -8,7 +8,7 @@
             <select wire:model.change="rental_object_id" id="rental_object_id" class="form-select" required>
                 <option value="">Wählen...</option>
                 @foreach($rentalObjects as $object)
-                    <option value="{{ $object->id }}">{{ $object->address }}, {{ $object->city }}</option>
+                    <option value="{{ $object->id }}">{{ $object->street }}, {{ $object->house_number }}, {{ $object->city }}</option>
                 @endforeach
             </select>
             @error('rental_object_id') <div class="text-danger">{{ $message }}</div> @enderror

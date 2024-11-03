@@ -28,7 +28,7 @@
 <body class="body">
 @endif
 
-@if(isset($page) && ($page === 'add-property' || $page === 'home-02'))
+@if(isset($page) && ($page === 'add-property' || $page === 'home-02'|| $page === 'heating-cost-management'))
 <body class="body bg-surface">
 @endif
 
@@ -43,7 +43,7 @@
 @endif
 
 
-@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments'))
+@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management'))
     <div id="wrapper">
         <div id="page" class="clearfix">
             <div class="layout-wrap">
@@ -59,18 +59,40 @@
 @endif
 
 
-@if(isset($page) && $page === 'add-property')
+@if(isset($page) && $page === 'add-property' || $page === 'dashboard' || $page === 'heating-cost-management' || $page === 'billing-header-form' || $page === 'tenant-payments' || $page === 'rental-object-table' || $page === 'billing-generation' || $page === 'billing-calculation')
 @include('rentalobj.layout.partials.inner-header')
 @include('rentalobj.layout.partials.sidebar-dashboard')
 @endif
-
 
 
 @yield('content')
 
 
 
+@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management'))
+
+<div class="overlay-dashboard"></div>
+
+</div>
+</div>
+<!-- /#page -->
+
+</div>
+
+@endif
+
+{{-- Füge den Footer nur hinzu, wenn nicht auf der Startseite --}}
+
+
+
+@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments' , 'rental-object-table', 'billing-generation', 'billing-calculation'))
+
 @include('rentalobj.layout.partials.footer-scripts')
+@else
+
+@include('rentalobj.layout.partials.footer-scripts-dashboard')
+@endif
+
 
 
 </body>

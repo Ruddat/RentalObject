@@ -30,10 +30,10 @@
                         Bitte schauen Sie bald wieder vorbei, um alle Funktionen zu nutzen.
                     </p>
                     <!-- Newsletter-Formular -->
-                    <form class="contact100-form validate-form m-t-10 m-b-10">
+                    <form id="newsletter-form" class="contact100-form validate-form m-t-10 m-b-10">
                         <div class="wrap-input100 validate-input m-lr-auto-lg" data-validate="Email ist erforderlich: z.B. ex@abc.xyz">
-                            <input class="s2-txt1 placeholder0 input100 trans-04" type="text" name="email" placeholder="E-Mail-Adresse">
-                            <button class="flex-c-m ab-t-r size2 hov1"><i class="zmdi zmdi-long-arrow-right fs-30 cl1 trans-04"></i></button>
+                            <input class="s2-txt1 placeholder0 input100 trans-04" type="email" name="email" id="newsletter-email" placeholder="E-Mail-Adresse" required>
+                            <button type="submit" class="flex-c-m ab-t-r size2 hov1"><i class="zmdi zmdi-long-arrow-right fs-30 cl1 trans-04"></i></button>
                         </div>
                     </form>
                 </div>
@@ -63,3 +63,23 @@
     <script src="{{ asset('build/js/vendor/main.js') }}"></script>
 </body>
 </html>
+<script>
+document.getElementById('newsletter-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('newsletter-email').value;
+
+    fetch("{{ route('newsletter.signup') }}", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+        },
+        body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert(data.message);
+    })
+    .catch(error => console.error('Error:', error));
+});
+</script>
