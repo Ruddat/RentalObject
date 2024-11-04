@@ -1,5 +1,9 @@
 <div class="main-content mt-5">
     <div class="main-content-inner">
+        <div class="button-show-hide show-mb">
+            <span class="body-1">Show Dashboard</span>
+        </div>
+        
         <h2 class="mb-4">Nebenkostenpositionen verwalten</h2>
 
         <!-- Formular zur Eingabe neuer Positionen oder zum Bearbeiten -->

@@ -1,5 +1,8 @@
 <div class="main-content">
     <div class="main-content-inner">
+        <div class="button-show-hide show-mb">
+            <span class="body-1">Show Dashboard</span>
+        </div>
         <!-- Toggle Button für Formular -->
         <div class="mb-3">
             <button wire:click="toggleForm" class="btn btn-primary">

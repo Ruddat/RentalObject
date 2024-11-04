@@ -69,7 +69,7 @@
 
 
 
-@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management'))
+@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-recording'))
 
 <div class="overlay-dashboard"></div>
 

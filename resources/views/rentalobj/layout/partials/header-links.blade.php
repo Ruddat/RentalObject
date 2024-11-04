@@ -65,7 +65,7 @@
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="my-property.html">My Properties</a></li>
             <li><a href="message.html">Message</a></li>
-            <li><a href="my-favorites.html">My Favorites</a></li>
+            <li><a href="my-favorites.html">My Favorites111</a></li>
             <li><a href="reviews.html">Reviews</a></li>
             <li><a href="my-profile.html">My Profile</a></li>
             <li><a href="add-property.html">Add Property</a></li>

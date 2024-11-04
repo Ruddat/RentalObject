@@ -1,5 +1,8 @@
 <div class="main-content">
     <div class="main-content-inner">
+        <div class="button-show-hide show-mb">
+            <span class="body-1">Show Dashboard</span>
+        </div>
         <!-- Title Section -->
         <div class="widget-box-2">
             <h5 class="title">Abrechnung für das Jahr und Mietobjekt auswählen</h5>

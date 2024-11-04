@@ -1,5 +1,9 @@
 <div class="main-content">
     <div class="main-content-inner">
+        <div class="button-show-hide show-mb">
+            <span class="body-1">Show Dashboard</span>
+        </div>
+        
         <h2 class="mb-4">Nebenkostenzahlungen verwalten</h2>
 
         <!-- Fehlerbenachrichtigung -->
