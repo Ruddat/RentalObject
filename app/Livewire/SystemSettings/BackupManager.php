@@ -19,6 +19,7 @@ class BackupManager extends Component
     public function deleteBackup($id)
     {
         $backup = SysBackups::findOrFail($id);
+        // Use the 'private' disk to delete the backup file
         Storage::disk('local')->delete($backup->path);
         $backup->delete();
         session()->flash('message', 'Backup deleted successfully.');
@@ -27,8 +28,19 @@ class BackupManager extends Component
     public function downloadBackup($id)
     {
         $backup = SysBackups::findOrFail($id);
-        return Storage::disk('local')->download($backup->path);
+
+//dd($backup); // Überprüfen Sie, ob der Pfad korrekt ist
+
+        if (!Storage::disk('local')->exists($backup->path)) {
+  dd($backup->path); // Überprüfen Sie, ob der Pfad korrekt ist
+            session()->flash('message', 'Datei nicht gefunden: ' . $backup->path);
+            return;
+        }
+
+        // Weiterleitung zum Download-Controller
+        return redirect()->route('download.backup', ['id' => $id]);
     }
+
 
     public function startBackup()
     {

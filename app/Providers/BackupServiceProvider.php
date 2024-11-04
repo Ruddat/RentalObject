@@ -22,12 +22,11 @@ class BackupServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
         // Register an event listener for BackupZipWasCreated
         Event::listen(BackupZipWasCreated::class, function (BackupZipWasCreated $event) {
             SysBackups::create([
-                'file_name' => basename($event->pathToZip),       // Store only the filename
-                'path' => 'private/' . config('app.name') . '/' . basename($event->pathToZip), // Store relative path
+                'file_name' => basename($event->pathToZip),       // Nur den Dateinamen speichern
+                'path' => config('app.name') . '/' . basename($event->pathToZip), // Relativer Pfad ohne "private/"
                 'created_at' => now(),
             ]);
         });

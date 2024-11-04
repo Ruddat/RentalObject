@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -21,7 +22,7 @@ class BackupCron extends Command
             $this->info('Backup completed and saved to database successfully!');
             Log::info("Database backup completed and logged at " . now());
 
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             $this->error('Backup failed: ' . $e->getMessage());
             Log::error("Database backup failed at " . now() . ' with error: ' . $e->getMessage());
         }

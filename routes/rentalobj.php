@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Utility\NewsletterController;
+use App\Http\Controllers\Settings\BackupDownloadController;
 
 
 Route::post('/newsletter-signup', [NewsletterController::class, 'signup'])->name('newsletter.signup');
@@ -104,3 +105,7 @@ Settings
 Route::get('/backup-manager', function () {
     return view('rentalobj.pageslivewire.settings._backup-manager');
 })->name('sys-settings');
+
+
+
+Route::get('/download/backup/{id}', [BackupDownloadController::class, 'download'])->name('download.backup');
