@@ -3,7 +3,7 @@
         <div class="button-show-hide show-mb">
             <span class="body-1">Show Dashboard</span>
         </div>
-        
+
         <h2 class="mb-4">Nebenkostenzahlungen verwalten</h2>
 
         <!-- Fehlerbenachrichtigung -->
@@ -29,7 +29,7 @@
 
                     <div class="col-md-6">
                         <label for="rental_object_id" class="form-label">Mietobjekt:</label>
-                        <select wire:model.change="rental_object_id" id="rental_object_id" class="form-select" required>
+                        <select wire:model="rental_object_id" id="rental_object_id" class="form-select" required>
                             <option value="">Wählen...</option>
                             @foreach($rentalObjects as $object)
                                 <option value="{{ $object->id }}">{{ $object->name }}, {{ $object->street }}, {{ $object->city }}</option>
@@ -38,9 +38,9 @@
                         @error('rental_object_id') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="year" class="form-label">Jahr:</label>
-                        <select wire:model="year" id="year" class="form-select" required>
+                        <select wire:model.change="year" id="year" class="form-select" required>
                             <option value="">Jahr auswählen...</option>
                             @foreach($availableYears as $yr)
                                 <option value="{{ $yr }}">{{ $yr }}</option>
@@ -49,7 +49,7 @@
                         @error('year') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <label for="month" class="form-label">Monat:</label>
                         <select wire:model="month" id="month" class="form-select" required>
                             <option value="">Monat auswählen...</option>
@@ -59,8 +59,8 @@
                         </select>
                         @error('month') <div class="text-danger">{{ $message }}</div> @enderror
                     </div>
-
-                    <div class="col-md-4">
+<hr>
+                    <div class="col-md-12 mb-3">
                         <label for="amount" class="form-label">Betrag (€):</label>
                         <input type="number" step="0.01" wire:model="amount" id="amount" class="form-control" required>
                         @error('amount') <div class="text-danger">{{ $message }}</div> @enderror
@@ -71,15 +71,10 @@
                     <button type="submit" class="btn btn-primary">
                         {{ $editMode ? 'Zahlung aktualisieren' : 'Zahlung hinzufügen' }}
                     </button>
-                    @if ($editMode)
-                        <button type="button" wire:click="resetFields" class="btn btn-secondary">Abbrechen</button>
-                    @endif
+                    <button type="button" wire:click="resetFields" class="btn btn-secondary">Zurücksetzen</button>
                 </div>
             </form>
         </div>
-
-        <!-- Sortierbutton -->
-        <button wire:click="sortByTenant" class="btn btn-secondary mb-3">Nach Mieter sortieren</button>
 
         <!-- Tabelle der Zahlungen -->
         <div class="widget-box-2 mess-box">

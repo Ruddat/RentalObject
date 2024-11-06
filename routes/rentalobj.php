@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\SysPages;
+use SystemSettings\PageManager;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Utility\NewsletterController;
 use App\Http\Controllers\Settings\BackupDownloadController;
@@ -106,6 +108,24 @@ Route::get('/backup-manager', function () {
     return view('rentalobj.pageslivewire.settings._backup-manager');
 })->name('sys-settings');
 
-
-
 Route::get('/download/backup/{id}', [BackupDownloadController::class, 'download'])->name('download.backup');
+
+
+Route::get('/setting-manager', function () {
+    return view('rentalobj.pageslivewire.settings._settings-manager');
+})->name('sys-settings');
+
+Route::get('/translation-editor', function () {
+    return view('rentalobj.pageslivewire.settings._translation-editor');
+})->name('sys-settings');
+
+
+Route::get('/page-manager', function () {
+    return view('rentalobj.pageslivewire.settings._page-manager');
+})->name('sys-settings');
+
+// Dynamic route for frontend pages
+Route::get('{slug}', function ($slug) {
+    $page = SysPages::where('slug', $slug)->where('is_active', true)->firstOrFail();
+    return view('frontend.page', compact('page'));
+})->name('page.show');

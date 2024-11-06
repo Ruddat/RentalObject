@@ -2,7 +2,7 @@
     * Name: Homelengo
     * Version: 1.0.1
     * Author: Themesflat
-    * Author URI: http://themesflat.com 
+    * Author URI: http://themesflat.com
 
 	* Abstracts variable
 
@@ -1615,7 +1615,7 @@ label {
   display: none;
 }
 
-/*** 
+/***
 
 ====================================================================
 	Mobile Menu
@@ -2563,7 +2563,7 @@ label {
   z-index: 123;
 }
 .flat-slider.home-1 {
-  background-image: url(../images/slider/slider-1.jpg);
+  background-image: url(../images/slider/slider-1-1.jpg);
   background-attachment: fixed;
 }
 .flat-slider.home-1 .overlay {
@@ -4614,7 +4614,7 @@ label {
 }
 
 /*------------ preloader ---------------- */
-/* Preload 
+/* Preload
 ------------------------------------------- */
 .preload-container {
   display: flex;

@@ -49,12 +49,20 @@ class UtilityCostRecording extends Component
     {
         $this->validate();
 
+        // Hole den Verteilerschlüssel (`distribution_key`) von `utility_costs`
+        $utilityCost = UtilityCost::find($this->utility_cost_id);
+        $distributionKey = $utilityCost ? $utilityCost->distribution_key : 'units';
+
+        // Log für den Verteilerschlüssel
+        \Log::info("Distribution Key for utility_cost_id {$this->utility_cost_id}: $distributionKey");
+
         RecordedUtilityCost::create([
             'rental_object_id' => $this->rental_object_id,
             'utility_cost_id' => $this->utility_cost_id,
             'amount' => $this->amount,
             'custom_name' => $this->custom_name,
             'year' => $this->year,
+            'distribution_key' => $distributionKey, // Den ermittelten Verteilerschlüssel setzen
         ]);
 
         $this->resetFields();
@@ -69,6 +77,9 @@ class UtilityCostRecording extends Component
         $this->utility_cost_id = $cost->utility_cost_id;
         $this->amount = $cost->amount;
         $this->custom_name = $cost->custom_name;
+
+        // Lade den Verteilerschlüssel aus dem vorhandenen Eintrag in der Tabelle `recorded_utility_costs`
+        $this->distribution_key = $cost->distribution_key;
     }
 
     public function updateRecordedCost()
@@ -76,16 +87,21 @@ class UtilityCostRecording extends Component
         $this->validate();
 
         $cost = RecordedUtilityCost::findOrFail($this->editId);
+
+        // Hole erneut den `distribution_key`, falls der `utility_cost_id` sich geändert hat
+        $utilityCost = UtilityCost::find($this->utility_cost_id);
+        $distributionKey = $utilityCost ? $utilityCost->distribution_key : $this->distribution_key; // Verwende vorhandenen `distribution_key`, falls `utility_cost_id` NULL ist
+
         $cost->update([
             'utility_cost_id' => $this->utility_cost_id,
             'amount' => $this->amount,
             'custom_name' => $this->custom_name,
+            'distribution_key' => $distributionKey, // Setze den Verteilerschlüssel auch bei Update
         ]);
 
         $this->resetFields();
         $this->loadRecordedCosts();
     }
-
     public function deleteRecordedCost($id)
     {
         RecordedUtilityCost::findOrFail($id)->delete();

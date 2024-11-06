@@ -20,7 +20,7 @@
         <div class="flex-w flex-col-sb wsize1 bg0 p-l-65 p-t-37 p-b-50 p-r-80 respon1">
             <!-- Logo und Haupttext -->
             <div class="wrappic1">
-                <a href="#"><img src="{{ asset('build/images/logo/logo@2x.png') }}" alt="IMG"></a>
+                <a href="/"><img src="{{ asset('build/images/logo/logo@2x.png') }}" alt="IMG"></a>
             </div>
             <div class="w-full flex-c-m p-t-80 p-b-90">
                 <div class="wsize2">
@@ -40,9 +40,26 @@
             </div>
             <!-- Soziale Netzwerke -->
             <div class="flex-w">
-                <a href="#" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10"><i class="fa fa-facebook"></i></a>
-                <a href="#" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10"><i class="fa fa-twitter"></i></a>
-                <a href="#" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10"><i class="fa fa-youtube-play"></i></a>
+<!-- Beispiel für Facebook -->
+@if(config('app.settings.facebook_url'))
+    <a href="{{ config('app.settings.facebook_url') }}" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+        <i class="fa fa-facebook"></i>
+    </a>
+@endif
+
+<!-- Beispiel für Twitter -->
+@if(config('app.settings.twitter_url'))
+    <a href="{{ config('app.settings.twitter_url') }}" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+        <i class="fa fa-twitter"></i>
+    </a>
+@endif
+
+<!-- Beispiel für Instagram -->
+@if(config('app.settings.instagram_url'))
+    <a href="{{ config('app.settings.instagram_url') }}" class="size3 flex-c-m how-social trans-04 m-r-15 m-b-10">
+        <i class="fa fa-instagram"></i>
+    </a>
+@endif
             </div>
         </div>
         <!-- Hintergrundbilder -->

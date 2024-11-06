@@ -10,6 +10,9 @@ class HeatingCost extends Model
 {
     use HasFactory;
 
+    // Dummy ID für Heizkosten
+    public const HEATING_COST_ID = 9999;
+
     protected $fillable = [
         'rental_object_id', 'heating_type', 'price_per_unit', 'initial_reading',
         'final_reading', 'total_oil_used', 'warm_water_percentage', 'year'

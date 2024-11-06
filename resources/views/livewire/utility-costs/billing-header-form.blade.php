@@ -4,7 +4,14 @@
             <span class="body-1">Show Dashboard</span>
         </div>
 
+
+        <!-- Toggle Button for the Form -->
+        <button wire:click="toggleForm" class="btn btn-primary mb-3">
+            {{ $showForm ? 'Formular ausblenden' : 'Abrechnungskopf hinzufügen' }}
+        </button>
+
         <!-- Form zur Abrechnungskopfverwaltung -->
+        @if($showForm)
         <div class="widget-box-2">
             <h2 class="title">Abrechnungskopf hinzufügen</h2>
 
@@ -102,7 +109,8 @@
                 <button type="submit" class="btn btn-primary">Abrechnungskopf speichern</button>
             </form>
         </div>
-
+        @endif
+        
         <!-- Gespeicherte Abrechnungsköpfe in der Tabellenstruktur anzeigen -->
         <div class="widget-box-2 mt-4">
             <h5 class="title">Gespeicherte Abrechnungsköpfe</h5>

@@ -21,6 +21,10 @@ class RentalObjectTable extends Component
     public $editMode = false;
     public $editId;
     public $showForm = false; // Steuerung für das Anzeigen des Formulars
+    public $square_meters;
+    public $heating_type;
+
+
 
     protected $rules = [
         'name' => 'nullable|string|max:255',
@@ -31,7 +35,9 @@ class RentalObjectTable extends Component
         'object_type' => 'required|string|in:Gewerbe,Privat,Garage',
         'country' => 'required|string|max:255',
         'description' => 'nullable|string',
-        'max_units' => 'nullable|integer|min:1'
+        'max_units' => 'nullable|integer|min:1',
+        'square_meters' => 'nullable|numeric|min:0', // Quadratmeter Validation
+        'heating_type' => 'nullable|string|in:Gas,Öl,Fernwärme,Elektro', // Heiztyp Validation
     ];
 
     public function mount()
@@ -54,11 +60,13 @@ class RentalObjectTable extends Component
             'description' => $this->description,
             'object_type' => $this->object_type,
             'max_units' => $this->max_units,
+            'square_meters' => $this->square_meters,
+            'heating_type' => $this->heating_type,
         ]);
 
         $this->resetFields();
         $this->loadRentalObjects();
-        $this->showForm = false; // Formular ausblenden
+        $this->showForm = false;
     }
 
     public function editRentalObject($id)
@@ -77,6 +85,8 @@ class RentalObjectTable extends Component
         $this->object_type = $rentalObject->object_type;
         $this->max_units = $rentalObject->max_units;
         $this->showForm = true; // Formular anzeigen
+        $this->square_meters = $rentalObject->square_meters;
+        $this->heating_type = $rentalObject->heating_type;
     }
 
     public function updateRentalObject()
@@ -95,11 +105,13 @@ class RentalObjectTable extends Component
             'description' => $this->description,
             'object_type' => $this->object_type,
             'max_units' => $this->max_units,
+            'square_meters' => $this->square_meters,
+            'heating_type' => $this->heating_type,
         ]);
 
         $this->resetFields();
         $this->loadRentalObjects();
-        $this->showForm = false; // Formular ausblenden
+        $this->showForm = false;
     }
 
     public function deleteRentalObject($id)
@@ -110,7 +122,7 @@ class RentalObjectTable extends Component
 
     public function resetFields()
     {
-        $this->reset(['name', 'street', 'house_number', 'floor', 'zip_code', 'city', 'country', 'description', 'object_type', 'max_units', 'editMode', 'editId']);
+        $this->reset(['name', 'street', 'house_number', 'floor', 'zip_code', 'city', 'country', 'description', 'object_type', 'max_units', 'editMode', 'editId', 'square_meters', 'heating_type']);
     }
 
     public function loadRentalObjects()

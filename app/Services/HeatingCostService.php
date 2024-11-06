@@ -8,9 +8,12 @@ use Carbon\Carbon;
 
 class HeatingCostService
 {
+    /**
+     * Berechnet die Gesamtheizkosten für ein Mietobjekt in einem bestimmten Jahr.
+     */
     public function calculateHeatingCostsForYear($rentalObjectId, $year)
     {
-        \Log::info("calculateHeatingCostsForYear called with rentalObjectId: $rentalObjectId, year: $year");
+        \Log::info("calculateHeatingCostsForYear aufgerufen mit rentalObjectId: $rentalObjectId, Jahr: $year");
 
         $heatingCosts = HeatingCost::where('rental_object_id', $rentalObjectId)
                                     ->whereYear('created_at', $year)
@@ -24,6 +27,9 @@ class HeatingCostService
         return $totalHeatingCost;
     }
 
+    /**
+     * Berechnet die Gesamtkosten für eine Heizkostenposition basierend auf Heiztyp und Verbrauch.
+     */
     public function calculateTotalCost(HeatingCost $cost)
     {
         if ($cost->heating_type === 'gas') {
@@ -35,40 +41,20 @@ class HeatingCostService
         return 0;
     }
 
-    public function allocateCostToTenant($tenant, $totalHeatingCost, $daysInYear, $tenantDays, $totalFactor, $rentalObjectId, $year)
+    /**
+     * Weist die Heizkosten proportional jedem Mieter eines Mietobjekts für das Jahr zu.
+     */
+    public function allocateCostToTenant($tenant, $totalHeatingCost, $daysInYear, $tenantDays, $totalUnits, $rentalObjectId, $year)
     {
         $tenants = Tenant::where('rental_object_id', $rentalObjectId)->get();
+        $totalUnits = $tenants->sum('unit_count') ?: 1; // Sicherheitswert für Division
+        $shareFactor = $tenant->unit_count / $totalUnits;
 
-        $allocation = [];
+        // Berechnung der anteiligen Heizkosten für den jeweiligen Mieter
+        $tenantHeatingCost = round($totalHeatingCost * ($tenantDays / $daysInYear) * $shareFactor, 2);
 
-        foreach ($tenants as $tenant) {
-            $tenantDays = $this->calculateTenantDays($tenant, $year);
-            $tenantShare = ($tenantDays / 365) * ($totalHeatingCost / $tenants->count());
+        \Log::info("Zuweisung der Heizkosten an Mieter {$tenant->first_name} {$tenant->last_name}: Gesamt: $totalHeatingCost, Anteil: $tenantHeatingCost");
 
-            $allocation[] = [
-                'tenant' => $tenant,
-                'heating_cost' => round($tenantShare, 2)
-            ];
-        }
-
-        // Finde den spezifischen Mieter im Array und gib seine Heizkosten zurück
-        foreach ($allocation as $item) {
-            if ($item['tenant']->id === $tenant->id) {
-                return $item['heating_cost'];
-            }
-        }
-
-        return 0; // Fallback, wenn der Mieter nicht gefunden wird
-    }
-
-    private function calculateTenantDays(Tenant $tenant, $year)
-    {
-        $startOfYear = Carbon::parse("{$year}-01-01");
-        $endOfYear = Carbon::parse("{$year}-12-31");
-
-        $tenantStart = Carbon::parse($tenant->start_date)->max($startOfYear);
-        $tenantEnd = $tenant->end_date ? Carbon::parse($tenant->end_date)->min($endOfYear) : $endOfYear;
-
-        return $tenantStart->diffInDays($tenantEnd) + 1;
+        return $tenantHeatingCost;
     }
 }

@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('rental_objects', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();  // Object Name
-            $table->string('street');            // Straße
-            $table->string('house_number');      // Hausnummer
-            $table->string('zip_code');          // Postleitzahl
-            $table->string('city');              // Stadt
-            $table->string('object_type')->default('Privat'); // Objekttyp
-            $table->string('country')->default('Deutschland'); // Land
-            $table->decimal('rent_amount', 10, 2)->nullable(); // Mietbetrag
-            $table->enum('billing_method', ['units', 'people'])->default('units');
-            $table->string('floor')->nullable(); // Etage
-            $table->text('description')->nullable();           // Beschreibung
-            $table->unsignedInteger('max_units')->nullable();  // Max Einheiten/Mieter
+            $table->string('name')->nullable();
+            $table->string('street');
+            $table->string('house_number');
+            $table->string('zip_code');
+            $table->string('city');
+            $table->string('object_type')->default('Privat');
+            $table->string('country')->default('Deutschland');
+            $table->decimal('rent_amount', 10, 2)->nullable();
+            $table->enum('billing_method', ['units', 'people', 'area'])->default('units');
+            $table->string('floor')->nullable();
+            $table->text('description')->nullable();
+            $table->unsignedInteger('max_units')->nullable();
+            $table->decimal('square_meters', 8, 2)->nullable(); // Quadratmeter
+            $table->enum('heating_type', ['Gas', 'Öl', 'Fernwärme', 'Elektro'])->nullable(); // Heiztyp
             $table->timestamps();
         });
     }

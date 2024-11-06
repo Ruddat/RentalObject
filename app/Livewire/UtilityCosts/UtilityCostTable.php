@@ -19,7 +19,7 @@ class UtilityCostTable extends Component
         'name' => 'required|string|max:255',
         'description' => 'nullable|string',
         'amount' => 'required|numeric|min:0',
-        'distribution_key' => 'required|in:area,people,units',
+        'distribution_key' => 'required|in:consumption,area,people,units',
     ];
 
     public function mount()

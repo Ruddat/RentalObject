@@ -17,22 +17,21 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('phone')->nullable();
             $table->string('email')->nullable();
-            $table->unsignedBigInteger('rental_object_id');
-            $table->enum('billing_type', ['units', 'people'])->default('units');
+            $table->foreignId('rental_object_id')->constrained('rental_objects')->onDelete('cascade');
+            $table->enum('billing_type', ['units', 'people', 'flat_rate'])->default('units');
             $table->integer('unit_count')->nullable();
             $table->integer('person_count')->nullable();
+            $table->decimal('square_meters', 8, 2)->nullable(); // Quadratmeter
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
 
-            // Optional Zählerstand Felder
-            $table->decimal('gas_meter', 10, 2)->nullable();  // Zählerstand Gas
-            $table->decimal('electricity_meter', 10, 2)->nullable();  // Zählerstand Strom
-            $table->decimal('water_meter', 10, 2)->nullable();  // Zählerstand Wasser
-            $table->decimal('hot_water_meter', 10, 2)->nullable();  // Zählerstand Warmwasser
+            // Zählerstand Felder
+            $table->decimal('gas_meter', 10, 2)->nullable();
+            $table->decimal('electricity_meter', 10, 2)->nullable();
+            $table->decimal('water_meter', 10, 2)->nullable();
+            $table->decimal('hot_water_meter', 10, 2)->nullable();
 
             $table->timestamps();
-
-            $table->foreign('rental_object_id')->references('id')->on('rental_objects')->onDelete('cascade');
         });
     }
 

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Nebenkostenabrechnung</title>
+    <style>
+        /* Basic reset and page styling */
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 800px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        /* Header styling */
+        .header {
+            color: #ffb100;
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .subheader {
+            color: #555;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+
+        .client-info, .property-info {
+            display: inline-block;
+            width: 48%;
+            vertical-align: top;
+            font-size: 0.9em;
+            color: #333;
+        }
+
+        .client-info p, .property-info p {
+            margin: 5px 0;
+        }
+
+        /* Summary section */
+        .summary {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .summary p {
+            margin: 5px 0;
+        }
+
+        .highlight-box {
+            background-color: #ffeb99;
+            padding: 10px;
+            margin-top: 10px;
+            text-align: right;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Detailed cost breakdown table */
+        .cost-breakdown {
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        .cost-breakdown h2 {
+            color: #ffb100;
+            border-bottom: 2px solid #ffb100;
+            padding-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #ffb100;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Subtotal section */
+        .subtotal {
+            text-align: right;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #555;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">Nebenkostenabrechnung</div>
+        <div class="subheader">
+            Erstellt im Auftrag von Maxim Mustermann<br>
+            Maxim Mustermann, Musterstraße 2, 23456 Ahrensbök
+        </div>
+
+        <!-- Client and Property Info -->
+        <div class="client-info">
+            <p><strong>Berta Beispiel</strong><br>
+            Beispielplatz 1<br>
+            12345 Berlin</p>
+        </div>
+        <div class="property-info">
+            <p><strong>Wohnung 01 | EG links</strong><br>
+            Beispielplatz 1<br>
+            12345 Berlin</p>
+            <p>Abrechnungszeitraum: 01.01.2022 – 31.12.2022</p>
+            <p>Abrechnung erstellt am 25.01.2023</p>
+        </div>
+
+        <!-- Summary -->
+        <div class="summary">
+            <p>Sehr geehrte Frau Beispiel,</p>
+            <p>für Ihre Wohnung am Beispielplatz 1, 12345 Berlin haben wir Ihren Kostenanteil errechnet:</p>
+            <div class="highlight-box">
+                534,96 Euro<br>
+                - 540,00 Euro<br>
+                = -5,04 Euro
+            </div>
+        </div>
+
+        <!-- Detailed Cost Breakdown -->
+        <div class="cost-breakdown">
+            <h2>Detaillierte Kostenaufstellung</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Brennstoffkosten</th>
+                        <th>Art</th>
+                        <th>Datum</th>
+                        <th>Menge in Liter</th>
+                        <th>Preis in Euro</th>
+                        <th>Betrag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Anfangsbestand</td>
+                        <td></td>
+                        <td></td>
+                        <td>5.400,00</td>
+                        <td>2.692,38</td>
+                        <td>2.692,38</td>
+                    </tr>
+                    <tr>
+                        <td>+ Rechnung</td>
+                        <td>leichtes Heizöl</td>
+                        <td>11.02.2022</td>
+                        <td>+3.001,00</td>
+                        <td>1.240,99</td>
+                        <td>1.240,99</td>
+                    </tr>
+                    <tr>
+                        <td>+ Rechnung</td>
+                        <td>leichtes Heizöl</td>
+                        <td>23.11.2022</td>
+                        <td>+4.000,00</td>
+                        <td>2.113,44</td>
+                        <td>2.113,44</td>
+                    </tr>
+                    <tr>
+                        <td>- Restbestand</td>
+                        <td></td>
+                        <td></td>
+                        <td>-6.000,00</td>
+                        <td></td>
+                        <td>-2.940,49</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td colspan="5">Summe</td>
+                        <td>3.106,32</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Additional Costs -->
+            <table>
+                <thead>
+                    <tr>
+                        <th>Weitere Kosten</th>
+                        <th>Datum</th>
+                        <th>Betrag</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Schornsteinfeger</td>
+                        <td>26.01.2022</td>
+                        <td>76,50</td>
+                    </tr>
+                    <tr>
+                        <td>+ Wartung</td>
+                        <td>14.04.2022</td>
+                        <td>180,88</td>
+                    </tr>
+                    <tr>
+                        <td>+ Betriebsstrom</td>
+                        <td>09.01.2023</td>
+                        <td>252,50</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td colspan="2">Summe</td>
+                        <td>966,49</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Final Cost Summary -->
+            <div class="summary">
+                <p>Kosten für Heizung und Wassererwärmung: <strong>4.072,81</strong> (1)</p>
+                <p>Kosten nur für Heizung: <strong>156,13</strong> (2)</p>
+                <p>Kosten nur für Warmwasser: <strong>115,25</strong> (3)</p>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Vielen Dank für Ihr Vertrauen!</p>
+        </div>
+    </div>
+</body>
+</html>

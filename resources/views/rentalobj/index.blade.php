@@ -14,10 +14,10 @@
                             <div class="slider-content">
                                 <div class="heading text-center">
                                     <h1 class="title-large text-white animationtext slide">
-                                        Find Your
+                                        @autotranslate("Find Your", app()->getLocale())
                                         <span class="tf-text s1 cd-words-wrapper">
-                                            <span class="item-text is-visible">Dream Home</span>
-                                            <span class="item-text is-hidden">Perfect Home</span>
+                                            <span class="item-text is-visible">@autotranslate("Dream Home", app()->getLocale())</span>
+                                            <span class="item-text is-hidden">@autotranslate("Perfect Home", app()->getLocale())</span>
                                         </span>
                                     </h1>
                                     <p class="subtitle text-white body-2 wow fadeInUp" data-wow-delay=".2s">We are a real estate agency that will help you find the best residence you dream of, let’s discuss for your dream house?</p>

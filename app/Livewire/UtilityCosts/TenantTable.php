@@ -13,11 +13,13 @@ class TenantTable extends Component
     public $phone;
     public $email;
     public $rental_object_id;
-    public $billing_type = 'units';
+    public $billing_type = 'units'; // Standardwert für den Abrechnungstyp
+    public $flat_rate;
     public $unit_count;
     public $person_count;
     public $start_date;
     public $end_date;
+    public $square_meters;
     public $gas_meter;
     public $electricity_meter;
     public $water_meter;
@@ -33,9 +35,10 @@ class TenantTable extends Component
         'phone' => 'nullable|string|max:20',
         'email' => 'nullable|email|max:255',
         'rental_object_id' => 'required|exists:rental_objects,id',
-        'billing_type' => 'required|in:units,people',
-        'unit_count' => 'nullable|integer|min:0',
-        'person_count' => 'nullable|integer|min:0',
+        'billing_type' => 'required|in:units,people,flat_rate',
+        'unit_count' => 'nullable|integer|min:0|required_if:billing_type,units',
+        'person_count' => 'nullable|integer|min:0|required_if:billing_type,people',
+        'square_meters' => 'nullable|numeric|min:0', // Validierung für Quadratmeter
         'start_date' => 'required|date',
         'end_date' => 'nullable|date|after_or_equal:start_date',
         'gas_meter' => 'nullable|numeric|min:0',
@@ -62,14 +65,15 @@ class TenantTable extends Component
             'email' => $this->email,
             'rental_object_id' => $this->rental_object_id,
             'billing_type' => $this->billing_type,
-            'unit_count' => $this->unit_count,
-            'person_count' => $this->person_count,
+            'unit_count' => $this->billing_type === 'units' ? $this->unit_count : null,
+            'person_count' => $this->billing_type === 'people' ? $this->person_count : null,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'gas_meter' => $this->gas_meter,
             'electricity_meter' => $this->electricity_meter,
             'water_meter' => $this->water_meter,
             'hot_water_meter' => $this->hot_water_meter,
+            'square_meters' => $this->square_meters,
         ]);
 
         $this->resetFields();
@@ -87,8 +91,10 @@ class TenantTable extends Component
         $this->email = $tenant->email;
         $this->rental_object_id = $tenant->rental_object_id;
         $this->billing_type = $tenant->billing_type;
-        $this->unit_count = $tenant->unit_count;
-        $this->person_count = $tenant->person_count;
+        $this->unit_count = $tenant->billing_type === 'units' ? $tenant->unit_count : null;
+        $this->person_count = $tenant->billing_type === 'people' ? $tenant->person_count : null;
+        $this->square_meters = $tenant->square_meters;
+       // $this->flat_rate = $tenant->billing_type === 'flat_rate';
         $this->start_date = $tenant->start_date;
         $this->end_date = $tenant->end_date;
         $this->gas_meter = $tenant->gas_meter;
@@ -109,8 +115,9 @@ class TenantTable extends Component
             'email' => $this->email,
             'rental_object_id' => $this->rental_object_id,
             'billing_type' => $this->billing_type,
-            'unit_count' => $this->unit_count,
-            'person_count' => $this->person_count,
+            'unit_count' => $this->billing_type === 'units' ? $this->unit_count : null,
+            'person_count' => $this->billing_type === 'people' ? $this->person_count : null,
+            'square_meters' => $this->square_meters,
             'start_date' => $this->start_date,
             'end_date' => $this->end_date,
             'gas_meter' => $this->gas_meter,
@@ -132,18 +139,9 @@ class TenantTable extends Component
     public function resetFields()
     {
         $this->reset([
-            'first_name',
-            'last_name',
-            'phone',
-            'email',
-            'rental_object_id',
-            'billing_type',
-            'unit_count',
-            'person_count',
-            'start_date',
-            'end_date',
-            'editMode',
-            'editId'
+            'first_name', 'last_name', 'phone', 'email', 'rental_object_id', 'billing_type',
+            'unit_count', 'person_count', 'start_date', 'end_date', 'gas_meter', 'electricity_meter',
+            'water_meter', 'hot_water_meter', 'editMode', 'editId', 'square_meters'
         ]);
     }
 
@@ -154,6 +152,8 @@ class TenantTable extends Component
 
     public function render()
     {
-        return view('livewire.utility-costs.tenant-table');
+        return view('livewire.utility-costs.tenant-table', [
+            'tenants' => Tenant::with('rentalObject'),
+        ]);
     }
 }

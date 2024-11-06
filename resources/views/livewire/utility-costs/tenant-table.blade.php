@@ -37,31 +37,48 @@
                     </div>
 
                     <!-- Right Column: Rental Object and Billing -->
-                    <div class="col-lg-6">
-                        <h6>Mietobjekt und Abrechnung</h6>
-                        <div class="mb-3">
-                            <label for="rental_object_id" class="form-label">Mietobjekt:</label>
-                            <select wire:model="rental_object_id" id="rental_object_id" class="form-select">
-                                <option value="">Wählen...</option>
-                                @foreach(App\Models\RentalObject::all() as $object)
-                                    <option value="{{ $object->id }}">
-                                        {{ $object->name }}, {{ $object->street }}, {{ $object->house_number }}, {{ $object->city }}
-                                    </option>
-                                @endforeach
-                            </select>
-                            @error('rental_object_id') <div class="text-danger">{{ $message }}</div> @enderror
-                        </div>
-                        <div class="mb-3">
-                            <label for="billing_type" class="form-label">Abrechnungstyp:</label>
-                            <select wire:model="billing_type" id="billing_type" class="form-select">
-                                <option value="units">Einheiten</option>
-                                <option value="people">Personen</option>
-                            </select>
-                        </div>
-                    </div>
+            <!-- Mietobjekt und Abrechnung -->
+            <div class="col-lg-6">
+                <h6>Mietobjekt und Abrechnung</h6>
+                <div class="mb-3">
+                    <label for="rental_object_id" class="form-label">Mietobjekt:</label>
+                    <select wire:model="rental_object_id" id="rental_object_id" class="form-select" required>
+                        <option value="">Wählen...</option>
+                        @foreach($rentalObjects as $object)
+                            <option value="{{ $object->id }}">
+                                {{ $object->name }}, {{ $object->street }}, {{ $object->house_number }}, {{ $object->city }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('rental_object_id') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
 
-                <hr>
+                <!-- Abrechnungstyp Auswahl und Pauschaloption -->
+                <div class="mb-3">
+                    <label for="billing_type" class="form-label">Abrechnungstyp:</label>
+                    <select wire:model.change="billing_type" id="billing_type" class="form-select">
+                        <option value="units">Einheiten</option>
+                        <option value="people">Personen</option>
+                        <option value="flat_rate">Nebenkostenpauschale</option>
+                    </select>
+                </div>
+
+                <!-- Einheit oder Personenanzahl basierend auf Abrechnungstyp und Pauschale -->
+                <div class="mb-3">
+                    <label for="unit_count" class="form-label">Anzahl der Einheiten:</label>
+                    <input type="number" wire:model="unit_count" id="unit_count" class="form-control"
+                           {{ $billing_type === 'units' ? '' : 'disabled' }}>
+                </div>
+
+                <div class="mb-3">
+                    <label for="person_count" class="form-label">Anzahl der Personen:</label>
+                    <input type="number" wire:model="person_count" id="person_count" class="form-control"
+                           {{ $billing_type === 'people' ? '' : 'disabled' }}>
+                </div>
+            </div>
+        </div>
+
+        <hr>
 
                 <div class="row">
                     <!-- Left Column: Rental Duration and Units -->
@@ -78,12 +95,9 @@
                             @error('end_date') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
                         <div class="mb-3">
-                            <label for="unit_count" class="form-label">Anzahl der Einheiten:</label>
-                            <input type="number" wire:model="unit_count" id="unit_count" class="form-control" {{ $billing_type === 'units' ? '' : 'disabled' }}>
-                        </div>
-                        <div class="mb-3">
-                            <label for="person_count" class="form-label">Anzahl der Personen:</label>
-                            <input type="number" wire:model="person_count" id="person_count" class="form-control" {{ $billing_type === 'people' ? '' : 'disabled' }}>
+                            <label for="square_meters" class="form-label">Quadratmeter:</label>
+                            <input type="number" step="0.01" wire:model="square_meters" id="square_meters" class="form-control">
+                            @error('square_meters') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
                     </div>
 
@@ -137,6 +151,11 @@
                             <th>Telefon</th>
                             <th>E-Mail</th>
                             <th>Adresse des Mietobjekts</th>
+                            <th>Quadratmeter</th>
+                            <th>Gas (m³)</th>
+                            <th>Strom (kWh)</th>
+                            <th>Wasser (m³)</th>
+                            <th>Warmwasser (m³)</th>
                             <th>Mietzeitraum</th>
                             <th>Abrechnungstyp</th>
                             <th>Anzahl (Einheiten/Personen)</th>
@@ -159,12 +178,31 @@
                                         <em class="text-muted">Nicht zugewiesen</em>
                                     @endif
                                 </td>
+                                <td>{{ $tenant->square_meters ?? 'N/A' }} m²</td>
+                                <td>{{ $tenant->gas_meter ?? 'N/A' }} m³</td>
+                                <td>{{ $tenant->electricity_meter ?? 'N/A' }} kWh</td>
+                                <td>{{ $tenant->water_meter ?? 'N/A' }} m³</td>
+                                <td>{{ $tenant->hot_water_meter ?? 'N/A' }} m³</td>
                                 <td>
                                     {{ $tenant->start_date ? \Carbon\Carbon::parse($tenant->start_date)->format('d.m.Y') : '-' }} -
                                     {{ $tenant->end_date ? \Carbon\Carbon::parse($tenant->end_date)->format('d.m.Y') : 'Unbefristet' }}
                                 </td>
-                                <td>{{ $tenant->billing_type === 'units' ? 'Einheiten' : 'Personen' }}</td>
-                                <td>{{ $tenant->billing_type === 'units' ? $tenant->unit_count : $tenant->person_count }}</td>
+                                <td>
+                                    @if($tenant->billing_type === 'units')
+                                        Einheiten
+                                    @elseif($tenant->billing_type === 'people')
+                                        Personen
+                                    @elseif($tenant->flat_rate)
+                                        Pauschale
+                                    @endif
+                                </td>
+                                <td>
+                                    @if(!$tenant->flat_rate)
+                                        {{ $tenant->billing_type === 'units' ? $tenant->unit_count : $tenant->person_count }}
+                                    @else
+                                        <em class="text-muted">-</em>
+                                    @endif
+                                </td>
                                 <td>
                                     <button wire:click="editTenant({{ $tenant->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
                                     <button wire:click="deleteTenant({{ $tenant->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Möchten Sie diesen Mieter wirklich löschen?')">Löschen</button>
@@ -175,7 +213,9 @@
                 </table>
             </div>
         </div>
+
     </div>
+
 
     <!-- Footer Section -->
     <div class="footer-dashboard footer-dashboard-2">

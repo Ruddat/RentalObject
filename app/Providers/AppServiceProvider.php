@@ -2,11 +2,10 @@
 
 namespace App\Providers;
 
-
-use Illuminate\Support\Facades\Blade;
+use App\Models\SysSetting;  // Richtiges Modell importieren
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Stichoza\GoogleTranslate\GoogleTranslate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +14,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-
+        // Hier können benötigte Services registriert werden
     }
 
     /**
@@ -23,10 +22,17 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
         Route::middleware('maintenance')->group(function () {
             Route::post('/newsletter-signup', 'App\Http\Controllers\NewsletterController@signup');
         });
 
+        // Überprüfen, ob die Tabelle 'settings' existiert
+        if (Schema::hasTable('sys_settings')) {
+            // Verwende das korrekte Modell, um Einstellungen zu laden
+            $settings = SysSetting::all()->pluck('value', 'key')->toArray();
+
+            // Speichere die Einstellungen in der app-Konfiguration
+            config(['app.settings' => $settings]);
+        }
     }
 }

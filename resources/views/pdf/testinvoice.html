@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+        }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .company-info, .client-info {
+            width: 48%;
+            display: inline-block;
+            vertical-align: top;
+            padding: 10px;
+        }
+        .company-info {
+            float: left;
+        }
+        .client-info {
+            float: end;
+        }
+        .invoice-details {
+            clear: both;
+            padding: 10px 0;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .invoice-table th, .invoice-table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .invoice-table th {
+            background-color: #f4f4f4;
+        }
+        .total {
+            float: right;
+            margin-top: 20px;
+        }
+        .total h3 {
+            margin: 5px 0;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 12px;
+            color: #888;
+        }
+
+        .heating-header-table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            margin-left: auto; /* Aligns table to the right */
+            border: 2px solid #444; /* Outer border only */
+        }
+        .heating-header-table th,
+        .heating-header-table td {
+            padding: 4px;
+            text-align: left;
+            font-size: 14px;
+            font-weight: bold;
+            border: none; /* Remove borders from cells */
+        }
+
+        .heating-header-table th {
+            background-color: #f4f4f4;
+        }
+
+        .heating-header-table td:last-child, /* Right-align content in last column */
+        .heating-header-table th:last-child {
+            text-align: right;
+        }
+
+        h2 {
+            display: block;
+            font-size: 1.5em;
+            margin-block-start: 0.83em;
+            margin-block-end: 0.83em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            font-weight: bold;
+            unicode-bidi: isolate;
+        }
+
+
+
+        .heating-cost-calc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.heating-cost-calc-table th,
+.heating-cost-calc-table td {
+    padding: 8px;
+    text-align: left;
+    border: none; /* Remove all inner borders */
+}
+
+/* Styling for merged header */
+.heating-cost-calc-table .merged-header {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    border-top: 2px solid #000; /* Bold top border */
+    border-bottom: 2px solid #000; /* Bold bottom border */
+}
+
+/* Thin bottom border for first three rows */
+.heating-cost-calc-table tr:not(.last-row):not(.no-row) td {
+    border-bottom: 1px solid #ddd; /* Thin bottom border */
+}
+
+/* Remove border for specific row */
+.heating-cost-calc-table .no-row td {
+    border-bottom: none; /* No bottom border for this row */
+    padding: 10px; /* Adjust padding */
+    text-align: left;
+}
+
+/* Bold bottom border for last row */
+.heating-cost-calc-table .last-row td {
+    border-bottom: 2px solid #000; /* Bold bottom border */
+}
+
+
+.heating-your-cost-calc-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.heating-your-cost-calc-table th,
+.heating-your-cost-calc-table td {
+    padding: 8px;
+    text-align: left;
+    border: none; /* Remove all inner borders */
+}
+
+/* Styling for merged header */
+.heating-your-cost-calc-table .merged-header {
+    background-color: #f4f4f4;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: center;
+    border-top: 2px solid #000; /* Bold top border */
+    border-bottom: 2px solid #000; /* Bold bottom border */
+}
+
+/* Thin bottom border for all regular rows except the last row */
+.heating-your-cost-calc-table tr:not(.last-row):not(.no-row) td {
+    border-bottom: 1px solid #ddd; /* Thin bottom border */
+}
+
+/* Remove border for specific rows with 'no-row' class */
+.heating-your-cost-calc-table .no-row td {
+    border-bottom: none;
+    padding: 4px;
+    text-align: left;
+}
+
+/* Bold bottom border for the last row */
+.heating-your-cost-calc-table .last-row td {
+    border-bottom: 2px solid #000;
+}
+
+/* Add vertical line after "Gesamteinheiten" column */
+.heating-your-cost-calc-table th:nth-child(3),
+.heating-your-cost-calc-table td:nth-child(3) {
+    border-right: 1px solid #000;
+}
+
+/* Light gray background for cells on the right side of the vertical line */
+.heating-your-cost-calc-table th:nth-child(n+4),
+.heating-your-cost-calc-table td:nth-child(n+4) {
+    background-color: #f9f9f9; /* Light gray background */
+}
+
+/* Make the text in the first column bold */
+.heating-your-cost-calc-table th:first-child,
+.heating-your-cost-calc-table td:first-child {
+    font-weight: bold;
+}
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Kostenaufstellung Heizungskosten</h1>
+        <p>Abrechnungszeitraum vom 01.01.2024 bis 31.12.2024</p>
+    </div>
+
+
+    <!-- Company and Client Information -->
+    <div class="company-info">
+        <strong>Mieter</strong><br>
+        Dunja Kramaric<br>
+        Heidkrugsweg 31<br>
+        31234 Edemissen<br>
+        Phone: (123) 456-7890<br>
+        Email: company@example.com
+    </div>
+
+
+    <!-- Invoice Details Table -->
+    <div class="invoice-details">
+
+
+     <!-- Heatingkost Total -->
+        <table class="heating-header-table">
+
+            <tbody>
+                <tr>
+                    <td>Ihre Vorauszahlung im Abrechnungszeitraum:</td>
+                    <td>2.000,00 EUR</td>
+                </tr>
+                <tr>
+                    <td>Für ihre Wohnung errechneter Kostenanteil:</td>
+                    <td>– 1.808,52 EUR </td>
+                </tr>
+                <tr>
+                    <td>Ihr Guthaben: </td>
+                    <td>191,48 EUR</td>
+                </tr>
+            </tbody>
+        </table>
+<h2>Kostenaufstellung</h2>
+
+
+    <!-- Kostenaufstellung Details Table -->
+    <div class="invoice-details">
+        <table class="invoice-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Datum</th>
+                    <th>Menge</th>
+                    <th>Kosten (EUR)</th>
+                    <th>Betrag (EUR)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Service 1</td>
+                    <td>1</td>
+                    <td>$100.00</td>
+                    <td>$100.00</td>
+                </tr>
+                <tr>
+                    <td>+ Rechnung</td>
+                    <td>2</td>
+                    <td>$50.00</td>
+                    <td>$100.00</td>
+                </tr>
+                <tr>
+                    <td>Product 1</td>
+                    <td>5</td>
+                    <td>$20.00</td>
+                    <td>$100.00</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Product 1</td>
+                    <td>5</td>
+                    <td>$20.00</td>
+                    <td>$100.00</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Kostenaufstellung Details Table -->
+        <div class="invoice-details">
+            <table class="heating-cost-calc-table">
+                <thead>
+                    <tr>
+                        <th colspan="4" class="merged-header">Kostenaufstellung</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Energieverbrauch für Warmwasser (lt. Messung):</td>
+                        <td>18.750 kWh</td>
+                        <td>Hi = 10 kWh (Energiewert pro Liter Öl)</td>
+                        <td>$100.00</td>
+                    </tr>
+                    <tr>
+                        <td>Gesamter Energieverbrauch (lt. Brennstoffkosten):</td>
+                        <td></td>
+                        <td>8.500 l × 10 kWh/l =</td>
+                        <td>85.000 kWh</td>
+                    </tr>
+                    <tr class="no-row">
+                        <td>Anteil Warmwasser:</td>
+                        <td></td>
+                        <td>18.750 kWh / 85.000 kWh =</td>
+                        <td>22.06 %</td>
+                    </tr>
+                    <tr>
+                        <td>Kosten für Warmwasser:</td>
+                        <td></td>
+                        <td>5.450 EUR × 22,06 % =</td>
+                        <td>1.202,21 EUR</td>
+                    </tr>
+                    <tr class="no-row">
+                        <td>Kosten für Heizung:</td>
+                        <td></td>
+                        <td>5.450 EUR – 1.202,21 EUR = </td>
+                        <td>4.247,79 EUR</td>
+                    </tr>
+                </tbody>
+            </table>
+
+
+<br>
+<br>
+<br>
+
+            <table class="heating-your-cost-calc-table">
+                <thead>
+                    <tr>
+                        <th colspan="3" class="merged-header">Kostenverteilung</th>
+                        <th colspan="3" class="merged-header">Ihre Kosten</th>
+                    </tr>
+                </thead>
+
+<thead>
+    <tr>
+        <th></th>
+        <th>Betrag (EUR)</th>
+        <th>Gesamteinheiten</th>
+        <th>Kosten je
+            Einheit (EUR) </th>
+        <th>Ihre Einheiten</th>
+        <th>Ihre Kosten
+            (EUR)</th>
+    </tr>
+</thead>
+
+
+                <tbody>
+                    <tr>
+                        <td>Gesamtkosten</td>
+                        <td>5.450,00</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td>davon für Warmwasser</td>
+                        <td>1.202,21</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td>30 % Grundkosten</td>
+                        <td>360,66</td>
+                        <td>400 m2 Wohnfläche</td>
+                        <td>0,90</td>
+                        <td>100 </td>
+                        <td>90,17 </td>
+
+                    </tr>
+                    <tr>
+                        <td>70 % Verbrauchskosten</td>
+                        <td>841,54</td>
+                        <td>150 m3 Warmwasser</td>
+                        <td>5,61 </td>
+                        <td>64 </td>
+                        <td>359,04 </td>
+
+                    </tr>
+                    <tr>
+                        <td>davon für Heizung</td>
+                        <td>4.247,79</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+
+                    </tr>
+                    <tr>
+                        <td>30 % Grundkosten </td>
+                        <td>1.274,34</td>
+                        <td>400 m2 Wohnfläche</td>
+                        <td>3,19</td>
+                        <td>100</td>
+                        <td>318,58</td>
+
+                    </tr>
+                    <tr class="last-row">
+                        <td>70 % Verbrauchskosten</td>
+                        <td>2.973,46</td>
+                        <td>500 Verbrauchseinheiten</td>
+                        <td>5,95</td>
+                        <td>175</td>
+                        <td>1.040,71</td>
+
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Ihr Rechnungsbetrag:</td>
+                        <td>1.808,52 EUR</td>
+
+                    </tr>
+                </tbody>
+            </table>
+
+
+
+
+
+
+    <!-- Total Amount Section -->
+    <div class="total">
+        <h3>Subtotal: $300.00</h3>
+        <h3>Tax (10%): $30.00</h3>
+        <h3><strong>Total: $330.00</strong></h3>
+    </div>
+
+    <br><br><br>
+</div>
+    <!-- Footer Section -->
+    <div class="footer">
+        Thank you for your business!<br>
+        Please make the payment by the due date.
+    </div>
+</div>
+
+</body>
+</html>

@@ -49,32 +49,43 @@ class BillingCalculation extends Component
                                            ->where('year', $this->year)
                                            ->get();
 
+        if ($utilityCosts->isEmpty()) {
+            session()->flash('error', 'Keine Kosten für das ausgewählte Jahr gefunden.');
+            return;
+        }
+
         $tenants = Tenant::where('rental_object_id', $this->rental_object_id)->get();
-        $totalFactor = $rentalObject->billing_method === 'units'
-                       ? $tenants->sum('unit_count')
-                       : $tenants->sum('person_count');
+        if ($tenants->isEmpty()) {
+            session()->flash('error', 'Keine Mieter für das ausgewählte Mietobjekt gefunden.');
+            return;
+        }
+
+        $totalUnits = $rentalObject->max_units ?: 1;
+        $totalPeople = $tenants->sum('person_count') ?: 1;
+        $totalArea = $rentalObject->square_meters ?: 1;
+
+        \Log::info("Total Units: $totalUnits, Total People: $totalPeople, Total Area: $totalArea");
 
         $this->heatingCostService = $heatingCostService;
         $totalHeatingCost = $this->heatingCostService->calculateHeatingCostsForYear($this->rental_object_id, $this->year);
 
-        // Abrufen des Warmwasseranteils aus der Tabelle `heating_costs`
+        // Initialisiere warmWaterPercentage korrekt
         $heatingCost = HeatingCost::where('rental_object_id', $this->rental_object_id)
                                   ->whereYear('created_at', $this->year)
                                   ->first();
 
         $warmWaterPercentage = $heatingCost ? $heatingCost->warm_water_percentage : 0;
 
+        $startOfYear = Carbon::parse("{$this->year}-01-01");
+        $endOfYear = Carbon::parse("{$this->year}-12-31");
+        $daysInYear = $startOfYear->diffInDays($endOfYear) + 1;
+
         foreach ($tenants as $tenant) {
             $totalTenantCost = 0;
             $utilityDetails = [];
 
-            $startOfYear = Carbon::parse("{$this->year}-01-01");
-            $endOfYear = Carbon::parse("{$this->year}-12-31");
-
             $tenantStart = Carbon::parse($tenant->start_date)->max($startOfYear);
             $tenantEnd = $tenant->end_date ? Carbon::parse($tenant->end_date)->min($endOfYear) : $endOfYear;
-
-            $daysInYear = $startOfYear->diffInDays($endOfYear) + 1;
             $tenantDays = $tenantStart->diffInDays($tenantEnd) + 1;
 
             if ($tenantDays <= 0) {
@@ -82,33 +93,67 @@ class BillingCalculation extends Component
             }
 
             foreach ($utilityCosts as $cost) {
-                $shareFactor = $rentalObject->billing_method === 'units'
-                               ? ($tenant->unit_count / $totalFactor)
-                               : ($tenant->person_count / $totalFactor);
+                $shareFactor = 0;
+                $totalShare = 1;
 
-                $tenantCost = round(($cost->amount * $shareFactor * $tenantDays) / $daysInYear, 2);
-                $totalTenantCost += $tenantCost;
+                \Log::info("Berechnung für Kosten: {$cost->amount} mit distribution_key: {$cost->distribution_key}");
 
-                $utilityDetails[] = [
-                    'short_name' => $cost->utilityCost->short_name ?? $cost->utilityCost->name,
-                    'amount' => $tenantCost,
-                ];
+                switch ($cost->distribution_key) {
+                    case 'units':
+                        $totalShare = $totalUnits;
+                        $shareFactor = $tenant->unit_count ?: 1;
+                        break;
+                    case 'people':
+                        $totalShare = $totalPeople;
+                        $shareFactor = $tenant->person_count ?: 1;
+                        break;
+                    case 'area':
+                        $totalShare = $totalArea;
+                        $shareFactor = $tenant->square_meters ?: 1;
+                        break;
+                }
 
-                AnnualBillingRecord::updateOrCreate(
-                    [
-                        'rental_object_id' => $this->rental_object_id,
-                        'tenant_id' => $tenant->id,
-                        'utility_cost_id' => $cost->utility_cost_id,
-                        'year' => $this->year,
-                    ],
-                    [
+                if ($totalShare > 0 && $shareFactor > 0) {
+                    $tenantCost = round(
+                        ($cost->amount * ($tenantDays / $daysInYear) * ($shareFactor / $totalShare)),
+                        2
+                    );
+                    $totalTenantCost += $tenantCost;
+
+                    \Log::info("Mieter {$tenant->first_name} {$tenant->last_name} - Kosten: {$cost->amount}, Anteil: $shareFactor, Distribution Key: {$cost->distribution_key}, Gesamter Anteil: $totalShare, Berechnete Kosten: $tenantCost");
+
+                    $utilityDetails[] = [
+                        'short_name' => $cost->utilityCost->short_name ?? $cost->utilityCost->name,
                         'amount' => $tenantCost,
-                        'distribution_key' => $cost->distribution_key,
-                    ]
-                );
+                    ];
+
+                    AnnualBillingRecord::updateOrCreate(
+                        [
+                            'rental_object_id' => $this->rental_object_id,
+                            'tenant_id' => $tenant->id,
+                            'utility_cost_id' => $cost->utility_cost_id,
+                            'year' => $this->year,
+                        ],
+                        [
+                            'amount' => $tenantCost,
+                            'distribution_key' => $cost->distribution_key,
+                        ]
+                    );
+                } else {
+                    \Log::warning("Anteil für Mieter {$tenant->first_name} {$tenant->last_name} ist 0 für Kosten {$cost->amount} mit Verteilerschlüssel {$cost->distribution_key}");
+                }
             }
 
-            $tenantHeatingCost = $this->heatingCostService->allocateCostToTenant($tenant, $totalHeatingCost, $daysInYear, $tenantDays, $totalFactor, $this->rental_object_id, $this->year);
+            // Berechnung für Heizkosten
+            $tenantHeatingCost = $this->heatingCostService->allocateCostToTenant(
+                $tenant,
+                $totalHeatingCost,
+                $daysInYear,
+                $tenantDays,
+                $totalUnits,
+                $this->rental_object_id,
+                $this->year
+            );
             $totalTenantCost += $tenantHeatingCost;
 
             $utilityDetails[] = [
@@ -116,7 +161,6 @@ class BillingCalculation extends Component
                 'amount' => $tenantHeatingCost,
             ];
 
-            // Berechne Warmwasserkosten
             $warmWaterCost = $tenantHeatingCost * $warmWaterPercentage;
 
             $this->calculatedCosts[] = [

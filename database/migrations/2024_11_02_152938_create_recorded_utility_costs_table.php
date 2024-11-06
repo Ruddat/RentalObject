@@ -17,9 +17,9 @@ return new class extends Migration
          //   $table->unsignedBigInteger('tenant_id');
             $table->unsignedBigInteger('utility_cost_id'); // Verknüpfung zur `utility_costs`-Tabelle
             $table->decimal('amount', 10, 2); // Spezifischer Betrag
-            $table->enum('distribution_key', ['area', 'people', 'units'])
+            $table->enum('distribution_key', ['consumption', 'area', 'people', 'units'])
             ->default('units')
-            ->comment('Verteilerschlüssel: area = Wohnfläche, people = Personenanzahl, units = Einheiten');
+            ->comment('Verteilerschlüssel: consumption = Nach Verbrauch, area = Wohnfläche, people = Personenanzahl, units = Einheiten');
             $table->string('custom_name')->nullable(); // Optionaler benutzerdefinierter Name für zusätzliche Optionen
             $table->year('year')->default(date('Y')); // Standardmäßig aktuelles Jahr
             $table->timestamps();

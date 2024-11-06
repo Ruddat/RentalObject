@@ -1,6 +1,8 @@
 <div class="main-content">
     <div class="main-content-inner">
-
+        <div class="button-show-hide show-mb">
+            <span class="body-1">Show Dashboard</span>
+        </div>
         <!-- Backup Management Section -->
         <div class="widget-box-2">
             <h5 class="title">Nebenkosten-Backup-Verwaltung</h5>

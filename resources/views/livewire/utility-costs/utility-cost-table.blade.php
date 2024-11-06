@@ -3,7 +3,7 @@
         <div class="button-show-hide show-mb">
             <span class="body-1">Show Dashboard</span>
         </div>
-        
+
         <h2 class="mb-4">Nebenkostenpositionen verwalten</h2>
 
         <!-- Formular zur Eingabe neuer Positionen oder zum Bearbeiten -->
@@ -34,6 +34,7 @@
                         <option value="units">Einheiten</option>
                         <option value="people">Personenanzahl</option>
                         <option value="area">Wohnfläche</option>
+                        <option value="consumption">Nach Verbrauch</option>
                     </select>
                     @error('distribution_key') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
@@ -56,7 +57,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>Beschreibung</th>
+                        <th class="d-none d-md-table-cell">Beschreibung</th> <!-- Beschreibung wird auf kleinen Bildschirmen ausgeblendet -->
                         <th>Betrag (€)</th>
                         <th>Verteilerschlüssel</th>
                         <th>Aktionen</th>
@@ -64,28 +65,31 @@
                 </thead>
                 <tbody>
                     @foreach($utilityCosts as $cost)
-                        <tr>
-                            <td>{{ $cost->name }}</td>
-                            <td>{{ $cost->description }}</td>
-                            <td>{{ number_format($cost->amount, 2, ',', '.') }}</td>
-                            <td>
-                                @if ($cost->distribution_key == 'units')
-                                    Einheiten
-                                @elseif ($cost->distribution_key == 'people')
-                                    Personenanzahl
-                                @else
-                                    Wohnfläche
-                                @endif
-                            </td>
-                            <td>
-                                <button wire:click="editUtilityCost({{ $cost->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
-                                <button wire:click="deleteUtilityCost({{ $cost->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Möchten Sie diese Position wirklich löschen?')">Löschen</button>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>{{ $cost->name }}</td>
+                        <td class="d-none d-md-table-cell">{!! nl2br(e(wordwrap($cost->description, 50, "\n"))) !!}</td> <!-- Hier wird ein Zeilenumbruch hinzugefügt und die Spalte bleibt responsiv -->
+                        <td>{{ number_format($cost->amount, 2, ',', '.') }}</td>
+                        <td>
+                            @if ($cost->distribution_key == 'units')
+                                Einheiten
+                            @elseif ($cost->distribution_key == 'people')
+                                Personenanzahl
+                            @elseif ($cost->distribution_key == 'area')
+                                Wohnfläche
+                            @elseif ($cost->distribution_key == 'consumption')
+                                Nach Verbrauch
+                            @endif
+                        </td>
+                        <td>
+                            <button wire:click="editUtilityCost({{ $cost->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
+                            <button wire:click="deleteUtilityCost({{ $cost->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Möchten Sie diese Position wirklich löschen?')">Löschen</button>
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
+
     </div>
 
     <!-- Footer -->

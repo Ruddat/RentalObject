@@ -111,13 +111,30 @@
                             </li>
 
                             <div class="title fw-6">Settings</div>
-                            <li class="nav-menu-item with-border-bottom {{ Request::is('backup-manager') ? 'active' : '' }}">
+                            <li class="nav-menu-item {{ Request::is('backup-manager') ? 'active' : '' }}">
                                 <a class="nav-menu-link" href="{{ url('backup-manager') }}">
                                     <i data-feather="database"></i><span>Backup Manager</span>
                                 </a>
                             </li>
 
+                            <li class="nav-menu-item {{ Request::is('setting-manager') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('setting-manager') }}">
+                                    <i data-feather="settings"></i><span>Settings Manager</span>
+                                </a>
+                            </li>
 
+                            <li class="nav-menu-item with-border-bottom {{ Request::is('translation-editor') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('translation-editor') }}">
+                                    <i data-feather="globe"></i><span>Translation Editor</span>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-menu-item {{ Request::is('page-manager') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('page-manager') }}">
+                                    <i data-feather="settings"></i><span>Settings Manager</span>
+                                </a>
+                            </li>
 
                             <li class="nav-menu-item">
                                 <a class="nav-menu-link" href="reviews.html">

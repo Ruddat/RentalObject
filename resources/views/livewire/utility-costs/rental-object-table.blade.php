@@ -72,6 +72,25 @@
                             @error('max_units') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
 
+                        <div class="col-md-4">
+                            <label for="square_meters" class="form-label">Quadratmeter:</label>
+                            <input type="number" wire:model="square_meters" id="square_meters" class="form-control" step="0.01" min="0">
+                            @error('square_meters') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="heating_type" class="form-label">Heiztyp:</label>
+                            <select wire:model="heating_type" id="heating_type" class="form-select">
+                                <option value="">Wählen...</option>
+                                <option value="Gas">Gas</option>
+                                <option value="Öl">Öl</option>
+                                <option value="Fernwärme">Fernwärme</option>
+                                <option value="Elektro">Elektro</option>
+                            </select>
+                            @error('heating_type') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+
+
                         <!-- Beschreibung -->
                         <div class="col-12">
                             <label for="description" class="form-label">Beschreibung:</label>
@@ -109,29 +128,33 @@
                             <th>Land</th>
                             <th>Objekttyp</th>
                             <th>Max. Einheiten</th>
+                            <th>Quadratmeter</th>
+                            <th>Heiztyp</th>
                             <th>Beschreibung</th>
                             <th>Aktionen</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($rentalObjects as $object)
-                            <tr>
-                                <td>{{ $object->name }}</td>
-                                <td>{{ $object->street }}</td>
-                                <td>{{ $object->house_number }}</td>
-                                <td>{{ $object->floor }}</td>
-                                <td>{{ $object->zip_code }}</td>
-                                <td>{{ $object->city }}</td>
-                                <td>{{ $object->country }}</td>
-                                <td>{{ $object->object_type }}</td>
-                                <td>{{ $object->max_units }}</td>
-                                <td>{{ $object->description }}</td>
-                                <td>
-                                    <button wire:click="editRentalObject({{ $object->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
-                                    <button wire:click="deleteRentalObject({{ $object->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Möchten Sie dieses Mietobjekt wirklich löschen?')">Löschen</button>
-                                </td>
-                            </tr>
-                        @endforeach
+                        <tr>
+                            <td>{{ $object->name }}</td>
+                            <td>{{ $object->street }}</td>
+                            <td>{{ $object->house_number }}</td>
+                            <td>{{ $object->floor }}</td>
+                            <td>{{ $object->zip_code }}</td>
+                            <td>{{ $object->city }}</td>
+                            <td>{{ $object->country }}</td>
+                            <td>{{ $object->object_type }}</td>
+                            <td>{{ $object->max_units }}</td>
+                            <td>{{ $object->square_meters }}</td>
+                            <td>{{ $object->heating_type }}</td>
+                            <td>{{ $object->description }}</td>
+                            <td>
+                                <button wire:click="editRentalObject({{ $object->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
+                                <button wire:click="deleteRentalObject({{ $object->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Möchten Sie dieses Mietobjekt wirklich löschen?')">Löschen</button>
+                            </td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

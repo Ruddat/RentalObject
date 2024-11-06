@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('category', 50)->nullable(); // z.B. Betriebskosten, Verwaltungskosten, etc.
             $table->text('description')->nullable();
             $table->decimal('amount', 10, 2); // Betrag für die Position
-            $table->enum('distribution_key', ['area', 'people', 'units'])
+            $table->enum('distribution_key', ['consumption', 'area', 'people', 'units'])
                   ->default('units')
-                  ->comment('Verteilerschlüssel: area = Wohnfläche, people = Personenanzahl, units = Einheiten');
+                  ->comment('Verteilerschlüssel: consumption = Nach Verbrauch, area = Wohnfläche, people = Personenanzahl, units = Einheiten');
             $table->timestamps();
         });
     }

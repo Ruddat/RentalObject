@@ -8,6 +8,8 @@
                 <div class="main-content">
                     <div class="main-content-inner">
 
+                        @livewire('test.multi-image-upload')
+
 
                         @livewire('image-upload')
 
@@ -25,7 +27,7 @@
                                         Select photos
                                         <input type="file" class="ip-file">
                                     </div>
-                                    <p class="file-name fw-5">or drag photos here <br>
+                                    <p class="file-name fw-5">or drag photos here 11<br>
                                         <span>(Up to 10 photos)</span></p>
                                 </div>
                             </div>

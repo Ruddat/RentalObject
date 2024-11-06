@@ -49,6 +49,14 @@ class TenantPayments extends Component
         $this->loadPayments();
     }
 
+    public function updatedYear()
+    {
+        if ($this->tenant_id) {
+            $tenant = Tenant::find($this->tenant_id);
+            $this->generateAvailableYearsAndMonths($tenant);
+        }
+    }
+
     public function generateAvailableYearsAndMonths($tenant)
     {
         $startDate = Carbon::parse($tenant->start_date);
@@ -56,12 +64,18 @@ class TenantPayments extends Component
 
         $this->availableYears = range($startDate->year, $endDate->year);
 
+        // Berechnung der Monate basierend auf dem Jahr und der Mietdauer
         if ($this->year == $startDate->year) {
             $this->availableMonths = range($startDate->month, 12);
         } elseif ($this->year == $endDate->year) {
             $this->availableMonths = range(1, $endDate->month);
         } else {
             $this->availableMonths = range(1, 12);
+        }
+
+        // Setzt den Monat auf den ersten verfügbaren, wenn er ungültig ist
+        if (!in_array($this->month, $this->availableMonths)) {
+            $this->month = $this->availableMonths[0];
         }
     }
 
@@ -106,12 +120,22 @@ class TenantPayments extends Component
                 'tenant_id' => $this->tenant_id,
                 'rental_object_id' => $this->rental_object_id,
                 'year' => $this->year,
-                'month' => $this->month ?? 1,
+                'month' => $this->month,
                 'amount' => $this->amount,
             ]);
         }
 
-        $this->resetFields();
+        // Automatisches Hochzählen des Monats, unter Berücksichtigung der Mietdauer
+        if ($this->month < 12 && in_array($this->month + 1, $this->availableMonths)) {
+            $this->month++;
+        } else {
+            // Falls Jahrwechsel, nächstes Jahr einstellen und auf den ersten verfügbaren Monat setzen
+            if (in_array($this->year + 1, $this->availableYears)) {
+                $this->year++;
+                $this->month = $this->availableMonths[0];
+            }
+        }
+
         $this->loadPayments();
     }
 
@@ -129,6 +153,12 @@ class TenantPayments extends Component
         $this->generateAvailableYearsAndMonths($payment->tenant);
     }
 
+    public function resetFields()
+    {
+        $this->reset(['tenant_id', 'rental_object_id', 'year', 'month', 'amount', 'editMode', 'editId']);
+        $this->generateAvailableYearsAndMonths(Tenant::find($this->tenant_id));
+    }
+
     public function deletePayment($id)
     {
         TenantPayment::findOrFail($id)->delete();
@@ -141,14 +171,8 @@ class TenantPayments extends Component
         $this->loadPayments();
     }
 
-    public function resetFields()
-    {
-        $this->reset(['amount', 'editMode', 'editId']);
-    }
-
     public function render()
     {
         return view('livewire.utility-costs.tenant-payments');
     }
 }
-

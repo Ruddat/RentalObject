@@ -8,7 +8,7 @@
     <title>Homelengo - Real Estate HTML Template</title>
     <meta name="keywords" content="HTML, CSS, JavaScript, Bootstrap">
     <meta name="description" content="Real Estate HTML Template">
-    <meta name="author" content="themesflat.com">
+    <meta name="author" content="{{ config('app.settings.owner_name', 'Default Owner') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- Favicon and Touch Icons  -->
@@ -69,7 +69,7 @@
 
 
 
-@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-recording'))
+@if (Route::is('sys-settings', 'add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-recording'))
 
 <div class="overlay-dashboard"></div>
 
@@ -85,7 +85,7 @@
 
 
 
-@if (Route::is('add-property', 'dashboard', 'billing-header-form', 'tenant-payments' , 'rental-object-table', 'billing-generation', 'billing-calculation'))
+@if (Route::is('index', 'home-02', 'add-property', 'dashboard', 'billing-header-form', 'tenant-payments' , 'rental-object-table', 'billing-generation', 'billing-calculation'))
 
 @include('rentalobj.layout.partials.footer-scripts')
 @else

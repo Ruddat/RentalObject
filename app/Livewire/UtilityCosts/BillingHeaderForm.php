@@ -10,6 +10,7 @@ class BillingHeaderForm extends Component
 {
     use WithFileUploads;
 
+    public $showForm = false; // Neues Feld für die Steuerung des Formulars
     public $creator_name, $first_name, $street, $house_number, $zip_code, $city;
     public $bank_name, $iban, $bic, $footer_text, $notes, $logo, $billingHeaders, $logoPreview;
     public $phone, $email;
@@ -18,6 +19,12 @@ class BillingHeaderForm extends Component
     {
         $this->billingHeaders = BillingHeader::all();
     }
+
+    public function toggleForm()
+    {
+        $this->showForm = !$this->showForm; // Schaltet die Formularanzeige ein/aus
+    }
+
 
     public function updatedLogo()
     {
