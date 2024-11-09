@@ -25,6 +25,30 @@
                             @error('last_name') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
                         <div class="mb-3">
+                            <label for="street" class="form-label">Straße:</label>
+                            <input type="text" wire:model="street" id="street" class="form-control">
+                            @error('street') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="house_number" class="form-label">Hausnummer:</label>
+                            <input type="text" wire:model="house_number" id="house_number" class="form-control">
+                            @error('house_number') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="zip_code" class="form-label">Postleitzahl:</label>
+                            <input type="text" wire:model="zip_code" id="zip_code" class="form-control">
+                            @error('zip_code') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="city" class="form-label">Stadt:</label>
+                            <input type="text" wire:model="city" id="city" class="form-control">
+                            @error('city') <div class="text-danger">{{ $message }}</div> @enderror
+                        </div>
+                        
+                        <div class="mb-3">
                             <label for="phone" class="form-label">Telefon:</label>
                             <input type="text" wire:model="phone" id="phone" class="form-control">
                             @error('phone') <div class="text-danger">{{ $message }}</div> @enderror

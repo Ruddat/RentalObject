@@ -90,23 +90,21 @@
                                 </a>
                             </li>
 
-                            <li class="nav-menu-item {{ Request::is('billing-calculation') ? 'active' : '' }}">
-                                <a class="nav-menu-link" href="{{ url('billing-calculation') }}">
-                                    <i data-feather="layers"></i><span>Abrechnung für das Jahr und Mietobjekt</span>
-                                </a>
-                            </li>
-
-
                             <li class="nav-menu-item {{ Request::is('heating-cost-management') ? 'active' : '' }}">
                                 <a class="nav-menu-link" href="{{ url('heating-cost-management') }}">
                                     <i data-feather="thermometer"></i><span>Heizkostenverwaltung</span>
                                 </a>
                             </li>
 
+                            <li class="nav-menu-item {{ Request::is('billing-calculation') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ url('billing-calculation') }}">
+                                    <i data-feather="layers"></i><span>Abrechnung für das Jahr und Mietobjekt</span>
+                                </a>
+                            </li>
 
                             <li class="nav-menu-item with-border-bottom {{ Request::is('billing-generation') ? 'active' : '' }}">
                                 <a class="nav-menu-link" href="{{ url('billing-generation') }}">
-                                    <i data-feather="check-circle"></i><span>Abrechhung erstellen</span>
+                                    <i data-feather="check-circle"></i><span>Abrechnung erstellen</span>
                                 </a>
                             </li>
 
@@ -132,9 +130,17 @@
 
                             <li class="nav-menu-item {{ Request::is('page-manager') ? 'active' : '' }}">
                                 <a class="nav-menu-link" href="{{ url('page-manager') }}">
-                                    <i data-feather="settings"></i><span>Settings Manager</span>
+                                    <i data-feather="settings"></i><span>Page Manager</span>
                                 </a>
                             </li>
+
+
+                            <li class="nav-menu-item {{ Request::is('blog-manager.index') ? 'active' : '' }}">
+                                <a class="nav-menu-link" href="{{ route('blog-manager.index') }}">
+                                    <i data-feather="users"></i><span>Blog verwalten</span>
+                                </a>
+                            </li>
+
 
                             <li class="nav-menu-item">
                                 <a class="nav-menu-link" href="reviews.html">

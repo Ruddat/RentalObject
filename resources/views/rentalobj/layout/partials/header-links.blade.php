@@ -54,7 +54,7 @@
     </li>
     <li class="dropdown2"><a href="#">Blog</a>
         <ul>
-            <li><a href="blog.html">Blog Default</a></li>
+            <li><a href="{{ route('blog-manager-12') }}">Blog Default</a></li>
             <li><a href="blog-grid.html">Blog Grid</a></li>
             <li><a href="blog-detail.html">Blog Post Details</a></li>
         </ul>

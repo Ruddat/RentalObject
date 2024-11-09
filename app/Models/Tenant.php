@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tenant extends Model
 {
-    protected $guarded = [];
+    protected $fillable = [
+        'first_name', 'last_name', 'phone', 'email', 'rental_object_id', 'billing_type',
+        'unit_count', 'person_count', 'square_meters', 'start_date', 'end_date',
+        'gas_meter', 'electricity_meter', 'water_meter', 'hot_water_meter',
+        'street', 'house_number', 'zip_code', 'city'
+    ];
 
 
         /**

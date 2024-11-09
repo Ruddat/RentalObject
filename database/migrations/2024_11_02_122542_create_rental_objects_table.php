@@ -27,6 +27,8 @@ return new class extends Migration
             $table->unsignedInteger('max_units')->nullable();
             $table->decimal('square_meters', 8, 2)->nullable(); // Quadratmeter
             $table->enum('heating_type', ['Gas', 'Öl', 'Fernwärme', 'Elektro'])->nullable(); // Heiztyp
+            $table->decimal('base_cost_percentage', 5, 2)->default(0.3);  // 30% für Grundkosten
+            $table->decimal('consumption_cost_percentage', 5, 2)->default(0.7); // 70% für Verbrauchskosten
             $table->timestamps();
         });
     }

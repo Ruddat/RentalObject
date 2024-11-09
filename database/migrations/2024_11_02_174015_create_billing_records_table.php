@@ -21,6 +21,8 @@ return new class extends Migration
             $table->decimal('prepayment', 10, 2); // Vorauszahlungen
             $table->decimal('balance_due', 10, 2); // Restbetrag (nachzuzahlen oder Guthaben)
             $table->string('pdf_path')->nullable(); // Pfad zur PDF-Datei
+            $table->string('pdf_path_second')->nullable();
+            $table->string('pdf_path_third')->nullable();
             $table->json('standard_costs'); // Auflistung der Standardkosten
             $table->json('heating_costs'); // Auflistung der Heizkosten
             $table->timestamps();

@@ -10,6 +10,10 @@ class TenantTable extends Component
 {
     public $first_name;
     public $last_name;
+    public $street;
+    public $house_number;
+    public $zip_code;
+    public $city;
     public $phone;
     public $email;
     public $rental_object_id;
@@ -32,6 +36,10 @@ class TenantTable extends Component
     protected $rules = [
         'first_name' => 'required|string|max:255',
         'last_name' => 'required|string|max:255',
+        'street' => 'nullable|string|max:255',
+        'house_number' => 'nullable|string|max:20',
+        'zip_code' => 'nullable|string|max:20',
+        'city' => 'nullable|string|max:255',
         'phone' => 'nullable|string|max:20',
         'email' => 'nullable|email|max:255',
         'rental_object_id' => 'required|exists:rental_objects,id',
@@ -74,6 +82,10 @@ class TenantTable extends Component
             'water_meter' => $this->water_meter,
             'hot_water_meter' => $this->hot_water_meter,
             'square_meters' => $this->square_meters,
+            'street' => $this->street,
+            'house_number' => $this->house_number,
+            'zip_code' => $this->zip_code,
+            'city' => $this->city,
         ]);
 
         $this->resetFields();
@@ -91,16 +103,19 @@ class TenantTable extends Component
         $this->email = $tenant->email;
         $this->rental_object_id = $tenant->rental_object_id;
         $this->billing_type = $tenant->billing_type;
-        $this->unit_count = $tenant->billing_type === 'units' ? $tenant->unit_count : null;
-        $this->person_count = $tenant->billing_type === 'people' ? $tenant->person_count : null;
+        $this->unit_count = $tenant->unit_count;
+        $this->person_count = $tenant->person_count;
         $this->square_meters = $tenant->square_meters;
-       // $this->flat_rate = $tenant->billing_type === 'flat_rate';
         $this->start_date = $tenant->start_date;
         $this->end_date = $tenant->end_date;
         $this->gas_meter = $tenant->gas_meter;
         $this->electricity_meter = $tenant->electricity_meter;
         $this->water_meter = $tenant->water_meter;
         $this->hot_water_meter = $tenant->hot_water_meter;
+        $this->street = $tenant->street;
+        $this->house_number = $tenant->house_number;
+        $this->zip_code = $tenant->zip_code;
+        $this->city = $tenant->city;
     }
 
     public function updateTenant()

@@ -10,3 +10,9 @@
 
    <!-- Feathericon CSS -->
    <link rel="stylesheet" href="{{ url('build/css/feather.css') }}">
+
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.css">
+
+

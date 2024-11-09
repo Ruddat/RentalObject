@@ -12,7 +12,7 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
         then: function () {
             Route::middleware('web') // Middleware 'web' für den neuen Route-Bereich
-               // ->prefix('rentalobj') // Optional: Präfix für die Routen
+             //   ->prefix('rentalobj') // Optional: Präfix für die Routen
                 ->group(base_path('routes/rentalobj.php'));
         },
     )

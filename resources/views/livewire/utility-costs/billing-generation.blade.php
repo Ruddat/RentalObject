@@ -58,43 +58,47 @@
                 </div>
 
                 <!-- PDF generieren und speichern -->
-                <div class="d-flex justify-content-end mt-4">
-                    <button wire:click="generateBilling" class="btn btn-primary">Abrechnung als PDF erstellen</button>
-                </div>
+<!-- PDF generieren und speichern -->
+<div class="d-flex justify-content-end mt-4">
+    <button wire:click.prevent="generateBilling" class="btn btn-primary">Abrechnung als PDF erstellen</button>
+</div>
             </form>
         </div>
 
-        <!-- Gespeicherte Abrechnungen -->
-        <div class="widget-box-2 mess-box">
-            <h5 class="title">Gespeicherte Abrechnungen</h5>
-            <div class="table-responsive mt-3">
-                <table class="table table-striped">
-                    <thead>
-                        <tr>
-                            <th>Ersteller</th>
-                            <th>Mieter</th>
-                            <th>Zeitraum</th>
-                            <th>PDF</th>
-                            <th>Aktionen</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($savedBillings as $billing)
-                            <tr>
-                                <td>{{ $billing->billingHeader->creator_name }}</td>
-                                <td>{{ $billing->tenant->first_name }} {{ $billing->tenant->last_name }}</td>
-                                <td>{{ $billing->billing_period }}</td>
-                                <td><a href="{{ $billing->pdf_path }}" target="_blank">PDF anzeigen</a></td>
-                                <td>
-                                    <button wire:click="editBilling({{ $billing->id }})" class="btn btn-sm btn-info">Bearbeiten</button>
-                                    <button wire:click="deleteBilling({{ $billing->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Sind Sie sicher?')">Löschen</button>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            </div>
-        </div>
+<!-- Gespeicherte Abrechnungen -->
+<div class="widget-box-2 mess-box">
+    <h5 class="title">Gespeicherte Abrechnungen</h5>
+    <div class="table-responsive mt-3">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Ersteller</th>
+                    <th>Mieter</th>
+                    <th>Zeitraum</th>
+                    <th>PDF Seite 1</th>
+                    <th>PDF Seite 2</th>
+                    <th>Erstellungsdatum</th>
+                    <th>Aktionen</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($savedBillings as $billing)
+                    <tr>
+                        <td>{{ $billing->billingHeader->creator_name }}</td>
+                        <td>{{ $billing->tenant->first_name }} {{ $billing->tenant->last_name }}</td>
+                        <td>{{ $billing->billing_period }}</td>
+                        <td><a href="{{ $billing->pdf_path }}" target="_blank">Seite 1 anzeigen</a></td>
+                        <td><a href="{{ $billing->pdf_path_second }}" target="_blank">Seite 2 anzeigen</a></td>
+                        <td>{{ $billing->created_at->format('d.m.Y') }}</td>
+                        <td>
+                            <button wire:click="editBilling({{ $billing->id }})" class="btn btn-sm btn-info">Bearbeiten</button>
+                            <button wire:click="deleteBilling({{ $billing->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Sind Sie sicher?')">Löschen</button>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 
         <!-- Footer -->
         <div class="footer-dashboard footer-dashboard-2 mt-4">

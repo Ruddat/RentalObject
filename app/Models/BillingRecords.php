@@ -23,6 +23,9 @@ class BillingRecords extends Model
         'standard_costs',
         'heating_costs',
         'pdf_path',
+        'pdf_path_second',
+        'pdf_path_third',
+
     ];
 
     // Beziehung zu BillingHeader

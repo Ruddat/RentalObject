@@ -47,24 +47,20 @@ class BillingGeneration extends Component
             'prepayment' => 'nullable|numeric|min:0',
         ]);
 
-        // Vorauszahlungen berechnen
-        $year = substr($this->billingPeriod, 0, 4); // Extrahiere das Jahr aus dem Abrechnungszeitraum
+        $year = substr($this->billingPeriod, 0, 4);
         $prepaymentSum = DB::table('tenant_payments')
             ->where('tenant_id', $this->selectedTenantId)
             ->where('rental_object_id', $this->selectedRentalObjectId)
             ->where('year', $year)
             ->sum('amount');
 
-        // Berechnung und Speicherung der Abrechnungskosten
         $billingService = app(BillingService::class);
         $calculation = $billingService->calculateCosts(
             $this->selectedRentalObjectId,
             $this->selectedTenantId,
             $this->billingPeriod,
-            $prepaymentSum // übergibt die berechneten Vorauszahlungen
+            $prepaymentSum
         );
-
-//dd($calculation);
 
         $billingRecord = BillingRecords::create([
             'billing_header_id' => $this->selectedHeaderId,
@@ -78,10 +74,7 @@ class BillingGeneration extends Component
             'heating_costs' => json_encode($calculation['heating_costs']),
         ]);
 
-
-        // Laden der Daten für PDF-Erstellung inklusive Beziehungen
         $billingRecord = BillingRecords::with(['billingHeader', 'tenant', 'rentalObject'])->find($billingRecord->id);
-
 
         $pdfData = [
             'billingRecord' => $billingRecord,
@@ -90,15 +83,38 @@ class BillingGeneration extends Component
             'rentalObject' => $billingRecord->rentalObject,
         ];
 
-//dd($pdfData);
+        // Generate the first PDF
+        $pdf1 = Pdf::loadView('pdf.billing', $pdfData)
+                  ->setPaper('a4')
+                  ->setOptions([
+                      'margin-top' => 10,
+                      'margin-right' => 20,
+                      'margin-bottom' => 10,
+                      'margin-left' => 20,
+                  ]);
+        $filePath1 = 'billing_pdfs/billing_page1_' . now()->timestamp . '.pdf';
+        Storage::disk('public')->put($filePath1, $pdf1->output());
 
+        // Generate the second PDF
+        $pdf2 = Pdf::loadView('pdf.billing_page2', $pdfData)
+                  ->setPaper('a4')
+                  ->setOptions([
+                      'margin-top' => 10,
+                      'margin-right' => 20,
+                      'margin-bottom' => 10,
+                      'margin-left' => 20,
+                  ]);
+        $filePath2 = 'billing_pdfs/billing_page2_' . now()->timestamp . '.pdf';
+        Storage::disk('public')->put($filePath2, $pdf2->output());
 
-        $pdf = Pdf::loadView('pdf.billing', $pdfData);
-        $filePath = 'billing_pdfs/billing_' . now()->timestamp . '.pdf';
-        Storage::disk('public')->put($filePath, $pdf->output());
+        // Update billing record with both PDF paths
+        $billingRecord->update([
+            'pdf_path' => Storage::url($filePath1),
+            'pdf_path_second' => Storage::url($filePath2),
+        ]);
 
-        $billingRecord->update(['pdf_path' => Storage::url($filePath)]);
-        session()->flash('message', 'Abrechnung erfolgreich erstellt.');
+        session()->flash('message', 'Abrechnungen erfolgreich erstellt.');
+
         $this->savedBillings = BillingRecords::all();
     }
 
@@ -108,12 +124,10 @@ class BillingGeneration extends Component
         $billingRecord = BillingRecords::find($id);
 
         if ($billingRecord) {
-            // Delete the PDF file if it exists
             if ($billingRecord->pdf_path && Storage::disk('public')->exists($billingRecord->pdf_path)) {
                 Storage::disk('public')->delete($billingRecord->pdf_path);
             }
 
-            // Delete the billing record from the database
             $billingRecord->delete();
 
             session()->flash('message', 'Abrechnung erfolgreich gelöscht.');
@@ -122,9 +136,6 @@ class BillingGeneration extends Component
             session()->flash('error', 'Abrechnung konnte nicht gefunden werden.');
         }
     }
-
-
-
 
     public function render()
     {
@@ -136,4 +147,3 @@ class BillingGeneration extends Component
         ]);
     }
 }
-

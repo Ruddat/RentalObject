@@ -43,14 +43,14 @@
 @endif
 
 
-@if (Route::is('add-property', 'sys-settings', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-table', 'tenant-table', 'utility-cost-recording'))
+@if (Route::is('add-property', 'blog-manager.index', 'post.create', 'post.edit', 'sys-settings', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-table', 'tenant-table', 'utility-cost-recording'))
     <div id="wrapper">
         <div id="page" class="clearfix">
             <div class="layout-wrap">
 @endif
 
 {{-- Füge den Header nur hinzu, wenn nicht auf der Startseite --}}
-@if(isset($page) && ($page === 'start-page' || $page === 'home-02'))
+@if(isset($page) && ($page === 'start-page' || $page === 'home-02' || $page === 'blog-manager'))
 @include('rentalobj.layout.partials.header')
 @endif
 
@@ -85,7 +85,7 @@
 
 
 
-@if (Route::is('index', 'home-02', 'add-property', 'dashboard', 'billing-header-form', 'tenant-payments' , 'rental-object-table', 'billing-generation', 'billing-calculation'))
+@if (Route::is('index', 'home-02', 'add-property', 'blog-manager', 'dashboard', 'billing-header-form', 'tenant-payments' , 'rental-object-table', 'billing-generation', 'billing-calculation'))
 
 @include('rentalobj.layout.partials.footer-scripts')
 @else

@@ -13,6 +13,7 @@ class UtilityCostRecording extends Component
     public $utility_cost_id;
     public $amount;
     public $custom_name;
+    public $distribution_key = 'units'; // Standardwert für Verteilerschlüssel
     public $utilityCosts;
     public $year;
     public $recordedCosts = [];
@@ -26,12 +27,14 @@ class UtilityCostRecording extends Component
         'amount' => 'required|numeric|min:0',
         'custom_name' => 'nullable|string|max:255',
         'year' => 'required|digits:4',
+        'distribution_key' => 'required|string', // Validierung für den Verteilerschlüssel
     ];
 
     public function mount()
     {
         $this->utilityCosts = UtilityCost::all();
-        $this->year = date('Y'); // Standardmäßig aktuelles Jahr
+        $this->year = date('Y');
+        $this->distribution_key = 'units'; // Standardwert setzen
         $this->loadRecordedCosts();
     }
 
@@ -49,20 +52,13 @@ class UtilityCostRecording extends Component
     {
         $this->validate();
 
-        // Hole den Verteilerschlüssel (`distribution_key`) von `utility_costs`
-        $utilityCost = UtilityCost::find($this->utility_cost_id);
-        $distributionKey = $utilityCost ? $utilityCost->distribution_key : 'units';
-
-        // Log für den Verteilerschlüssel
-        \Log::info("Distribution Key for utility_cost_id {$this->utility_cost_id}: $distributionKey");
-
         RecordedUtilityCost::create([
             'rental_object_id' => $this->rental_object_id,
             'utility_cost_id' => $this->utility_cost_id,
             'amount' => $this->amount,
             'custom_name' => $this->custom_name,
             'year' => $this->year,
-            'distribution_key' => $distributionKey, // Den ermittelten Verteilerschlüssel setzen
+            'distribution_key' => $this->distribution_key, // Benutzerdefinierter oder Standardwert
         ]);
 
         $this->resetFields();
@@ -77,9 +73,7 @@ class UtilityCostRecording extends Component
         $this->utility_cost_id = $cost->utility_cost_id;
         $this->amount = $cost->amount;
         $this->custom_name = $cost->custom_name;
-
-        // Lade den Verteilerschlüssel aus dem vorhandenen Eintrag in der Tabelle `recorded_utility_costs`
-        $this->distribution_key = $cost->distribution_key;
+        $this->distribution_key = $cost->distribution_key; // Vorhandener Verteilerschlüssel
     }
 
     public function updateRecordedCost()
@@ -88,20 +82,17 @@ class UtilityCostRecording extends Component
 
         $cost = RecordedUtilityCost::findOrFail($this->editId);
 
-        // Hole erneut den `distribution_key`, falls der `utility_cost_id` sich geändert hat
-        $utilityCost = UtilityCost::find($this->utility_cost_id);
-        $distributionKey = $utilityCost ? $utilityCost->distribution_key : $this->distribution_key; // Verwende vorhandenen `distribution_key`, falls `utility_cost_id` NULL ist
-
         $cost->update([
             'utility_cost_id' => $this->utility_cost_id,
             'amount' => $this->amount,
             'custom_name' => $this->custom_name,
-            'distribution_key' => $distributionKey, // Setze den Verteilerschlüssel auch bei Update
+            'distribution_key' => $this->distribution_key, // Aktualisierten Verteilerschlüssel speichern
         ]);
 
         $this->resetFields();
         $this->loadRecordedCosts();
     }
+
     public function deleteRecordedCost($id)
     {
         RecordedUtilityCost::findOrFail($id)->delete();
@@ -110,7 +101,7 @@ class UtilityCostRecording extends Component
 
     public function resetFields()
     {
-        $this->reset(['utility_cost_id', 'amount', 'custom_name', 'editMode', 'editId']);
+        $this->reset(['utility_cost_id', 'amount', 'custom_name', 'distribution_key', 'editMode', 'editId']);
     }
 
     private function loadRecordedCosts()
@@ -121,10 +112,18 @@ class UtilityCostRecording extends Component
                 ->where('year', $this->year)
                 ->get();
 
-            // Berechnung der Gesamtkosten
             $this->totalCosts = $this->recordedCosts->sum('amount');
         }
     }
+
+    public function updatedUtilityCostId()
+    {
+        // Verteilerschlüssel aus `utility_costs` übernehmen, falls vorhanden
+        $utilityCost = UtilityCost::find($this->utility_cost_id);
+        $this->distribution_key = $utilityCost ? $utilityCost->distribution_key : 'units';
+    }
+
+
 
     public function render()
     {
@@ -132,5 +131,4 @@ class UtilityCostRecording extends Component
             'rentalObjects' => RentalObject::all(),
         ]);
     }
-
 }

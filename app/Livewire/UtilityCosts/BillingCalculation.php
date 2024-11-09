@@ -69,9 +69,8 @@ class BillingCalculation extends Component
         $this->heatingCostService = $heatingCostService;
         $totalHeatingCost = $this->heatingCostService->calculateHeatingCostsForYear($this->rental_object_id, $this->year);
 
-        // Initialisiere warmWaterPercentage korrekt
         $heatingCost = HeatingCost::where('rental_object_id', $this->rental_object_id)
-                                  ->whereYear('created_at', $this->year)
+                                  ->where('year', $this->year)
                                   ->first();
 
         $warmWaterPercentage = $heatingCost ? $heatingCost->warm_water_percentage : 0;
@@ -144,32 +143,40 @@ class BillingCalculation extends Component
                 }
             }
 
-            // Berechnung für Heizkosten
             $tenantHeatingCost = $this->heatingCostService->allocateCostToTenant(
                 $tenant,
-                $totalHeatingCost,
+                $totalHeatingCost['totalHeatingCost'] ?? 0,
                 $daysInYear,
                 $tenantDays,
-                $totalUnits,
                 $this->rental_object_id,
                 $this->year
             );
-            $totalTenantCost += $tenantHeatingCost;
+            $totalTenantCost += $tenantHeatingCost['totalTenantCost'] ?? 0;
 
             $utilityDetails[] = [
                 'short_name' => 'Heizkosten',
-                'amount' => $tenantHeatingCost,
+                'amount' => $tenantHeatingCost['totalTenantCost'] ?? 0,
             ];
 
-            $warmWaterCost = $tenantHeatingCost * $warmWaterPercentage;
+            $warmWaterCost = $tenantHeatingCost['totalTenantCost'] * $warmWaterPercentage ?? 0;
 
-            $this->calculatedCosts[] = [
-                'tenant' => $tenant,
-                'total_cost' => $totalTenantCost,
-                'heating_cost' => $tenantHeatingCost,
-                'warm_water_cost' => $warmWaterCost,
-                'utility_details' => $utilityDetails,
-            ];
+            if (!isset($this->calculatedCosts[$tenant->id])) {
+                $this->calculatedCosts[$tenant->id] = [
+                    'tenant' => $tenant,
+                    'total_cost' => $totalTenantCost,
+                    'heating_cost' => $tenantHeatingCost['totalTenantCost'] ?? 0,
+                    'warm_water_cost' => $warmWaterCost,
+                    'utility_details' => $utilityDetails,
+                ];
+            } else {
+                $this->calculatedCosts[$tenant->id]['total_cost'] += $totalTenantCost;
+                $this->calculatedCosts[$tenant->id]['heating_cost'] += $tenantHeatingCost['totalTenantCost'] ?? 0;
+                $this->calculatedCosts[$tenant->id]['warm_water_cost'] += $warmWaterCost;
+                $this->calculatedCosts[$tenant->id]['utility_details'] = array_merge(
+                    $this->calculatedCosts[$tenant->id]['utility_details'],
+                    $utilityDetails
+                );
+            }
         }
     }
 

@@ -6,10 +6,11 @@
         <!-- Utility Cost Form Section -->
         <div class="widget-box-2">
             <h5 class="title">Nebenkosten erfassen</h5>
+            @error('error') <div class="text-danger">{{ $message }}</div> @enderror
             <form wire:submit.prevent="{{ $editMode ? 'updateRecordedCost' : 'addRecordedCost' }}" class="form-box">
                 <div class="mb-3">
                     <label for="rental_object_id" class="form-label">Mietobjekt:</label>
-                    <select wire:model.change="rental_object_id" id="rental_object_id" class="form-select" required>
+                    <select wire:model="rental_object_id" id="rental_object_id" class="form-select" required>
                         <option value="">Wählen...</option>
                         @foreach($rentalObjects as $object)
                             <option value="{{ $object->id }}">{{ $object->street }}, {{ $object->house_number }}, {{ $object->city }}</option>
@@ -20,7 +21,7 @@
 
                 <div class="mb-3">
                     <label for="year" class="form-label">Jahr:</label>
-                    <select wire:model.change="year" id="year" class="form-select" required>
+                    <select wire:model="year" id="year" class="form-select" required>
                         @for ($i = date('Y'); $i >= date('Y') - 20; $i--)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endfor
@@ -50,6 +51,20 @@
                     <input type="number" step="0.01" wire:model="amount" id="amount" class="form-control" required>
                     @error('amount') <div class="text-danger">{{ $message }}</div> @enderror
                 </div>
+
+                <div class="mb-3">
+                    <label for="distribution_key" class="form-label">Verteilerschlüssel:</label>
+                    <select wire:model="distribution_key" id="distribution_key" class="form-select">
+                        <option value="units">Nach Einheiten</option>
+                        <option value="people">Nach Personen</option>
+                        <option value="area">Wohnfläche</option>
+                        <option value="consumption">Nach Verbrauch</option>
+                    </select>
+                    @error('distribution_key') <div class="text-danger">{{ $message }}</div> @enderror
+                </div>
+
+
+
 
                 <!-- Action Buttons -->
                 <div class="d-flex gap-2 justify-content-end mt-3">
@@ -82,7 +97,7 @@
                             <tr>
                                 <td>{{ $cost->utilityCost ? $cost->utilityCost->name : $cost->custom_name }}</td>
                                 <td>{{ $cost->utilityCost ? $cost->utilityCost->description : '-' }}</td>
-                                <td>{{ $cost->utilityCost ? $cost->utilityCost->distribution_key : '-' }}</td>
+                                <td>{{ $cost->distribution_key }}</td>
                                 <td>{{ number_format($cost->amount, 2, ',', '.') }}</td>
                                 <td>
                                     <button wire:click="editRecordedCost({{ $cost->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
