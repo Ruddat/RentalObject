@@ -4,8 +4,9 @@ use App\Models\SysPages;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\BlogSystem\BlogGridManager;
 use App\Livewire\BlogSystem\BlogPostManager;
+use App\Livewire\BlogSystem\BlogDetailsManager;
 use App\Http\Controllers\BlogSystem\PostController;
-use App\Http\Controllers\Utility\NewsletterController;
+use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Settings\BackupDownloadController;
 
 Route::post('/newsletter-signup', [NewsletterController::class, 'signup'])->name('newsletter.signup');
@@ -41,19 +42,22 @@ Route::view('/blog-manager-12', 'rentalobj.pageslivewire.blogmanager._blog-manag
 Route::view('/blog-grid/{categoryId?}', 'rentalobj.pageslivewire.blogmanager._blog-grid-manager')->name('blog-grid-manager');
 Route::view('/blog-details/{postId}', 'rentalobj.pageslivewire.blogmanager._blog-details-manager')->name('blog-details-manager');
 
-//Route::get('/blog-grid/{categoryId?}', BlogGridManager::class)->name('blog-grid-manager');
+
+// Livewire Component Routes
 
 
-//Route::get('/blog', \App\Http\Livewire\Blog::class)->name('blog.index');
-Route::get('/blog/{post}', [BlogPostManager::class, 'show'])->name('blog.show');
+// Route for displaying a blog post (using slugs)
+Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show')
+     ->where('slug', '[a-zA-Z0-9-]+');
 
+// Blog Manager Routes (Admin Area for CRUD operations)
 Route::prefix('blog-manager')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('blog-manager.index');
     Route::get('/create', [PostController::class, 'create'])->name('post.create');
     Route::post('/store', [PostController::class, 'store'])->name('post.store');
-    Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit');
-    Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update');
-    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy');
+    Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit')->where('id', '[0-9]+');
+    Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update')->where('id', '[0-9]+');
+    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy')->where('id', '[0-9]+');
 });
 
 

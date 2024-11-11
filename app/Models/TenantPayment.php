@@ -17,6 +17,8 @@ class TenantPayment extends Model
         'year',
         'month',
         'amount',
+        'payment_date',
+        
     ];
 
     // Beziehung zu Tenant

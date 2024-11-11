@@ -18,7 +18,7 @@
 
 
 
-@livewire('blog-system.blog-details-manager', ['postId' => request()->route('postId')])
+@livewire('blog-system.blog-details-manager', ['identifier' => $post->slug])
 
 
 

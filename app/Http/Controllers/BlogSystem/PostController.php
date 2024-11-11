@@ -32,7 +32,7 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'short_title' => 'nullable|string|max:100',
             'content' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'category' => 'required|string|max:255',
             'tags' => 'nullable|string', // Tags als kommagetrennte Zeichenkette
             'approval_status' => 'required|in:approved,limited,rejected',
@@ -61,6 +61,8 @@ class PostController extends Controller
             $imageFile = $request->file('image');
             $post->image_small = $this->storeImage($imageFile, 615, 405, '_small');
             $post->image_large = $this->storeImage($imageFile, 840, 473, '_large');
+            $post->image_thumbnail = $this->storeImage($imageFile, 110, 74, '_thumb');
+            $post->image_grid = $this->storeImage($imageFile, 410, 231, '_grid');
             $post->save();
         }
 
@@ -95,7 +97,7 @@ class PostController extends Controller
             'title' => 'required|string|max:255',
             'short_title' => 'nullable|string|max:500',
             'content' => 'required',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:5120',
             'approval_status' => 'required|in:approved,limited,rejected',
             'start_date' => 'nullable|date',
             'end_date' => 'nullable|date|after_or_equal:start_date',
@@ -120,6 +122,8 @@ class PostController extends Controller
             $imageFile = $request->file('image');
             $post->image_small = $this->storeImage($imageFile, 615, 405, '_small');
             $post->image_large = $this->storeImage($imageFile, 840, 473, '_large');
+            $post->image_thumbnail = $this->storeImage($imageFile, 110, 74, '_thumb');
+            $post->image_grid = $this->storeImage($imageFile, 410, 231, '_grid');
         }
 
         $post->save();
@@ -166,6 +170,22 @@ class PostController extends Controller
 
         return $path;
     }
+
+
+    public function show($slug)
+    {
+        $post = BlogPost::where('slug', $slug)->firstOrFail();
+       // dd($post);
+        return view('rentalobj.pageslivewire.blogmanager._blog-details-manager', compact('post'));
+    }
+
+    public function showGrid($slug)
+    {
+        $post = BlogPost::where('slug', $slug)->firstOrFail();
+       // dd($post);
+        return view('rentalobj.pageslivewire.blogmanager._blog-details-manager', compact('post'));
+    }
+
 
     private function deleteOldImages($post)
     {

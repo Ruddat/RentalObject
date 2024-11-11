@@ -67,6 +67,12 @@
                     </div>
                 </div>
 
+                <div class="col-md-6">
+                    <label for="payment_date" class="form-label">Zahlungsdatum:</label>
+                    <input type="date" wire:model="payment_date" id="payment_date" class="form-control" required>
+                    @error('payment_date') <div class="text-danger">{{ $message }}</div> @enderror
+                </div>
+
                 <div class="d-flex justify-content-end gap-2 mt-4">
                     <button type="submit" class="btn btn-primary">
                         {{ $editMode ? 'Zahlung aktualisieren' : 'Zahlung hinzufügen' }}
@@ -88,6 +94,7 @@
                             <th>Jahr</th>
                             <th>Monat</th>
                             <th>Betrag (€)</th>
+                            <th>Zahlungsdatum</th> <!-- Neues Feld -->
                             <th>Aktionen</th>
                         </tr>
                     </thead>
@@ -99,6 +106,7 @@
                                 <td>{{ $payment->year }}</td>
                                 <td>{{ DateTime::createFromFormat('!m', $payment->month)->format('F') }}</td>
                                 <td>{{ number_format($payment->amount, 2, ',', '.') }} €</td>
+                                <td>{{ $payment->payment_date }}</td> <!-- Neues Feld -->
                                 <td>
                                     <button wire:click="editPayment({{ $payment->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
                                     <button wire:click="deletePayment({{ $payment->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Sind Sie sicher?')">Löschen</button>

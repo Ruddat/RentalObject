@@ -14,12 +14,49 @@ class BlogDetailsManager extends Component
     public $categories;
     public $featuredPosts;
 
-    public function mount($postId)
+    public function mount($identifier)
     {
-        $this->postId = $postId;
-        $this->post = BlogPost::with('category', 'tags')->findOrFail($this->postId);
-        $this->categories = BlogCategory::withCount('posts')->get();
-        $this->featuredPosts = BlogPost::latest()->limit(3)->get();
+        // Retrieve the main post with approval and date range checks
+        $this->post = BlogPost::with('category', 'tags')
+            ->where('slug', $identifier)
+            ->where('approval_status', 'approved')
+            ->where(function ($query) {
+                $query->where('start_date', '<=', now())
+                      ->orWhereNull('start_date');
+            })
+            ->where(function ($query) {
+                $query->where('end_date', '>=', now())
+                      ->orWhereNull('end_date');
+            })
+            ->firstOrFail();
+
+        // Fetch categories with filtered post count
+        $this->categories = BlogCategory::withCount(['posts' => function ($query) {
+            $query->where('approval_status', 'approved')
+                  ->where(function ($query) {
+                      $query->where('start_date', '<=', now())
+                            ->orWhereNull('start_date');
+                  })
+                  ->where(function ($query) {
+                      $query->where('end_date', '>=', now())
+                            ->orWhereNull('end_date');
+                  });
+        }])->get();
+
+        // Fetch featured posts with the same conditions
+        $this->featuredPosts = BlogPost::query()
+            ->where('approval_status', 'approved')
+            ->where(function ($query) {
+                $query->where('start_date', '<=', now())
+                      ->orWhereNull('start_date');
+            })
+            ->where(function ($query) {
+                $query->where('end_date', '>=', now())
+                      ->orWhereNull('end_date');
+            })
+            ->latest()
+            ->limit(3)
+            ->get();
     }
 
     public function render()

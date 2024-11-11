@@ -92,8 +92,10 @@ class HeatingCostService
             ];
         }
 
-        // Allocate based on tenant's billing type
-        $totalBaseUnits = max(1, Tenant::where('rental_object_id', $rentalObjectId)->sum($tenant->billing_type === 'people' ? 'person_count' : 'unit_count'));
+        $totalBaseUnits = max(1, Tenant::where('rental_object_id', $rentalObjectId)->sum(
+            $tenant->billing_type === 'people' ? 'person_count' : 'unit_count'
+        ));
+
         $tenantUnits = $tenant->billing_type === 'people' ? $tenant->person_count : $tenant->unit_count;
 
         $baseCostPerUnit = $costs['baseCost'] / $totalBaseUnits;
@@ -110,5 +112,17 @@ class HeatingCostService
             'baseCost' => $tenantBaseCost,
             'consumptionCost' => $tenantConsumptionCost,
         ];
+    }
+
+
+    public function calculateTotalCostForPeriod($heatingCost, $startDate, $endDate)
+    {
+        $totalCost = $this->calculateTotalCost($heatingCost);
+
+        // Berechnung der Tage im Jahr (365 oder 366)
+        $daysInYear = Carbon::parse($startDate)->year % 4 == 0 ? 366 : 365;
+        $daysRented = Carbon::parse($endDate)->diffInDays(Carbon::parse($startDate)) + 1;
+
+        return round(($totalCost / $daysInYear) * $daysRented, 2);
     }
 }

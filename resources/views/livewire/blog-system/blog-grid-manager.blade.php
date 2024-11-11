@@ -5,9 +5,9 @@
             <div class="row">
                 @foreach($posts as $post)
                     <div class="col-lg-4 col-md-6">
-                        <a href="{{ route('blog-details-manager', $post->id) }}" class="flat-blog-item hover-img">
+                        <a href="{{ route('blog.show', $post->slug) }}" class="flat-blog-item hover-img">
                             <div class="img-style">
-                                <img class="lazyload" src="{{ Storage::url($post->image_large) }}" alt="{{ $post->title }}">
+                                <img class="lazyload" src="{{ Storage::url($post->image_grid) }}" alt="{{ $post->title }}">
                                 <span class="date-post">{{ $post->created_at->format('F d, Y') }}</span>
                             </div>
                             <div class="content-box">
@@ -29,3 +29,4 @@
         </div>
     </section>
 </div>
+

@@ -24,6 +24,7 @@ class TenantPayments extends Component
     public $payments;
     public $availableYears = [];
     public $availableMonths = [];
+    public $payment_date;
 
     protected $rules = [
         'tenant_id' => 'required|exists:tenants,id',
@@ -31,6 +32,7 @@ class TenantPayments extends Component
         'year' => 'required|integer|digits:4',
         'month' => 'required|integer|between:1,12',
         'amount' => 'required|numeric|min:0',
+        'payment_date' => 'nullable|date',
     ];
 
     public function mount()
@@ -38,6 +40,9 @@ class TenantPayments extends Component
         $this->tenants = Tenant::all();
         $this->rentalObjects = RentalObject::all();
         $this->loadPayments();
+
+        // Setze das payment_date auf den ersten Tag des aktuellen Monats
+        $this->payment_date = now()->startOfMonth()->toDateString();
     }
 
     public function updatedTenantId()
@@ -106,6 +111,11 @@ class TenantPayments extends Component
             return;
         }
 
+        // Setze das payment_date auf den ersten Tag des aktuellen Monats, wenn es nicht gesetzt wurde
+        if (!$this->payment_date) {
+            $this->payment_date = now()->startOfMonth()->toDateString();
+        }
+
         if ($this->editMode) {
             $payment = TenantPayment::find($this->editId);
             $payment->update([
@@ -114,6 +124,7 @@ class TenantPayments extends Component
                 'year' => $this->year,
                 'month' => $this->month,
                 'amount' => $this->amount,
+                'payment_date' => $this->payment_date, // Neues Feld
             ]);
         } else {
             TenantPayment::create([
@@ -122,17 +133,22 @@ class TenantPayments extends Component
                 'year' => $this->year,
                 'month' => $this->month,
                 'amount' => $this->amount,
+                'payment_date' => $this->payment_date, // Neues Feld
             ]);
         }
 
         // Automatisches Hochzählen des Monats, unter Berücksichtigung der Mietdauer
         if ($this->month < 12 && in_array($this->month + 1, $this->availableMonths)) {
             $this->month++;
+            // Setze das payment_date auf den ersten Tag des nächsten Monats
+            $this->payment_date = Carbon::create($this->year, $this->month, 1)->toDateString();
         } else {
             // Falls Jahrwechsel, nächstes Jahr einstellen und auf den ersten verfügbaren Monat setzen
             if (in_array($this->year + 1, $this->availableYears)) {
                 $this->year++;
-                $this->month = $this->availableMonths[0];
+                $this->month = 1; // Setze den Monat auf Januar
+                // Setze das payment_date auf den ersten Tag des neuen Jahres und Monats
+                $this->payment_date = Carbon::create($this->year, $this->month, 1)->toDateString();
             }
         }
 
@@ -149,14 +165,18 @@ class TenantPayments extends Component
         $this->year = $payment->year;
         $this->month = $payment->month;
         $this->amount = $payment->amount;
+        $this->payment_date = $payment->payment_date ?? now()->startOfMonth()->toDateString(); // Neues Feld
 
         $this->generateAvailableYearsAndMonths($payment->tenant);
     }
 
     public function resetFields()
     {
-        $this->reset(['tenant_id', 'rental_object_id', 'year', 'month', 'amount', 'editMode', 'editId']);
+        $this->reset(['tenant_id', 'rental_object_id', 'year', 'month', 'amount', 'payment_date', 'editMode', 'editId']);
         $this->generateAvailableYearsAndMonths(Tenant::find($this->tenant_id));
+
+        // Setze das payment_date auf den ersten Tag des aktuellen Monats
+        $this->payment_date = now()->startOfMonth()->toDateString();
     }
 
     public function deletePayment($id)

@@ -1,11 +1,7 @@
 <div class="main-content">
     <div class="main-content-inner">
-        <div class="button-show-hide show-mb">
-            <span class="body-1">Show Dashboard</span>
-        </div>
         <h2 class="mb-4">Neue Abrechnung erstellen</h2>
-
-        <!-- Widget Box für das Erstellungsformular -->
+        <!-- Erstellungsformular -->
         <div class="widget-box-2 mess-box p-4 mb-4">
             <h5 class="title">Abrechnungsdetails</h5>
 
@@ -65,40 +61,66 @@
             </form>
         </div>
 
-<!-- Gespeicherte Abrechnungen -->
-<div class="widget-box-2 mess-box">
-    <h5 class="title">Gespeicherte Abrechnungen</h5>
-    <div class="table-responsive mt-3">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Ersteller</th>
-                    <th>Mieter</th>
-                    <th>Zeitraum</th>
-                    <th>PDF Seite 1</th>
-                    <th>PDF Seite 2</th>
-                    <th>Erstellungsdatum</th>
-                    <th>Aktionen</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($savedBillings as $billing)
-                    <tr>
-                        <td>{{ $billing->billingHeader->creator_name }}</td>
-                        <td>{{ $billing->tenant->first_name }} {{ $billing->tenant->last_name }}</td>
-                        <td>{{ $billing->billing_period }}</td>
-                        <td><a href="{{ $billing->pdf_path }}" target="_blank">Seite 1 anzeigen</a></td>
-                        <td><a href="{{ $billing->pdf_path_second }}" target="_blank">Seite 2 anzeigen</a></td>
-                        <td>{{ $billing->created_at->format('d.m.Y') }}</td>
-                        <td>
-                            <button wire:click="editBilling({{ $billing->id }})" class="btn btn-sm btn-info">Bearbeiten</button>
-                            <button wire:click="deleteBilling({{ $billing->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Sind Sie sicher?')">Löschen</button>
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
+        <!-- Gespeicherte Abrechnungen -->
+        <div class="widget-box-2 mess-box">
+            <h5 class="title">Gespeicherte Abrechnungen</h5>
+        <!-- Filter- und Suchoptionen -->
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <input type="text" wire:model.change="searchTerm" class="form-control" placeholder="Mieter suchen...">
+            </div>
+            <div class="col-md-3">
+                <input type="date" wire:model.change="fromDate" class="form-control" placeholder="Von Datum">
+            </div>
+            <div class="col-md-3">
+                <input type="date" wire:model.change="toDate" class="form-control" placeholder="Bis Datum">
+            </div>
+            <div class="col-md-3 d-flex align-items-center">
+                <button wire:click="resetFilters" class="btn btn-secondary">Reset</button>
+            </div>
+        </div>
+
+            <div class="table-responsive mt-3">
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th wire:click="sortBy('billing_header_creator_name')">Ersteller</th>
+                            <th wire:click="sortBy('tenant_first_name')">Mieter</th>
+                            <th>Zeitraum</th>
+                            <th>PDF Seite 1</th>
+                            <th>PDF Seite 2</th>
+                            <th>Nebenkostenzahlungen</th>
+                            <th wire:click="sortBy('billing_records.created_at')">Erstellungsdatum</th>
+                            <th>Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($savedBillings as $billing)
+
+                        <tr>
+                            <td>{{ $billing->billing_header_creator_name ?? 'N/A' }}</td>
+                            <td>{{ $billing->tenant_first_name ?? 'N/A' }} {{ $billing->tenant_last_name ?? 'N/A' }}</td>
+                            <td>{{ $billing->billing_period ?? 'N/A' }}</td>
+                            <td><a href="{{ $billing->pdf_path }}" target="_blank">Seite 1 anzeigen</a></td>
+                            <td><a href="{{ $billing->pdf_path_second }}" target="_blank">Seite 2 anzeigen</a></td>
+                            <td><a href="{{ $billing->pdf_path_third }}" target="_blank">Seite 3 anzeigen</a></td>
+                            <td>{{ \Carbon\Carbon::parse($billing->created_at)->format('d.m.Y H:i') }}</td>
+                            <td>
+                                <button wire:click="editBilling({{ $billing->id }})" class="btn btn-sm btn-info">Bearbeiten</button>
+                                <button wire:click="deleteBilling({{ $billing->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Sind Sie sicher?')">Löschen</button>
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="mt-4">
+                {{ $savedBillings->links() }}
+            </div>
+        </div>
 
         <!-- Footer -->
         <div class="footer-dashboard footer-dashboard-2 mt-4">

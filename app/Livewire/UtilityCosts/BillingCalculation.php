@@ -182,6 +182,9 @@ class BillingCalculation extends Component
 
     public function render()
     {
+
+      //  dd($this->calculatedCosts);
+
         return view('livewire.utility-costs.billing-calculation', [
             'calculatedCosts' => $this->calculatedCosts,
         ]);

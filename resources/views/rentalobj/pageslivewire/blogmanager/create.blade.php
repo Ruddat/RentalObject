@@ -21,8 +21,7 @@
 
             <fieldset class="box-fieldset">
                 <label for="content" class="form-label">Inhalt<span>*</span></label>
-                <textarea id="content" class="hidden mt-1 w-full rounded-md shadow-sm" name="content"></textarea>
-                <trix-editor input="content" class="trix-content"></trix-editor>
+                <textarea id="content" class="form-control" name="content"></textarea>
             </fieldset>
 
             <fieldset class="box-fieldset">
@@ -78,11 +77,102 @@
         originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
     });
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
 
-@push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.js"></script>
-@endpush
+
+
+<script src="https://cdn.ckeditor.com/ckeditor5/38.1.0/classic/ckeditor.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#content'), {
+            toolbar: [
+                'heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', '|', 'blockQuote',
+                'insertTable', 'mediaEmbed', 'undo', 'redo', '|', 'imageUpload'
+            ],
+            ckfinder: {
+                uploadUrl: '{{ route('upload.image') }}'
+            },
+            image: {
+                toolbar: [
+                    'imageTextAlternative', '|',
+                    'imageStyle:alignLeft', 'imageStyle:alignCenter', 'imageStyle:alignRight', '|',
+                    'resizeImage:25', 'resizeImage:50', 'resizeImage:75', 'resizeImage:original'
+                ],
+                resizeOptions: [
+                    {
+                        name: 'resizeImage:original',
+                        value: null,
+                        icon: 'original'
+                    },
+                    {
+                        name: 'resizeImage:25',
+                        value: '25',
+                        icon: 'small'
+                    },
+                    {
+                        name: 'resizeImage:50',
+                        value: '50',
+                        icon: 'medium'
+                    },
+                    {
+                        name: 'resizeImage:75',
+                        value: '75',
+                        icon: 'large'
+                    }
+                ],
+                resizeUnit: '%'
+            }
+        })
+        .then(editor => {
+            editor.plugins.get('FileRepository').createUploadAdapter = (loader) => {
+                return new MyUploadAdapter(loader);
+            };
+        })
+        .catch(error => {
+            console.error(error);
+        });
+
+    // Custom Upload Adapter to include CSRF token
+    class MyUploadAdapter {
+        constructor(loader) {
+            this.loader = loader;
+        }
+
+        upload() {
+            return this.loader.file.then(file => new Promise((resolve, reject) => {
+                const data = new FormData();
+                data.append('upload', file);
+                data.append('_token', '{{ csrf_token() }}'); // Laravel CSRF-Token hinzufügen
+
+                fetch('{{ route('upload.image') }}', {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest'
+                    }
+                })
+                .then(response => response.json())
+                .then(result => {
+                    if (result.url) {
+                        resolve({
+                            default: result.url
+                        });
+                    } else {
+                        reject(result.error && result.error.message ? result.error.message : 'Upload failed');
+                    }
+                })
+                .catch(error => {
+                    reject('Network error');
+                });
+            }));
+        }
+
+        abort() {
+            // Falls der Upload abgebrochen wird
+        }
+    }
+</script>
+
+
 
 <style>
     /* Scoped styles for blog content */

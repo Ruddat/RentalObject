@@ -85,11 +85,13 @@
 
 
 
-@if (Route::is('index', 'home-02', 'add-property', 'blog-manager', 'dashboard', 'billing-header-form', 'tenant-payments' , 'rental-object-table', 'billing-generation', 'billing-calculation'))
+@if (Route::is('index', 'home-02', 'blog.show', 'blog-manager-12', 'dashboard'))
 
+@include('rentalobj.layout.partials.footer')
 @include('rentalobj.layout.partials.footer-scripts')
 @else
 
+12345
 @include('rentalobj.layout.partials.footer-scripts-dashboard')
 @endif
 

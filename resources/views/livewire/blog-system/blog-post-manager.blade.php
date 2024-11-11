@@ -7,11 +7,11 @@
                         <!-- Liste der Blog Posts -->
                         @foreach($posts as $post)
                             <div class="flat-blog-item">
-                                <a href="{{ route('blog-details-manager', $post->id) }}" class="img-style">
+                                <a href="{{ route('blog.show', $post->slug) }}" class="img-style">
                                     <img src="{{ Storage::url($post->image_large) }}" alt="{{ $post->title }}">
                                 </a>
                                 <div class="content-box">
-                                    <h5 class="title"><a href="{{ route('blog-details-manager', $post->id) }}" class="link">{{ $post->title }}</a></h5>
+                                    <h5 class="title"><a href="{{ route('blog.show', $post->slug) }}" class="link">{{ $post->title }}</a></h5>
                                     <div class="post-author">
                                         <span>{{ $post->author }}</span>
                                         <span>{{ $post->created_at->format('F j, Y') }}</span>
@@ -59,11 +59,11 @@
                                 @foreach($featuredPosts as $featuredPost)
                                     <li>
                                         <div class="recent-post-item not-overlay hover-img">
-                                            <a href="{{ route('blog-details-manager', $featuredPost->id) }}" class="img-style">
-                                                <img src="{{ Storage::url($featuredPost->image_large) }}" alt="post-recent">
+                                            <a href="{{ route('blog.show', $featuredPost->slug) }}" class="img-style">
+                                                <img src="{{ Storage::url($featuredPost->image_thumbnail) }}" alt="{{ $featuredPost->title }} - post-recent">
                                             </a>
                                             <div class="content">
-                                                <a href="{{ route('blog-details-manager', $featuredPost->id) }}" class="title link">{{ $featuredPost->title }}</a>
+                                                <a href="{{ route('blog.show', $featuredPost->slug) }}" class="title link">{{ $featuredPost->title }}</a>
                                                 <div class="subtitle">
                                                     <span>{{ $featuredPost->created_at->format('F j, Y') }}</span>
                                                 </div>

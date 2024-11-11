@@ -21,7 +21,7 @@
 
                 <div class="mb-3">
                     <label for="year" class="form-label">Jahr:</label>
-                    <select wire:model="year" id="year" class="form-select" required>
+                    <select wire:model.change="year" id="year" class="form-select" required>
                         @for ($i = date('Y'); $i >= date('Y') - 20; $i--)
                             <option value="{{ $i }}">{{ $i }}</option>
                         @endfor

@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('image_small')->nullable();
             $table->string('image_large')->nullable();
+            $table->string('image_thumbnail')->nullable();
+            $table->string('image_grid')->nullable();
             $table->string('author')->default('Admin');
 
             // Hinzufügen des Approval-Status

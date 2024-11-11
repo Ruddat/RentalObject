@@ -104,9 +104,9 @@
                                 {{ \Carbon\Carbon::parse($entry['tenant']->start_date)->format('d.m.Y') }}
                                 - {{ $entry['tenant']->end_date ? \Carbon\Carbon::parse($entry['tenant']->end_date)->format('d.m.Y') : 'Heute' }}
                             </td>
-                            <td>{{ number_format($entry['heating_cost'], 2, ',', '.') }} €</td>
+                            <td>{{ number_format($entry['heating_cost'] - $entry['warm_water_cost'], 2, ',', '.') }} €</td> <!-- Berechnete Heizkosten -->
                             <td>{{ number_format($entry['warm_water_cost'], 2, ',', '.') }} €</td>
-                            <td>{{ number_format($entry['total_cost'], 2, ',', '.') }} €</td>
+                            <td>{{ number_format($entry['heating_cost'], 2, ',', '.') }} €</td> <!-- Gesamtkosten entsprechen den Heizkosten -->
                         </tr>
                     @endforeach
                 </tbody>

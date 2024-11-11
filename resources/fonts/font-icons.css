@@ -531,3 +531,6 @@
 .icon-phone-line2:before {
   content: "\e956";
 }
+.icon-whatsapp:before {
+    content: "\eef2";
+  }
