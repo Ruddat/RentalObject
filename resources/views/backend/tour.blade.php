@@ -1,14 +1,14 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Tour')
 @section('css')
     <!-- glight css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/glightbox/glightbox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/glightbox/glightbox.min.css')}}">
 
     <!-- shepherdjs css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/shepherdjs/shepherd.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/shepherdjs/shepherd.css')}}">
 
     <!-- slick css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -69,7 +69,7 @@
                     <div class="card-body profile-friends">
                         <div class="d-flex align-items-center">
                             <div class="h-40 w-40 d-flex-center b-r-50 overflow-hidden bg-dark">
-                                <img src="{{asset('../assets/images/avtar/2.png')}}" alt="image" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="image" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-medium"> Bette Hagenes</div>
@@ -79,7 +79,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div class="h-40 w-40 d-flex-center b-r-50 overflow-hidden bg-primary">
-                                <img src="{{asset('../assets/images/avtar/10.png')}}" alt="image" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/10.png')}}" alt="image" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-medium"> Fleta Walsh</div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div class="h-40 w-40 d-flex-center b-r-50 overflow-hidden bg-success">
-                                <img src="{{asset('../assets/images/avtar/14.png')}}" alt="image" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="image" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-medium"> Lenora</div>
@@ -99,7 +99,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div class="h-40 w-40 d-flex-center b-r-50 overflow-hidden bg-warning">
-                                <img src="{{asset('../assets/images/avtar/16.png')}}" alt="image" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/16.png')}}" alt="image" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-medium"> Fleta Walsh </div>
@@ -109,7 +109,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div class="h-40 w-40 d-flex-center b-r-50 overflow-hidden bg-danger">
-                                <img src="{{asset('../assets/images/avtar/13.png')}}" alt="image" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/13.png')}}" alt="image" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-medium"> Emery McKenzie</div>
@@ -119,7 +119,7 @@
                         </div>
                         <div class="d-flex align-items-center mt-3">
                             <div class="h-40 w-40 d-flex-center b-r-50 overflow-hidden bg-info">
-                                <img src="{{asset('../assets/images/avtar/1.png')}}" alt="image" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="image" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2">
                                 <div class="fw-medium"> Bette Hagenes</div>
@@ -134,7 +134,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden bg-danger">
-                                <img src="{{asset('../assets/images/avtar/16.png')}}" alt="" class="img-fluid">
+                                <img src="{{asset('backend/assets/images/avtar/16.png')}}" alt="" class="img-fluid">
                             </div>
                             <div class="flex-grow-1 ps-2 pe-2">
                                 <div class="f-w-600">Heli Walsh</div>
@@ -145,19 +145,19 @@
                         <div class="post-div">
                             <div class="row g-2 my-2">
                                 <div class="col-6">
-                                    <img src="{{asset('../assets/images/profile-app/19.jpg')}}" class="w-100 rounded" alt="">
+                                    <img src="{{asset('backend/assets/images/profile-app/19.jpg')}}" class="w-100 rounded" alt="">
                                 </div>
                                 <div class="col-6">
-                                    <img src="{{asset('../assets/images/profile-app/27.jpg')}}" class="w-100 rounded" alt="">
+                                    <img src="{{asset('backend/assets/images/profile-app/27.jpg')}}" class="w-100 rounded" alt="">
                                 </div>
                                 <div class="col-4">
-                                    <img src="{{asset('../assets/images/profile-app/28.jpg')}}" class="w-100 rounded" alt="">
+                                    <img src="{{asset('backend/assets/images/profile-app/28.jpg')}}" class="w-100 rounded" alt="">
                                 </div>
                                 <div class="col-4">
-                                    <img src="{{asset('../assets/images/profile-app/29.jpg')}}" class="w-100 rounded" alt="">
+                                    <img src="{{asset('backend/assets/images/profile-app/29.jpg')}}" class="w-100 rounded" alt="">
                                 </div>
                                 <div class="col-4">
-                                    <img src="{{asset('../assets/images/profile-app/30.jpg')}}" class="w-100 rounded" alt="">
+                                    <img src="{{asset('backend/assets/images/profile-app/30.jpg')}}" class="w-100 rounded" alt="">
                                 </div>
                             </div>
                             <p class="test-muted">There's nothing like fresh flowers!......🌸🌼🌻</p>
@@ -188,65 +188,65 @@
                                     <div class="story-container app-arrow">
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/11.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/11.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-primary">
-                                                    <img src="{{asset('../assets/images/avtar/1.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/12.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/12.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-danger">
-                                                    <img src="{{asset('../assets/images/avtar/08.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/08.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/13.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/13.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-secondry">
-                                                    <img src="{{asset('../assets/images/avtar/2.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/14.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/14.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-dark">
-                                                    <img src="{{asset('../assets/images/avtar/3.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/3.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/15.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/15.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-warning">
-                                                    <img src="{{asset('../assets/images/avtar/07.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/07.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/16.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/16.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-info">
-                                                    <img src="{{asset('../assets/images/avtar/4.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/4.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/17.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/17.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-light">
-                                                    <img src="{{asset('../assets/images/avtar/5.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/5.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
                                         <div>
                                             <div class="story">
-                                                <img src="{{asset('../assets/images/profile-app/18.jpg')}}" class="rounded img-fluid" alt="image">
+                                                <img src="{{asset('backend/assets/images/profile-app/18.jpg')}}" class="rounded img-fluid" alt="image">
                                                 <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden story-icon bg-success">
-                                                    <img src="{{asset('../assets/images/avtar/6.png')}}" alt="image" class="img-fluid">
+                                                    <img src="{{asset('backend/assets/images/avtar/6.png')}}" alt="image" class="img-fluid">
                                                 </div>
                                             </div>
                                         </div>
@@ -263,9 +263,9 @@
                                     <div class="col-12">
                                         <div class="photos-container">
                                             <div class="left-main-img img-box">
-                                                <a href="{{asset('assets/images/profile-app/20.jpg')}}" class="glightbox"
+                                                <a href="{{asset('backend/assets/images/profile-app/20.jpg')}}" class="glightbox"
                                                    data-glightbox="type: image; zoomable: true;">
-                                                    <img src="{{asset('../assets/images/profile-app/20.jpg')}}" alt="image">
+                                                    <img src="{{asset('backend/assets/images/profile-app/20.jpg')}}" alt="image">
                                                     <div class="transparent-box2">
                                                         <div class="captions">
                                                             Simple image example
@@ -275,8 +275,8 @@
                                             </div>
                                             <div>
                                                 <div class="sub">
-                                                    <div class="img-box"><a href="{{asset('assets/images/profile-app/21.jpg')}}" class="glightbox"
-                                                                            data-glightbox="type: image"><img src="{{asset('../assets/images/profile-app/21.jpg')}}"
+                                                    <div class="img-box"><a href="{{asset('backend/assets/images/profile-app/21.jpg')}}" class="glightbox"
+                                                                            data-glightbox="type: image"><img src="{{asset('backend/assets/images/profile-app/21.jpg')}}"
                                                                                                               alt="image">
                                                             <div class="transparent-box2">
                                                                 <div class="captions">
@@ -285,8 +285,8 @@
                                                             </div>
                                                         </a>
                                                     </div>
-                                                    <div class="img-box"><a href="{{asset('assets/images/profile-app/23.jpg')}}" class="glightbox"
-                                                                            data-glightbox="type: image"><img src="{{asset('../assets/images/profile-app/23.jpg')}}"
+                                                    <div class="img-box"><a href="{{asset('backend/assets/images/profile-app/23.jpg')}}" class="glightbox"
+                                                                            data-glightbox="type: image"><img src="{{asset('backend/assets/images/profile-app/23.jpg')}}"
                                                                                                               alt="image">
                                                             <div class="transparent-box2">
                                                                 <div class="captions">
@@ -295,8 +295,8 @@
                                                             </div>
                                                         </a>
                                                     </div>
-                                                    <div class="img-box"><a href="{{asset('assets/images/profile-app/24.jpg')}}" class="glightbox"
-                                                                            data-glightbox="type: image"><img src="{{asset('../assets/images/profile-app/24.jpg')}}"
+                                                    <div class="img-box"><a href="{{asset('backend/assets/images/profile-app/24.jpg')}}" class="glightbox"
+                                                                            data-glightbox="type: image"><img src="{{asset('backend/assets/images/profile-app/24.jpg')}}"
                                                                                                               alt="image" >
                                                             <div class="transparent-box2">
                                                                 <div class="captions">
@@ -306,9 +306,9 @@
                                                         </a>
                                                     </div>
                                                     <div id="multi-link" class="img-box">
-                                                        <a href="{{asset('assets/images/profile-app/22.jpg')}}" class="glightbox"
+                                                        <a href="{{asset('backend/assets/images/profile-app/22.jpg')}}" class="glightbox"
                                                            data-glightbox="type: image">
-                                                            <img src="{{asset('../assets/images/profile-app/22.jpg')}}" alt="image">
+                                                            <img src="{{asset('backend/assets/images/profile-app/22.jpg')}}" alt="image">
                                                             <div class="transparent-box">
                                                                 <div class="caption">
                                                                     +3
@@ -319,22 +319,22 @@
                                                 </div>
                                             </div>
                                             <div id="more-img" class="extra-images-container hide-element">
-                                                <a href="{{asset('assets/images/blog-app/01.jpg')}}" class="glightbox"
-                                                   data-glightbox="type: image"><img src="{{asset('../assets/images/blog-app/01.jpg')}}"
+                                                <a href="{{asset('backend/assets/images/blog-app/01.jpg')}}" class="glightbox"
+                                                   data-glightbox="type: image"><img src="{{asset('backend/assets/images/blog-app/01.jpg')}}"
                                                                                      alt="image" ></a>
-                                                <a href="{{asset('assets/images/blog-app/02.jpg')}}" class="glightbox"
-                                                   data-glightbox="type: image"><img src="{{asset('../assets/images/blog-app/02.jpg')}}"
+                                                <a href="{{asset('backend/assets/images/blog-app/02.jpg')}}" class="glightbox"
+                                                   data-glightbox="type: image"><img src="{{asset('backend/assets/images/blog-app/02.jpg')}}"
                                                                                      alt="image" ></a>
-                                                <a href="{{asset('assets/images/blog-app/03.jpg')}}" class="glightbox"
-                                                   data-glightbox="type: image"><img src="{{asset('../assets/images/blog-app/03.jpg')}}"
+                                                <a href="{{asset('backend/assets/images/blog-app/03.jpg')}}" class="glightbox"
+                                                   data-glightbox="type: image"><img src="{{asset('backend/assets/images/blog-app/03.jpg')}}"
                                                                                      alt="image" ></a>
                                             </div>
                                         </div>
 
                                         <div class="photos-container">
                                             <div class="left-main-img img-box">
-                                                <a href="{{asset('assets/images/profile-app/video.mp4" class="glightbox">
-                                                    <img src="{{asset('../assets/images/profile-app/26.jpg')}}" alt="image" >
+                                                <a href="{{asset('backend/assets/images/profile-app/video.mp4" class="glightbox">
+                                                    <img src="{{asset('backend/assets/images/profile-app/26.jpg')}}" alt="image" >
                                                     <div class="transparent-box">
                                                         <div class="caption">
                                                             <i class="fa-solid fa-play-circle fa-fw"></i>
@@ -343,8 +343,8 @@
                                                 </a>
                                             </div>
                                             <div class="right-main-img img-box">
-                                                <a href="{{asset('assets/images/profile-app/video.mp4" class="glightbox">
-                                                    <img src="{{asset('../assets/images/profile-app/25.jpg')}}" alt="image" >
+                                                <a href="{{asset('backend/assets/images/profile-app/video.mp4" class="glightbox">
+                                                    <img src="{{asset('backend/assets/images/profile-app/25.jpg')}}" alt="image" >
                                                     <div class="transparent-box">
                                                         <div class="caption">
                                                             <i class="fa-solid fa-play-circle fa-fw"></i>
@@ -382,7 +382,7 @@
                             </div>
                             <div class="person-details">
                                 <h5 class="f-w-600">Ninfa Monaldo
-                                    <img width="20" height="20" src="{{asset('../assets/images/profile-app/01.png')}}"
+                                    <img width="20" height="20" src="{{asset('backend/assets/images/profile-app/01.png')}}"
                                          alt="instagram-check-mark" >
                                 </h5>
                                 <p>Web designer &amp; Developer</p>
@@ -461,9 +461,9 @@
 <div id="customizer"></div>
 
 <!-- slick-file -->
-<script src="{{asset('assets/vendor/slick/slick.min.js')}}"></script>
-<script src="{{asset('assets/vendor/shepherdjs/shepherd.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/slick/slick.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/shepherdjs/shepherd.js')}}"></script>
 
 <!-- js -->
-<script src="{{asset('assets/js/tour.js')}}"></script>
+<script src="{{asset('backend/assets/js/tour.js')}}"></script>
 @endsection

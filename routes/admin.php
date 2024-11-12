@@ -9,6 +9,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('utility-costs-table', 'backend.livewirepages._utility-costs-table')->name('utility-costs-table');
 Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
+Route::view('rental-object-table', 'backend.livewirepages._rental-object-table')->name('rental-object-table');
+Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
+Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
+Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
+Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
 
 
 Route::view('index', 'backend.index')->name('index');

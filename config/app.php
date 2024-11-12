@@ -84,6 +84,10 @@ return [
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
+    'version' => trim(exec('git describe --tags --abbrev=0')) ?? '1.0.0',
+
+    'name' => 'Ingo Ruddat',
+
     /*
     |--------------------------------------------------------------------------
     | Encryption Key

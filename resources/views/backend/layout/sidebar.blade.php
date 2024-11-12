@@ -118,7 +118,7 @@
             </li>
 
 
-            <li class="menu-title"> <span>Nebenkosten</span></li>
+            <li class="menu-title"> <span>@autotranslate("Nebenkosten", app()->getLocale())</span></li>
             <li>
                 <a class="" data-bs-toggle="collapse" href="#nebenkosten-kits" aria-expanded="false">
 
@@ -128,7 +128,7 @@
                 <ul class="collapse" id="nebenkosten-kits">
                     <li><a href="{{route('utility-costs-table')}}">Utility Costs Table</a></li>
                     <li><a href="{{route('billing-header-form')}}">Abrechnungskopf hinzufügen</a></li>
-                    <li><a href="{{route('blank')}}">Mietobjekte verwalten</a></li>
+                    <li><a href="{{route('rental-object-table')}}">Mietobjekte verwalten</a></li>
                     <li><a href="{{route('blank')}}">Mieter verwalten</a></li>
                     <li><a href="{{route('blank')}}">Nebenkostenzahlungen verwalten</a></li>
                     <li><a href="{{route('blank')}}">Nebenkosten erfassen</a></li>

@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Education Dashboard')
 @section('css')
 
@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/apexcharts/apexcharts.css') }}">
 
     <!-- glight css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/glightbox/glightbox.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/glightbox/glightbox.min.css')}}">
 
     <!-- slick css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick-theme.css')}}">
 
 @endsection
 @section('main-content')
@@ -25,7 +25,7 @@
                             </div>
                             <div class="profile-top-content">
                                 <div class="h-80 w-80 d-flex-center b-r-50 overflow-hidden">
-                                    <img src="{{asset('assets/images/dashboard/education/01.png')}}" alt="" class="img-fluid">
+                                    <img src="{{asset('backend/assets/images/dashboard/education/01.png')}}" alt="" class="img-fluid">
                                 </div>
                                 <h6 class="text-dark f-w-600 mb-0">Kari wiza</h6>
                                 <p class="text-secondary f-s-13 mb-0">@Kari_wiza@001</p>
@@ -163,7 +163,7 @@
                                 <li class="activity-list-item">
                                     <div
                                         class="h-35 w-35 d-flex-center b-r-10 overflow-hidden text-bg-secondary activity-list-avtar">
-                                        <img src="{{asset('assets/images/avtar/1.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <div class="activity-list-content">
                                         <h6 class="mb-0">Earl Klein</h6>
@@ -175,7 +175,7 @@
                                 </li>
                                 <li class="activity-list-item">
                                     <div class="h-35 w-35 d-flex-center b-r-10 overflow-hidden text-bg-light activity-list-avtar">
-                                        <img src="{{asset('assets/images/avtar/2.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <div class="activity-list-content">
                                         <h6 class="mb-0">Matteo Klein</h6>
@@ -187,7 +187,7 @@
                                 </li>
                                 <li class="activity-list-item">
                                     <div class="h-35 w-35 d-flex-center b-r-10 overflow-hidden text-bg-dark activity-list-avtar">
-                                        <img src="{{asset('assets/images/avtar/3.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/avtar/3.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <div class="activity-list-content">
                                         <h6 class="mb-0">Sam Franco</h6>
@@ -200,7 +200,7 @@
                                 <li class="activity-list-item">
                                     <div
                                         class="h-35 w-35 d-flex-center b-r-10 overflow-hidden text-bg-secondary activity-list-avtar">
-                                        <img src="{{asset('assets/images/avtar/4.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/avtar/4.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <div class="activity-list-content">
                                         <h6 class="mb-0">Steve Waters</h6>
@@ -213,7 +213,7 @@
                                 <li class="activity-list-item">
                                     <div
                                         class="h-35 w-35 d-flex-center b-r-10 overflow-hidden text-bg-secondary activity-list-avtar">
-                                        <img src="{{asset('assets/images/avtar/5.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/avtar/5.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <div class="activity-list-content">
                                         <h6 class="mb-0">John Mandela</h6>
@@ -272,7 +272,7 @@
                                                     <ul class="avatar-group">
                                                         <li class="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-primary b-2-light"
                                                             data-bs-toggle="tooltip" data-bs-title="Sabrina Torres">
-                                                            <img src="{{asset('assets/images/avtar/2.png')}}" alt="" class="img-fluid">
+                                                            <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="" class="img-fluid">
                                                         </li>
                                                         <li class="text-bg-secondary h-25 w-25 d-flex-center b-r-50"
                                                             data-bs-toggle="tooltip" data-bs-title="10 More">
@@ -291,7 +291,7 @@
                                                     <ul class="avatar-group">
                                                         <li class="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-dark b-2-light"
                                                             data-bs-toggle="tooltip" data-bs-title="Sabrina Torres">
-                                                            <img src="{{asset('assets/images/avtar/4.png')}}" alt="" class="img-fluid">
+                                                            <img src="{{asset('backend/assets/images/avtar/4.png')}}" alt="" class="img-fluid">
                                                         </li>
                                                         <li class="text-bg-secondary h-25 w-25 d-flex-center b-r-50"
                                                             data-bs-toggle="tooltip" data-bs-title="10 More">
@@ -310,7 +310,7 @@
                                                     <ul class="avatar-group">
                                                         <li class="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-secondary b-2-light"
                                                             data-bs-toggle="tooltip" data-bs-title="Sabrina Torres">
-                                                            <img src="{{asset('assets/images/avtar/5.png')}}" alt="" class="img-fluid">
+                                                            <img src="{{asset('backend/assets/images/avtar/5.png')}}" alt="" class="img-fluid">
                                                         </li>
                                                         <li class="text-bg-secondary h-25 w-25 d-flex-center b-r-50"
                                                             data-bs-toggle="tooltip" data-bs-title="10 More">
@@ -329,7 +329,7 @@
                                                     <ul class="avatar-group">
                                                         <li class="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-secondary b-2-light"
                                                             data-bs-toggle="tooltip" data-bs-title="Sabrina Torres">
-                                                            <img src="{{asset('assets/images/avtar/1.png')}}" alt="" class="img-fluid">
+                                                            <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="" class="img-fluid">
                                                         </li>
                                                         <li class="text-bg-secondary h-25 w-25 d-flex-center b-r-50"
                                                             data-bs-toggle="tooltip" data-bs-title="10 More">
@@ -348,7 +348,7 @@
                                                     <ul class="avatar-group">
                                                         <li class="h-35 w-35 d-flex-center b-r-50 overflow-hidden text-bg-primary b-2-light"
                                                             data-bs-toggle="tooltip" data-bs-title="Sabrina Torres">
-                                                            <img src="{{asset('assets/images/avtar/3.png')}}" alt="" class="img-fluid">
+                                                            <img src="{{asset('backend/assets/images/avtar/3.png')}}" alt="" class="img-fluid">
                                                         </li>
                                                         <li class="text-bg-secondary h-25 w-25 d-flex-center b-r-50"
                                                             data-bs-toggle="tooltip" data-bs-title="10 More">
@@ -376,8 +376,8 @@
                                         <div class="ribbonbox ribbon-success">Best</div>
                                     </div>
                                     <div class="draggable-card-img">
-                                        <a href="{{asset('assets/images/dashboard/education/video.mp4')}}" class="glightbox">
-                                            <img src="{{asset('assets/images/dashboard/education/02.png')}}" class="img-fluid h-225 m-auto" alt="image">
+                                        <a href="{{asset('backend/assets/images/dashboard/education/video.mp4')}}" class="glightbox">
+                                            <img src="{{asset('backend/assets/images/dashboard/education/02.png')}}" class="img-fluid h-225 m-auto" alt="image">
                                             <div class="video-transparent-box">
                               <span class="bg-dark-800 h-35 w-35 d-flex-center b-r-50">
                                 <i class="ph ph-play-circle f-s-18"></i>
@@ -398,8 +398,8 @@
                             <div class="card draggable-card">
                                 <div class="card-body">
                                     <div class="draggable-card-img">
-                                        <a href="{{asset('assets/images/dashboard/education/video.mp4')}}" class="glightbox">
-                                            <img src="{{asset('assets/images/dashboard/education/03.png')}}" class="img-fluid h-225 m-auto" alt="image">
+                                        <a href="{{asset('backend/assets/images/dashboard/education/video.mp4')}}" class="glightbox">
+                                            <img src="{{asset('backend/assets/images/dashboard/education/03.png')}}" class="img-fluid h-225 m-auto" alt="image">
                                             <div class="video-transparent-box">
                               <span class="bg-dark-800 h-35 w-35 d-flex-center b-r-50">
                                 <i class="ph ph-play-circle f-s-18"></i>
@@ -420,8 +420,8 @@
                             <div class="card draggable-card">
                                 <div class="card-body">
                                     <div class="draggable-card-img">
-                                        <a href="{{asset('assets/images/dashboard/education/video.mp4')}}" class="glightbox">
-                                            <img src="{{asset('assets/images/dashboard/education/04.png')}}" class="img-fluid h-225 m-auto" alt="image">
+                                        <a href="{{asset('backend/assets/images/dashboard/education/video.mp4')}}" class="glightbox">
+                                            <img src="{{asset('backend/assets/images/dashboard/education/04.png')}}" class="img-fluid h-225 m-auto" alt="image">
                                             <div class="video-transparent-box">
                               <span class="bg-dark-800 h-35 w-35 d-flex-center b-r-50">
                                 <i class="ph ph-play-circle f-s-18"></i>
@@ -442,8 +442,8 @@
                             <div class="card draggable-card">
                                 <div class="card-body">
                                     <div class="draggable-card-img">
-                                        <a href="{{asset('assets/images/dashboard/education/video.mp4')}}" class="glightbox">
-                                            <img src="{{asset('assets/images/dashboard/education/06.png')}}" class="img-fluid h-225 m-auto" alt="image">
+                                        <a href="{{asset('backend/assets/images/dashboard/education/video.mp4')}}" class="glightbox">
+                                            <img src="{{asset('backend/assets/images/dashboard/education/06.png')}}" class="img-fluid h-225 m-auto" alt="image">
                                             <div class="video-transparent-box">
                               <span class="bg-dark-800 h-35 w-35 d-flex-center b-r-50">
                                 <i class="ph ph-play-circle f-s-18"></i>
@@ -652,19 +652,19 @@
 @section('script')
 
     <!-- slick-file -->
-    <script src="{{asset('assets/vendor/slick/slick.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/slick/slick.min.js')}}"></script>
 
     <!-- Glight js -->
     <script src="{{('assets/vendor/glightbox/glightbox.min.js')}}"></script>
 
     <!-- data table-->
-    <script src="{{asset('assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
 
     <!-- apexcharts js-->
-    <script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
 
     <!-- Education js-->
-    <script src="{{asset('assets/js/education.js')}}"></script>
+    <script src="{{asset('backend/assets/js/education.js')}}"></script>
 
 @endsection
 
