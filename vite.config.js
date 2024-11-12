@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import { viteStaticCopy } from 'vite-plugin-static-copy'
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     build: {
@@ -11,19 +11,20 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 assetFileNames: (css) => {
-                    if (css.name.split('.').pop() == 'css') {
-                        return 'css/' + `[name]` + '.min.' + 'css';
+                    if (css.name.split('.').pop() === 'css') {
+                        return 'css/[name].min.css';
                     } else {
                         return 'icons/' + css.name;
                     }
                 },
-                entryFileNames: 'js/' + `[name]` + `.js`,
+                entryFileNames: 'js/[name].js',
             },
         },
     },
+    publicDir: 'resources/assets', // Define a specific directory for assets only
     plugins: [
         laravel({
-            input: ['resources/css/styles.css', 'resources/js/script.js'],
+            input: ['resources/css/styles.css', 'resources/js/script.js', 'resources/assets/scss/style.scss'],
             refresh: true,
         }),
 
@@ -57,10 +58,11 @@ export default defineConfig({
                     src: 'resources/scss',
                     dest: ''
                 },
+                {
+                    src: 'resources/assets',
+                    dest: '../backend'  // Moves to `public/assets` outside of `public/build`
+                },
             ]
         }),
     ],
-
 });
-
-

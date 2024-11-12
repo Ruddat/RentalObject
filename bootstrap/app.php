@@ -11,9 +11,19 @@ return Application::configure(basePath: dirname(__DIR__))
         commands: __DIR__.'/../routes/console.php',
         health: '/up',
         then: function () {
-            Route::middleware('web') // Middleware 'web' für den neuen Route-Bereich
-             //   ->prefix('rentalobj') // Optional: Präfix für die Routen
+            // Standard Web-Routen
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
+
+            // RentalObj-Routen
+            Route::middleware('web')
+                //->prefix('rentalobj') // Optional: Präfix für Rentalobj-Routen
                 ->group(base_path('routes/rentalobj.php'));
+
+            // Admin-Routen mit Middleware
+            Route::middleware(['web'])
+                ->prefix('manager') // Optional: Präfix für Admin-Routen
+                ->group(base_path('routes/admin.php'));
         },
     )
     ->withMiddleware(function (Middleware $middleware) {
