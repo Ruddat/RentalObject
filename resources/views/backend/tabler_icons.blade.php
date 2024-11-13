@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Tabler Icons')
 @section('css')
     <!--notifications-css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/notifications/toastify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/notifications/toastify.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -27267,8 +27267,8 @@
     <div id="customizer"></div>
 
     <!-- toastify js -->
-    <script src="{{asset('assets/vendor/notifications/toastify-js.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/notifications/toastify-js.js')}}"></script>
 
     <!-- Tabler icons -->
-    <script src="{{asset('assets/js/tabler-icons.js')}}"></script>
+    <script src="{{asset('backend/assets/js/tabler-icons.js')}}"></script>
 @endsection

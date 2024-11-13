@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Flag Icons')
 @section('css')
     <!--Notifications-css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/notifications/toastify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/notifications/toastify.min.css')}}">
 @endsection
 @section('main-content')
     <main>
@@ -605,9 +605,9 @@
 <div id="customizer"></div>
 
 <!-- toastify js -->
-<script src="{{asset('assets/vendor/notifications/toastify-js.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/notifications/toastify-js.js')}}"></script>
 
 <!--flag js-->
-<script src="{{asset('assets/js/flag_icons.js')}}"></script>
+<script src="{{asset('backend/assets/js/flag_icons.js')}}"></script>
 @endsection
 

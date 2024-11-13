@@ -5,13 +5,15 @@ use Illuminate\Support\Facades\Route;
 
 
 
+Route::view('add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
+
 
 
 Route::view('utility-costs-table', 'backend.livewirepages._utility-costs-table')->name('utility-costs-table');
 Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
 Route::view('rental-object-table', 'backend.livewirepages._rental-object-table')->name('rental-object-table');
-Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
-Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
+Route::view('tenant-table', 'backend.livewirepages._tenant-table')->name('tenant-table');
+Route::view('tenant-payments', 'backend.livewirepages._tenant-payments')->name('tenant-payments');
 Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
 Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
 

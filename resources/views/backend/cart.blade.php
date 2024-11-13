@@ -1,9 +1,9 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Cart')
 @section('css')
     <!-- Data Table css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/datatable/jquery.dataTables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/datatable/datatable2/buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/datatable/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/datatable/datatable2/buttons.dataTables.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -53,7 +53,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center gap-2">
-                                            <img src="{{asset('../assets/images/dashboard/ecommerce-dashboard/16.png')}}" class="w-50 h-50" alt="">
+                                            <img src="{{asset('backend/assets/images/dashboard/ecommerce-dashboard/16.png')}}" class="w-50 h-50" alt="">
                                             <div class="cart-details">
                                                 <p class="fs-6">
                                                     Man's shoes
@@ -88,7 +88,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center gap-2">
-                                            <img src="{{asset('../assets/images/dashboard/ecommerce-dashboard/13.png')}}" class="w-50 h-50" alt="">
+                                            <img src="{{asset('backend/assets/images/dashboard/ecommerce-dashboard/13.png')}}" class="w-50 h-50" alt="">
                                             <div class="cart-details">
                                                 <p class="fs-6">
                                                     Backpacks</p>
@@ -121,7 +121,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center gap-2">
-                                            <img src="{{asset('../assets/images/dashboard/ecommerce-dashboard/01.png')}}" class="w-50 h-50" alt="">
+                                            <img src="{{asset('backend/assets/images/dashboard/ecommerce-dashboard/01.png')}}" class="w-50 h-50" alt="">
                                             <div class="cart-details">
                                                 <p class="fs-6">
                                                     Watch</p>
@@ -150,7 +150,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center gap-2">
-                                            <img src="{{asset('../assets/images/dashboard/ecommerce-dashboard/07.png')}}" class="w-50 h-50" alt="">
+                                            <img src="{{asset('backend/assets/images/dashboard/ecommerce-dashboard/07.png')}}" class="w-50 h-50" alt="">
                                             <div class="cart-details">
                                                 <p class="fs-6">
                                                     T-shirt
@@ -184,7 +184,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center gap-2">
-                                            <img src="{{asset('../assets/images/dashboard/ecommerce-dashboard/02.png')}}" class="w-50 h-50" alt="">
+                                            <img src="{{asset('backend/assets/images/dashboard/ecommerce-dashboard/02.png')}}" class="w-50 h-50" alt="">
                                             <div class="cart-details">
                                                 <p class="fs-6">Airpods Pro</p>
                                                 <p class="f-w-500">Color: <span>Black</span></p>
@@ -216,7 +216,7 @@
                                 <tr>
                                     <th scope="row">
                                         <div class="d-flex align-items-center gap-2">
-                                            <img src="{{asset('../assets/images/dashboard/ecommerce-dashboard/11.png')}}" class="w-50 h-50" alt="">
+                                            <img src="{{asset('backend/assets/images/dashboard/ecommerce-dashboard/11.png')}}" class="w-50 h-50" alt="">
                                             <div class="cart-details">
                                                 <p class="fs-6">
                                                     Women's Watch
@@ -330,7 +330,7 @@
                             <div class="card-body">
                                 <!-- Gift -->
                                 <div class="d-flex align-items-center gap-2">
-                                    <img src="{{asset('../assets/images/ecommerce/01.gif')}}" alt="" class="w-35 h-35">
+                                    <img src="{{asset('backend/assets/images/ecommerce/01.gif')}}" alt="" class="w-35 h-35">
                                     <h6 class="text-dark f-w-600 f-s-18 m-0">Buying for a loved one?</h6>
                                 </div>
                                 <div>
@@ -357,8 +357,8 @@
     <div id="customizer"></div>
 
     <!-- datatable js-->
-    <script src="{{asset('assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
 
     <!-- cart js-->
-    <script src="{{asset('assets/js/cart.js')}}"></script>
+    <script src="{{asset('backend/assets/js/cart.js')}}"></script>
 @endsection

@@ -1,18 +1,18 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Phosphor')
 @section('css')
 
     <!--phosphor css-->
-    <link rel="stylesheet" href="{{asset('assets/vendor/phosphor/phosphor-bold.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/phosphor/phosphor-duotone.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/phosphor/photoshoper.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/phosphor/phosphoe-fill.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/phosphor/phosphor-light.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/phosphor/phosphor-thin.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/phosphor/phosphor-bold.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/phosphor/phosphor-duotone.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/phosphor/photoshoper.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/phosphor/phosphoe-fill.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/phosphor/phosphor-light.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/phosphor/phosphor-thin.css')}}">
 
 
     <!-- toastify css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/toastify/toastify.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/toastify/toastify.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -7558,12 +7558,12 @@
 <div id="customizer"></div>
 
 <!-- toatify js-->
-<script src="{{asset('assets/vendor/notifications/toastify-js.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/notifications/toastify-js.js')}}"></script>
 
-<script src="{{asset('assets/vendor/toastify/toastify.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/toastify/toastify.js')}}"></script>
 <!-- phosphor js  -->
-<script src="{{asset('assets/vendor/phosphor/phosphor.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/phosphor/phosphor.js')}}"></script>
 
 <!-- phosphor js-->
-<script src="{{asset('assets/js/phosphor.js')}}"></script>
+<script src="{{asset('backend/assets/js/phosphor.js')}}"></script>
 @endsection

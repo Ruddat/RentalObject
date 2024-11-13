@@ -1,11 +1,11 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Iconoir Icon')
 @section('css')
     <!-- iconoir icon css  -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/ionio-icon/css/iconoir.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/ionio-icon/css/iconoir.css')}}">
 
     <!--Notifications-css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/notifications/toastify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/notifications/toastify.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -1614,8 +1614,8 @@
 <div id="customizer"></div>
 
 <!-- toastify js -->
-<script src="{{asset('assets/vendor/notifications/toastify-js.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/notifications/toastify-js.js')}}"></script>
 
 <!-- iconoir custom js-->
-<script src="{{asset('assets/js/iconoir_icon.js')}}"></script>
+<script src="{{asset('backend/assets/js/iconoir_icon.js')}}"></script>
 @endsection

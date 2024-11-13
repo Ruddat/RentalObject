@@ -1,6 +1,6 @@
 $(function() {
   //  **------Load customizer**
-  $.get("../assets/customizer.txt", function(html_string)
+  $.get("../backend/assets/customizer.txt", function(html_string)
   {
     let customizer = $("#customizer");
     if (customizer.length >0){

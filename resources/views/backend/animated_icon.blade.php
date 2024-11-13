@@ -1,11 +1,11 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Animated Icon')
 @section('css')
 <!-- animation css -->
-<link rel="stylesheet" href="{{asset('assets/vendor/animation/animate.min.css')}}">
+<link rel="stylesheet" href="{{asset('backend/assets/vendor/animation/animate.min.css')}}">
 
 <!--Notifications-css-->
-<link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/notifications/toastify.min.css')}}">
+<link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/notifications/toastify.min.css')}}">
 
 @endsection
 @section('main-content')
@@ -1933,12 +1933,12 @@
 <div id="customizer"></div>
 
 <!-- toastify js -->
-<script src="{{asset('assets/vendor/notifications/toastify-js.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/notifications/toastify-js.js')}}"></script>
 
 <!-- animated icon js  -->
-<script src="{{asset('assets/vendor/animated_icon/iconify-icon.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/animated_icon/iconify-icon.min.js')}}"></script>
 
 <!--js-->
-<script src="{{asset('assets/js/animated_icon.js')}}"></script>
+<script src="{{asset('backend/assets/js/animated_icon.js')}}"></script>
 @endsection
 

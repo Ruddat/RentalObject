@@ -1,11 +1,11 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Product')
 @section('css')
     <!-- nouislider js css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/nouislider/nouislider.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/nouislider/nouislider.min.css')}}">
 
     <!-- apexcharts css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/apexcharts/apexcharts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/apexcharts/apexcharts.css')}}">
 
 @endsection
 @section('main-content')
@@ -324,8 +324,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/09.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/10.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/09.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/10.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -362,8 +362,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/13.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/14.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/13.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/14.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -400,8 +400,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/11.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/12.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/11.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/12.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -439,8 +439,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/15.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/16.jpg')}} " alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/15.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/16.jpg')}} " alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -477,8 +477,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/01.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/02.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/01.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/02.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -514,8 +514,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/05.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/06.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/05.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/06.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -552,8 +552,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/04.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/03.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/04.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/03.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li>
@@ -599,8 +599,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/07.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/08.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/07.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/08.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li>
@@ -647,8 +647,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/17.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/18.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/17.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/18.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -686,8 +686,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/19.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/20.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/19.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/20.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li>
@@ -732,8 +732,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/23.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/24.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/23.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/24.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -770,8 +770,8 @@
                                         <div class="product-grid">
                                             <div class="product-image">
                                                 <a href="#" class="image">
-                                                    <img class="pic-1" src="{{asset('../assets/images/ecommerce/21.jpg')}}" alt="">
-                                                    <img class="images_box" src="{{asset('../assets/images/ecommerce/22.jpg')}}" alt="">
+                                                    <img class="pic-1" src="{{asset('backend/assets/images/ecommerce/21.jpg')}}" alt="">
+                                                    <img class="images_box" src="{{asset('backend/assets/images/ecommerce/22.jpg')}}" alt="">
                                                 </a>
                                                 <ul class="product-links">
                                                     <li><a href="{{route('wishlist')}}" target="_blank" class="bg-danger h-30 w-30 d-flex-center b-r-20"><i
@@ -818,10 +818,10 @@
 <div id="customizer"></div>
 
 <!-- nouislider js -->
-<script src="{{asset('assets/vendor/nouislider/nouislider.min.js')}}"></script>
-<script src="{{asset('assets/vendor/nouislider/wNumb.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/nouislider/nouislider.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/nouislider/wNumb.min.js')}}"></script>
 
 <!-- js -->
-<script src="{{asset('assets/js/product.js')}}"></script>
+<script src="{{asset('backend/assets/js/product.js')}}"></script>
 @endsection
 

@@ -1,9 +1,9 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Pricing')
 @section('css')
     <!-- slick css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick-theme.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -44,7 +44,7 @@
                                         <div class="front-pricing card">
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Basic Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/1.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/1.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-secondary">$20<span class="f-w-500 f-s-12">/per Month</span></p>
@@ -63,7 +63,7 @@
                                         <div class="back-pricing card">
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Basic Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/9.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/9.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-secondary">$80<span class="f-w-500 f-s-12">/per Yearly</span></p>
@@ -92,7 +92,7 @@
                                             </div>
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Business Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/2.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/2.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-primary">$80<span class="f-w-500 f-s-12">/per Month</span></p>
@@ -111,7 +111,7 @@
                                         <div class="back-pricing card">
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Business Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/8.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/8.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-primary">$100<span class="f-w-500 f-s-12">/per Yearly</span></p>
@@ -137,7 +137,7 @@
                                         <div class="front-pricing card">
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Premium Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/3.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/3.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-secondary">$200<span class="f-w-500 f-s-12">/per Month</span></p>
@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Basic Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/7.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/7.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-secondary">$500<span class="f-w-500 f-s-12">/per Yearly</span></p>
@@ -185,7 +185,7 @@
                                         <div class="front-pricing card">
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Golden Premium Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/15.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/15.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-primary">$500<span class="f-w-500 f-s-12">/per Month</span></p>
@@ -204,7 +204,7 @@
                                         <div class="back-pricing card">
                                             <div class="pricing-header">
                                                 <h6 class="f-w-500 text-dark">Basic Plans</h6>
-                                                <img src="{{asset('../assets/images/pricing/14.png')}}" class="w-60 h-60" alt="">
+                                                <img src="{{asset('backend/assets/images/pricing/14.png')}}" class="w-60 h-60" alt="">
                                             </div>
                                             <div class="app-divider-v justify-content-center m-0">
                                                 <p class="price f-w-700 text-primary">$1000<span class="f-w-500 f-s-12">/per Yearly</span></p>
@@ -554,9 +554,9 @@
 <div id="customizer"></div>
 
 <!-- slick-file -->
-<script src="{{asset('assets/vendor/slick/slick.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/slick/slick.min.js')}}"></script>
 
 <!-- js -->
-<script src="{{asset('assets/js/pricing.js')}}"></script>
+<script src="{{asset('backend/assets/js/pricing.js')}}"></script>
 @endsection
 

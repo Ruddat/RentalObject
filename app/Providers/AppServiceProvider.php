@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\SysSetting;  // Richtiges Modell importieren
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Models\SysSetting;  // Richtiges Modell importieren
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -34,5 +35,7 @@ class AppServiceProvider extends ServiceProvider
             // Speichere die Einstellungen in der app-Konfiguration
             config(['app.settings' => $settings]);
         }
+
+        App::setLocale('de'); // Setzt die Anwendungssprache auf Deutsch
     }
 }

@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Alignment')
 @section('css')
 
@@ -256,7 +256,7 @@
                             <div class="col-xl-3">
                                 <div class="image-center-thing">
                                     <div class="image-top-left">
-                                        <img src="{{asset('assets/images/placeholder/05.png')}}" alt="">
+                                        <img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt="">
                                     </div>
                                 </div>
                                 <p class="f-s-16 text-center m-2">image-top-left</p>
@@ -264,7 +264,7 @@
                             <div class="col-xl-3">
                                 <div class="image-center-thing">
                                     <div class="image-center">
-                                        <img src="{{asset('assets/images/placeholder/05.png')}}" alt="">
+                                        <img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt="">
                                     </div>
                                 </div>
                                 <p class="f-s-16 text-center m-2">image-center</p>
@@ -272,7 +272,7 @@
                             <div class="col-xl-3">
                                 <div class="image-center-thing">
                                     <div class="image-bottom-right">
-                                        <img src="{{asset('assets/images/placeholder/05.png')}}" alt="">
+                                        <img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt="">
                                     </div>
                                 </div>
                                 <p class="f-s-16 text-center m-2">image-bottom-right</p>
@@ -281,7 +281,7 @@
                             <div class="col-xl-3">
                                 <div class="image-center-thing">
                                     <div class="image-top-right">
-                                        <img src="{{asset('assets/images/placeholder/05.png')}}" alt="">
+                                        <img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt="">
                                     </div>
                                 </div>
                                 <p class="f-s-16 text-center m-2">image-top-right</p>
@@ -289,7 +289,7 @@
                             <div class="col-xl-3">
                                 <div class="image-center-thing mt-3">
                                     <div class="image-bottom-left">
-                                        <img src="{{asset('assets/images/placeholder/05.png')}}" alt="">
+                                        <img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt="">
                                     </div>
                                 </div>
                                 <p class="f-s-16 text-center m-2">image-bottom-left</p>
@@ -305,35 +305,35 @@
                       &lt;div class="col-xl-3"&gt;
                         &lt;div class="image-center-thing"&gt;
                           &lt;div class="image-top-left"&gt;
-                            &lt;img src="{{asset('assets/images/placeholder/05.png')}}" alt=""&gt;
+                            &lt;img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt=""&gt;
                           &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;div class="col-xl-3"&gt;
                         &lt;div class="image-center-thing"&gt;
                           &lt;div class="image-center"&gt;
-                            &lt;img src="{{asset('../assets/images/placeholder/05.png')}}" alt=""&gt;
+                            &lt;img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt=""&gt;
                           &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;div class="col-xl-3"&gt;
                         &lt;div class="image-center-thing"&gt;
                           &lt;div class="image-bottom-right"&gt;
-                            &lt;img src="{{asset('../assets/images/placeholder/05.png')}}" alt=""&gt;
+                            &lt;img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt=""&gt;
                           &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;div class="col-xl-3"&gt;
                         &lt;div class="image-center-thing"&gt;
                           &lt;div class="image-top-right"&gt;
-                            &lt;img src="{{asset('../assets/images/placeholder/05.png')}}" alt=""&gt;
+                            &lt;img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt=""&gt;
                           &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;div class="col-xl-3"&gt;
                         &lt;div class="image-center-thing mt-3"&gt;
                           &lt;div class="image-bottom-left"&gt;
-                            &lt;img src="{{asset('../assets/images/placeholder/05.png')}}" alt=""&gt;
+                            &lt;img src="{{asset('backend/assets/images/placeholder/05.png')}}" alt=""&gt;
                           &lt;/div&gt;
                       &lt;/div&gt;
                       &lt;/div&gt;

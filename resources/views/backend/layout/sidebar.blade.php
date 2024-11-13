@@ -117,6 +117,12 @@
                 </a>
             </li>
 
+            <li class="no-sub">
+                <a class="" href="{{route('add-property')}}">
+                    <i class="ph-duotone  ph-squares-four"></i> AddProperty
+                </a>
+            </li>
+
 
             <li class="menu-title"> <span>@autotranslate("Nebenkosten", app()->getLocale())</span></li>
             <li>
@@ -126,11 +132,11 @@
                     Erstellen
                 </a>
                 <ul class="collapse" id="nebenkosten-kits">
-                    <li><a href="{{route('utility-costs-table')}}">Utility Costs Table</a></li>
+                    <li><a href="{{route('utility-costs-table')}}">@autotranslate("Utility Costs Table", app()->getLocale())</a></li>
                     <li><a href="{{route('billing-header-form')}}">Abrechnungskopf hinzufügen</a></li>
                     <li><a href="{{route('rental-object-table')}}">Mietobjekte verwalten</a></li>
-                    <li><a href="{{route('blank')}}">Mieter verwalten</a></li>
-                    <li><a href="{{route('blank')}}">Nebenkostenzahlungen verwalten</a></li>
+                    <li><a href="{{route('tenant-table')}}">Mieter verwalten</a></li>
+                    <li><a href="{{route('tenant-payments')}}">Nebenkostenzahlungen verwalten</a></li>
                     <li><a href="{{route('blank')}}">Nebenkosten erfassen</a></li>
                     <li><a href="{{route('blank')}}">Abrechnung für das Jahr und Mietobjekt</a></li>
                     <li><a href="{{route('blank')}}">Abrechnung erstellen</a></li>

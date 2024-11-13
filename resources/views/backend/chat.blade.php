@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Chat')
 @section('css')
 
@@ -32,7 +32,7 @@
                         <div class="card-header">
                             <div class="d-flex align-items-center">
                         <span class="chatdp h-45 w-45 d-flex-center b-r-50 position-relative bg-danger">
-                          <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                           <span
                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                         </span>
@@ -100,7 +100,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-primary">
-                                          <img src="{{asset('../assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -117,7 +117,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-dark">
-                                          <img src="{{asset('../assets/images/avtar/2.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-secondary border border-light rounded-circle"></span>
                                         </span>
@@ -134,7 +134,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-success">
-                                          <img src="{{asset('../assets/images/avtar/3.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/3.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -151,7 +151,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-danger">
-                                          <img src="{{asset('../assets/images/avtar/4.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/4.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -168,7 +168,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-warning">
-                                          <img src="{{asset('../assets/images/avtar/5.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/5.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -185,7 +185,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-dark">
-                                          <img src="{{asset('../assets/images/avtar/6.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/6.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -202,7 +202,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-secondary">
-                                          <img src="{{asset('../assets/images/avtar/07.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/07.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -219,7 +219,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-primary">
-                                          <img src="{{asset('../assets/images/avtar/08.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/08.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -236,7 +236,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-info">
-                                          <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -253,7 +253,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-success">
-                                          <img src="{{asset('../assets/images/avtar/10.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/10.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -270,7 +270,7 @@
                                                         <div class="chat-contactbox">
                                                             <div class="position-absolute">
                                         <span class="h-45 w-45 d-flex-center b-r-50 position-relative bg-danger">
-                                          <img src="{{asset('../assets/images/avtar/11.png')}}" alt="" class="img-fluid b-r-50">
+                                          <img src="{{asset('backend/assets/images/avtar/11.png')}}" alt="" class="img-fluid b-r-50">
                                           <span
                                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                         </span>
@@ -313,7 +313,7 @@
                                                             <div class="position-absolute">
                                                                 <ul class="avatar-group">
                                                                     <li class="h-45 w-45 d-flex-center overflow-hidden b-r-50 bg-primary">
-                                                                        <img src="{{asset('../assets/images/avtar/16.png')}} " alt="" class="img-fluid">
+                                                                        <img src="{{asset('backend/assets/images/avtar/16.png')}} " alt="" class="img-fluid">
                                                                     </li>
                                                                     <li class="text-bg-secondary h-35 w-35 d-flex-center b-r-50"
                                                                         data-bs-toggle="tooltip" data-bs-title="2 More">
@@ -333,7 +333,7 @@
                                                             <div class="position-absolute">
                                                                 <ul class="avatar-group">
                                                                     <li class="h-45 w-45 d-flex-center overflow-hidden b-r-50 bg-info">
-                                                                        <img src="{{asset('../assets/images/avtar/15.png')}} " alt="" class="img-fluid">
+                                                                        <img src="{{asset('backend/assets/images/avtar/15.png')}} " alt="" class="img-fluid">
                                                                     </li>
                                                                     <li class="text-bg-secondary h-35 w-35 d-flex-center b-r-50"
                                                                         data-bs-toggle="tooltip" data-bs-title="2 More">
@@ -373,7 +373,7 @@
                                                             <div class="position-absolute">
                                                                 <ul class="avatar-group">
                                                                     <li class="h-45 w-45 d-flex-center overflow-hidden b-r-50 bg-dark">
-                                                                        <img src="{{asset('../assets/images/avtar/14.png')}} " alt="" class="img-fluid">
+                                                                        <img src="{{asset('backend/assets/images/avtar/14.png')}} " alt="" class="img-fluid">
                                                                     </li>
                                                                     <li class="text-bg-secondary h-35 w-35 d-flex-center b-r-50"
                                                                         data-bs-toggle="tooltip" data-bs-title="2 More">
@@ -393,7 +393,7 @@
                                                             <div class="position-absolute">
                                                                 <ul class="avatar-group">
                                                                     <li class="text-bg-danger h-45 w-45 d-flex-center overflow-hidden b-r-50">
-                                                                        <img src="{{asset('../assets/images/avtar/10.png')}}" alt="" class="img-fluid">
+                                                                        <img src="{{asset('backend/assets/images/avtar/10.png')}}" alt="" class="img-fluid">
                                                                     </li>
                                                                     <li class="text-bg-secondary h-35 w-35 d-flex-center b-r-50"
                                                                         data-bs-toggle="tooltip" data-bs-title="2 More">
@@ -439,7 +439,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-success b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-primary">
-                                  <img src="{{asset('../assets/images/avtar/16.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/16.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -450,7 +450,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-secondary b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-info">
-                                  <img src="{{asset('../assets/images/avtar/6.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/6.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -461,7 +461,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-secondary b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-dark">
-                                  <img src="{{asset('../assets/images/avtar/5.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/5.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -472,7 +472,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-success b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-warning">
-                                  <img src="{{asset('../assets/images/avtar/4.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/4.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -483,7 +483,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-success b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-primary">
-                                  <img src="{{asset('../assets/images/avtar/3.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/3.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -494,7 +494,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-secondary b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-dark">
-                                  <img src="{{asset('../assets/images/avtar/2.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -505,7 +505,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-secondary b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-primary">
-                                  <img src="{{asset('../assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -517,7 +517,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-secondary b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-secondary">
-                                  <img src="{{asset('../assets/images/avtar/10.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/10.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -528,7 +528,7 @@
                                         <div class="updates-box">
                                             <div class="b-2-secondary b-r-50 p-1">
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-secondary">
-                                  <img src="{{asset('../assets/images/avtar/11.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/11.png')}}" alt="" class="img-fluid b-r-50">
                                 </span>
                                             </div>
                                             <div class="flex-grow-1 text-start ps-2">
@@ -563,7 +563,7 @@
                                         <div class=" d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-info">
-                                  <img src="{{asset('../assets/images/avtar/13.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/13.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                 </span>
@@ -586,7 +586,7 @@
                                         <div class="d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-danger">
-                                  <img src="{{asset('../assets/images/avtar/12.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/12.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                 </span>
@@ -609,7 +609,7 @@
                                         <div class="d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-warning">
-                                  <img src="{{asset('../assets/images/avtar/11.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/11.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                 </span>
@@ -632,7 +632,7 @@
                                         <div class="d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-success">
-                                  <img src="{{asset('../assets/images/avtar/10.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/10.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-secondary border border-light rounded-circle"></span>
                                 </span>
@@ -655,7 +655,7 @@
                                         <div class="d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-danger">
-                                  <img src="{{asset('../assets/images/avtar/08.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/08.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                 </span>
@@ -678,7 +678,7 @@
                                         <div class="d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-success">
-                                  <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                 </span>
@@ -701,7 +701,7 @@
                                         <div class="d-flex align-items-center py-3">
                                             <div>
                                 <span class="h-40 w-40 d-flex-center b-r-50 position-relative bg-warning">
-                                  <img src="{{asset('../assets/images/avtar/07.png')}}" alt="" class="img-fluid b-r-50">
+                                  <img src="{{asset('backend/assets/images/avtar/07.png')}}" alt="" class="img-fluid b-r-50">
                                   <span
                                       class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                                 </span>
@@ -754,7 +754,7 @@
                             </div>
                             <a href="{{route('profile')}}">
                         <span class="profileimg h-45 w-45 d-flex-center b-r-50 position-relative bg-light">
-                          <img src="{{asset('../assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
                           <span
                               class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                         </span>
@@ -772,7 +772,7 @@
                                     <div class="modal-body p-0">
                                         <div class="call">
                                             <div class="call-div">
-                                                <img src="{{asset('../assets/images/profile-app/32.jpg')}}" class="w-100" alt="">
+                                                <img src="{{asset('backend/assets/images/profile-app/32.jpg')}}" class="w-100" alt="">
                                                 <div class="call-caption">
                                                     <h2 class="text-white">Jerry Ladies</h2>
                                                     <div class="d-flex justify-content-center">
@@ -799,7 +799,7 @@
                                     <div class="modal-body p-0">
                                         <div class="call">
                                             <div class="call-div pointer-events-auto">
-                                                <img src="{{asset('../assets/images/profile-app/25.jpg')}}" class="w-100" alt="">
+                                                <img src="{{asset('backend/assets/images/profile-app/25.jpg')}}" class="w-100" alt="">
 
                                                 <div class="call-caption">
                                                     <div class="d-flex justify-content-center align-items-center">
@@ -818,7 +818,7 @@
                                                 </div>
                                             </div>
                                             <div class="video-div">
-                                                <img src="{{asset('../assets/images/profile-app/31.jpg')}}" class="w-100 rounded" alt="">
+                                                <img src="{{asset('backend/assets/images/profile-app/31.jpg')}}" class="w-100 rounded" alt="">
                                             </div>
                                         </div>
                                     </div>
@@ -850,7 +850,7 @@
                             </div>
                             <div class="position-relative">
                                 <div class="chatdp h-45 w-45 b-r-50 position-absolute start-0 bg-light">
-                                    <img src="{{asset('../assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
+                                    <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
                                 </div>
                                 <div class="chat-box">
                                     <div>
@@ -869,12 +869,12 @@
                                     </div>
                                 </div>
                                 <div class="chatdp h-45 w-45 b-r-50 position-absolute end-0 top-0 bg-danger">
-                                    <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                                    <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                                 </div>
                             </div>
                             <div class="position-relative">
                                 <div class="chatdp h-45 w-45 b-r-50 position-absolute start-0 bg-light">
-                                    <img src="{{asset('../assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
+                                    <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
                                 </div>
                                 <div class="chat-box">
                                     <div>
@@ -893,12 +893,12 @@
                                     </div>
                                 </div>
                                 <div class="chatdp h-45 w-45 b-r-50 position-absolute end-0 top-0 bg-danger">
-                                    <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                                    <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                                 </div>
                             </div>
                             <div class="position-relative">
                         <span class="chatdp h-45 w-45 position-absolute start-0 b-r-50 bg-light">
-                          <img src="{{asset('../assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
                         </span>
                                 <div class="chat-box">
                                     <div>
@@ -916,12 +916,12 @@
                                     </div>
                                 </div>
                                 <span class="chatdp h-45 w-45 b-r-50 position-absolute top-0 end-0 bg-danger">
-                          <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                         </span>
                             </div>
                             <div class="position-relative">
                         <span class="chatdp h-45 w-45 b-r-50 position-absolute start-0 bg-light">
-                          <img src="{{asset('../assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
                         </span>
                                 <div class="chat-box">
                                     <div>
@@ -938,12 +938,12 @@
                                     </div>
                                 </div>
                                 <span class="chatdp h-45 w-45 b-r-50 position-absolute top-0 end-0 bg-danger">
-                          <img src="{{asset('../assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="" class="img-fluid b-r-50">
                         </span>
                             </div>
                             <div class="position-relative">
                         <span class="chatdp h-45 w-45 b-r-50 position-absolute start-0 bg-light">
-                          <img src="{{asset('../assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
+                          <img src="{{asset('backend/assets/images/avtar/14.png')}}" alt="" class="img-fluid b-r-50">
                         </span>
                                 <div class="chat-box">
                                     <div>
@@ -1017,5 +1017,5 @@
 <!--customizer-->
 <div id="customizer"></div>
 
-<script src="{{asset('assets/js/chat.js')}}"></script>
+<script src="{{asset('backend/assets/js/chat.js')}}"></script>
 @endsection

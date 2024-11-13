@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Faq')
 @section('css')
 
@@ -27,7 +27,7 @@
 
         <!-- Help start -->
         <div class="faq-header">
-            <img src="{{asset('../assets/images/logo/3.png')}}" alt="">
+            <img src="{{asset('backend/assets/images/logo/3.png')}}" alt="">
             <h2 class="text-dark f-w-700">How Can We Help ?</h2>
             <div class="app-form search-div">
                 <div class="input-group b-r-search">

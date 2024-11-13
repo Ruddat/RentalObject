@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Invoice')
 @section('css')
 
@@ -42,7 +42,7 @@
                                                 <td>
                                                     <div class=" mb-3">
                                                         <div class="mb-3">
-                                                            <img src="{{asset('../assets/images/logo/1.png')}}" class="w-200" alt="">
+                                                            <img src="{{asset('backend/assets/images/logo/1.png')}}" class="w-200" alt="">
                                                         </div>
                                                         <div>
                                                             <address>

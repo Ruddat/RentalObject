@@ -1,9 +1,9 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'File Upload')
 @section('css')
     <!-- filepond css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/filepond/filepond.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/filepond/image-preview.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/filepond/filepond.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/filepond/image-preview.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -162,16 +162,16 @@
     <div id="customizer"></div>
 
     <!-- filepond -->
-    <script src="{{asset('assets/vendor/filepond/file-encode.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/validate-size.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/validate-type.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/exif-orientation.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/image-preview.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/filepond.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/file-encode.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/validate-size.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/validate-type.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/exif-orientation.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/image-preview.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/filepond.min.js')}}"></script>
 
     <!-- phosphor js -->
-    <script src="{{asset('assets/vendor/phosphor/phosphor.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/phosphor/phosphor.js')}}"></script>
 
     <!-- js -->
-    <script src="{{asset('assets/js/file_upload.js')}}"></script>
+    <script src="{{asset('backend/assets/js/file_upload.js')}}"></script>
 @endsection

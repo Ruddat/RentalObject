@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend/layout.master')
 @section('title', 'Spinner')
 @section('css')
 
@@ -248,5 +248,5 @@
 <div id="customizer"></div>
 
 <!-- js-->
-<script src="{{asset('assets/js/animation.js')}}"></script>
+<script src="{{asset('backend/assets/js/animation.js')}}"></script>
 @endsection

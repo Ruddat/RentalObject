@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Chart Js')
 @section('css')
 
@@ -168,9 +168,9 @@
 
 
     <!-- chartjs js -->
-    <script src="{{asset('assets/vendor/chartjs/chart.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/chartjs/chart.js')}}"></script>
 
 
     <!-- chart js -->
-    <script src="{{asset('assets/js/chart.js')}}"></script>
+    <script src="{{asset('backend/assets/js/chart.js')}}"></script>
 @endsection

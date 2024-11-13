@@ -49,7 +49,7 @@ $('#click_6').on('click', function () {
     Swal.fire({
         title: "Sweet!",
         text: "Modal with a custom image.",
-        imageUrl: "../assets/images/blog-app/09.jpg",
+        imageUrl: "../backend/assets/images/blog-app/09.jpg",
         imageWidth: 400,
         imageHeight: 400,
         imageAlt: "Custom image"

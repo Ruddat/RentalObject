@@ -333,11 +333,11 @@
                             <div class="offcanvas-body app-scroll">
                                 <div class="row row-cols-3">
                                     <div class="d-flex-center text-center mb-3">
-                                        <a href="{{route('product')}}" target="_blank">
+                                        <a href="{{route('add-property')}}" target="_blank">
                               <span>
-                                <i class="ph-duotone  ph-shopping-bag-open text-success f-s-30"></i>
+                                <i class="ph-duotone  ph-house-line text-success f-s-30"></i>
                               </span>
-                                            <p class="mb-0 f-w-500 text-secondary">E-shop</p>
+                                            <p class="mb-0 f-w-500 text-secondary">Object</p>
                                         </a>
                                     </div>
                                     <div class="d-flex-center text-center mb-3">

@@ -110,7 +110,7 @@
             </form>
         </div>
         @endif
-        
+
         <!-- Gespeicherte Abrechnungsköpfe in der Tabellenstruktur anzeigen -->
         <div class="widget-box-2 mt-4">
             <h5 class="title">Gespeicherte Abrechnungsköpfe</h5>
@@ -142,7 +142,7 @@
                                 </td>
                                 <td>
                                     <div class="hstack gap-2 fs-15">
-                                        <button wire:click="deleteHeader({{ $header->id }})" class="btn btn-icon btn-sm btn-danger"><i class="feather-trash"></i></button>
+                                        <button wire:click="deleteHeader({{ $header->id }})" class="btn btn-danger icon-btn b-r-4"><i class="ti ti-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
@@ -151,9 +151,5 @@
                 </table>
             </div>
         </div>
-    </div>
-
-    <div class="footer-dashboard footer-dashboard-2 mt-4">
-        <p>Copyright © 2024 Home Lengo</p>
     </div>
 </div>

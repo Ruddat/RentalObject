@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Setting')
 @section('css')
     <!-- glight css -->
@@ -140,7 +140,7 @@
                         <div class="app-divider-v"></div>
                         <div class="d-flex align-items-center">
                                             <span class="h-45 w-45 d-flex-center bg-warning b-r-50 position-relative">
-                                                <img src="{{asset('../assets/images/avtar/09.png')}}" alt="avtar"
+                                                <img src="{{asset('backend/assets/images/avtar/09.png')}}" alt="avtar"
                                                      class="img-fluid b-r-50">
                                                 <span
                                                     class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
@@ -370,18 +370,18 @@
                                                     <div class="app-timeline-info-text timeline-border-box me-2 ms-0 mt-3 p-3">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <a href="{{asset('../assets/images/draggable/02.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
-                                                                    <img src="{{asset('../assets/images/draggable/02.jpg')}}" class="w-100 rounded" alt="">
+                                                                <a href="{{asset('backend/assets/images/draggable/02.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
+                                                                    <img src="{{asset('backend/assets/images/draggable/02.jpg')}}" class="w-100 rounded" alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <a href="{{asset('../assets/images/draggable/04.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
-                                                                    <img src="{{asset('../assets/images/draggable/04.jpg')}}" class="w-100 rounded" alt="">
+                                                                <a href="{{asset('backend/assets/images/draggable/04.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
+                                                                    <img src="{{asset('backend/assets/images/draggable/04.jpg')}}" class="w-100 rounded" alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <a href="{{asset('../assets/images/draggable/01.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
-                                                                    <img src="{{asset('../assets/images/draggable/01.jpg')}}" class="w-100 rounded" alt="">
+                                                                <a href="{{asset('backend/assets/images/draggable/01.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
+                                                                    <img src="{{asset('backend/assets/images/draggable/01.jpg')}}" class="w-100 rounded" alt="">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -601,18 +601,18 @@
                                                     <div class="app-timeline-info-text timeline-border-box me-2 ms-0 mt-3 p-3">
                                                         <div class="row">
                                                             <div class="col-sm-4">
-                                                                <a href="{{asset('../assets/images/draggable/02.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
-                                                                    <img src="{{asset('../assets/images/draggable/02.jpg')}}" class="w-100 rounded" alt="">
+                                                                <a href="{{asset('backend/assets/images/draggable/02.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
+                                                                    <img src="{{asset('backend/assets/images/draggable/02.jpg')}}" class="w-100 rounded" alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <a href="{{asset('../assets/images/draggable/04.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
-                                                                    <img src="{{asset('../assets/images/draggable/04.jpg')}}" class="w-100 rounded" alt="">
+                                                                <a href="{{asset('backend/assets/images/draggable/04.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
+                                                                    <img src="{{asset('backend/assets/images/draggable/04.jpg')}}" class="w-100 rounded" alt="">
                                                                 </a>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <a href="{{asset('../assets/images/draggable/01.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
-                                                                    <img src="{{asset('../assets/images/draggable/01.jpg')}}" class="w-100 rounded" alt="">
+                                                                <a href="{{asset('backend/assets/images/draggable/01.jpg')}}" class="glightbox img-hover-zoom" data-glightbox="type: image; zoomable: true;">
+                                                                    <img src="{{asset('backend/assets/images/draggable/01.jpg')}}" class="w-100 rounded" alt="">
                                                                 </a>
                                                             </div>
                                                         </div>
@@ -674,7 +674,7 @@
                                                 your phone's built-in security key</p>
                                         </div>
                                         <div class="col-sm-4 account-security-img">
-                                            <img src="{{asset('../assets/images/setting-app/account.jpg')}}" alt=""
+                                            <img src="{{asset('backend/assets/images/setting-app/account.jpg')}}" alt=""
                                                  class="w-180">
                                         </div>
                                     </div>
@@ -686,7 +686,7 @@
                             <div class="card-body">
                                 <div class="row security-box-card align-items-center">
                                     <div class="col-md-3 position-relative">
-                                                        <span><img src="{{asset('../assets/images/setting-app/google.png')}}" alt=""
+                                                        <span><img src="{{asset('backend/assets/images/setting-app/google.png')}}" alt=""
                                                                    class="w-35 h-35 anti-code"></span>
                                         <p
                                             class="security-box-title text-dark f-w-500 f-s-16 ms-5 security-code">
@@ -771,7 +771,7 @@
                                                 your phone's built-in security key</p>
                                         </div>
                                         <div class="col-sm-3 account-security-img">
-                                            <img src="{{asset('../assets/images/setting-app/device.jpg')}}" alt=""
+                                            <img src="{{asset('backend/assets/images/setting-app/device.jpg')}}" alt=""
                                                  class="w-150">
                                         </div>
                                     </div>
@@ -919,7 +919,7 @@
                                                 number and one special character.</p>
                                         </div>
                                         <div class="col-sm-3 account-security-img">
-                                            <img src="{{asset('../assets/images/setting-app/password.jpg')}}" alt=""
+                                            <img src="{{asset('backend/assets/images/setting-app/password.jpg')}}" alt=""
                                                  class="w-150">
                                         </div>
                                     </div>
@@ -1485,7 +1485,7 @@
                                                                         </span>
                                                     </label>
                                                     <div class="ms-2">
-                                                        <img src="{{asset('../assets/images/icons/visa-icon.png')}}"
+                                                        <img src="{{asset('backend/assets/images/icons/visa-icon.png')}}"
                                                              alt="">
                                                     </div>
                                                 </div>
@@ -1509,7 +1509,7 @@
                                                                         </span>
                                                     </label>
                                                     <div class="ms-2">
-                                                        <img src="{{asset('../assets/images/icons/master-icon.png')}}"
+                                                        <img src="{{asset('backend/assets/images/icons/master-icon.png')}}"
                                                              alt="">
                                                     </div>
                                                 </div>
@@ -1577,7 +1577,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/geethub.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/geethub.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">GitHub</h5>
@@ -1605,7 +1605,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/slack.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/slack.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Slack</h5>
@@ -1634,7 +1634,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/google.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/google.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Google</h5>
@@ -1663,7 +1663,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/figma.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/figma.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Figma</h5>
@@ -1691,7 +1691,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/drive.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/drive.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Drive</h5>
@@ -1720,7 +1720,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/drop-box.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/drop-box.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Drop Box</h5>
@@ -1749,7 +1749,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/facebook.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/facebook.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Facebook</h5>
@@ -1778,7 +1778,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/instagram.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/instagram.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Instagram</h5>
@@ -1807,7 +1807,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/twitter.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/twitter.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Twitter</h5>
@@ -1836,7 +1836,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/dribble.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/dribble.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Dribble</h5>
@@ -1865,7 +1865,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/linkdin.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/linkdin.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Linkedin</h5>
@@ -1894,7 +1894,7 @@
                                         <div class="conection-item">
                                             <div class="position-relative">
                                                                 <span class="position-absolute">
-                                                                    <img src="{{asset('../assets/images/setting-app/behance.png')}}"
+                                                                    <img src="{{asset('backend/assets/images/setting-app/behance.png')}}"
                                                                          alt="" class="w-35 h-35">
                                                                 </span>
                                                 <h5 class="ms-5 mt-1">Behance</h5>

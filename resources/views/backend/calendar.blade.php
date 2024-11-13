@@ -1,9 +1,9 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Calendar')
 @section('css')
     <!-- slick css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick-theme.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -147,12 +147,12 @@
     <div id="customizer"></div>
 
     <!-- slick-file -->
-    <script src="{{asset('assets/vendor/slick/slick.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/slick/slick.min.js')}}"></script>
 
     <!-- fullcalendar js -->
-    <script src="{{asset('assets/vendor/fullcalendar/global.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/fullcalendar/global.js')}}"></script>
 
     <!-- calendar js -->
-    <script src="{{asset('assets/js/calendar.js')}}"></script>
+    <script src="{{asset('backend/assets/js/calendar.js')}}"></script>
 
 @endsection

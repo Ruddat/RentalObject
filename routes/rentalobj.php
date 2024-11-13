@@ -6,6 +6,7 @@ use App\Livewire\BlogSystem\BlogGridManager;
 use App\Livewire\BlogSystem\BlogPostManager;
 use App\Livewire\BlogSystem\BlogDetailsManager;
 use App\Http\Controllers\BlogSystem\PostController;
+use App\Http\Controllers\Utility\NewsletterController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Settings\BackupDownloadController;
 
@@ -18,7 +19,7 @@ Route::view('/home-04', 'rentalobj.home-04')->name('home-04');
 Route::view('/home-05', 'rentalobj.home-05')->name('home-05');
 Route::view('/home-06', 'rentalobj.home-06')->name('home-06');
 Route::view('/dashboard', 'rentalobj.dashboard')->name('dashboard');
-Route::view('/add-property', 'rentalobj.add-property')->name('add-property');
+Route::view('/add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
 
 Route::view('/utility-cost-table', 'rentalobj.pageslivewire._utilitycosts')->name('utility-cost-table');
 Route::view('/rental-object-table', 'rentalobj.pageslivewire._rental-object-table')->name('rental-object-table');

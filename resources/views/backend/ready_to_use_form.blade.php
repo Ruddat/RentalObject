@@ -2,8 +2,8 @@
 @section('title', 'Ready To Use Form')
 @section('css')
     <!-- filepond css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/filepond/filepond.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/filepond/image-preview.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/filepond/filepond.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/filepond/image-preview.min.css')}}">
 
 @endsection
 @section('main-content')
@@ -180,7 +180,7 @@
                                     <button class="btn nav-link flex-grow-1 text-start active" id="carditcard-tab"
                                             data-bs-toggle="tab" data-bs-target="#carditcard-tab-pane" type="button"
                                             role="tab" aria-controls="carditcard-tab-pane" aria-selected="true">
-                                        <img src="{{asset('../assets/images/checkbox-radio/logo1.png')}}" class="w-35 h-35"
+                                        <img src="{{asset('backend/assets/images/checkbox-radio/logo1.png')}}" class="w-35 h-35"
                                              alt="">
                                         <span>Credit / Debit Card</span>
                                     </button>
@@ -190,7 +190,7 @@
                                             data-bs-toggle="tab" data-bs-target="#visacard-tab-pane" type="button"
                                             role="tab" aria-controls="visacard-tab-pane" aria-selected="false"
                                             tabindex="-1">
-                                        <img src="{{asset('../assets/images/checkbox-radio/logo2.png')}}" class="w-35 h-35"
+                                        <img src="{{asset('backend/assets/images/checkbox-radio/logo2.png')}}" class="w-35 h-35"
                                              alt="">
                                         <span>Visa Card</span>
                                     </button>
@@ -200,7 +200,7 @@
                                             data-bs-toggle="tab" data-bs-target="#paypal-tab-pane" type="button"
                                             role="tab" aria-controls="paypal-tab-pane" aria-selected="false"
                                             tabindex="-1">
-                                        <img src="{{asset('../assets/images/checkbox-radio/logo3.png')}}" class="w-35 h-35"
+                                        <img src="{{asset('backend/assets/images/checkbox-radio/logo3.png')}}" class="w-35 h-35"
                                              alt="">
                                         <span>Paypal</span>
                                     </button>
@@ -684,14 +684,14 @@
     <div id="customizer"></div>
 
     <!-- filepond -->
-    <script src="{{asset('assets/vendor/filepond/file-encode.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/validate-size.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/validate-type.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/exif-orientation.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/image-preview.min.js')}}"></script>
-    <script src="{{asset('assets/vendor/filepond/filepond.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/file-encode.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/validate-size.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/validate-type.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/exif-orientation.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/image-preview.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/filepond/filepond.min.js')}}"></script>
 
     <!-- js -->
-    <script src="{{asset('assets/js/ready_to_use_form.js')}}"></script>
+    <script src="{{asset('backend/assets/js/ready_to_use_form.js')}}"></script>
 
 @endsection

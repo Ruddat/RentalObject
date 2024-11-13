@@ -1,11 +1,11 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Cheatsheet')
 @section('css')
     <!--font-awesome-css-->
-    <link rel="stylesheet" href="{{asset('assets/vendor/fontawesome/css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/fontawesome/css/all.css')}}">
 
     <!-- toastify css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/toastify/toastify.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/toastify/toastify.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -33,7 +33,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="cheatsheet-header">
-                    <img src="{{asset('../assets/images/logo/3.png')}}" alt="">
+                    <img src="{{asset('backend/assets/images/logo/3.png')}}" alt="">
                     <h2>Your Ultimate Cheatsheet</h2>
                     <div class="search-div app-form">
                         <div class="input-group b-r-search">
@@ -2436,11 +2436,11 @@
        &lt;ul class="avatar-group float-end"&gt;
         &lt;li class="h-25 w-25 d-flex-center b-r-50 text-bg-danger b-2-light position-relative"
          data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
-         &lt;img src="{{asset('assets//images/avtar/4.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
+         &lt;img src="{{asset('backend/assets//images/avtar/4.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
         &lt;/li&gt;
         &lt;li class="h-25 w-25 d-flex-center b-r-50 text-bg-info b-2-light position-relative"
          data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
-         &lt;img src="{{asset('assets//images/avtar/3.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
+         &lt;img src="{{asset('backend/assets//images/avtar/3.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
         &lt;/li&gt;
         &lt;li class="text-bg-primary h-25 w-25 d-flex-center b-r-50" data-bs-toggle="tooltip"
          data-bs-title="5 More"&gt;
@@ -4126,22 +4126,22 @@
                                <code class="language-html" id="avtarImagesCode">
                                 &lt;div class="d-flex gap-3 flex-wrap"&gt;
                                 &lt;div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-primary"&gt;
-                                 &lt;img src="{{asset('assets//images/avtar/1.png')}}" alt="" class="img-fluid"&gt;
+                                 &lt;img src="{{asset('backend/assets//images/avtar/1.png')}}" alt="" class="img-fluid"&gt;
                                 &lt;/div&gt;
                                 &lt;div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-secondary"&gt;
-                                 &lt;img src="{{asset('assets//images/avtar/2.png')}}" alt="" class="img-fluid"&gt;
+                                 &lt;img src="{{asset('backend/assets//images/avtar/2.png')}}" alt="" class="img-fluid"&gt;
                                 &lt;/div&gt;
                                 &lt;div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-success"&gt;
-                                 &lt;img src="{{asset('assets//images/avtar/3.png')}}" alt="" class="img-fluid"&gt;
+                                 &lt;img src="{{asset('backend/assets//images/avtar/3.png')}}" alt="" class="img-fluid"&gt;
                                 &lt;/div&gt;
                                 &lt;div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-info"&gt;
-                                 &lt;img src="{{asset('assets//images/avtar/4.png')}}" alt="" class="img-fluid"&gt;
+                                 &lt;img src="{{asset('backend/assets//images/avtar/4.png')}}" alt="" class="img-fluid"&gt;
                                 &lt;/div&gt;
                                 &lt;div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-success"&gt;
-                                 &lt;img src="{{asset('assets//images/avtar/5.png')}}" alt="" class="img-fluid"&gt;
+                                 &lt;img src="{{asset('backend/assets//images/avtar/5.png')}}" alt="" class="img-fluid"&gt;
                                 &lt;/div&gt;
                                 &lt;div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-danger"&gt;
-                                 &lt;img src="{{asset('assets//images/avtar/6.png')}}" alt="" class="img-fluid"&gt;
+                                 &lt;img src="{{asset('backend/assets//images/avtar/6.png')}}" alt="" class="img-fluid"&gt;
                                 &lt;/div&gt;
                                 &lt;/div&gt;
                                </code>
@@ -4412,15 +4412,15 @@
                                &lt;ul class="avatar-group"&gt;
                                &lt;li class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-primary b-2-light"
                                 data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
-                                &lt;img src="{{asset('assets//images/avtar/4.png')}}" alt="" class="img-fluid"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/4.png')}}" alt="" class="img-fluid"&gt;
                                &lt;/li&gt;
                                &lt;li class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-success b-2-light"
                                 data-bs-toggle="tooltip" data-bs-title="Eva Bailey"&gt;
-                                &lt;img src="{{asset('assets//images/avtar/5.png')}}" alt="" class="img-fluid"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/5.png')}}" alt="" class="img-fluid"&gt;
                                &lt;/li&gt;
                                &lt;li class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-danger b-2-light"
                                 data-bs-toggle="tooltip" data-bs-title="Michael Hughes"&gt;
-                                &lt;img src="{{asset('assets//images/avtar/6.png')}}" alt="" class="img-fluid"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/6.png')}}" alt="" class="img-fluid"&gt;
                                &lt;/li&gt;
                                &lt;li class="text-bg-secondary h-35 w-35 d-flex-center b-r-50" data-bs-toggle="tooltip"
                                 data-bs-title="10 More"&gt;
@@ -4432,25 +4432,25 @@
                                 data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
                                 &lt;span
                                  class="position-absolute top-0 start-2 p-1 bg-danger border border-light rounded-circle"&gt;&lt;/span&gt;
-                                &lt;img src="{{asset('assets//images/avtar/4.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/4.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
                                &lt;/li&gt;
                                &lt;li class="h-45 w-45 d-flex-center b-r-50 text-bg-success b-2-light position-relative"
                                 data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
                                 &lt;span
                                  class="position-absolute top-0 start-2 p-1 bg-success border border-light rounded-circle"&gt;&lt;/span&gt;
-                                &lt;img src="{{asset('assets//images/avtar/1.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/1.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
                                &lt;/li&gt;
                                &lt;li class="h-45 w-45 d-flex-center b-r-50 text-bg-warning b-2-light position-relative"
                                 data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
                                 &lt;span
                                  class="position-absolute top-0 start-2 p-1 bg-warning border border-light rounded-circle"&gt;&lt;/span&gt;
-                                &lt;img src="{{asset('assets//images/avtar/2.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/2.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
                                &lt;/li&gt;
                                &lt;li class="h-45 w-45 d-flex-center b-r-50 text-bg-info b-2-light position-relative"
                                 data-bs-toggle="tooltip" data-bs-title="Sabrina Torres"&gt;
                                 &lt;span
                                  class="position-absolute top-0 start-2 p-1 bg-info border border-light rounded-circle"&gt;&lt;/span&gt;
-                                &lt;img src="{{asset('assets//images/avtar/3.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
+                                &lt;img src="{{asset('backend/assets//images/avtar/3.png')}}" alt="" class="img-fluid b-r-50 overflow-hidden"&gt;
                                &lt;/li&gt;
                                &lt;li class="text-bg-primary h-35 w-35 d-flex-center b-r-50" data-bs-toggle="tooltip"
                                 data-bs-title="5 More"&gt;
@@ -8983,12 +8983,12 @@
 <div id="customizer"></div>
 
 <!-- masonry js-->
-<script src="{{asset('assets/vendor/masonry/masonry.pkgd.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/masonry/masonry.pkgd.min.js')}}"></script>
 
 <!-- toatify js-->
-<script src="{{asset('assets/vendor/toastify/toastify.js')}}"></script>
-<script src="{{asset('assets/js/tooltips_popovers.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/toastify/toastify.js')}}"></script>
+<script src="{{asset('backend/assets/js/tooltips_popovers.js')}}"></script>
 
 <!-- cheatsheet js -->
-<script src="{{asset('assets/js/cheatsheet.js')}}"></script>
+<script src="{{asset('backend/assets/js/cheatsheet.js')}}"></script>
 @endsection
