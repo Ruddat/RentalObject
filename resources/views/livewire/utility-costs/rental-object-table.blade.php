@@ -1,8 +1,5 @@
 <div class="main-content">
     <div class="main-content-inner">
-        <div class="button-show-hide show-mb">
-            <span class="body-1">Show Dashboard</span>
-        </div>
         <!-- Toggle Button für Formular -->
         <div class="mb-3">
             <button wire:click="toggleForm" class="btn btn-primary">
@@ -112,11 +109,22 @@
             </div>
         @endif
 
+
+
+
         <!-- Tabelle der Mietobjekte -->
-        <div class="widget-box-2 mess-box">
-            <h5 class="title">Mietobjekte Liste</h5>
-            <div class="table-responsive">
-                <table class="table table-striped mt-3">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Mietobjekte Liste</h5>
+                    <p>Using the border table need to add <code> .table-bordered </code> class to table
+                        tag and
+                        <code> .table-striped </code> class for Strip table
+                    </p>
+                </div>
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped align-middle mb-0">
                     <thead>
                         <tr>
                             <th>Objektname</th>
@@ -150,8 +158,8 @@
                             <td>{{ $object->heating_type }}</td>
                             <td>{{ $object->description }}</td>
                             <td>
-                                <button wire:click="editRentalObject({{ $object->id }})" class="btn btn-sm btn-warning">Bearbeiten</button>
-                                <button wire:click="deleteRentalObject({{ $object->id }})" class="btn btn-sm btn-danger" onclick="return confirm('Möchten Sie dieses Mietobjekt wirklich löschen?')">Löschen</button>
+                                <button wire:click="editRentalObject({{ $object->id }})" class="btn btn-success icon-btn b-r-4"><i class="ti ti-edit"></i></button>
+                                <button wire:click="deleteRentalObject({{ $object->id }})" class="btn btn-danger icon-btn b-r-4" onclick="return confirm('Möchten Sie dieses Mietobjekt wirklich löschen?')"><i class="ti ti-trash"></i></button>
                             </td>
                         </tr>
                     @endforeach
@@ -159,10 +167,8 @@
                 </table>
             </div>
         </div>
-
-        <!-- Footer -->
-        <div class="footer-dashboard footer-dashboard-2 mt-4">
-            <p>Copyright © 2024 Home Lengo</p>
         </div>
+        </div>
+
     </div>
 </div>

@@ -82,11 +82,20 @@
             </form>
         </div>
 
+
+
+
         <!-- Tabelle der Zahlungen -->
-        <div class="widget-box-2 mess-box">
-            <h5 class="title">Zahlungsliste</h5>
-            <div class="table-responsive mt-3">
-                <table class="table table-striped">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>@autotranslate("Zahlungsliste", app()->getLocale())</h5>
+                    <p>Using the small table need to add <code> .table-sm </code> class to table tag
+                    </p>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-sm table-hover table-striped align-middle mb-0">
                     <thead>
                         <tr>
                             <th>Mieter</th>
@@ -117,10 +126,8 @@
                 </table>
             </div>
         </div>
-
-        <!-- Footer -->
-        <div class="footer-dashboard footer-dashboard-2 mt-4">
-            <p>Copyright © 2024 Home Lengo</p>
+            </div>
         </div>
+
     </div>
 </div>

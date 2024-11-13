@@ -16,7 +16,7 @@
                         <a href="#" class="head-icon" role="button" data-bs-toggle="offcanvas"
                            data-bs-target="#cloudoffcanvasTops" aria-controls="cloudoffcanvasTops">
                             <i class="ph-duotone  ph-cloud-sun text-primary f-s-26 me-1"></i>
-                            <span>26 <sup class="f-s-10">°C</sup></span>
+                            <span>0 <sup class="f-s-10">°C</sup></span>
                         </a>
 
                         <div class="offcanvas offcanvas-end header-cloud-canvas" tabindex="-1" id="cloudoffcanvasTops"
@@ -839,3 +839,66 @@
     </div>
 </header>
 <!-- Header Section ends -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const city = "Berlin"; // Deine Stadt
+        const weatherUrl = `/weather/${city}`;
+
+        fetch(weatherUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP-Fehler: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Empfangene Wetterdaten:", data); // Debugging-Hilfe
+
+                // Zugriff auf die korrekten Ebenen
+                const currentWeather = data.current?.current; // Doppelte Ebene beachten
+                const location = data.current?.location;
+                const forecast = data.forecast;
+
+                // Überprüfe, ob Daten existieren
+                if (!currentWeather || !location) {
+                    console.error("Aktuelle Wetterdaten oder Standort fehlen.");
+                    document.querySelector(".header-cloud .head-icon span").innerHTML = "Fehler";
+                    return;
+                }
+
+                const temp = currentWeather.temp_c ?? "N/A"; // Temperatur aus 'current'
+                const conditionText = currentWeather.condition?.text ?? "Unbekannt";
+                const locationName = location.name ?? "Unbekannter Ort";
+
+                // Aktuelles Wetter anzeigen
+                document.querySelector(".header-cloud .head-icon span").innerHTML =
+                    `${Math.round(temp)} <sup class="f-s-10">°C</sup>`;
+
+                console.log(`Ort: ${locationName}, Temperatur: ${temp}°C, Zustand: ${conditionText}`);
+
+                // Vorhersage anzeigen (falls vorhanden)
+                if (forecast) {
+                    const forecastContainer = document.querySelector(".cloud-content-box");
+                    forecastContainer.innerHTML = forecast.map(day => `
+                    <div class="cloud-box bg-primary-900">
+                        <p class="mb-3">${new Date(day.date).toLocaleDateString('de-DE', { weekday: 'short' })}</p>
+                        <h6 class="mt-4 f-s-13"> +${Math.round(day.day.maxtemp_c)}°C</h6>
+                        <span>
+                            <img src="${day.day.condition.icon}" alt="${day.day.condition.text}" style="width: 40px; height: 40px;" />
+                            </span>
+                            <p class="f-s-13 mt-3"><i class="wi wi-raindrop"></i> ${day.day.daily_chance_of_rain}%</p>
+                            </div>
+                            `).join('');
+                } else {
+                    console.error("Keine Vorhersagedaten gefunden.");
+                }
+            })
+            .catch(error => {
+                console.error("Fehler beim Laden der Wetterdaten:", error.message);
+                document.querySelector(".header-cloud .head-icon span").innerHTML = "Fehler";
+            });
+    });
+</script>
+
+
+

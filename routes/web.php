@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 
 Route::view('/', 'welcome');
@@ -20,4 +21,5 @@ require __DIR__.'/auth.php';
 Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
 
 
+Route::get('/weather/{city}', [WeatherController::class, 'getWeatherData']);
 

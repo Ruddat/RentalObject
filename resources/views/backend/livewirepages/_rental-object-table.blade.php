@@ -8,7 +8,7 @@
         <!-- Breadcrumb start -->
         <div class="row m-1">
             <div class="col-12 ">
-                <h4 class="main-title">Blank</h4>
+                <h4 class="main-title">Mietobjekte</h4>
                 <ul class="app-line-breadcrumbs mb-3">
                     <li class="">
                         <a href="#" class="f-s-14 f-w-500">
@@ -31,7 +31,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Default Card</h5>
+                        <h5>Mietobjekte</h5>
                     </div>
                     <div class="card-body">
 
