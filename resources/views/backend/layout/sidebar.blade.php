@@ -143,7 +143,7 @@
                 </ul>
             </li>
 
-            @if(Auth::user()->can('manage users'))
+
             <li class="menu-title"> <span>Settings</span></li>
             <li>
                 <a class="" data-bs-toggle="collapse" href="#ui-kits" aria-expanded="false">
@@ -179,7 +179,7 @@
                     <li><a href="{{route('alignment')}}">Alignment Thing</a></li>
                 </ul>
             </li>
-            @endif
+
 
             <li class="menu-title"> <span>Component</span></li>
             <li>
