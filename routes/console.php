@@ -3,6 +3,7 @@
 use Illuminate\Foundation\Inspiring;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schedule;
+use App\Console\Commands\GeneratePermissions;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,6 @@ Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->purpose('Display an inspiring quote')->hourly();
 
+Artisan::command('generate:permissions', function () {
+    (new GeneratePermissions())->handle();
+})->purpose('Generate permissions based on route controllers');

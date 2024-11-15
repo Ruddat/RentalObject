@@ -10,6 +10,8 @@ Route::get('/weather/{city}', [WeatherController::class, 'getWeatherData']);
 
 Route::view('add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
 
+Route::view('roles-permissions-table', 'backend.admin.rolesandpermission._roles-permissions-table')->name('roles-permissions-table');
+Route::view('user-table', 'backend.admin.users-table')->name('user-table');
 
 
 Route::view('utility-costs-table', 'backend.livewirepages._utility-costs-table')->name('utility-costs-table');

@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Bookmark')
 @section('css')
 
@@ -151,7 +151,7 @@
                                     <div class="card book-mark-card">
                                         <div class="card-body">
                                             <div class="draggable-card-img">
-                                                <img src="{{asset('../assets/images/draggable/01.jpg')}} " alt=""
+                                                <img src="{{asset('backend/assets/images/draggable/01.jpg')}} " alt=""
                                                      class="img-fluid">
                                                 <div class="video-transparent-box"></div>
                                                 <div class="draggable-card-icon">
@@ -212,7 +212,7 @@
                                     <div class="card book-mark-card ">
                                         <div class="card-body">
                                             <div class="draggable-card-img">
-                                                <img src="{{asset('../assets/images/draggable/02.jpg')}} " alt=""
+                                                <img src="{{asset('backend/assets/images/draggable/02.jpg')}} " alt=""
                                                      class="img-fluid">
                                                 <div class="video-transparent-box"></div>
                                                 <div class="draggable-card-icon">
@@ -275,7 +275,7 @@
                                     <div class="card book-mark-card">
                                         <div class="card-body">
                                             <div class="draggable-card-img">
-                                                <img src="{{asset('../assets/images/draggable/08.jpg')}} " alt=""
+                                                <img src="{{asset('backend/assets/images/draggable/08.jpg')}} " alt=""
                                                      class="img-fluid">
                                                 <div class="video-transparent-box"></div>
                                                 <div class="draggable-card-icon">
@@ -339,7 +339,7 @@
                                     <div class="card book-mark-card">
                                         <div class="card-body">
                                             <div class="draggable-card-img">
-                                                <img src="{{asset('../assets/images/draggable/04.jpg')}} " alt=""
+                                                <img src="{{asset('backend/assets/images/draggable/04.jpg')}} " alt=""
                                                      class="img-fluid">
                                                 <div class="video-transparent-box"></div>
                                                 <div class="draggable-card-icon">
@@ -402,7 +402,7 @@
                                     <div class="card book-mark-card">
                                         <div class="card-body">
                                             <div class="draggable-card-img">
-                                                <img src="{{asset('../assets/images/draggable/09.jpg')}} " alt=""
+                                                <img src="{{asset('backend/assets/images/draggable/09.jpg')}} " alt=""
                                                      class="img-fluid">
                                                 <div class="video-transparent-box"></div>
                                                 <div class="draggable-card-icon">
@@ -464,7 +464,7 @@
                                     <div class="card book-mark-card">
                                         <div class="card-body">
                                             <div class="draggable-card-img">
-                                                <img src="{{asset('../assets/images/draggable/10.jpg')}} " alt=""
+                                                <img src="{{asset('backend/assets/images/draggable/10.jpg')}} " alt=""
                                                      class="img-fluid">
                                                 <div class="video-transparent-box"></div>
                                                 <div class="draggable-card-icon">
@@ -562,7 +562,7 @@
     <div id="customizer"></div>
 
     <!-- js  -->
-    <script src="{{asset('assets/js/bookmark.js')}}"></script>
+    <script src="{{asset('backend/assets/js/bookmark.js')}}"></script>
 @endsection
 
 

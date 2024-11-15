@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Widget')
 @section('css')
     <!-- apexcharts css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/apexcharts/apexcharts.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/apexcharts/apexcharts.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -225,7 +225,7 @@
                             <div class="col-6 col-md-3 p-1">
                                 <div class="currency-coin-box bg-primary">
                                     <div class="h-45 w-45 d-flex-center b-r-15 overflow-hidden  p-1 mb-3">
-                                        <img src="{{asset('../assets/images/dashboard/analytics/binance.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/dashboard/analytics/binance.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <p class="text-light mb-0">Bitcoin</p>
                                     <h6 class="mb-0">$72,890</h6>
@@ -234,7 +234,7 @@
                             <div class="col-6 col-md-3 p-1">
                                 <div class="currency-coin-box bg-danger">
                                     <div class="h-45 w-45 d-flex-center b-r-15 overflow-hidden p-1 mb-3">
-                                        <img src="{{asset('../assets/images/dashboard/analytics/ethereum.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/dashboard/analytics/ethereum.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <p class="text-light mb-0">Ethereum</p>
                                     <h6 class="mb-0">$34,786</h6>
@@ -243,7 +243,7 @@
                             <div class="col-6 col-md-3 p-1">
                                 <div class="currency-coin-box bg-secondary">
                                     <div class="h-45 w-45 d-flex-center b-r-15 overflow-hidden  p-1 mb-3">
-                                        <img src="{{asset('../assets/images/dashboard/analytics/dogecoin.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/dashboard/analytics/dogecoin.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <p class="text-light mb-0">Dash</p>
                                     <h6 class="mb-0">$34,786</h6>
@@ -252,7 +252,7 @@
                             <div class="col-6 col-md-3 p-1">
                                 <div class="currency-coin-box bg-success">
                                     <div class="h-45 w-45 d-flex-center b-r-15 overflow-hidden   p-1 mb-3">
-                                        <img src="{{asset('../assets/images/dashboard/analytics/turkish-lira.png')}}" alt="" class="img-fluid">
+                                        <img src="{{asset('backend/assets/images/dashboard/analytics/turkish-lira.png')}}" alt="" class="img-fluid">
                                     </div>
                                     <p class="text-light mb-0">Edo</p>
                                     <h6 class="mb-0">$34,786</h6>
@@ -364,10 +364,10 @@
 <div id="customizer"></div>
 
 <!-- apexcharts -->
-<script src="{{asset('assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
-<script src="{{asset('assets/vendor/apexcharts/column/dayjs.min.js')}}"></script>
-<script src="{{asset('assets/vendor/apexcharts/column/quarterOfYear.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/apexcharts/apexcharts.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/apexcharts/column/dayjs.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/apexcharts/column/quarterOfYear.min.js')}}"></script>
 
 <!--js-->
-<script src="{{asset('assets/js/widget.js')}}"></script>
+<script src="{{asset('backend/assets/js/widget.js')}}"></script>
 @endsection

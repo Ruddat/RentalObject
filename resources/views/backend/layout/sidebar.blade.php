@@ -143,10 +143,43 @@
                 </ul>
             </li>
 
+            @if(Auth::user()->can('manage users'))
+            <li class="menu-title"> <span>Settings</span></li>
+            <li>
+                <a class="" data-bs-toggle="collapse" href="#ui-kits" aria-expanded="false">
 
-
-
-
+                    <i class="ph-duotone  ph-briefcase"></i>
+                    UI kits
+                </a>
+                <ul class="collapse" id="ui-kits">
+                    <li><a href="{{route('user-table')}}">Users</a></li>
+                    <li><a href="{{route('roles-permissions-table')}}">Roles & Permissons</a></li>
+                    <li><a href="{{route('badges')}}">Badges</a></li>
+                    <li><a href="{{route('buttons')}}">Buttons</a></li>
+                    <li><a href="{{route('cards')}}">Cards</a></li>
+                    <li><a href="{{route('dropdown')}}">Dropdown</a></li>
+                    <li><a href="{{route('grid')}}">Grid</a></li>
+                    <li><a href="{{route('avatar')}}">Avatar</a></li>
+                    <li><a href="{{route('tabs')}}">Tabs</a></li>
+                    <li><a href="{{ route('accordions') }}">Accordions</a></li>
+                    <li><a href="{{route('progress')}}">Progress</a></li>
+                    <li><a href="{{route('notifications')}}">Notifications</a></li>
+                    <li><a href="{{route('list')}}">Lists</a></li>
+                    <li><a href="{{route('helper_classes')}}">Helper Classes</a></li>
+                    <li><a href="{{route('background')}}">Background</a></li>
+                    <li><a href="{{route('divider')}}">Divider</a></li>
+                    <li><a href="{{route('ribbons')}}">Ribbons</a></li>
+                    <li><a href="{{route('editor')}}">Editor </a></li>
+                    <li><a href="{{route('collapse')}}">Collapse</a></li>
+                    <li><a href="{{route('footer_page')}}">Footer</a></li>
+                    <li><a href="{{route('shadow')}}">Shadow</a></li>
+                    <li><a href="{{route('wrapper')}}">Wrapper</a></li>
+                    <li><a href="{{route('bullet')}}">Bullet</a></li>
+                    <li><a href="{{route('placeholder')}}">Placeholder</a></li>
+                    <li><a href="{{route('alignment')}}">Alignment Thing</a></li>
+                </ul>
+            </li>
+            @endif
 
             <li class="menu-title"> <span>Component</span></li>
             <li>
