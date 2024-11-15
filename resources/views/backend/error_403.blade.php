@@ -7,7 +7,7 @@
     <div class="container">
         <div>
             <div>
-                <img src="{{asset('../assets/images/background/error-403.png')}}" class="img-fluid" alt="">
+                <img src="{{asset('backend/assets/images/background/error-403.png')}}" class="img-fluid" alt="">
             </div>
             <div class="mb-3">
                 <div class="row">

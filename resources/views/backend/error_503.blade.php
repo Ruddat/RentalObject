@@ -1,13 +1,13 @@
 @section('title', 'Service Unavailable')
-@include('layout.head')
+@include('backend.layout.head')
 
-@include('layout.css')
+@include('backend.layout.css')
 
 <div class="error-container p-0">
     <div class="container">
         <div>
             <div>
-                <img src="{{asset('../assets/images/background/error-503.png')}}" class="img-fluid" alt="">
+                <img src="{{asset('backend/assets/images/background/error-503.png')}}" class="img-fluid" alt="">
             </div>
             <div class="mb-3">
                 <div class="row">
@@ -22,8 +22,8 @@
 </div>
 @section('script')
     <!--jquery-->
-    <script src="{{asset('assets/js/jquery-3.6.3.min.js')}}"></script>
+    <script src="{{asset('backend/assets/js/jquery-3.6.3.min.js')}}"></script>
 
     <!-- Bootstrap js-->
-    <script src="{{asset('assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
 @endsection

@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(UtilityCostsSeeder::class);
+        $this->call(RolesAndPermissionsSeeder::class);
     }
 
 }
