@@ -7,6 +7,7 @@ use App\Models\Tenant;
 use Livewire\Component;
 use App\Models\RentalObject;
 use App\Models\TenantPayment;
+use Illuminate\Support\Facades\Auth;
 
 class TenantPayments extends Component
 {
@@ -37,8 +38,8 @@ class TenantPayments extends Component
 
     public function mount()
     {
-        $this->tenants = Tenant::all();
-        $this->rentalObjects = RentalObject::all();
+        $this->tenants = Tenant::where('user_id', Auth::id())->get();
+        $this->rentalObjects = RentalObject::where('user_id', Auth::id())->get();
         $this->loadPayments();
 
         // Setze das payment_date auf den ersten Tag des aktuellen Monats
@@ -86,7 +87,7 @@ class TenantPayments extends Component
 
     public function loadPayments()
     {
-        $query = TenantPayment::with('tenant', 'rentalObject');
+        $query = TenantPayment::with('tenant', 'rentalObject')->where('user_id', Auth::id());
 
         if ($this->tenant_id) {
             $query->where('tenant_id', $this->tenant_id);
@@ -104,6 +105,7 @@ class TenantPayments extends Component
         $existingPayment = TenantPayment::where('tenant_id', $this->tenant_id)
             ->where('year', $this->year)
             ->where('month', $this->month)
+            ->where('user_id', Auth::id())
             ->first();
 
         if ($existingPayment && !$this->editMode) {
@@ -117,23 +119,24 @@ class TenantPayments extends Component
         }
 
         if ($this->editMode) {
-            $payment = TenantPayment::find($this->editId);
+            $payment = TenantPayment::where('user_id', Auth::id())->find($this->editId);
             $payment->update([
                 'tenant_id' => $this->tenant_id,
                 'rental_object_id' => $this->rental_object_id,
                 'year' => $this->year,
                 'month' => $this->month,
                 'amount' => $this->amount,
-                'payment_date' => $this->payment_date, // Neues Feld
+                'payment_date' => $this->payment_date,
             ]);
         } else {
             TenantPayment::create([
+                'user_id' => Auth::id(), // User-ID hinzufügen
                 'tenant_id' => $this->tenant_id,
                 'rental_object_id' => $this->rental_object_id,
                 'year' => $this->year,
                 'month' => $this->month,
                 'amount' => $this->amount,
-                'payment_date' => $this->payment_date, // Neues Feld
+                'payment_date' => $this->payment_date,
             ]);
         }
 
@@ -157,7 +160,7 @@ class TenantPayments extends Component
 
     public function editPayment($id)
     {
-        $payment = TenantPayment::findOrFail($id);
+        $payment = TenantPayment::where('user_id', Auth::id())->findOrFail($id);
         $this->editMode = true;
         $this->editId = $payment->id;
         $this->tenant_id = $payment->tenant_id;
@@ -165,7 +168,7 @@ class TenantPayments extends Component
         $this->year = $payment->year;
         $this->month = $payment->month;
         $this->amount = $payment->amount;
-        $this->payment_date = $payment->payment_date ?? now()->startOfMonth()->toDateString(); // Neues Feld
+        $this->payment_date = $payment->payment_date ?? now()->startOfMonth()->toDateString();
 
         $this->generateAvailableYearsAndMonths($payment->tenant);
     }
@@ -181,7 +184,7 @@ class TenantPayments extends Component
 
     public function deletePayment($id)
     {
-        TenantPayment::findOrFail($id)->delete();
+        TenantPayment::where('user_id', Auth::id())->findOrFail($id)->delete();
         $this->loadPayments();
     }
 

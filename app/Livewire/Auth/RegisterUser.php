@@ -2,11 +2,12 @@
 
 namespace App\Livewire\Auth;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\Rules\Password;
 use App\Models\User;
+use Livewire\Component;
+use App\Helpers\MailHelper;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 
 class RegisterUser extends Component
 {
@@ -24,14 +25,23 @@ class RegisterUser extends Component
         ];
     }
 
+
+    // Registriere die Listener für bestimmte Events
+    protected $listeners = [
+        'registerSuccess' => 'handleRegisterSuccess',
+        'registerError' => 'handleRegisterError',
+        'open-modal' => 'openModal',
+        'close-modal' => 'closeModal',
+    ];
+
+
     public function register()
     {
-        // Versuch der Validierung
         try {
             $this->validate();
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // Bei Validierungsfehlern Modal öffnen und Fehler anzeigen
-            $this->dispatch('open-modal');
+            // Modal geöffnet lassen, Validierungsfehler dem Benutzer anzeigen
+            $this->dispatch('open-modal-register');
             throw $e;
         }
 
@@ -43,13 +53,57 @@ class RegisterUser extends Component
             'password' => Hash::make($this->password),
         ]);
 
+
+
+        // Verifizierungstoken und Ablaufdatum generieren
+        $verificationToken = sha1(time() . $user->email); // Token basierend auf E-Mail und Zeitstempel
+        $verificationExpiresAt = now()->addMinutes(60); // Link 60 Minuten gültig
+
+        // Token und Ablaufdatum speichern
+        $user->verification_token = $verificationToken;
+        $user->verification_expires_at = $verificationExpiresAt;
+        $user->save();
+
+        // Benutzerrolle zuweisen (z.B. "user")
+        $user->assignRole('newuser');
+
         // Benutzer anmelden
         Auth::login($user);
 
-        // Modal schließen und Nachricht anzeigen
-        $this->dispatch('close-modal');
-        session()->flash('message', 'Registration successful!');
+
+        // Link für die E-Mail-Verifizierung
+        $verificationLink = route('email.verification.custom', ['id' => $user->id, 'token' => $verificationToken]);
+
+        
+        // Ablaufzeit in Stunden (z.B. 1 Stunde)
+        $expiresIn = $verificationExpiresAt->diffForHumans(now(), true); //'60 Minuten'; // oder: $verificationExpiresAt->diffForHumans(now(), true);
+
+        // E-Mail-Inhalt basierend auf der Blade-Vorlage erstellen
+        $body = view('emails.auth.registration_confirmation', [
+            'username' => $user->username,
+            'verificationLink' => $verificationLink,
+            'expiresIn' => $expiresIn,
+        ])->render();
+
+        $subject = 'Bestätigung deiner Registrierung';
+
+        if (MailHelper::sendEmail($user->email, $subject, $body, $user->username)) {
+            // Erfolg: SweetAlert anzeigen und zur Dashboard-Seite weiterleiten
+           // $this->dispatch('registerSuccess', ['redirectUrl' => route('dashboard')]);
+          //  $this->dispatch('close-modal-register');
+
+            // Erfolg: SweetAlert anzeigen
+             $this->dispatch('registerSuccess'); // Dispatch ein Event für JavaScript
+
+        } else {
+            // Fehler: SweetAlert-Fehlermeldung anzeigen
+            $this->dispatch('registerError', ['errorMessage' => 'Registration successful, but the confirmation email could not be sent.']);
+        }
+
+        // Modal schließen
+        $this->dispatch('close-modal-register');
     }
+
 
     public function render()
     {

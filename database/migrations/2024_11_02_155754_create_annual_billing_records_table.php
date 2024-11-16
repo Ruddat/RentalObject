@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('annual_billing_records', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id'); // User-ID hinzufügen
             $table->unsignedBigInteger('rental_object_id');
             $table->unsignedBigInteger('tenant_id');
             $table->unsignedBigInteger('utility_cost_id');
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->enum('distribution_key', ['area', 'people', 'units'])->default('units');
             $table->timestamps();
 
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('rental_object_id')->references('id')->on('rental_objects')->onDelete('cascade');
             $table->foreign('tenant_id')->references('id')->on('tenants')->onDelete('cascade');
             $table->foreign('utility_cost_id')->references('id')->on('utility_costs')->onDelete('cascade');

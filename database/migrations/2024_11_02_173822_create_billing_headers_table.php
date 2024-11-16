@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('billing_headers', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // User-ID als Fremdschlüssel
             $table->string('creator_name');
             $table->string('first_name')->nullable();
             $table->string('street')->nullable();

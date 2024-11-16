@@ -5,6 +5,7 @@ namespace App\Livewire\UtilityCosts;
 use App\Models\Tenant;
 use Livewire\Component;
 use App\Models\RentalObject;
+use Illuminate\Support\Facades\Auth;
 
 class TenantTable extends Component
 {
@@ -17,7 +18,7 @@ class TenantTable extends Component
     public $phone;
     public $email;
     public $rental_object_id;
-    public $billing_type = 'units'; // Standardwert für den Abrechnungstyp
+    public $billing_type = 'units';
     public $flat_rate;
     public $unit_count;
     public $person_count;
@@ -46,7 +47,7 @@ class TenantTable extends Component
         'billing_type' => 'required|in:units,people,flat_rate',
         'unit_count' => 'nullable|integer|min:0|required_if:billing_type,units',
         'person_count' => 'nullable|integer|min:0|required_if:billing_type,people',
-        'square_meters' => 'nullable|numeric|min:0', // Validierung für Quadratmeter
+        'square_meters' => 'nullable|numeric|min:0',
         'start_date' => 'required|date',
         'end_date' => 'nullable|date|after_or_equal:start_date',
         'gas_meter' => 'nullable|numeric|min:0',
@@ -57,9 +58,8 @@ class TenantTable extends Component
 
     public function mount()
     {
-        $this->tenants = Tenant::all();
-        $this->rentalObjects = RentalObject::all();
-        $this->rental_object_id = $this->rental_object_id ?? '';
+        $this->tenants = Tenant::where('user_id', Auth::id())->get();
+        $this->rentalObjects = RentalObject::where('user_id', Auth::id())->get();
     }
 
     public function addTenant()
@@ -67,6 +67,7 @@ class TenantTable extends Component
         $this->validate();
 
         Tenant::create([
+            'user_id' => Auth::id(), // User-ID hinzufügen
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
             'phone' => $this->phone,
@@ -94,7 +95,7 @@ class TenantTable extends Component
 
     public function editTenant($id)
     {
-        $tenant = Tenant::findOrFail($id);
+        $tenant = Tenant::where('user_id', Auth::id())->findOrFail($id);
         $this->editMode = true;
         $this->editId = $tenant->id;
         $this->first_name = $tenant->first_name;
@@ -122,7 +123,7 @@ class TenantTable extends Component
     {
         $this->validate();
 
-        $tenant = Tenant::findOrFail($this->editId);
+        $tenant = Tenant::where('user_id', Auth::id())->findOrFail($this->editId);
         $tenant->update([
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
@@ -139,6 +140,10 @@ class TenantTable extends Component
             'electricity_meter' => $this->electricity_meter,
             'water_meter' => $this->water_meter,
             'hot_water_meter' => $this->hot_water_meter,
+            'street' => $this->street,
+            'house_number' => $this->house_number,
+            'zip_code' => $this->zip_code,
+            'city' => $this->city,
         ]);
 
         $this->resetFields();
@@ -147,7 +152,7 @@ class TenantTable extends Component
 
     public function deleteTenant($id)
     {
-        Tenant::findOrFail($id)->delete();
+        Tenant::where('user_id', Auth::id())->findOrFail($id)->delete();
         $this->loadTenants();
     }
 
@@ -162,13 +167,13 @@ class TenantTable extends Component
 
     private function loadTenants()
     {
-        $this->tenants = Tenant::all();
+        $this->tenants = Tenant::where('user_id', Auth::id())->get();
     }
 
     public function render()
     {
         return view('livewire.utility-costs.tenant-table', [
-            'tenants' => Tenant::with('rentalObject'),
+            'tenants' => Tenant::with('rentalObject')->where('user_id', Auth::id())->get(),
         ]);
     }
 }

@@ -42,7 +42,7 @@
                                             <button wire:click="editRole({{ $role->id }})" class="btn btn-success icon-btn b-r-4" data-bs-toggle="modal" data-bs-target="#editRoleModal">
                                                 <i class="ti ti-edit"></i>
                                             </button>
-                                            @if(!in_array($role->name, ['super admin', 'admin', 'seller', 'vendor']))
+                                            @if(!in_array($role->name, ['super admin', 'admin', 'seller', 'vendor', 'customer', 'manager', 'newuser']))
                                             <button wire:click="deleteRole({{ $role->id }})" class="btn btn-danger icon-btn b-r-4">
                                                 <i class="ti ti-trash"></i>
                                             </button>

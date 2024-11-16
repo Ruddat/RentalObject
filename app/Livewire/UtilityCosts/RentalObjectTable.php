@@ -4,6 +4,7 @@ namespace App\Livewire\UtilityCosts;
 
 use Livewire\Component;
 use App\Models\RentalObject;
+use Illuminate\Support\Facades\Auth;
 
 class RentalObjectTable extends Component
 {
@@ -16,15 +17,13 @@ class RentalObjectTable extends Component
     public $city;
     public $country = 'Deutschland';
     public $description;
-    public $object_type; // Gewerbe, Privat, Garage
+    public $object_type;
     public $rentalObjects;
     public $editMode = false;
     public $editId;
     public $showForm = false; // Steuerung für das Anzeigen des Formulars
     public $square_meters;
     public $heating_type;
-
-
 
     protected $rules = [
         'name' => 'nullable|string|max:255',
@@ -36,13 +35,13 @@ class RentalObjectTable extends Component
         'country' => 'required|string|max:255',
         'description' => 'nullable|string',
         'max_units' => 'nullable|integer|min:1',
-        'square_meters' => 'nullable|numeric|min:0', // Quadratmeter Validation
-        'heating_type' => 'nullable|string|in:Gas,Öl,Fernwärme,Elektro', // Heiztyp Validation
+        'square_meters' => 'nullable|numeric|min:0',
+        'heating_type' => 'nullable|string|in:Gas,Öl,Fernwärme,Elektro',
     ];
 
     public function mount()
     {
-        $this->rentalObjects = RentalObject::all();
+        $this->rentalObjects = RentalObject::where('user_id', Auth::id())->get();
     }
 
     public function addRentalObject()
@@ -50,6 +49,7 @@ class RentalObjectTable extends Component
         $this->validate();
 
         RentalObject::create([
+            'user_id' => Auth::id(), // User-ID hinzufügen
             'name' => $this->name,
             'street' => $this->street,
             'house_number' => $this->house_number,
@@ -71,7 +71,7 @@ class RentalObjectTable extends Component
 
     public function editRentalObject($id)
     {
-        $rentalObject = RentalObject::findOrFail($id);
+        $rentalObject = RentalObject::where('user_id', Auth::id())->findOrFail($id);
         $this->editMode = true;
         $this->editId = $rentalObject->id;
         $this->name = $rentalObject->name;
@@ -84,7 +84,7 @@ class RentalObjectTable extends Component
         $this->description = $rentalObject->description;
         $this->object_type = $rentalObject->object_type;
         $this->max_units = $rentalObject->max_units;
-        $this->showForm = true; // Formular anzeigen
+        $this->showForm = true;
         $this->square_meters = $rentalObject->square_meters;
         $this->heating_type = $rentalObject->heating_type;
     }
@@ -93,7 +93,7 @@ class RentalObjectTable extends Component
     {
         $this->validate();
 
-        $rentalObject = RentalObject::findOrFail($this->editId);
+        $rentalObject = RentalObject::where('user_id', Auth::id())->findOrFail($this->editId);
         $rentalObject->update([
             'name' => $this->name,
             'street' => $this->street,
@@ -116,7 +116,7 @@ class RentalObjectTable extends Component
 
     public function deleteRentalObject($id)
     {
-        RentalObject::findOrFail($id)->delete();
+        RentalObject::where('user_id', Auth::id())->findOrFail($id)->delete();
         $this->loadRentalObjects();
     }
 
@@ -127,7 +127,7 @@ class RentalObjectTable extends Component
 
     public function loadRentalObjects()
     {
-        $this->rentalObjects = RentalObject::all();
+        $this->rentalObjects = RentalObject::where('user_id', Auth::id())->get();
     }
 
     public function toggleForm()

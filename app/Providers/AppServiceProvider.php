@@ -2,10 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\UserVerified;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Listeners\RunUtilityCostsSeeder;
 use App\Models\SysSetting;  // Richtiges Modell importieren
 
 class AppServiceProvider extends ServiceProvider
@@ -37,5 +40,10 @@ class AppServiceProvider extends ServiceProvider
         }
 
         App::setLocale('de'); // Setzt die Anwendungssprache auf Deutsch
+
+
+        // Manuelle Registrierung des Listeners
+        Event::listen(UserVerified::class, RunUtilityCostsSeeder::class);
+
     }
 }

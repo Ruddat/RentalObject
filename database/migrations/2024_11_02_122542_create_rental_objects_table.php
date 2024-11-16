@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('rental_objects', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // User-ID als Fremdschlüssel
             $table->string('name')->nullable();
             $table->string('street');
             $table->string('house_number');

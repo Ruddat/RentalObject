@@ -3,6 +3,33 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\Auth\EmailVerificationController;
+
+
+
+Route::middleware('auth')->group(function () {
+
+    Route::view('index', 'backend.index')->name('index');
+
+    Route::view('project_dashboard', 'backend.project_dashboard')->name('project_dashboard');
+    Route::view('crypto_dashboard', 'backend.crypto_dashboard')->name('crypto_dashboard');
+    Route::view('education_dashboard', 'backend.education_dashboard')->name('education_dashboard');
+
+    // Nebenkosten konstrukt
+    Route::view('utility-costs-table', 'backend.livewirepages._utility-costs-table')->name('utility-costs-table');
+    Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
+    Route::view('rental-object-table', 'backend.livewirepages._rental-object-table')->name('rental-object-table');
+    Route::view('tenant-table', 'backend.livewirepages._tenant-table')->name('tenant-table');
+    Route::view('tenant-payments', 'backend.livewirepages._tenant-payments')->name('tenant-payments');
+    Route::view('utility-cost-recording', 'backend.livewirepages.utilitycosts._utility-cost-recording')->name('utility-cost-recording');
+    Route::view('heating-cost-management', 'backend.livewirepages.utilitycosts._heating-cost-management')->name('heating-cost-management');
+    Route::view('billing-calculation', 'backend.livewirepages.utilitycosts._billing-calculation')->name('billing-calculation');
+    Route::view('billing-generation', 'backend.livewirepages.utilitycosts._billing-generation')->name('billing-generation');
+    
+
+});
+
+
 
 Route::get('/weather/{city}', [WeatherController::class, 'getWeatherData']);
 
@@ -14,19 +41,14 @@ Route::view('roles-permissions-table', 'backend.admin.rolesandpermission._roles-
 Route::view('user-table', 'backend.admin.users-table')->name('user-table');
 
 
-Route::view('utility-costs-table', 'backend.livewirepages._utility-costs-table')->name('utility-costs-table');
-Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
-Route::view('rental-object-table', 'backend.livewirepages._rental-object-table')->name('rental-object-table');
-Route::view('tenant-table', 'backend.livewirepages._tenant-table')->name('tenant-table');
-Route::view('tenant-payments', 'backend.livewirepages._tenant-payments')->name('tenant-payments');
-Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
-Route::view('billing-header-form', 'backend.livewirepages._billing-header-form')->name('billing-header-form');
 
 
-Route::view('index', 'backend.index')->name('index');
-Route::view('project_dashboard', 'backend.project_dashboard')->name('project_dashboard');
-Route::view('crypto_dashboard', 'backend.crypto_dashboard')->name('crypto_dashboard');
-Route::view('education_dashboard', 'backend.education_dashboard')->name('education_dashboard');
+
+
+
+
+
+
 
 
 Route::view('accordions', 'backend.accordions')->name('accordions');

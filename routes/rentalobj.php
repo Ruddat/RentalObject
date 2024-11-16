@@ -10,9 +10,13 @@ use App\Http\Controllers\Utility\NewsletterController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Settings\BackupDownloadController;
 
+
+
+
 Route::post('/newsletter-signup', [NewsletterController::class, 'signup'])->name('newsletter.signup');
 
 Route::view('/', 'rentalobj.index')->name('index');
+Route::view('home', 'rentalobj.index')->name('home');
 Route::view('/home-02', 'rentalobj.home-02')->name('home-02');
 Route::view('/home-03', 'rentalobj.home-03')->name('home-03');
 Route::view('/home-04', 'rentalobj.home-04')->name('home-04');

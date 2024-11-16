@@ -5,26 +5,27 @@ namespace App\Livewire\UtilityCosts;
 use Livewire\Component;
 use App\Models\BillingHeader;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class BillingHeaderForm extends Component
 {
     use WithFileUploads;
 
-    public $showForm = false; // Neues Feld für die Steuerung des Formulars
+    public $showForm = false;
     public $creator_name, $first_name, $street, $house_number, $zip_code, $city;
     public $bank_name, $iban, $bic, $footer_text, $notes, $logo, $billingHeaders, $logoPreview;
     public $phone, $email;
 
     public function mount()
     {
-        $this->billingHeaders = BillingHeader::all();
+        $this->billingHeaders = BillingHeader::where('user_id', Auth::id())->get();
     }
 
     public function toggleForm()
     {
-        $this->showForm = !$this->showForm; // Schaltet die Formularanzeige ein/aus
+        $this->showForm = !$this->showForm;
     }
-
 
     public function updatedLogo()
     {
@@ -53,21 +54,35 @@ class BillingHeaderForm extends Component
             'logo' => 'nullable|image|max:1024',
         ]);
 
+        // User-ID hinzufügen
+        $data['user_id'] = Auth::id();
+
+        // Verzeichnis erstellen, falls nicht vorhanden, und Logo speichern
         if ($this->logo) {
-            $data['logo_path'] = $this->logo->store('logos', 'public');
+            $userId = Auth::id();
+            $directory = "logos/$userId";
+            if (!Storage::disk('public')->exists($directory)) {
+                Storage::disk('public')->makeDirectory($directory);
+            }
+            $data['logo_path'] = $this->logo->store($directory, 'public');
         }
 
         BillingHeader::create($data);
 
         $this->reset(['creator_name', 'first_name', 'street', 'house_number', 'zip_code', 'city', 'phone', 'email', 'bank_name', 'iban', 'bic', 'footer_text', 'notes', 'logo']);
-        $this->billingHeaders = BillingHeader::all();
+        $this->billingHeaders = BillingHeader::where('user_id', Auth::id())->get();
         session()->flash('message', 'Abrechnungskopf erfolgreich gespeichert.');
     }
 
     public function deleteHeader($id)
     {
-        BillingHeader::findOrFail($id)->delete();
-        $this->billingHeaders = BillingHeader::all();
+        $header = BillingHeader::findOrFail($id);
+        if ($header->logo_path && Storage::disk('public')->exists($header->logo_path)) {
+            Storage::disk('public')->delete($header->logo_path);
+        }
+        $header->delete();
+
+        $this->billingHeaders = BillingHeader::where('user_id', Auth::id())->get();
         session()->flash('message', 'Abrechnungskopf erfolgreich gelöscht.');
     }
 

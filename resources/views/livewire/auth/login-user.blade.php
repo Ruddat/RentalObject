@@ -46,4 +46,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+            window.addEventListener('open-modal-login', () => {
+        var modal = document.getElementById('modalLogin');
+        var bsModal = new bootstrap.Modal(modal);
+        bsModal.show();
+    });
+
+    window.addEventListener('close-modal-login', () => {
+        var modal = document.getElementById('modalLogin');
+        var bsModal = bootstrap.Modal.getInstance(modal);
+        bsModal.hide();
+    });
+    </script>
 </div>

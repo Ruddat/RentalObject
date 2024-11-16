@@ -12,13 +12,14 @@ class TenantPayment extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'tenant_id',
         'rental_object_id',
         'year',
         'month',
         'amount',
         'payment_date',
-        
+
     ];
 
     // Beziehung zu Tenant

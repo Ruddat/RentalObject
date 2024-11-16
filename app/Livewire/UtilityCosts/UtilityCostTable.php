@@ -4,6 +4,7 @@ namespace App\Livewire\UtilityCosts;
 
 use Livewire\Component;
 use App\Models\UtilityCost;
+use Illuminate\Support\Facades\Auth;
 
 class UtilityCostTable extends Component
 {
@@ -24,7 +25,7 @@ class UtilityCostTable extends Component
 
     public function mount()
     {
-        $this->utilityCosts = UtilityCost::all();
+        $this->utilityCosts = UtilityCost::where('user_id', Auth::id())->get();
     }
 
     public function addUtilityCost()
@@ -32,6 +33,7 @@ class UtilityCostTable extends Component
         $this->validate();
 
         UtilityCost::create([
+            'user_id' => Auth::id(),
             'name' => $this->name,
             'description' => $this->description,
             'amount' => $this->amount,
@@ -44,7 +46,7 @@ class UtilityCostTable extends Component
 
     public function editUtilityCost($id)
     {
-        $cost = UtilityCost::findOrFail($id);
+        $cost = UtilityCost::where('user_id', Auth::id())->findOrFail($id);
         $this->editMode = true;
         $this->editId = $cost->id;
         $this->name = $cost->name;
@@ -57,7 +59,7 @@ class UtilityCostTable extends Component
     {
         $this->validate();
 
-        $cost = UtilityCost::findOrFail($this->editId);
+        $cost = UtilityCost::where('user_id', Auth::id())->findOrFail($this->editId);
         $cost->update([
             'name' => $this->name,
             'description' => $this->description,
@@ -71,7 +73,7 @@ class UtilityCostTable extends Component
 
     public function deleteUtilityCost($id)
     {
-        UtilityCost::findOrFail($id)->delete();
+        UtilityCost::where('user_id', Auth::id())->findOrFail($id)->delete();
         $this->loadUtilityCosts();
     }
 
@@ -82,7 +84,7 @@ class UtilityCostTable extends Component
 
     private function loadUtilityCosts()
     {
-        $this->utilityCosts = UtilityCost::all();
+        $this->utilityCosts = UtilityCost::where('user_id', Auth::id())->get();
     }
 
     public function render()

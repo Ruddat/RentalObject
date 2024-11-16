@@ -13,6 +13,7 @@ class BillingRecords extends Model
     use HasFactory;
 
     protected $fillable = [
+        'user_id',
         'billing_header_id',
         'tenant_id',
         'rental_object_id', // Falls dieses Feld im Schema existiert

@@ -96,7 +96,7 @@ return view('livewire.backend.admin.roles-and-permissions.roles-permissions-tabl
     {
         $role = Role::findOrFail($roleId);
 
-        $protectedRoles = ['admin', 'super admin', 'seller', 'vendor'];
+        $protectedRoles = ['admin', 'super admin', 'seller', 'vendor', 'newuser'];
         if (in_array($role->name, $protectedRoles)) {
             session()->flash('error', 'This role cannot be deleted.');
             return;

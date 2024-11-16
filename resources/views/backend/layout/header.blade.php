@@ -730,10 +730,7 @@
                                 <img src="{{asset('../backend/assets/images/avtar/woman.jpg')}}" alt="" class="img-fluid b-r-10">
                               </span>
                                         </div>
-                                        <div class="text-center mt-2">
-                                            <h6 class="mb-0"> Laura Monaldo</h6>
-                                            <p class="f-s-12 mb-0 text-secondary">lauradesign@gmail.com</p>
-                                        </div>
+                                        @livewire('auth.user-profile')
                                     </li>
 
                                     <li class="app-divider-v dotted py-1"></li>
@@ -809,7 +806,7 @@
                                     <li>
                                         <div class="card card-light-primary upgrade-plan">
                                             <div class="card-body">
-                                                <!-- <img src="{{asset('../backend/assets/images/header/01.png')}}" class="w-80" alt=""> -->
+                                                <!-- <img src="{{asset('backend/assets/images/header/01.png')}}" class="w-80" alt=""> -->
                                                 <div class="text-center">
                                                     <div>
                                                         <h6 class="mb-0 text-dark f-w-600">Free Plan</h6>
@@ -825,9 +822,9 @@
                                     <li class="app-divider-v dotted py-1"></li>
 
                                     <li>
-                                        <a class="mb-0 text-danger" href="{{route('sign_in')}}">
-                                            <i class="ph-duotone  ph-sign-out pe-1 f-s-20"></i> Log Out
-                                        </a>
+                                        <li>
+                                            @livewire('auth.logout-component')
+                                        </li>
                                     </li>
                                 </ul>
                             </div>

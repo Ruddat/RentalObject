@@ -27,6 +27,7 @@
                     <li><a href="{{ route('education_dashboard') }}">Education</a></li>
                 </ul>
             </li>
+            @role('admin|super admin')
             <li>
                 <a class="" data-bs-toggle="collapse" href="#apps" aria-expanded="false">
                     <i class="ph-duotone  ph-stack"></i>
@@ -117,9 +118,11 @@
                 </a>
             </li>
 
+        @endrole
+
             <li class="no-sub">
                 <a class="" href="{{route('add-property')}}">
-                    <i class="ph-duotone  ph-squares-four"></i> AddProperty
+                    <i class="ph-duotone  ph-squares-four"></i> @autotranslate("AddProperty", app()->getLocale())
                 </a>
             </li>
 
@@ -137,48 +140,35 @@
                     <li><a href="{{route('rental-object-table')}}">Mietobjekte verwalten</a></li>
                     <li><a href="{{route('tenant-table')}}">Mieter verwalten</a></li>
                     <li><a href="{{route('tenant-payments')}}">Nebenkostenzahlungen verwalten</a></li>
-                    <li><a href="{{route('blank')}}">Nebenkosten erfassen</a></li>
-                    <li><a href="{{route('blank')}}">Abrechnung für das Jahr und Mietobjekt</a></li>
-                    <li><a href="{{route('blank')}}">Abrechnung erstellen</a></li>
+                    <li><a href="{{route('utility-cost-recording')}}">Nebenkosten erfassen</a></li>
+                    <li><a href="{{route('heating-cost-management')}}">Heizkosten</a></li>
+                    <li><a href="{{route('billing-calculation')}}">Abrechnung für das Jahr und Mietobjekt</a></li>
+                    <li><a href="{{route('billing-generation')}}">Abrechnung erstellen</a></li>
                 </ul>
             </li>
 
-
-            <li class="menu-title"> <span>Settings</span></li>
+            @can('manage settings')
+            <li class="menu-title"> <span>@autotranslate("Settings", app()->getLocale())</span></li>
             <li>
-                <a class="" data-bs-toggle="collapse" href="#ui-kits" aria-expanded="false">
 
-                    <i class="ph-duotone  ph-briefcase"></i>
-                    UI kits
-                </a>
-                <ul class="collapse" id="ui-kits">
-                    <li><a href="{{route('user-table')}}">Users</a></li>
-                    <li><a href="{{route('roles-permissions-table')}}">Roles & Permissons</a></li>
-                    <li><a href="{{route('badges')}}">Badges</a></li>
-                    <li><a href="{{route('buttons')}}">Buttons</a></li>
-                    <li><a href="{{route('cards')}}">Cards</a></li>
-                    <li><a href="{{route('dropdown')}}">Dropdown</a></li>
-                    <li><a href="{{route('grid')}}">Grid</a></li>
-                    <li><a href="{{route('avatar')}}">Avatar</a></li>
-                    <li><a href="{{route('tabs')}}">Tabs</a></li>
-                    <li><a href="{{ route('accordions') }}">Accordions</a></li>
-                    <li><a href="{{route('progress')}}">Progress</a></li>
-                    <li><a href="{{route('notifications')}}">Notifications</a></li>
-                    <li><a href="{{route('list')}}">Lists</a></li>
-                    <li><a href="{{route('helper_classes')}}">Helper Classes</a></li>
-                    <li><a href="{{route('background')}}">Background</a></li>
-                    <li><a href="{{route('divider')}}">Divider</a></li>
-                    <li><a href="{{route('ribbons')}}">Ribbons</a></li>
-                    <li><a href="{{route('editor')}}">Editor </a></li>
-                    <li><a href="{{route('collapse')}}">Collapse</a></li>
-                    <li><a href="{{route('footer_page')}}">Footer</a></li>
-                    <li><a href="{{route('shadow')}}">Shadow</a></li>
-                    <li><a href="{{route('wrapper')}}">Wrapper</a></li>
-                    <li><a href="{{route('bullet')}}">Bullet</a></li>
-                    <li><a href="{{route('placeholder')}}">Placeholder</a></li>
-                    <li><a href="{{route('alignment')}}">Alignment Thing</a></li>
-                </ul>
+                    <a class="" data-bs-toggle="collapse" href="#system-administration" aria-expanded="false">
+                        <i class="ph-duotone ph-briefcase"></i>
+                        System administration
+                    </a>
+                    <ul class="collapse" id="system-administration">
+                        @can('manage users')
+                            <li><a href="{{ route('user-table') }}">@autotranslate("Users", app()->getLocale())</a></li>
+                        @endcan
+                        @can('manage permissions')
+                            <li><a href="{{ route('roles-permissions-table') }}">Roles & Permissions</a></li>
+                        @endcan
+                    </ul>
+
             </li>
+            @endcan
+
+
+            @role('admin|super admin')
 
 
             <li class="menu-title"> <span>Component</span></li>
@@ -328,6 +318,7 @@
             </li>
 
 
+
             <li>
                 <a class="" data-bs-toggle="collapse" href="#forms" aria-expanded="false">
                     <i class="ph-duotone  ph-cardholder"></i> Forms elements
@@ -435,6 +426,7 @@
 
                 </ul>
             </li>
+            @endrole
 
             <li class="no-sub">
                 <a class="" href="mailto:teqlathemes@gmail.com.">

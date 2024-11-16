@@ -20,16 +20,17 @@ class LoginUser extends Component
     {
         $this->validate();
 
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            // Erfolg: Weiterleitung oder Schließen des Modals
-            session()->flash('message', 'Successfully logged in.');
-            return redirect()->route('dashboard');
+        if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
+            // Fehler: Fehlermeldung anzeigen, Login bleibt sichtbar
+            $this->dispatch('open-modal-login');
+            $this->addError('email', 'Diese Zugangsdaten stimmen nicht mit unseren Aufzeichnungen überein. Bitte versuchen Sie es erneut oder registrieren Sie sich.');
+            return;
         }
 
-        // Fehler: Fehlermeldung anzeigen
-        $this->addError('email', 'These credentials do not match our records.');
+        // Erfolg: Weiterleitung
+        session()->flash('message', 'Erfolgreich eingeloggt.');
+        return redirect()->route('index');
     }
-
 
     public function render()
     {

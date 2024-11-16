@@ -13,6 +13,7 @@ use App\Models\BillingRecords;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Services\BillingService;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
 class BillingGeneration extends Component
 {
@@ -20,7 +21,6 @@ class BillingGeneration extends Component
 
     public $billingHeaders;
     public $tenants;
-   // public $savedBillings;
     public $rentalObjects;
     public $billing_header_id;
     public $tenant_id;
@@ -41,13 +41,12 @@ class BillingGeneration extends Component
 
     protected $queryString = ['searchTerm', 'fromDate', 'toDate', 'sortField', 'sortDirection'];
 
-
     public function mount()
     {
-        $this->billingHeaders = BillingHeader::all();
-        $this->tenants = Tenant::all();
-        $this->rentalObjects = RentalObject::all(); // Mietobjekte laden
-        $this->savedBillings = BillingRecords::all();
+        $this->billingHeaders = BillingHeader::where('user_id', Auth::id())->get();
+        $this->tenants = Tenant::where('user_id', Auth::id())->get();
+        $this->rentalObjects = RentalObject::where('user_id', Auth::id())->get();
+        $this->savedBillings = BillingRecords::where('user_id', Auth::id())->get();
     }
 
     public function generateBilling()
@@ -67,6 +66,7 @@ class BillingGeneration extends Component
             ->where('tenant_id', $this->selectedTenantId)
             ->where('rental_object_id', $this->selectedRentalObjectId)
             ->where('year', $year)
+            ->where('user_id', Auth::id())
             ->sum('amount');
 
         $billingService = app(BillingService::class);
@@ -77,25 +77,27 @@ class BillingGeneration extends Component
             $prepaymentSum
         );
 
-        // Fetch heating data
-        $heatingCosts = DB::table('heating_costs')
-            ->where('rental_object_id', $this->selectedRentalObjectId)
-            ->where('year', $year)
-            ->first();
+// Fetch heating data
+$heatingCosts = DB::table('heating_costs')
+    ->where('rental_object_id', $this->selectedRentalObjectId)
+    ->where('year', $year)
+    ->where('user_id', Auth::id())
+    ->first();
 
-        // Define heating data array
-        $heatingData = [
-            'initialReading' => $heatingCosts->initial_reading ?? 0,
-            'finalReading' => $heatingCosts->final_reading ?? 0,
-            'totalFuelConsumption' => $heatingCosts->total_oil_used ?? 0,
-            'price_per_unit' => $heatingCosts->price_per_unit ?? 0,
-            'totalFuelCost' => $heatingCosts->total_oil_used * $heatingCosts->price_per_unit,
-            'warmWaterCost' => ($heatingCosts->total_oil_used * $heatingCosts->price_per_unit) * $heatingCosts->warm_water_percentage,
-            'heatingOnlyCost' => ($heatingCosts->total_oil_used * $heatingCosts->price_per_unit) * (1 - $heatingCosts->warm_water_percentage),
-        ];
+// Define heating data array
+$heatingData = [
+    'initialReading' => $heatingCosts->initial_reading ?? 0,
+    'finalReading' => $heatingCosts->final_reading ?? 0,
+    'totalFuelConsumption' => $heatingCosts->total_oil_used ?? 0,
+    'price_per_unit' => $heatingCosts->price_per_unit ?? 0,
+    'totalFuelCost' => $heatingCosts ? $heatingCosts->total_oil_used * $heatingCosts->price_per_unit : 0,
+    'warmWaterCost' => $heatingCosts ? ($heatingCosts->total_oil_used * $heatingCosts->price_per_unit) * ($heatingCosts->warm_water_percentage ?? 0) : 0,
+    'heatingOnlyCost' => $heatingCosts ? ($heatingCosts->total_oil_used * $heatingCosts->price_per_unit) * (1 - ($heatingCosts->warm_water_percentage ?? 0)) : 0,
+];
 
         // Create or update the billing record
         $billingRecord = BillingRecords::create([
+            'user_id' => Auth::id(),
             'billing_header_id' => $this->selectedHeaderId,
             'tenant_id' => $this->selectedTenantId,
             'rental_object_id' => $this->selectedRentalObjectId,
@@ -112,6 +114,7 @@ class BillingGeneration extends Component
             ->where('tenant_id', $this->selectedTenantId)
             ->where('rental_object_id', $this->selectedRentalObjectId)
             ->where('year', $year)
+            ->where('user_id', Auth::id())
             ->get();
 
         // Prepare data for the PDFs
@@ -120,7 +123,7 @@ class BillingGeneration extends Component
             'billingHeader' => $billingRecord->billingHeader,
             'tenant' => $billingRecord->tenant,
             'rentalObject' => $billingRecord->rentalObject,
-            'tenants' => Tenant::where('rental_object_id', $this->selectedRentalObjectId)->get(),
+            'tenants' => Tenant::where('rental_object_id', $this->selectedRentalObjectId)->where('user_id', Auth::id())->get(),
             'billingPeriod' => $this->billingPeriod,
             'heatingData' => $heatingData,
             'heatingCosts' => $heatingCosts,
@@ -134,7 +137,7 @@ class BillingGeneration extends Component
         $this->generatePdf($pdfData, 'tenant_payments', 'billing_page3_', $billingRecord, 'pdf_path_third');
 
         session()->flash('message', 'Abrechnungen erfolgreich erstellt.');
-        $this->savedBillings = BillingRecords::all();
+        $this->savedBillings = BillingRecords::where('user_id', Auth::id())->get();
     }
 
     private function generatePdf($data, $view, $filePrefix, $billingRecord, $pathField)
@@ -148,54 +151,9 @@ class BillingGeneration extends Component
         $billingRecord->update([$pathField => Storage::url($filePath)]);
     }
 
-
-
-
-    /**
-     * Berechnet detaillierte Heizkosten für die PDF-Seite 2
-     */
-    private function calculateHeatingDetails($heatingCosts, $tenants, $rentalObject)
-    {
-        // Konvertiere die Collection $heatingCosts in ein Array
-        $heatingCostsArray = $heatingCosts->toArray();
-
-        $totalHeatingCost = array_sum(array_column($heatingCostsArray, 'total_cost'));
-        $totalWarmWaterCost = $totalHeatingCost * 0.3;
-        $totalHeatingOnlyCost = $totalHeatingCost * 0.7;
-
-        return [
-            'heating' => [
-                'total' => $totalHeatingCost,
-                'warm_water' => $totalWarmWaterCost,
-                'heating_only' => $totalHeatingOnlyCost,
-                'base_cost' => $totalHeatingOnlyCost * 0.3,
-                'consumption_cost' => $totalHeatingOnlyCost * 0.7,
-                'units' => [
-                    'total' => $rentalObject->square_meters,
-                    'tenant' => $tenants->sum('square_meters'),
-                    'base_per_unit' => round($totalHeatingOnlyCost * 0.3 / $rentalObject->square_meters, 2),
-                    'consumption_per_unit' => round($totalHeatingOnlyCost * 0.7 / $tenants->sum('square_meters'), 2),
-                ]
-            ],
-            'warm_water' => [
-                'base_cost' => $totalWarmWaterCost * 0.3,
-                'consumption_cost' => $totalWarmWaterCost * 0.7,
-                'units' => [
-                    'total' => $tenants->sum('person_count'),
-                    'tenant' => $tenants->sum('person_count'),
-                    'base_per_unit' => round($totalWarmWaterCost * 0.3 / $tenants->sum('person_count'), 2),
-                    'consumption_per_unit' => round($totalWarmWaterCost * 0.7 / $tenants->sum('person_count'), 2),
-                ]
-            ]
-        ];
-    }
-
-
-
-
     public function deleteBilling($id)
     {
-        $billingRecord = BillingRecords::find($id);
+        $billingRecord = BillingRecords::where('user_id', Auth::id())->find($id);
 
         if ($billingRecord) {
             if ($billingRecord->pdf_path && Storage::disk('public')->exists($billingRecord->pdf_path)) {
@@ -205,7 +163,7 @@ class BillingGeneration extends Component
             $billingRecord->delete();
 
             session()->flash('message', 'Abrechnung erfolgreich gelöscht.');
-            $this->savedBillings = BillingRecords::all();
+            $this->savedBillings = BillingRecords::where('user_id', Auth::id())->get();
         } else {
             session()->flash('error', 'Abrechnung konnte nicht gefunden werden.');
         }
@@ -228,6 +186,7 @@ class BillingGeneration extends Component
         $this->toDate = null;
     }
 
+
     public function render()
     {
         $query = BillingRecords::with(['billingHeader', 'tenant', 'rentalObject'])
@@ -240,11 +199,14 @@ class BillingGeneration extends Component
                 'billing_headers.creator_name as billing_header_creator_name'
             );
 
+        // Sicherstellen, dass `user_id` eindeutig spezifiziert ist
+        $query->where('billing_records.user_id', Auth::id());
+
         // Filterung nach Suchbegriff
         if ($this->searchTerm) {
             $query->where(function ($q) {
                 $q->where('tenants.first_name', 'like', '%' . $this->searchTerm . '%')
-                  ->orWhere('tenants.last_name', 'like', '%' . $this->searchTerm . '%');
+                    ->orWhere('tenants.last_name', 'like', '%' . $this->searchTerm . '%');
             });
         }
 
@@ -273,8 +235,7 @@ class BillingGeneration extends Component
         // Paginated Results
         $savedBillings = $query->paginate(10);
         //$savedBillings = $query->get(); // Temporär ohne Paginierung, um die Daten direkt zu prüfen
-//dd($savedBillings);
-
+        //dd($savedBillings);
 
         // Rückgabe der Ansicht
         return view('livewire.utility-costs.billing-generation', [
@@ -284,6 +245,4 @@ class BillingGeneration extends Component
             'savedBillings' => $savedBillings,
         ]);
     }
-
-
 }

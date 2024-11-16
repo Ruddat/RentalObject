@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('billing_records', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Verknüpft User
             $table->foreignId('billing_header_id')->constrained()->onDelete('cascade'); // Verknüpft Abrechnungskopf
             $table->foreignId('tenant_id')->constrained()->onDelete('cascade'); // Verknüpft Mieter
             $table->unsignedBigInteger('rental_object_id')->nullable();
@@ -26,7 +27,6 @@ return new class extends Migration
             $table->json('standard_costs'); // Auflistung der Standardkosten
             $table->json('heating_costs'); // Auflistung der Heizkosten
             $table->timestamps();
-
 
             $table->foreign('rental_object_id')->references('id')->on('rental_objects')->onDelete('set null');
         });

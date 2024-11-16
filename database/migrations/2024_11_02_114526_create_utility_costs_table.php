@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('utility_costs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); // Hinzufügen der user_id-Spalte
             $table->string('name'); // z.B. Hausmeister, Gewerbesteuer, etc.
             $table->string('short_name', 10)->nullable();
             $table->string('category', 50)->nullable(); // z.B. Betriebskosten, Verwaltungskosten, etc.

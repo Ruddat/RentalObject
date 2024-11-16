@@ -18,6 +18,7 @@ class RolesAndPermissionsSeeder extends Seeder
         // Define permissions
         $permissions = [
             'view dashboard',
+            'manage settings',
             'manage users',
             'manage roles',
             'manage permissions',
@@ -41,6 +42,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'super admin' => $permissions,
             'admin' => [
                 'view dashboard',
+                'manage settings',
                 'manage users',
                 'manage roles',
                 'manage permissions',
@@ -55,6 +57,15 @@ class RolesAndPermissionsSeeder extends Seeder
                 'create articles',
             ],
             'seller' => [
+                'view dashboard',
+                'manage settings',
+                'view sales',
+                'manage orders',
+                'manage products',
+            ],
+            'newuser' => [
+                'view dashboard',
+                'manage settings',
                 'view sales',
                 'manage orders',
                 'manage products',

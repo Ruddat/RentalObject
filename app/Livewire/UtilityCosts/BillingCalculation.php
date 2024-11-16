@@ -10,6 +10,7 @@ use App\Models\RentalObject;
 use App\Models\AnnualBillingRecord;
 use App\Models\RecordedUtilityCost;
 use App\Services\HeatingCostService;
+use Illuminate\Support\Facades\Auth;
 
 class BillingCalculation extends Component
 {
@@ -22,7 +23,8 @@ class BillingCalculation extends Component
     public function mount()
     {
         $this->year = date('Y');
-        $this->rentalObjects = RentalObject::all();
+        // Lade nur Mietobjekte des aktuellen Benutzers
+        $this->rentalObjects = RentalObject::where('user_id', Auth::id())->get();
     }
 
     public function updatedRentalObjectId()
@@ -39,13 +41,14 @@ class BillingCalculation extends Component
             return;
         }
 
-        $rentalObject = RentalObject::find($this->rental_object_id);
+        $rentalObject = RentalObject::where('user_id', Auth::id())->find($this->rental_object_id);
         if (!$rentalObject) {
             session()->flash('error', 'Das ausgewählte Mietobjekt existiert nicht.');
             return;
         }
 
-        $utilityCosts = RecordedUtilityCost::where('rental_object_id', $this->rental_object_id)
+        $utilityCosts = RecordedUtilityCost::where('user_id', Auth::id())
+                                           ->where('rental_object_id', $this->rental_object_id)
                                            ->where('year', $this->year)
                                            ->get();
 
@@ -54,7 +57,10 @@ class BillingCalculation extends Component
             return;
         }
 
-        $tenants = Tenant::where('rental_object_id', $this->rental_object_id)->get();
+        $tenants = Tenant::where('user_id', Auth::id())
+                         ->where('rental_object_id', $this->rental_object_id)
+                         ->get();
+
         if ($tenants->isEmpty()) {
             session()->flash('error', 'Keine Mieter für das ausgewählte Mietobjekt gefunden.');
             return;
@@ -69,7 +75,8 @@ class BillingCalculation extends Component
         $this->heatingCostService = $heatingCostService;
         $totalHeatingCost = $this->heatingCostService->calculateHeatingCostsForYear($this->rental_object_id, $this->year);
 
-        $heatingCost = HeatingCost::where('rental_object_id', $this->rental_object_id)
+        $heatingCost = HeatingCost::where('user_id', Auth::id())
+                                  ->where('rental_object_id', $this->rental_object_id)
                                   ->where('year', $this->year)
                                   ->first();
 
@@ -134,6 +141,7 @@ class BillingCalculation extends Component
                             'year' => $this->year,
                         ],
                         [
+                            'user_id' => Auth::id(), // User-ID hinzufügen
                             'amount' => $tenantCost,
                             'distribution_key' => $cost->distribution_key,
                         ]
@@ -182,9 +190,6 @@ class BillingCalculation extends Component
 
     public function render()
     {
-
-      //  dd($this->calculatedCosts);
-
         return view('livewire.utility-costs.billing-calculation', [
             'calculatedCosts' => $this->calculatedCosts,
         ]);
