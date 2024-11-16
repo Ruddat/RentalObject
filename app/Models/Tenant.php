@@ -4,9 +4,12 @@ namespace App\Models;
 
 use App\Models\RentalObject;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tenant extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id', 'first_name', 'last_name', 'phone', 'email', 'rental_object_id', 'billing_type',
         'unit_count', 'person_count', 'square_meters', 'start_date', 'end_date',
