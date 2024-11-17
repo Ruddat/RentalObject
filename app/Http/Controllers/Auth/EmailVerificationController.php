@@ -38,8 +38,16 @@ class EmailVerificationController extends Controller
         $seeder = new UtilityCostsUserSeeder();
         $seeder->runForUser($user->id);
 
-        // Benutzer einloggen
-        Auth::login($user);
+
+
+        // Alle bestehenden Rollen entfernen, bevor eine neue Rolle zugewiesen wird
+        $user->syncRoles([]);
+
+        // Benutzerrolle zuweisen (z.B. "seller")
+        $user->assignRole('seller');
+
+        // Rolle prüfen
+        //dd($user->getRoleNames()); // Sollte nun nur "seller" zurückgeben
 
         Session::flash('message', 'E-Mail erfolgreich bestätigt.');
         return redirect()->route('home');

@@ -25,25 +25,25 @@ Route::middleware('auth')->group(function () {
     Route::view('heating-cost-management', 'backend.livewirepages.utilitycosts._heating-cost-management')->name('heating-cost-management');
     Route::view('billing-calculation', 'backend.livewirepages.utilitycosts._billing-calculation')->name('billing-calculation');
     Route::view('billing-generation', 'backend.livewirepages.utilitycosts._billing-generation')->name('billing-generation');
-    
+
+
+
+    Route::view('/add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
+
+    Route::view('roles-permissions-table', 'backend.admin.rolesandpermission._roles-permissions-table')->name('roles-permissions-table');
+    Route::view('user-table', 'backend.admin.users-table')->name('user-table');
+    Route::view('profile', 'backend.profile')->name('profile');
+    Route::view('setting', 'backend.setting')->name('setting');
+
+
+
+
 
 });
 
 
 
 Route::get('/weather/{city}', [WeatherController::class, 'getWeatherData']);
-
-
-
-Route::view('add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
-
-Route::view('roles-permissions-table', 'backend.admin.rolesandpermission._roles-permissions-table')->name('roles-permissions-table');
-Route::view('user-table', 'backend.admin.users-table')->name('user-table');
-
-
-
-
-
 
 
 
@@ -170,7 +170,7 @@ Route::view('privacy_policy', 'backend.privacy_policy')->name('privacy_policy');
 Route::view('product', 'backend.product')->name('product');
 Route::view('product_details', 'backend.product_details')->name('product_details');
 Route::view('product_list', 'backend.product_list')->name('product_list');
-Route::view('profile', 'backend.profile')->name('profile');
+
 Route::view('progress', 'backend.progress')->name('progress');
 Route::view('project_app', 'backend.project_app')->name('project_app');
 Route::view('project_details', 'backend.project_details')->name('project_details');
@@ -190,7 +190,6 @@ Route::view('scatter_chart', 'backend.scatter_chart')->name('scatter_chart');
 Route::view('scrollbar', 'backend.scrollbar')->name('scrollbar');
 Route::view('scrollpy', 'backend.scrollpy')->name('scrollpy');
 Route::view('select', 'backend.select')->name('select');
-Route::view('setting', 'backend.setting')->name('setting');
 Route::view('shadow', 'backend.shadow')->name('shadow');
 Route::view('sign_in', 'backend.sign_in')->name('sign_in');
 Route::view('sign_in_1', 'backend.sign_in_1')->name('sign_in_1');

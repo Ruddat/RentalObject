@@ -122,7 +122,7 @@
 
             <li class="no-sub">
                 <a class="" href="{{route('add-property')}}">
-                    <i class="ph-duotone  ph-squares-four"></i> @autotranslate("AddProperty", app()->getLocale())
+                    <i class="ph-duotone  ph-squares-four"></i> @autotranslate("Mieten & Verkaufen", app()->getLocale())
                 </a>
             </li>
 
@@ -147,24 +147,128 @@
                 </ul>
             </li>
 
+            <li class="menu-title"> <span>@autotranslate("Einstellungen", app()->getLocale())</span></li>
             @can('manage settings')
-            <li class="menu-title"> <span>@autotranslate("Settings", app()->getLocale())</span></li>
             <li>
+                <a class="" data-bs-toggle="collapse" href="#system-administration" aria-expanded="false">
+                    <i class="ph-duotone  ph-stack"></i>
+                    @autotranslate("System administration", app()->getLocale())
+                </a>
+                <ul class="collapse" id="system-administration">
+                    <li><a href="{{route('calendar')}}">Calender</a></li>
 
-                    <a class="" data-bs-toggle="collapse" href="#system-administration" aria-expanded="false">
-                        <i class="ph-duotone ph-briefcase"></i>
-                        System administration
-                    </a>
-                    <ul class="collapse" id="system-administration">
-                        @can('manage users')
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#User-page" aria-expanded="false">
+                            @autotranslate("Users", app()->getLocale())
+                        </a>
+                        <ul class="collapse" id="User-page">
+                            @can('manage users')
                             <li><a href="{{ route('user-table') }}">@autotranslate("Users", app()->getLocale())</a></li>
-                        @endcan
-                        @can('manage permissions')
+                            @endcan
+                            @can('manage permissions')
                             <li><a href="{{ route('roles-permissions-table') }}">Roles & Permissions</a></li>
-                        @endcan
-                    </ul>
+                            @endcan
+                        </ul>
+                    </li>
 
+
+
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#Profile-page" aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="collapse" id="Profile-page">
+                            @can('manage profile')
+                            <li><a href="{{route('profile')}}">Profile</a></li>
+                            @endcan
+                            @can('manage profile settings')
+                            <li><a href="{{route('setting')}}">Setting</a></li>
+                            @endcan
+                        </ul>
+                    </li>
+
+
+
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#projects-page" aria-expanded="false">
+                            Projects Page
+                        </a>
+                        <ul class="collapse" id="projects-page">
+                            <li><a href="{{route('project_app')}}">projects</a></li>
+                            <li><a href="{{route('project_details')}}">projects Details</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{route('to_do')}}">To-Do</a></li>
+                    <li><a href="{{route('team')}}">Team</a></li>
+                    <li><a href="{{route('api')}}">API</a></li>
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#ticket-page" aria-expanded="false">
+                            Ticket
+                        </a>
+                        <ul class="collapse" id="ticket-page">
+                            <li><a href="{{route('ticket')}}">Ticket</a></li>
+                            <li><a href="{{route('ticket_details')}}">Ticket Details</a></li>
+                        </ul>
+                    </li>
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#email-page" aria-expanded="false">
+                            Email Page
+                        </a>
+                        <ul class="collapse" id="email-page">
+                            <li><a href="{{route('email')}}"> Email</a></li>
+                            <li><a href="{{route('read_email')}}">Read Email</a></li>
+                        </ul>
+                    </li>
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#e-shop" aria-expanded="false">
+                            E-shop
+                        </a>
+                        <ul class="collapse" id="e-shop">
+                            <li><a href="{{route('cart')}}">Cart</a></li>
+                            <li><a href="{{route('product')}}">Product</a></li>
+                            <li><a href="{{route('add_product')}}">Add Product</a></li>
+                            <li><a href="{{route('product_details')}}">Product-Details</a></li>
+                            <li><a href="{{route('product_list')}}">Product list</a></li>
+                            <li><a href="{{route('orders')}}">Orders</a></li>
+                            <li><a href="{{route('order_details')}}">Orders Details</a></li>
+                            <li><a href="{{route('order_list')}}">Orders List</a></li>
+                            <li><a href="{{route('checkout')}}">Check out</a></li>
+                            <li><a href="{{route('wishlist')}}">Wishlist</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{route('invoice')}}">Invoice</a></li>
+                    <li><a href="{{route('chat')}}">Chat</a></li>
+                    <li><a href="{{route('file_manager')}}">File manager</a></li>
+                    <li><a href="{{route('bookmark')}}">Bookmark</a></li>
+                    <li><a href="{{route('kanban_board')}}">Kanban board</a></li>
+                    <li><a href="{{route('timeline')}}">Timeline</a></li>
+                    <li><a href="{{route('faq')}}">FAQS</a></li>
+                    <li><a href="{{route('pricing')}}">Pricing</a></li>
+                    <li><a href="{{route('gallery')}}">Gallery</a></li>
+                    <li class="another-level">
+                        <a class="" data-bs-toggle="collapse" href="#blog-page" aria-expanded="false">
+                            Blog Page
+                        </a>
+                        <ul class="collapse" id="blog-page">
+                            <li><a href="{{route('blog')}}">Blog</a></li>
+                            <li><a href="{{route('blog_details')}}">Blog Details</a></li>
+                            <li><a href="{{route('add_blog')}}">Add Blog</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </li>
+
+
+
+
+
+
+
+
+
+
+
+
             @endcan
 
 

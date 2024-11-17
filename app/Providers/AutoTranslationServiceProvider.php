@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 use App\Services\AutoTranslationService;
@@ -25,11 +27,16 @@ class AutoTranslationServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::directive('autotranslate', function ($expression) {
-            list($text, $locale) = explode(',', $expression);
+            // Determine the default locale if not provided
+            list($text, $locale) = array_pad(explode(',', $expression), 2, null);
+
             $text = trim($text, "' ");
-            $locale = trim($locale, "' ");
+            $locale = $locale ? trim($locale, "' ") : 'App::getLocale()';
 
             return "<?php echo app('autotranslate')->trans($text, $locale); ?>";
         });
+
+        Log::info("Aktuelle Sprache: " . App::getLocale());
+
     }
 }

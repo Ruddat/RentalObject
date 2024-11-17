@@ -10,8 +10,8 @@ class TranslationRepository
     public function findTranslation($key, $locale)
     {
         return AutoTranslations::where('key', $key)
-                          ->where('locale', $locale)
-                          ->first();
+                              ->where('locale', $locale)
+                              ->first();
     }
 
     public function saveTranslation($key, $locale, $text)

@@ -321,7 +321,7 @@
             <section class="flat-section flat-recommended">
                 <div class="container">
                     <div class="box-title text-center wow fadeInUp">
-                        <div class="text-subtitle text-primary">Featured Properties</div>
+                        <div class="text-subtitle text-primary">@autotranslate("Featured Properties", app()->getLocale())</div>
                         <h3 class="mt-4 title">Recommended For You</h3>
                     </div>
                     <div class="flat-tab-recommended flat-animate-tab wow fadeInUp" data-wow-delay=".2s">

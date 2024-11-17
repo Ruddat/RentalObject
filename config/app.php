@@ -78,15 +78,28 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'de'),
+   'locale' => env('APP_LOCALE', 'de'),
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+   'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+
+'available_locales' => [
+    'en' => ['name' => 'English', 'flag' => 'flag-icon-usa'],
+    'de' => ['name' => 'Deutsch', 'flag' => 'flag-icon-deu'],
+    'fr' => ['name' => 'France', 'flag' => 'flag-icon-fra'],
+    // Weitere Sprachen hier hinzufügen
+],
+
+
+
 
     'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
 
     'version' => trim(exec('git describe --tags --abbrev=0')) ?? '1.0.0',
 
     'name' => 'Ingo Ruddat',
+
+
+
 
     /*
     |--------------------------------------------------------------------------

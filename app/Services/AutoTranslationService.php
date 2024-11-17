@@ -2,10 +2,13 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Session;
 use App\Repositories\TranslationRepository;
 use Stichoza\GoogleTranslate\GoogleTranslate;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Queue;
 
 class AutoTranslationService
 {
@@ -18,49 +21,61 @@ class AutoTranslationService
         $this->googleTranslate = new GoogleTranslate();
     }
 
-    public function trans($key, $locale)
+    public function trans($key, $locale = null)
     {
-      //  Log::info("Request to translate '$key' to '$locale'.");
+        // Get the locale from session or default to the configured locale
+        $locale = $locale ?? Session::get('locale', config('app.locale'));
+        $locale = $locale ?? Cookie::get('locale', config('app.locale'));
+        // Fallback: Set a default if $locale is null or empty
+        if (is_null($locale) || empty($locale)) {
+            $locale = config('app.fallback_locale', 'en');
+        }
 
-        // Suche die Übersetzung in der Datenbank
+        // Set the locale in the app
+        App::setLocale($locale);
+
+        // Check for cached translation first
+        $cacheKey = $this->getCacheKey($key, $locale);
+        if (Cache::has($cacheKey)) {
+            return Cache::get($cacheKey);
+        }
+
+        // Search for the translation in the database
         $translation = $this->translationRepository->findTranslation($key, $locale);
 
-        // Falls die Übersetzung vorhanden ist, zurückgeben
+        // If the translation is found, cache and return it
         if ($translation) {
-          //  Log::info("Translation found in database: '$translation->text'");
+            Cache::put($cacheKey, $translation->text, now()->addHours(24)); // Cache for 24 hours
             return $translation->text;
         }
 
-        // Falls nicht vorhanden, Übersetzung über Google Translate erstellen und speichern
+        // If not found, create the translation via Google Translate and save it
         $translatedText = $this->translateAndSave($key, $locale);
 
-        // Rückgabe der erstellten Übersetzung
-      //  Log::info("Translated text: '$translatedText'");
+        // Cache the translated text
+        Cache::put($cacheKey, $translatedText, now()->addHours(24));
+
         return $translatedText;
     }
+
 
     protected function translateAndSave($key, $locale)
     {
         try {
-         //   Log::info("Translating via Google Translate: '$key' to '$locale'");
-
-            // Setze die Ziel- und Ausgangssprache für die Übersetzung
+            // Set target and source language for translation
             $this->googleTranslate->setTarget($locale);
-            $this->googleTranslate->setSource('auto'); // Automatische Erkennung der Quellsprache
+            $this->googleTranslate->setSource('auto'); // Auto-detect source language
 
-            // Übersetze den Schlüssel
+            // Translate the key
             $translatedText = $this->googleTranslate->translate($key);
 
-            // Logge die Übersetzung für Debugging-Zwecke
-          //  Log::info("Translated '$key' to '$translatedText' for locale '$locale'.");
-
-            // Speichere die Übersetzung in der Datenbank
+            // Save the translation in the database
             $this->translationRepository->saveTranslation($key, $locale, $translatedText);
 
-            // Rückgabe des übersetzten Textes
+            // Return the translated text
             return $translatedText;
         } catch (\Exception $e) {
-            // Logge den Fehler und verwende den Schlüssel als Fallback
+            // Log the error and fallback to the original key
             Log::error("Translation failed: " . $e->getMessage());
             return $key;
         }
@@ -68,7 +83,12 @@ class AutoTranslationService
 
     public function addTranslation($key, $locale, $text)
     {
-        // Speichere die Übersetzung in der Datenbank
+        // Save the translation in the database
         return $this->translationRepository->saveTranslation($key, $locale, $text);
+    }
+
+    protected function getCacheKey($key, $locale)
+    {
+        return "translation_" . md5("{$locale}_{$key}");
     }
 }

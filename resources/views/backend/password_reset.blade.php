@@ -1,7 +1,7 @@
 @section('title', 'Password Reset')
-@include('layout.head')
+@include('backend.layout.head')
 
-@include('layout.css')
+@include('backend.layout.css')
 
 <body class="sign-in-bg">
 <div class="app-wrapper d-block">
@@ -13,12 +13,12 @@
                     <div class="form-container">
                         <div class="signup-content mt-4">
                   <span>
-                    <img src="{{asset('../assets/images/logo/1.png')}}" alt="" class="img-fluid ">
+                    <img src="{{asset('backend/assets/images/logo/1.png')}}" alt="" class="img-fluid ">
                   </span>
                         </div>
 
                         <div class="signup-bg-img">
-                            <img src="{{asset('../assets/images/login/03.png')}}" alt="" class="img-fluid">
+                            <img src="{{asset('backend/assets/images/login/03.png')}}" alt="" class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -65,9 +65,9 @@
 
 @section('script')
     <!-- latest jquery-->
-    <script src="{{asset('assets/js/jquery-3.6.3.min.js')}}"></script>
+    <script src="{{asset('backend/assets/js/jquery-3.6.3.min.js')}}"></script>
 
     <!-- Bootstrap js-->
-    <script src="{{asset('assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
 @endsection
 

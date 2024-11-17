@@ -11,6 +11,9 @@
     <meta name="author" content="{{ config('app.settings.owner_name', 'Default Owner') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Favicon and Touch Icons  -->
     <link rel="shortcut icon" href="{{ url('build/images/logo/favicon.png') }}">
     <link rel="apple-touch-icon-precomposed" href="{{ url('build/images/logo/favicon.png') }}">

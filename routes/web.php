@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\Languages\LanguageController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 
@@ -27,3 +29,26 @@ Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('up
 
 Route::get('/weather/{city}', [WeatherController::class, 'getWeatherData']);
 
+
+Route::prefix('localization')
+    ->middleware(['web', SetLocale::class])
+    ->group(function() {
+        // Route zum Wechseln der Sprache über die URL
+        Route::get('/change-language', [LanguageController::class, 'switch'])
+            ->name('change.lang');
+    });
+
+///Route::get('/language/{locale}', [LanguageController::class, 'switch'])->name('language.switch')->middleware('web');
+
+// In `routes/web.php`
+//Route::get('/change-language', [App\Http\Controllers\Languages\LanguageController::class, 'switch'])->name('change.lang');
+
+
+
+// Route zum Wechseln der Sprache
+//Route::get('lang/{locale}', function ($locale) {
+//    if (array_key_exists($locale, config('app.available_locales'))) {
+//        session(['locale' => $locale]);
+//    }
+//    return redirect()->back();
+//})->name('change.language');

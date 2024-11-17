@@ -5,7 +5,7 @@
                 <div class="banner-account">
                     <img src="{{ URL::asset('/build/images/banner/banner-account1.jpg') }}" alt="banner">
                 </div>
-                <form wire:submit.prevent="login" class="form-account">
+                <form wire:submit.prevent="login" class="form-account" id="loginForm">
                     <div class="title-box">
                         <h4>Login</h4>
                         <span class="close-modal icon-close2" data-bs-dismiss="modal"></span>
@@ -28,7 +28,10 @@
                         </fieldset>
                     </div>
                     <div class="box box-btn">
-                        <button type="submit" class="tf-btn primary w-100">Login</button>
+                        <button type="submit" class="tf-btn primary w-100" id="loginButton">
+                            <span id="buttonText">Login</span>
+                            <span id="loadingSpinner" class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
                         <div class="text text-center">Don’t have an account? <a href="#modalRegister" data-bs-toggle="modal" class="text-primary">Register</a></div>
                     </div>
                     <p class="box text-center caption-2">or login with</p>
@@ -48,16 +51,29 @@
     </div>
 
     <script>
-            window.addEventListener('open-modal-login', () => {
-        var modal = document.getElementById('modalLogin');
-        var bsModal = new bootstrap.Modal(modal);
-        bsModal.show();
-    });
+        // Bootstrap modal handling
+        window.addEventListener('open-modal-login', () => {
+            var modal = document.getElementById('modalLogin');
+            var bsModal = new bootstrap.Modal(modal);
+            bsModal.show();
+        });
 
-    window.addEventListener('close-modal-login', () => {
-        var modal = document.getElementById('modalLogin');
-        var bsModal = bootstrap.Modal.getInstance(modal);
-        bsModal.hide();
-    });
+        window.addEventListener('close-modal-login', () => {
+            var modal = document.getElementById('modalLogin');
+            var bsModal = bootstrap.Modal.getInstance(modal);
+            bsModal.hide();
+        });
+
+        // Add loading animation to login button
+        document.getElementById('loginForm').addEventListener('submit', function () {
+            var loginButton = document.getElementById('loginButton');
+            var buttonText = document.getElementById('buttonText');
+            var loadingSpinner = document.getElementById('loadingSpinner');
+
+            // Show loading spinner and disable button
+            buttonText.classList.add('d-none');
+            loadingSpinner.classList.remove('d-none');
+            loginButton.disabled = true;
+        });
     </script>
 </div>

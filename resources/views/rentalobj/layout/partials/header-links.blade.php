@@ -68,7 +68,56 @@
             <li><a href="my-favorites.html">My Favorites111</a></li>
             <li><a href="reviews.html">Reviews</a></li>
             <li><a href="my-profile.html">My Profile</a></li>
-            <li><a href="{{route('add-property')}}">Add Property</a></li>
+            <li><a href="{{route('add-property')}}">@autotranslate("Add Property", app()->getLocale())</a></li>
         </ul>
     </li>
+<!-- Sprachwahl hinzufügen -->
+<li class="dropdown2">
+    <a href="#">Language</a>
+    <ul>
+        @foreach(config('app.available_locales') as $localeCode => $locale)
+            <li class="@if(session('locale') == $localeCode) active @endif">
+                <a href="#" onclick="changeLanguage('{{ $localeCode }}')">
+                    <span class="d-flex align-items-center">
+                        <i class="flag-icon {{ $locale['flag'] }} rounded-circle b-r-10 f-s-22"></i>
+                        <span class="ps-2">{{ $locale['name'] }}</span>
+                    </span>
+                </a>
+            </li>
+        @endforeach
+    </ul>
+</li>
+
+<script type="text/javascript">
+    function changeLanguage(locale) {
+        let url = "{{ route('change.lang') }}";
+        window.location.href = url + "?lang=" + locale;
+    }
+</script>
+
+
+<style>
+    /* Style for the active language item */
+    .dropdown2 ul li.active {
+        position: relative;
+        font-weight: bold;
+    }
+
+    /* Add a bar to the left of the active language */
+    .dropdown2 ul li.active a::before {
+        content: "";
+        position: absolute;
+        left: -10px; /* Abstand vom linken Rand */
+        top: 50%;
+        transform: translateY(-50%);
+        width: 4px; /* Breite des Balkens */
+        height: 60%; /* Höhe des Balkens, etwa 60% der Höhe des Listenelements */
+        background-color: #007bff; /* Farbe des Balkens */
+        border-radius: 2px; /* Abgerundete Ecken für den Balken */
+    }
+</style>
+
+<!--Flag Icon css-->
+<link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/flag-icons-master/flag-icon.css') }}">
+
 </ul>

@@ -90,42 +90,32 @@
                     <li class="header-language">
                         <div id="lang_selector" class="flex-shrink-0 dropdown">
                             <a href="#" class="d-block head-icon ps-0" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="lang-flag lang-en ">
-                          <span class="flag rounded-circle overflow-hidden">
-                            <i class=""></i>
-                          </span>
+                                <div class="lang-flag">
+                                    <span class="flag rounded-circle overflow-hidden">
+                                        <i class="flag-icon {{ config('app.available_locales')[App::getLocale()]['flag'] }} rounded-circle b-r-10 f-s-22"></i>
+                                    </span>
+                                    <span class="ps-2">{{ config('app.available_locales')[App::getLocale()]['name'] }}</span>
                                 </div>
                             </a>
                             <ul class="dropdown-menu language-dropdown header-card border-0">
-                                <li class="lang lang-en selected dropdown-item p-2" data-bs-toggle="tooltip"
-                                    data-bs-placement="top" title="US">
-                          <span class="d-flex align-items-center">
-                            <i class="flag-icon flag-icon-usa flag-icon-squared b-r-10 f-s-22"></i>
-                            <span class="ps-2">US</span>
-                          </span>
-                                </li>
-                                <li class="lang lang-pt dropdown-item p-2" title="FR">
-                          <span class="d-flex align-items-center">
-                            <i class="flag-icon flag-icon-fra flag-icon-squared b-r-10 f-s-22"></i>
-                            <span class="ps-2">France</span>
-                          </span>
-                                </li>
-                                <li class="lang lang-es dropdown-item p-2" title="UK">
-                          <span class="d-flex align-items-center">
-                            <i class="flag-icon flag-icon-gbr flag-icon-squared b-r-10 f-s-22"></i>
-                            <span class="ps-2">UK</span>
-                          </span>
-                                </li>
-                                <li class="lang lang-es dropdown-item p-2" title="IT">
-                          <span class="d-flex align-items-center">
-                            <i class="flag-icon flag-icon-ita flag-icon-squared b-r-10 f-s-22"></i>
-                            <span class="ps-2">Italy</span>
-                          </span>
-                                </li>
+                                @foreach(config('app.available_locales') as $localeCode => $locale)
+                                    <li class="dropdown-item p-2 {{ App::getLocale() === $localeCode ? 'active' : '' }}" title="{{ $locale['name'] }}">
+                                        <a href="#" onclick="changeLanguage('{{ $localeCode }}')" class="d-flex align-items-center">
+                                            <i class="flag-icon {{ $locale['flag'] }} rounded-circle b-r-10 f-s-22"></i>
+                                            <span class="ps-2">{{ $locale['name'] }}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
-
                     </li>
+
+                    <script type="text/javascript">
+                        function changeLanguage(locale) {
+                            let url = "{{ route('change.lang') }}";
+                            window.location.href = url + "?lang=" + locale;
+                        }
+                    </script>
 
                     <li class="header-searchbar">
                         <a href="#" class="d-block head-icon" role="button" data-bs-toggle="offcanvas"
@@ -714,6 +704,10 @@
 
                     </li>
 
+
+
+
+
                     <li class="header-profile">
                         <a href="#" class="d-block head-icon" role="button" data-bs-toggle="offcanvas"
                            data-bs-target="#profilecanvasRight" aria-controls="profilecanvasRight">
@@ -734,16 +728,21 @@
                                     </li>
 
                                     <li class="app-divider-v dotted py-1"></li>
+                                    @can('manage profile')
                                     <li>
                                         <a class="f-w-500" href="{{route('profile')}}" target="_blank">
-                                            <i class="ph-duotone  ph-user-circle pe-1 f-s-20"></i> Profile Details
+                                            <i class="ph-duotone  ph-user-circle pe-1 f-s-20"></i> @autotranslate("Profile Details", app()->getLocale())
                                         </a>
                                     </li>
+                                    @endcan
+                                    @can('manage profile settings')
                                     <li>
                                         <a class="f-w-500" href="{{route('setting')}}" target="_blank">
-                                            <i class="ph-duotone  ph-gear pe-1 f-s-20"></i> Settings
+                                            <i class="ph-duotone  ph-gear pe-1 f-s-20"></i> @autotranslate("Profile Settings", app()->getLocale())
                                         </a>
                                     </li>
+
+
                                     <li>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <a class="f-w-500" role="button" href="{{route('setting')}}" target="_blank" data-bs-toggle="dropdown"
@@ -758,6 +757,7 @@
                                             </div>
                                         </div>
                                     </li>
+                                    @endcan
                                     <li>
                                         <div class="d-flex align-items-center justify-content-between">
                                             <a class="f-w-500" href="#">
