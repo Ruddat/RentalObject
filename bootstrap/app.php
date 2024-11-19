@@ -33,7 +33,7 @@ return Application::configure(basePath: dirname(__DIR__))
         //
         $middleware->append(SetLocale::class);
 
-        $middleware->append(LogPageAccess::class);
+      //  $middleware->append(LogPageAccess::class);
      // $middleware->append(SetLocaleFromCookie::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {

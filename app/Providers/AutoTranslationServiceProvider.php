@@ -36,7 +36,7 @@ class AutoTranslationServiceProvider extends ServiceProvider
             return "<?php echo app('autotranslate')->trans($text, $locale); ?>";
         });
 
-        Log::info("Aktuelle Sprache: " . App::getLocale());
+      //  Log::info("Aktuelle Sprache: " . App::getLocale());
 
     }
 }

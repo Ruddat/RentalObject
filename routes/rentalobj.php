@@ -2,6 +2,7 @@
 
 use App\Models\SysPages;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\LogPageAccess;
 use Illuminate\Support\Facades\Session;
 use App\Livewire\BlogSystem\BlogGridManager;
 use App\Livewire\BlogSystem\BlogPostManager;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Settings\BackupDownloadController;
 
 Route::post('/newsletter-signup', [NewsletterController::class, 'signup'])->name('newsletter.signup');
 
+Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
 
 Route::view('/', 'rentalobj.index')->name('index');
 Route::view('home', 'rentalobj.index')->name('home');
@@ -26,6 +28,10 @@ Route::view('/home-05', 'rentalobj.home-05')->name('home-05');
 Route::view('/home-06', 'rentalobj.home-06')->name('home-06');
 Route::view('/dashboard', 'rentalobj.dashboard')->name('dashboard');
 //Route::view('/add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
+
+});
+
+
 
 Route::view('/utility-cost-table', 'rentalobj.pageslivewire._utilitycosts')->name('utility-cost-table');
 Route::view('/rental-object-table', 'rentalobj.pageslivewire._rental-object-table')->name('rental-object-table');

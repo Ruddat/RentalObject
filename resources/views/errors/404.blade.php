@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </div>
-            <a role="button" href="{{route('index')}}" class="btn btn-lg btn-primary"><i class="ti ti-home"></i> @autotranslate("Back To Home", app()->getLocale())</a>
+            <a role="button" href="{{route('index')}}" class="btn btn-lg btn-primary"><i class="ti ti-home"></i> Back to Home</a>
         </div>
     </div>
 </div>

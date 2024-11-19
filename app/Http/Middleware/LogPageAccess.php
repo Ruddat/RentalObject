@@ -40,6 +40,12 @@ class LogPageAccess
                 'count' => 1,
             ]);
         }
+        \Log::info('Middleware debugging: Is user authenticated?', [
+            'auth_check' => auth()->check(),
+            'user_id' => auth()->id(),
+            'session_data' => session()->all(),
+        ]);
+
 
         return $next($request);
     }

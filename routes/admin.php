@@ -2,12 +2,13 @@
 
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\LogPageAccess;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
 
     Route::view('index', 'backend.pages.index')->name('index');
 

@@ -24,10 +24,11 @@ class AutoTranslationService
     public function trans($key, $locale = null)
     {
         // Get the locale from session or default to the configured locale
-        $locale = $locale ?? Session::get('locale', config('app.locale'));
         $locale = $locale ?? Cookie::get('locale', config('app.locale'));
-        // Fallback: Set a default if $locale is null or empty
-        if (is_null($locale) || empty($locale)) {
+
+        // Überprüfe, ob $locale ein gültiger Sprachcode ist
+        $allowedLocales = config('app.available_locales');
+        if (!in_array($locale, array_keys($allowedLocales))) {
             $locale = config('app.fallback_locale', 'en');
         }
 
@@ -62,16 +63,22 @@ class AutoTranslationService
     protected function translateAndSave($key, $locale)
     {
         try {
+            // Sicherstellen, dass $locale ein gültiger Sprachcode ist
+            $allowedLocales = config('app.available_locales');
+            if (!in_array($locale, array_keys($allowedLocales))) {
+                throw new \Exception("Ungültiger Sprachcode: " . $locale);
+            }
+    
             // Set target and source language for translation
             $this->googleTranslate->setTarget($locale);
             $this->googleTranslate->setSource('auto'); // Auto-detect source language
-
+    
             // Translate the key
             $translatedText = $this->googleTranslate->translate($key);
-
+    
             // Save the translation in the database
             $this->translationRepository->saveTranslation($key, $locale, $translatedText);
-
+    
             // Return the translated text
             return $translatedText;
         } catch (\Exception $e) {
