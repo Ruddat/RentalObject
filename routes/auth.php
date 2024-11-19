@@ -16,11 +16,11 @@ Route::middleware('guest')->group(function () {
 
    Route::view('login', 'rentalobj.index')->name('login');
 
-    Volt::route('forgot-password', 'pages.auth.forgot-password')
-        ->name('password.request');
+  //  Volt::route('forgot-password', 'pages.auth.forgot-password')
+  //      ->name('password.request');
 
-    Volt::route('reset-password/{token}', 'pages.auth.reset-password')
-        ->name('password.reset');
+    //Volt::route('reset-password/{token}', 'pages.auth.reset-password')
+       // ->name('password.reset');
 // Benutzerdefinierte E-Mail-Verifizierung mit spezifischem Pfad, um Konflikte zu vermeiden
 //Route::get('/custom-email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('email.verify.custom');
 

@@ -9,6 +9,7 @@
     <!-- css start-->
 @include('backend.layout.css')
 <!-- css end-->
+
 </head>
 
 <body>
@@ -48,6 +49,8 @@
      @include('backend.layout.footer')
     <!-- Footer Section end -->
 </div>
+@livewireScripts
+<!-- scripts start-->
 </body>
 
 <!--customizer-->

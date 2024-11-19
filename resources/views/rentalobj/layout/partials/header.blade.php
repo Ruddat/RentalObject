@@ -77,3 +77,12 @@
 
             </header>
             <!-- End Main Header -->
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                    @if (session('openLoginModal'))
+                        var loginModal = new bootstrap.Modal(document.getElementById('modalLogin'));
+                        loginModal.show();
+                    @endif
+                });
+            </script>
+

@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Middleware\SetLocale;
+use App\Livewire\Auth\ResetPassword;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Languages\LanguageController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
@@ -24,6 +26,12 @@ Route::get('/custom-verify-email/{id}/{token}', [EmailVerificationController::cl
   //  ->middleware(['guest'])
     ->name('email.verification.custom');
 
+
+Route::view('forgot-passwort', 'backend.livewirepages.auth._forgot-password')->name('forgot-password');
+Route::view('reset-password/{token}', 'backend.livewirepages.auth._reset-password')->name('reset-password');
+Route::get('/login/{provider}', [SocialLoginController::class, 'redirectToProvider'])->name('social.login');
+Route::get('/login/{provider}/callback', [SocialLoginController::class, 'handleProviderCallback']);
+
 Route::post('/upload-image', [ImageUploadController::class, 'upload'])->name('upload.image');
 
 
@@ -38,17 +46,3 @@ Route::prefix('localization')
             ->name('change.lang');
     });
 
-///Route::get('/language/{locale}', [LanguageController::class, 'switch'])->name('language.switch')->middleware('web');
-
-// In `routes/web.php`
-//Route::get('/change-language', [App\Http\Controllers\Languages\LanguageController::class, 'switch'])->name('change.lang');
-
-
-
-// Route zum Wechseln der Sprache
-//Route::get('lang/{locale}', function ($locale) {
-//    if (array_key_exists($locale, config('app.available_locales'))) {
-//        session(['locale' => $locale]);
-//    }
-//    return redirect()->back();
-//})->name('change.language');

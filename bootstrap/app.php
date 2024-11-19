@@ -2,6 +2,7 @@
 
 use App\Http\Middleware\SetLocale;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\LogPageAccess;
 use Illuminate\Foundation\Application;
 use App\Http\Middleware\SetLocaleFromCookie;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -31,9 +32,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         //
         $middleware->append(SetLocale::class);
-      //$middleware->append(SetLocaleFromCookie::class);
+
+        $middleware->append(LogPageAccess::class);
+     // $middleware->append(SetLocaleFromCookie::class);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
+        //$middleware->append(LogPageAccess::class);
     })
     ->create();
