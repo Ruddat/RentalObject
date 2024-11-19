@@ -187,7 +187,7 @@
                         </ul>
                     </li>
 
-
+                    <li><a href="{{route('page-access')}}">@autotranslate("Page Access", app()->getLocale())</a></li>
 
                     <li class="another-level">
                         <a class="" data-bs-toggle="collapse" href="#projects-page" aria-expanded="false">

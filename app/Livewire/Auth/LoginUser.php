@@ -4,12 +4,13 @@ namespace App\Livewire\Auth;
 
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginUser extends Component
 {
     public $email;
     public $password;
-    public $remember = false;
+    public $remember = true;
 
     protected $rules = [
         'email' => 'required|email',
@@ -18,12 +19,16 @@ class LoginUser extends Component
 
     public function login()
     {
-        $this->validate();
+        try {
+            $this->validate();
+        } catch (ValidationException $e) {
+            $this->dispatch('open-modal-login');
+            throw $e;  // Zeige den Fehler an, ohne das Modal zu schließen
+        }
 
         if (!Auth::attempt(['email' => $this->email, 'password' => $this->password], $this->remember)) {
-            // Fehler: Fehlermeldung anzeigen, Login bleibt sichtbar
-            $this->dispatch('open-modal-login');
             $this->addError('email', 'Diese Zugangsdaten stimmen nicht mit unseren Aufzeichnungen überein. Bitte versuchen Sie es erneut oder registrieren Sie sich.');
+            $this->dispatch('open-modal-login');
             return;
         }
 

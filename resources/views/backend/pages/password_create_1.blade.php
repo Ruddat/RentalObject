@@ -1,7 +1,7 @@
-@section('title', 'Password Reset Bg')
-@include('layout.head')
+@section('title', 'Password Create Bg')
+@include('backend.layout.head')
 
-@include('layout.css')
+@include('backend.layout.css')
 
 <body>
 <div class="app-wrapper d-block">
@@ -9,20 +9,20 @@
         <!-- Body main section starts -->
         <main class="w-100 p-0">
             <div class="container-fluid">
-                <!-- Reset Your Password start -->
+                <!-- Create Password start -->
                 <div class="row">
                     <div class="col-12 p-0">
                         <div class="login-form-container">
                             <div class="mb-4">
                                 <a class="logo d-inline-block" href="{{route('index')}}">
-                                    <img src="{{asset('../assets/images/logo/1.png')}}" width="250" alt="#">
+                                    <img src="{{asset('backend/assets/images/logo/1.png')}}" width="250" alt="#">
                                 </a>
                             </div>
                             <div class="form_container">
                                 <form class="app-form">
                                     <div class="mb-3 text-center">
-                                        <h3>Reset Your Password</h3>
-                                        <p class="f-s-12 text-secondary">Create a new password andsign in to admin</p>
+                                        <h3>Create Password</h3>
+                                        <p class="f-s-12 text-secondary">Your new password must be different from previous used password</p>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Current password</label>
@@ -44,12 +44,14 @@
                         </div>
                     </div>
                 </div>
-                <!-- Reset Your Password end -->
+                <!-- Create Password end -->
             </div>
         </main>
         <!-- Body main section ends -->
     </div>
 </div>
+
+
 </body>
 
 @section('script')
@@ -59,3 +61,6 @@
     <!-- Bootstrap js-->
     <script src="{{asset('assets/vendor/bootstrap/bootstrap.bundle.min.js')}}"></script>
 @endsection
+
+
+
