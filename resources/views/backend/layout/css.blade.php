@@ -28,8 +28,5 @@
 @yield('css')
 
 
-
-
+<link rel="stylesheet" href="{{ asset('build/css/style.min.css') }}">
 @livewireStyles
-
-<link rel="stylesheet" href="{{ asset('build/css/style.css') }}">
