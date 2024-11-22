@@ -42,6 +42,9 @@
                     <div class="card-header">
                         <h5>Settings</h5>
                     </div>
+
+                    @livewire('livewire.backend.admin.profile-settings.settings-navigation-component')
+
                     <div class="card-body">
                         <div class="vertical-tab setting-tab">
                             <ul class="nav nav-tabs app-tabs-primary " id="v-bg" role="tablist">
@@ -164,6 +167,8 @@
 
             <div class="col-lg-8 col-xxl-9">
                 <div class="tab-content">
+
+
                     <div class="tab-pane fade active show" id="profile-tab-pane" role="tabpanel"
                          aria-labelledby="profile-tab" tabindex="0">
                         <div class="card setting-profile-tab">
@@ -302,6 +307,8 @@
                             </div>
                         </div>
                     </div>
+
+
                     <div class="tab-pane fade" id="activity-tab-pane" role="tabpanel"
                          aria-labelledby="activity-tab" tabindex="0">
                         <div class="card equal-card month-timeline">
@@ -660,6 +667,9 @@
                             </div>
                         </div>
                     </div>
+
+
+
                     <div class="tab-pane fade" id="security-tab-pane" role="tabpanel"
                          aria-labelledby="security-tab" tabindex="0">
                         <div class="card security-card-content">
@@ -982,6 +992,10 @@
                         </div>
 
                     </div>
+
+
+
+
                     <div class="tab-pane fade" id="privacy-tab-pane" role="tabpanel"
                          aria-labelledby="privacy-tab" tabindex="0">
                         <div class="card equal-card privacy-card">
@@ -1158,6 +1172,12 @@
                             </div>
                         </div>
                     </div>
+
+
+
+
+
+                    
                     <div class="tab-pane fade" id="notification-tab-pane" role="tabpanel"
                          aria-labelledby="notification-tab" tabindex="0">
 

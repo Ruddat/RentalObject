@@ -87,4 +87,10 @@ class TranslationEditor extends Component
             'translations' => $translations,
         ]);
     }
+
+    public function paginationView()
+    {
+        return 'livewire.custom-pagination-links-view';
+    }
+
 }

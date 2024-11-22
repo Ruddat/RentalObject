@@ -6,7 +6,7 @@
                 <a href="{{ url('/') }}">Homepage 01</a>
             </li>
             <li class="{{ Request::is('home-02') ? 'current' : '' }}">
-                <a href="{{ url('home-02') }}">Homepage 02</a>
+                <a href="{{route('home-02')}}">Homepage 02</a>
             </li>
             <li class="{{ Request::is('home-03') ? 'current' : '' }}">
                 <a href="{{ url('home-03') }}">Homepage 03</a>

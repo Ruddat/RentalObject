@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\Auth\SocialLoginController;
 use App\Http\Controllers\Languages\LanguageController;
+use App\Http\Controllers\Utility\UserTimeLogController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 
@@ -25,6 +26,9 @@ require __DIR__.'/auth.php';
 Route::get('/custom-verify-email/{id}/{token}', [EmailVerificationController::class, 'verify'])
   //  ->middleware(['guest'])
     ->name('email.verification.custom');
+
+
+    Route::post('/log-time', [UserTimeLogController::class, 'logTime']);
 
 
 Route::view('forgot-passwort', 'backend.livewirepages.auth._forgot-password')->name('forgot-password');

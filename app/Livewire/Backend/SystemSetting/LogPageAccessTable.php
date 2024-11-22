@@ -24,7 +24,7 @@ public function render()
         ->orWhere('user_agent', 'like', '%' . $this->search . '%')
         ->orWhere('ip', 'like', '%' . $this->search . '%')
         ->orderBy('created_at', 'desc')
-        ->paginate(10);
+        ->paginate(30);
 
     return view('livewire.backend.system-setting.log-page-access-table', [
         'logs' => $logs,

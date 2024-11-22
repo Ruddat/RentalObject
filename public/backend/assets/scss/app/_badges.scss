@@ -1,3 +1,4 @@
+@use "sass:map";
 // >>-- 10 Badge css start --<<
 
 .badge{
@@ -46,7 +47,7 @@
   }
 
   @each $name, $color in $colors {
-    @include badge_mixin($name, map-get($colors, $name));
+    @include badge_mixin($name, map.get($colors, $name));
   }
 
   // >>-- 10 Badge css end --<<
