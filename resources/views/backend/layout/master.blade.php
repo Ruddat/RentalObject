@@ -49,8 +49,10 @@
      @include('backend.layout.footer')
     <!-- Footer Section end -->
 </div>
-@livewireScripts
+
+
 <!-- scripts start-->
+
 </body>
 
 <!--customizer-->
@@ -59,5 +61,7 @@
 <!-- scripts start-->
 @include('backend.layout.script')
 <!-- scripts end-->
+
+@livewireScripts
 
 </html>

@@ -1,6 +1,5 @@
 <div class="main-content">
     <div class="main-content-inner">
-        <h2 class="mb-4">System Einstellungen</h2>
 
         @if (session()->has('message'))
             <div class="alert alert-success">{{ session('message') }}</div>
@@ -34,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-end mt-4">
+            <div class="d-flex justify-content-end mt-4 mb-3">
                 <button type="submit" class="btn btn-primary">Speichern</button>
             </div>
         </form>

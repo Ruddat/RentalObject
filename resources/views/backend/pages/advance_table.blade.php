@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Advance Table')
 @section('css')
     <!-- Data Table css-->

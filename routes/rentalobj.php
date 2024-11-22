@@ -9,6 +9,7 @@ use App\Livewire\BlogSystem\BlogPostManager;
 use App\Livewire\BlogSystem\BlogDetailsManager;
 use App\Http\Controllers\BlogSystem\PostController;
 use App\Http\Controllers\Utility\NewsletterController;
+use App\Http\Controllers\Utility\UserTimeLogController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Settings\BackupDownloadController;
 
@@ -21,16 +22,16 @@ Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
 
 Route::view('/', 'rentalobj.index')->name('index');
 Route::view('home', 'rentalobj.index')->name('home');
-Route::view('/home-02', 'rentalobj.home-02')->name('home-02');
-Route::view('/home-03', 'rentalobj.home-03')->name('home-03');
 Route::view('/home-04', 'rentalobj.home-04')->name('home-04');
 Route::view('/home-05', 'rentalobj.home-05')->name('home-05');
 Route::view('/home-06', 'rentalobj.home-06')->name('home-06');
 Route::view('/dashboard', 'rentalobj.dashboard')->name('dashboard');
 //Route::view('/add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
-
+Route::post('/log-time', [UserTimeLogController::class, 'logTime']);
 });
 
+Route::view('home-02', 'rentalobj.home-02')->name('home-02');
+Route::view('home-03', 'rentalobj.home-03')->name('home-03');
 
 
 Route::view('/utility-cost-table', 'rentalobj.pageslivewire._utilitycosts')->name('utility-cost-table');

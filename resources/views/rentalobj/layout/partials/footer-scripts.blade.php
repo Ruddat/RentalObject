@@ -28,6 +28,25 @@
         feather.replace();
     </script>
 
+<script>
+    let timeSpent = 0;
+
+    // Erhöhe die Zeit jede Sekunde
+    const interval = setInterval(() => {
+        timeSpent++;
+    }, 1000);
+
+    // Sende die Daten an den Server, wenn der Benutzer die Seite verlässt
+    window.addEventListener('beforeunload', function () {
+        navigator.sendBeacon('/log-time', new URLSearchParams({
+            page_url: window.location.pathname,
+            time_spent: timeSpent,
+        }));
+    });
+</script>
+
+
+
 @if (Route::is(['sales-dashboard']))
 
  @endif

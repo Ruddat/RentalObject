@@ -1,3 +1,4 @@
+@use "sass:map";
 // >>-- 11 Tabs css start --<<
 .nav-tabs{
   margin-bottom: 10px;
@@ -141,7 +142,7 @@
 }
 
 @each $name, $color in $colors {
-  @include tab_mixin($name, map-get($colors, $name));
+  @include tab_mixin($name, map.get($colors, $name));
 }
 
 // >>-- 11 Tabs css end --<<

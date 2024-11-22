@@ -28,8 +28,12 @@
                     <td>{{ $translation->locale }}</td>
                     <td>{{ $translation->text }}</td>
                     <td>
-                        <button wire:click="editTranslation({{ $translation->id }})" class="btn btn-primary btn-sm">Bearbeiten</button>
-                        <button wire:click="confirmDelete({{ $translation->id }})" class="btn btn-danger btn-sm">Löschen</button>
+                        <button wire:click="confirmDelete({{ $translation->id }})" type="button" class="btn btn-danger icon-btn b-r-4">
+                            <i class="ti ti-trash"></i>
+                        </button>
+                        <button wire:click="editTranslation({{ $translation->id }})" type="button" class="btn btn-success icon-btn b-r-4">
+                            <i class="ti ti-edit"></i>
+                        </button>
                     </td>
                 </tr>
             @endforeach
@@ -37,9 +41,16 @@
     </table>
 
     <!-- Pagination Links -->
-    <div class="mt-2">
-        {{ $translations->links() }}
+    <div class="card-footer d-flex justify-content-between align-items-center">
+        <div class="small text-muted">
+            Showing {{ $translations->firstItem() }} to {{ $translations->lastItem() }} of {{ $translations->total() }} translations
+        </div>
+        <div>
+            {{ $translations->links() }}
+        </div>
     </div>
+
+
 
     <!-- Edit Form -->
     @if($editMode)

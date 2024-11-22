@@ -17,9 +17,12 @@
         "livewire/livewire": "^3.4",
         "livewire/volt": "^1.0",
         "phpmailer/phpmailer": "^6.9",
+        "setasign/fpdf": "^1.8",
+        "setasign/fpdi": "^2.6",
         "spatie/laravel-backup": "^9.1",
         "spatie/laravel-permission": "^6.10",
-        "stichoza/google-translate-php": "^5.2"
+        "stichoza/google-translate-php": "^5.2",
+        "horstoeko/zugferd-laravel":"^1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

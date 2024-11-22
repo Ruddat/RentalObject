@@ -1,11 +1,7 @@
 <div class="main-content">
     <div class="main-content-inner">
-        <div class="button-show-hide show-mb">
-            <span class="body-1">Show Dashboard</span>
-        </div>
         <!-- Backup Management Section -->
         <div class="widget-box-2">
-            <h5 class="title">Nebenkosten-Backup-Verwaltung</h5>
 
             @if(session()->has('message'))
                 <div class="alert alert-success mb-3">{{ session('message') }}</div>
@@ -42,10 +38,6 @@
             </div>
         </div>
 
-        <!-- Footer Section -->
-        <div class="footer-dashboard footer-dashboard-2">
-            <p>Copyright © 2024 Home Lengo</p>
-        </div>
     </div>
 
 </div>

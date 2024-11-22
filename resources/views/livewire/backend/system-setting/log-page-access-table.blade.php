@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-header">
             <h5>Page Access Logs</h5>
-            <input type="text" wire:model.debounce.300ms="search" placeholder="Search Logs..." class="form-control" />
+            <input type="text" wire:model.live.debounce.300ms="search" placeholder="Search Logs..." class="form-control" />
         </div>
         <div class="card-body p-0">
             <div class="table-responsive">

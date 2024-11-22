@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\LogPageAccess;
 use App\Http\Controllers\WeatherController;
 use App\Http\Controllers\Auth\EmailVerificationController;
+use App\Livewire\Backend\Admin\EInvoiceManager\UserCertificateManager;
 
 
 
@@ -12,9 +13,9 @@ Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
 
     Route::view('index', 'backend.pages.index')->name('index');
 
-    Route::view('project_dashboard', 'backend.project_dashboard')->name('project_dashboard');
-    Route::view('crypto_dashboard', 'backend.crypto_dashboard')->name('crypto_dashboard');
-    Route::view('education_dashboard', 'backend.education_dashboard')->name('education_dashboard');
+    Route::view('project_dashboard', 'backend.pages.project_dashboard')->name('project_dashboard');
+    Route::view('crypto_dashboard', 'backend.pages.crypto_dashboard')->name('crypto_dashboard');
+    Route::view('education_dashboard', 'backend.pages.education_dashboard')->name('education_dashboard');
 
     // Nebenkosten konstrukt
     Route::view('utility-costs-table', 'backend.livewirepages._utility-costs-table')->name('utility-costs-table');
@@ -34,10 +35,16 @@ Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
     Route::view('roles-permissions-table', 'backend.admin.rolesandpermission._roles-permissions-table')->name('roles-permissions-table');
     Route::view('user-table', 'backend.admin.users-table')->name('user-table');
     Route::view('profile', 'backend.pages.profile')->name('profile');
-    Route::view('setting', 'backend.pages.setting')->name('setting');
+    Route::view('setting', 'backend.livewirepages.profilesettings._profile-settings')->name('setting');
     Route::view('page-access', 'backend.livewirepages.systemsetting._log-page-access')->name('page-access');
 
+    Route::view('backup-manager', 'backend.livewirepages.systemsetting._backup-manager')->name('backup-manager');
+    Route::view('settings-manager', 'backend.livewirepages.systemsetting._settings-manager')->name('settings-manager');
+    Route::view('translation-editor', 'backend.livewirepages.systemsetting._translation-editor')->name('translation-editor');
 
+    Route::view('e-invoice-manager', 'backend.livewirepages.e-invoices._e-invoice-manager')->name('e-invoice-manager');
+    Route::view('e-invoice-pdf-manager', 'backend.livewirepages.e-invoices._e-invoice-pdf-manager')->name('e-invoice-pdf-manager');
+    Route::get('/user-certificates', UserCertificateManager::class)->name('user.certificates');
 });
 
 

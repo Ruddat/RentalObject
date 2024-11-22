@@ -12,15 +12,16 @@ class SetLocale
 {
     public function handle(Request $request, Closure $next)
     {
-        $test = $request->input('lang');
-        //dd($test);
-        // Sprache aus der Session oder Konfiguration laden
-        $locale = Session::get('locale', config('app.locale'));
-        $locale = Cookie::get('locale', config('app.locale'));
+        $locale = $request->input('lang');
 
-//dd($locale);
+
+        // Falls Sprache aus Anfrage kommt, speichern
+        if ($request->has('lang')) {
+            Session::put('locale', $locale);
+            Cookie::queue('locale', $locale, 60 * 24 * 365); // 1 Jahr gültig
+        }
         // Sprache in der App setzen
-        App::setLocale($test);
+        App::setLocale($locale);
 
         return $next($request);
     }

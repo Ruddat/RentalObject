@@ -36,15 +36,6 @@
                 <ul class="collapse" id="apps">
                     <li><a href="{{route('calendar')}}">Calender</a></li>
                     <li class="another-level">
-                        <a class="" data-bs-toggle="collapse" href="#Profile-page" aria-expanded="false">
-                            Profile
-                        </a>
-                        <ul class="collapse" id="Profile-page">
-                            <li><a href="{{route('profile')}}">Profile</a></li>
-                            <li><a href="{{route('setting')}}">Setting</a></li>
-                        </ul>
-                    </li>
-                    <li class="another-level">
                         <a class="" data-bs-toggle="collapse" href="#projects-page" aria-expanded="false">
                             Projects Page
                         </a>
@@ -127,12 +118,12 @@
             </li>
 
 
-            <li class="menu-title"> <span>@autotranslate("Nebenkosten", app()->getLocale())</span></li>
+            <li class="menu-title"> <span>@autotranslate("Papierkram", app()->getLocale())</span></li>
             <li>
                 <a class="" data-bs-toggle="collapse" href="#nebenkosten-kits" aria-expanded="false">
 
                     <i class="ph-duotone  ph-briefcase"></i>
-                    Erstellen
+                    @autotranslate("Utility Cost", app()->getLocale())
                 </a>
                 <ul class="collapse" id="nebenkosten-kits">
                     <li><a href="{{route('utility-costs-table')}}">@autotranslate("Utility Costs Table", app()->getLocale())</a></li>
@@ -146,6 +137,22 @@
                     <li><a href="{{route('billing-generation')}}">Abrechnung erstellen</a></li>
                 </ul>
             </li>
+
+            <li>
+                <a class="" data-bs-toggle="collapse" href="#e-invoice-kits" aria-expanded="false">
+
+                    <i class="ph-duotone  ph-briefcase"></i>
+                    @autotranslate("E-Invoices", app()->getLocale())
+                </a>
+                <ul class="collapse" id="e-invoice-kits">
+                    <li><a href="{{route('e-invoice-manager')}}">@autotranslate("E Invoices", app()->getLocale())</a></li>
+                    <li><a href="{{route('e-invoice-pdf-manager')}}">@autotranslate("E Invoices PDF", app()->getLocale())</a></li>
+                </ul>
+            </li>
+
+
+
+
 
             <li class="menu-title"> <span>@autotranslate("Einstellungen", app()->getLocale())</span></li>
             @can('manage settings')
@@ -188,6 +195,15 @@
                     </li>
 
                     <li><a href="{{route('page-access')}}">@autotranslate("Page Access", app()->getLocale())</a></li>
+
+                    <li><a href="{{route('backup-manager')}}">@autotranslate("Datensicherung", app()->getLocale())</a></li>
+                    <li><a href="{{route('settings-manager')}}">@autotranslate("Systemsettings", app()->getLocale())</a></li>
+
+                    <li><a href="{{route('translation-editor')}}">@autotranslate("Translation", app()->getLocale())</a></li>
+
+                    <li><a href="{{route('settings-manager')}}">@autotranslate("Systemsettings", app()->getLocale())</a></li>
+
+
 
                     <li class="another-level">
                         <a class="" data-bs-toggle="collapse" href="#projects-page" aria-expanded="false">
