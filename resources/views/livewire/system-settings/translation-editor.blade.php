@@ -1,44 +1,44 @@
-<div class="main-content">
-    <div class="main-content-inner">
-        <h2 class="mb-4">Übersetzungen bearbeiten</h2>
 
+<div class="col-xl-12">
+    <div class="card">
         @if (session()->has('message'))
-            <div class="alert alert-success">{{ session('message') }}</div>
-        @endif
+        <div class="alert alert-success">{{ session('message') }}</div>
+    @endif
 
-
-
-    <!-- Search Bar -->
-    <input type="text" wire:model.live="search" placeholder="Suche nach Schlüssel oder Text..." class="form-control mb-3">
-
-    <!-- Translations Table -->
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <th>Schlüssel</th>
-                <th>Sprache</th>
-                <th>Text</th>
-                <th>Aktionen</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($translations as $translation)
-                <tr>
-                    <td>{{ $translation->key }}</td>
-                    <td>{{ $translation->locale }}</td>
-                    <td>{{ $translation->text }}</td>
-                    <td>
-                        <button wire:click="confirmDelete({{ $translation->id }})" type="button" class="btn btn-danger icon-btn b-r-4">
-                            <i class="ti ti-trash"></i>
-                        </button>
-                        <button wire:click="editTranslation({{ $translation->id }})" type="button" class="btn btn-success icon-btn b-r-4">
-                            <i class="ti ti-edit"></i>
-                        </button>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+        <div class="card-header">
+            <h5>Übersetzungen bearbeiten</h5>
+            <p>Using the column strip table need to add <code> .table-striped-columns </code>
+                class to table tag </p>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-bottom-border  table-striped-columns align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Schlüssel</th>
+                            <th>Sprache</th>
+                            <th>Text</th>
+                            <th>Aktionen</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($translations as $translation)
+                            <tr>
+                                <td>{{ $translation->key }}</td>
+                                <td>{{ $translation->locale }}</td>
+                                <td>{{ $translation->text }}</td>
+                                <td>
+                                    <button wire:click="confirmDelete({{ $translation->id }})" type="button" class="btn btn-danger icon-btn b-r-4">
+                                        <i class="ti ti-trash"></i>
+                                    </button>
+                                    <button wire:click="editTranslation({{ $translation->id }})" type="button" class="btn btn-success icon-btn b-r-4">
+                                        <i class="ti ti-edit"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
 
     <!-- Pagination Links -->
     <div class="card-footer d-flex justify-content-between align-items-center">
@@ -49,8 +49,6 @@
             {{ $translations->links() }}
         </div>
     </div>
-
-
 
     <!-- Edit Form -->
     @if($editMode)
@@ -101,14 +99,23 @@
             </div>
         </div>
     @endif
-
     <!-- Flash Message -->
     @if (session()->has('message'))
         <div class="alert alert-success mt-3">
             {{ session('message') }}
         </div>
     @endif
-</div>
-<div class="overlay-dashboard"></div>
 
+            </div>
+        </div>
+    </div>
 </div>
+
+
+
+
+
+
+
+
+

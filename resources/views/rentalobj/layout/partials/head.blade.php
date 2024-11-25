@@ -1,5 +1,7 @@
    <!-- font -->
    <link rel="stylesheet" href="{{ url('build/fonts/fonts.css') }}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('build/css/font-awesome.min.css') }}">
+
    <!-- Icons -->
    <link rel="stylesheet" href="{{ url('build/fonts/font-icons.css') }}">
    <link rel="stylesheet" href="{{ url('build/css/bootstrap.min.css') }}">

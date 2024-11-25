@@ -1,5 +1,5 @@
 <ul class="navigation clearfix">
-    <li class="dropdown2 home current"><a href="#">Home</a>
+    <li class="dropdown2 home {{ Request::is('start-page') ? 'current' : '' }}"><a href="#">@autotranslate("Home", app()->getLocale())</a>
         <ul>
 
             <li class="{{ Request::is('start-page') ? 'current' : '' }}">
@@ -41,39 +41,12 @@
             <li><a href="property-details-v4.html">Property Details 4</a></li>
         </ul>
     </li>
-    <li class="dropdown2"><a href="#">Pages</a>
-        <ul>
-            <li><a href="about-us.html">About Us</a></li>
-            <li><a href="our-service.html">Our Services</a></li>
-            <li><a href="pricing.html">Pricing</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="faq.html">FAQs</a></li>
-            <li><a href="privacy-policy.html">Privacy Policy</a></li>
-
-        </ul>
-    </li>
-    <li class="dropdown2"><a href="#">Blog</a>
-        <ul>
-            <li><a href="{{ route('blog-manager-12') }}">Blog Default</a></li>
-            <li><a href="blog-grid.html">Blog Grid</a></li>
-            <li><a href="blog-detail.html">Blog Post Details</a></li>
-        </ul>
+    <li class="dropdown {{ Request::is('manager/blog-manager-12') ? 'current' : '' }}"><a href="{{ route('blog-manager-12') }}">Blog</a>
     </li>
 
-    <li class="dropdown2"><a href="#">Dashboard</a>
-        <ul>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="my-property.html">My Properties</a></li>
-            <li><a href="message.html">Message</a></li>
-            <li><a href="my-favorites.html">My Favorites111</a></li>
-            <li><a href="reviews.html">Reviews</a></li>
-            <li><a href="my-profile.html">My Profile</a></li>
-            <li><a href="{{route('add-property')}}">@autotranslate("Add Property", app()->getLocale())</a></li>
-        </ul>
-    </li>
 <!-- Sprachwahl hinzufügen -->
 <li class="dropdown2">
-    <a href="#">Language</a>
+    <a href="#">@autotranslate("Language", app()->getLocale())</a>
     <ul>
         @foreach(config('app.available_locales') as $localeCode => $locale)
             <li class="@if(session('locale') == $localeCode) active @endif">

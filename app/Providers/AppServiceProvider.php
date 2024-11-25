@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\ModLink;
+use App\Models\ModCategory;
 use App\Events\UserVerified;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Event;
@@ -12,6 +14,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use App\Listeners\RunUtilityCostsSeeder;
 use App\Models\SysSetting;  // Richtiges Modell importieren
+use App\Http\Controllers\Backend\Admin\PagesSystem\FooterLinksController;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -51,6 +54,16 @@ class AppServiceProvider extends ServiceProvider
 
     // Manuelle Registrierung des Listeners
     Event::listen(UserVerified::class, RunUtilityCostsSeeder::class);
+
+    view()->composer('rentalobj.layout.partials.footer', function ($view) {
+        // Kategorien mit aktiven Links laden
+        $footerLinks = ModCategory::with(['links' => function ($query) {
+            $query->where('active', true);
+        }])->get();
+
+        $view->with('footerLinks', $footerLinks);
+    });
+
 }
 
 }

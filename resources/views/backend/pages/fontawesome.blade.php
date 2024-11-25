@@ -1,11 +1,11 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Fontawesome')
 @section('css')
     <!--font-awesome-css-->
-    <link rel="stylesheet" href="{{asset('assets/vendor/fontawesome/css/all.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/fontawesome/css/all.css')}}">
 
     <!--notifications-css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/notifications/toastify.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/notifications/toastify.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -2892,8 +2892,8 @@
     <div id="customizer"></div>
 
     <!-- toastify js -->
-    <script src="{{asset('assets/vendor/notifications/toastify-js.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/notifications/toastify-js.js')}}"></script>
 
     <!--  js-->
-    <script src="{{asset('assets/js/font_awesome.js')}}"></script>
+    <script src="{{asset('backend/assets/js/font_awesome.js')}}"></script>
 @endsection

@@ -1,13 +1,13 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Ticket')
 @section('css')
     <!-- slick css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/slick/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/slick/slick-theme.css')}}">
 
     <!-- Data Table css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/datatable/jquery.dataTables.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/datatable/datatable2/buttons.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/datatable/jquery.dataTables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/datatable/datatable2/buttons.dataTables.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -1234,7 +1234,7 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-body app-form">
-                    <img src="{{asset('assets/images/icons/delete-icon.png')}}" alt="" class="img-fluid">
+                    <img src="{{asset('backend/assets/images/icons/delete-icon.png')}}" alt="" class="img-fluid">
                     <div class="text-center">
                         <h4 class="text-danger f-w-600">Are You Sure?</h4>
                         <p class="text-secondary f-s-16">You won't be able to revert this!</p>
@@ -1325,13 +1325,13 @@
 <div id="customizer"></div>
 
 <!-- slick-file -->
-<script src="{{asset('assets/vendor/slick/slick.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/slick/slick.min.js')}}"></script>
 
 <!-- data table js-->
-<script src="{{asset('assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/datatable/jquery.dataTables.min.js')}}"></script>
 
 <!-- api js -->
-<script src="{{asset('assets/js/ticket.js')}}"></script>
+<script src="{{asset('backend/assets/js/ticket.js')}}"></script>
 
 @endsection
 

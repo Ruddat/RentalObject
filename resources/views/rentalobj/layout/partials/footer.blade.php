@@ -66,32 +66,54 @@
                         </ul>
                     </div>
                 </div>
+
+
+
+
+
+
+                @php
+                $classCounter = 2; // Start mit "footer-cl-3"
+            @endphp
+
+            @foreach ($footerLinks as $category)
                 <div class="col-lg-2 col-md-6">
-                    <div class="footer-cl-2 footer-col-block">
-                        <div class="fw-7 text-white footer-heading-mobile">@autotranslate("Kategorien", app()->getLocale())</div>
+                    <div class="footer-cl-{{ $classCounter }} footer-col-block">
+                        <div class="fw-7 text-white footer-heading-mobile">
+                            {{ $category->name }}
+                        </div>
                         <div class="tf-collapse-content">
                             <ul class="mt-10 navigation-menu-footer">
-                                <li> <a href="pricing.html" class="caption-1 text-variant-2">@autotranslate("Preispläne", app()->getLocale())</a> </li>
-                                <li> <a href="our-service.html" class="caption-1 text-variant-2">@autotranslate("Unsere Dienstleistungen", app()->getLocale())</a> </li>
-                                <li> <a href="about-us.html" class="caption-1 text-variant-2">@autotranslate("Über uns", app()->getLocale())</a> </li>
-                                <li> <a href="contact.html" class="caption-1 text-variant-2">@autotranslate("Kontaktiere uns", app()->getLocale())</a> </li>
+                                @foreach ($category->links as $link)
+                                    <li>
+                                        @if ($link->page_id)
+                                            <!-- Wenn der Link mit einer Seite verknüpft ist -->
+                                            <a href="{{ route('page.show', ['slug' => $link->page->slug]) }}" class="caption-1 text-variant-2">
+                                                {{ $link->label }}
+                                            </a>
+                                        @else
+                                            <!-- Wenn der Link eine externe URL hat -->
+                                            <a href="{{ $link->url }}" class="caption-1 text-variant-2">
+                                                {{ $link->label }}
+                                            </a>
+                                        @endif
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6">
-                    <div class="footer-cl-3 footer-col-block">
-                        <div class="fw-7 text-white footer-heading-mobile">@autotranslate("Unser Unternehmen", app()->getLocale())</div>
-                        <div class="tf-collapse-content">
-                            <ul class="mt-10 navigation-menu-footer">
-                                <li> <a href="topmap-list.html" class="caption-1 text-variant-2">@autotranslate("Immobilien zum Verkauf", app()->getLocale())</a> </li>
-                                <li> <a href="topmap-grid.html" class="caption-1 text-variant-2">@autotranslate("Immobilien zur Miete", app()->getLocale())</a> </li>
-                                <li> <a href="topmap-grid.html" class="caption-1 text-variant-2">@autotranslate("Immobilien zum Kauf", app()->getLocale())</a> </li>
-                                <li> <a href="topmap-grid.html" class="caption-1 text-variant-2">@autotranslate("Unsere Agenten", app()->getLocale())</a> </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+                @php
+                    $classCounter++; // Klasse hochzählen
+                @endphp
+            @endforeach
+
+
+
+
+
+
+
                 <div class="col-lg-4 col-md-6">
                     <div class="footer-cl-4 footer-col-block">
                         <div class="fw-7 text-white footer-heading-mobile">@autotranslate("Newsletter", app()->getLocale())</div>
@@ -111,13 +133,15 @@
                         </div>
                     </div>
                 </div>
+
+
             </div>
         </div>
     </div>
     <div class="bottom-footer">
         <div class="container">
             <div class="content-footer-bottom">
-                <div class="copyright">©2024 Homelengo. Alle Rechte vorbehalten.</div>
+                <div class="copyright">©2024 Homelengo. @autotranslate("Alle Rechte vorbehalten.", app()->getLocale())</div>
                 <ul class="menu-bottom">
                     <li><a href="our-service.html">@autotranslate("Nutzungsbedingungen", app()->getLocale())</a> </li>
                     <li><a href="pricing.html">@autotranslate("Datenschutzrichtlinie", app()->getLocale())</a> </li>
