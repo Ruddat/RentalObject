@@ -261,7 +261,7 @@
                         </ul>
                     </li>
                     <li><a href="{{route('invoice')}}">Invoice</a></li>
-                    <li><a href="{{route('chat')}}">Chat</a></li>
+                    <li><a href="{{route('chat-manager')}}">Chat</a></li>
                     <li><a href="{{route('file_manager')}}">File manager</a></li>
                     <li><a href="{{route('bookmark')}}">Bookmark</a></li>
                     <li><a href="{{route('kanban_board')}}">Kanban board</a></li>

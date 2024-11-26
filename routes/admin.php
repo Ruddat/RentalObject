@@ -74,6 +74,9 @@ Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
     // ----------------------------------------------------------------
     Route::view('todo-manager', 'backend.livewirepages.todomanager._to-do-manager')->name('todo-manager');
 
+    Route::view('chat-manager', 'backend.livewirepages.chatmanager._chat-manager')->name('chat-manager');
+
+
 
 
 });

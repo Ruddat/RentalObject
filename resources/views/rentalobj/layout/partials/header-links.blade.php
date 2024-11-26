@@ -33,6 +33,7 @@
 
         </ul>
     </li>
+
     <li class="dropdown2"><a href="#">Properties</a>
         <ul>
             <li><a href="property-details-v1.html">Property Details 1</a></li>
@@ -61,6 +62,50 @@
     </ul>
 </li>
 
+    <!-- Inserieren und Makler finden -->
+    <li class="dropdown2">
+        <div class="grid-flex grid-item grid-justify-end padding-top-xs">
+            <!-- Inserieren Button -->
+            <a href="#"
+               title="Inserieren ab 0 €"
+               class="button-secondary inserieren-badge"
+               data-event="evtrack"
+               data-tracking='{
+                   "evt_ga_category": "navigation",
+                   "evt_ga_action": "header",
+                   "evt_ga_label": "click_fuer0€inserieren",
+                   "event_name": "navigation_click",
+                   "event_product": "search",
+                   "event_parameter_1": "click_fuer0€inserieren"
+               }'>
+                <span class="palm-hide">Inserieren ab 0 €</span>
+            </a>
+        </div>
+    </li>
+
+    <li class="dropdown2">
+            <!-- Makler finden Button -->
+            <div class="grid-flex grid-item grid-justify-end padding-top-xs">
+                <a href="#"
+                   title="Makler:in finden"
+                   class="button makler-button"
+                   data-event="evtrack"
+                   data-tracking='{
+                       "evt_ga_category": "navigation",
+                       "evt_ga_action": "header",
+                       "evt_ga_label": "click_maklerfinden",
+                       "event_name": "navigation_click",
+                       "event_product": "search",
+                       "event_parameter_1": "click_maklerfinden"
+                   }'>
+                    Makler:in finden
+                </a>
+            </div>
+        </li>
+
+
+
+
 <script type="text/javascript">
     function changeLanguage(locale) {
         let url = "{{ route('change.lang') }}";
@@ -70,6 +115,11 @@
 
 
 <style>
+.grid-justify-end {
+    justify-content: center; /* Zentriert die Buttons */
+    gap: 8px; /* Abstand zwischen den Buttons */
+}
+
     /* Style for the active language item */
     .dropdown2 ul li.active {
         position: relative;
@@ -88,6 +138,47 @@
         background-color: #007bff; /* Farbe des Balkens */
         border-radius: 2px; /* Abgerundete Ecken für den Balken */
     }
+
+/* Inserieren Badge Style */
+.inserieren-badge {
+    background-color: #1563df;
+    color: white;
+    border: 1px solid #1563df;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.inserieren-badge:hover {
+    background-color: #0d4bb5;
+    color: white;
+}
+
+/* Makler Button Style */
+.makler-button {
+    background-color: white;
+    color: #1563df;
+    border: 1px solid #1563df;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.makler-button:hover {
+    background-color: #1563df;
+    color: white;
+}
+
 </style>
 
 <!--Flag Icon css-->

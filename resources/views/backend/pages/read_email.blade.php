@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Read Email')
 @section('css')
     <!-- editor css -->
