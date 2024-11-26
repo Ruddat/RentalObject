@@ -62,56 +62,91 @@
 
     <!-- WebRTC Script -->
     <script>
-        const localVideo = document.getElementById('localVideo');
-        const remoteVideo = document.getElementById('remoteVideo');
-        let localStream, peerConnection;
+const localVideo = document.getElementById('localVideo');
+const remoteVideo = document.getElementById('remoteVideo');
+let localStream, peerConnection;
 
-        const config = {
-            iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+const config = {
+    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+};
+
+async function initVideoChat() {
+    try {
+        console.log("Initializing video chat...");
+
+        // Zugriff auf lokale Medien
+        localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+        console.log("Local stream initialized:", localStream);
+
+        localVideo.srcObject = localStream;
+
+        // PeerConnection erstellen
+        peerConnection = new RTCPeerConnection(config);
+        console.log("PeerConnection initialized:", peerConnection);
+
+        // Tracks hinzufügen
+        localStream.getTracks().forEach(track => {
+            peerConnection.addTrack(track, localStream);
+            console.log("Track added to PeerConnection:", track);
+        });
+
+        // Remote-Stream empfangen
+        peerConnection.ontrack = event => {
+            console.log("Remote stream received:", event.streams[0]);
+            remoteVideo.srcObject = event.streams[0];
         };
 
-        async function initVideoChat() {
-            try {
-                // Get Local Media
-                localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
-                localVideo.srcObject = localStream;
-
-                // Initialize PeerConnection
-                peerConnection = new RTCPeerConnection(config);
-                localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-
-                // Set Remote Stream
-                peerConnection.ontrack = event => {
-                    remoteVideo.srcObject = event.streams[0];
-                };
-
-                // Handle ICE Candidates
-                peerConnection.onicecandidate = event => {
-                    if (event.candidate) {
-                        Livewire.emit('iceCandidate', event.candidate);
-                    }
-                };
-
-                // Listen to Livewire Events
-                Livewire.on('offerReceived', async offer => {
-                    await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-                    const answer = await peerConnection.createAnswer();
-                    await peerConnection.setLocalDescription(answer);
-                    Livewire.emit('sendAnswer', answer);
-                });
-
-                Livewire.on('answerReceived', async answer => {
-                    await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-                });
-
-                Livewire.on('candidateReceived', async candidate => {
-                    await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-                });
-            } catch (error) {
-                console.error('Error initializing video chat:', error);
+        // ICE-Kandidaten verarbeiten
+        peerConnection.onicecandidate = event => {
+            if (event.candidate) {
+                console.log("ICE Candidate generated:", event.candidate);
+                Livewire.dispatch('iceCandidate', event.candidate.toJSON());
             }
+        };
+
+        // Events von Livewire empfangen
+        Livewire.on('offerReceived', async ({ offer }) => {
+            console.log("Offer received:", offer);
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+            const answer = await peerConnection.createAnswer();
+            console.log("Answer created:", answer);
+            await peerConnection.setLocalDescription(answer);
+            Livewire.dispatch('answer', peerConnection.localDescription.toJSON());
+        });
+
+        Livewire.on('answerReceived', async ({ answer }) => {
+            console.log("Answer received:", answer);
+            await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+        });
+
+        Livewire.on('candidateReceived', async ({ candidate }) => {
+            console.log("Candidate received:", candidate);
+            await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+        });
+
+        // Entscheide, ob dieser Client der Initiator ist
+        if (isInitiator()) {
+            console.log("This client is the initiator.");
+            const offer = await peerConnection.createOffer();
+            console.log("Offer created:", offer);
+            await peerConnection.setLocalDescription(offer);
+            Livewire.dispatch('offer', peerConnection.localDescription.toJSON());
+        } else {
+            console.log("This client is waiting for an offer.");
         }
 
-        initVideoChat();
+    } catch (error) {
+        console.error('Error initializing video chat:', error);
+    }
+}
+
+function isInitiator() {
+    // Deine Logik, um zu bestimmen, wer der Initiator ist
+    return true; // Placeholder
+}
+
+initVideoChat();
+
     </script>
+
 </div>

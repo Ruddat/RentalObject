@@ -33,7 +33,8 @@ class VideoChatComponent extends Component
 
     public function loadRoomMembers()
     {
-        $this->roomMembers = ModVideoRoom::find($this->roomId)->users;
+        $room = ModVideoRoom::with('users')->find($this->roomId);
+        $this->roomMembers = $room ? $room->users : [];
     }
 
     public function loadMessages()
@@ -120,7 +121,29 @@ class VideoChatComponent extends Component
         }
     }
 
+    public function handleIceCandidate($candidate)
+    {
+        // Broadcast den ICE-Kandidaten
+        broadcast(new IceCandidateEvent($this->roomId, $candidate));
+        // Dispatch für Livewire
+        $this->dispatch('candidateReceived', $candidate);
+    }
 
+    public function handleOffer($offer)
+    {
+        // Broadcast das Offer
+        broadcast(new OfferEvent($this->roomId, $offer));
+        // Dispatch für Livewire
+        $this->dispatch('offerReceived', $offer);
+    }
+
+    public function handleAnswer($answer)
+    {
+        // Broadcast die Answer
+        broadcast(new AnswerEvent($this->roomId, $answer));
+        // Dispatch für Livewire
+        $this->dispatch('answerReceived', $answer);
+    }
 
 
     public function render()
