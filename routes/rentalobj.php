@@ -59,27 +59,36 @@ Route::view('/blog-details/{postId}', 'rentalobj.pageslivewire.blogmanager._blog
 
 // Livewire Component Routes
 
+    // Blog Manager
+    Route::view('/blog-manager-12', 'rentalobj.pageslivewire.blogmanager._blog-manager')->name('blog-manager-12');
+    Route::view('/blog-grid/{categoryId?}', 'rentalobj.pageslivewire.blogmanager._blog-grid-manager')->name('blog-grid-manager');
+    Route::view('/blog-details/{postId}', 'rentalobj.pageslivewire.blogmanager._blog-details-manager')->name('blog-details-manager');
+
 
 // Route for displaying a blog post (using slugs)
 Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show')
      ->where('slug', '[a-zA-Z0-9-]+');
 
 // Blog Manager Routes (Admin Area for CRUD operations)
-Route::prefix('blog-manager')->group(function () {
-    Route::get('/', [PostController::class, 'index'])->name('blog-manager.index');
-    Route::get('/create', [PostController::class, 'create'])->name('post.create');
-    Route::post('/store', [PostController::class, 'store'])->name('post.store');
-    Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit')->where('id', '[0-9]+');
-    Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update')->where('id', '[0-9]+');
-    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy')->where('id', '[0-9]+');
-});
+//Route::prefix('blog-manager')->group(function () {
+//    Route::get('/', [PostController::class, 'index'])->name('blog-manager.index');
+ //   Route::get('/create', [PostController::class, 'create'])->name('post.create');
+//    Route::post('/store', [PostController::class, 'store'])->name('post.store');
+ //   Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit')->where('id', '[0-9]+');
+//    Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update')->where('id', '[0-9]+');
+//    Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy')->where('id', '[0-9]+');
+//});
+
+
+
+//Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
 
 
 
 // Dynamic route for frontend pages
-Route::get('{slug}', function ($slug) {
-    $page = SysPages::where('slug', $slug)->where('is_active', true)->firstOrFail();
-    return view('frontend.page', compact('page'));
-})->name('page.show');
+// Route::get('{slug}', function ($slug) {
+   // $page = SysPages::where('slug', $slug)->where('is_active', true)->firstOrFail();
+   // return view('frontend.page', compact('page'));
+// })->name('page.show');
 
 

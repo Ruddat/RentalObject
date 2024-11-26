@@ -78,6 +78,11 @@ class AddProperty extends Component
 
     public function submitProperty()
     {
+        if (!auth()->check()) {
+            session()->flash('error', 'You must be logged in to submit a property.');
+            return;
+        }
+
         // Validierung und Speicherung der Daten
       //  $this->validate([
           //  'propertyData.name' => 'required|string|max:255',

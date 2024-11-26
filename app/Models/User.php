@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\ModVideoRoom;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -31,7 +32,7 @@ class User extends Authenticatable
         'language', 'profile_picture',
     ];
 
-    
+
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -51,4 +52,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function rooms()
+    {
+        return $this->belongsToMany(ModVideoRoom::class, 'room_user');
+    }
+
 }

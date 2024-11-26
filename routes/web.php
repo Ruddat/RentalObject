@@ -9,6 +9,8 @@ use App\Http\Controllers\Languages\LanguageController;
 use App\Http\Controllers\Utility\UserTimeLogController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
+use App\Http\Controllers\Backend\Admin\PagesSystem\PageController;
+use App\Http\Controllers\Backend\Admin\VideoChatSystem\VideoChatController;
 
 Route::view('/', 'welcome');
 
@@ -28,7 +30,17 @@ Route::get('/custom-verify-email/{id}/{token}', [EmailVerificationController::cl
     ->name('email.verification.custom');
 
 
+
     Route::post('/log-time', [UserTimeLogController::class, 'logTime']);
+
+
+
+    Route::get('/page/{slug}', [PageController::class, 'show'])->name('page.show');
+
+
+    Route::get('/room/{roomName}', [VideoChatController::class, 'openRoom'])->name('video.room');
+    Route::post('/room/create', [VideoChatController::class, 'createRoom'])->name('video.room.create');
+
 
 
 Route::view('forgot-passwort', 'backend.livewirepages.auth._forgot-password')->name('forgot-password');

@@ -1,12 +1,12 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Ticket Details')
 @section('css')
     <!-- filepond css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/filepond/filepond.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/vendor/filepond/image-preview.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/filepond/filepond.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/filepond/image-preview.min.css')}}">
 
     <!-- editor css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/trumbowyg/trumbowyg.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/trumbowyg/trumbowyg.min.css')}}">
 
 @endsection
 @section('main-content')
@@ -212,20 +212,20 @@
 <div id="customizer"></div>
 
 <!-- filepond -->
-<script src="{{asset('assets/vendor/filepond/file-encode.min.js')}}"></script>
-<script src="{{asset('assets/vendor/filepond/validate-size.min.js')}}"></script>
-<script src="{{asset('assets/vendor/filepond/validate-type.js')}}"></script>
-<script src="{{asset('assets/vendor/filepond/exif-orientation.min.js')}}"></script>
-<script src="{{asset('assets/vendor/filepond/image-preview.min.js')}}"></script>
-<script src="{{asset('assets/vendor/filepond/filepond.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/filepond/file-encode.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/filepond/validate-size.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/filepond/validate-type.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/filepond/exif-orientation.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/filepond/image-preview.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/filepond/filepond.min.js')}}"></script>
 
 <!-- data table js -->
-<script src="{{asset('assets/js/jquery-3.6.3.min.js')}}"></script>
+<script src="{{asset('backend/assets/js/jquery-3.6.3.min.js')}}"></script>
 
 <!-- Trumbowyg js -->
-<script src="{{asset('assets/vendor/trumbowyg/trumbowyg.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/trumbowyg/trumbowyg.min.js')}}"></script>
 
 <!-- ticket js -->
-<script src="{{asset('assets/js/ticket_details.js')}}"></script>
+<script src="{{asset('backend/assets/js/ticket_details.js')}}"></script>
 @endsection
 

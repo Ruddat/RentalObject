@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'To Do')
 @section('css')
 
@@ -251,6 +251,7 @@
                                     <th>
                                         <input type="checkbox" class="checkAll form-check-input ms-2" name="checkAll">
                                     </th>
+                                    
                                     <th class="sort d-none" data-sort="id" scope="col" >Id</th>
                                     <th class="sort" data-sort="task" scope="col">Task</th>
                                     <th class="sort" data-sort="status" scope="col">Priority</th>

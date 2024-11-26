@@ -152,6 +152,12 @@
 
 
 
+            <li class="no-sub">
+                <a class="" href="{{route('blog-manager.index')}}">
+                    <i class="ph-duotone  ph-squares-four"></i> @autotranslate("Blog Verwalten", app()->getLocale())
+                </a>
+            </li>
+
 
 
             <li class="menu-title"> <span>@autotranslate("Einstellungen", app()->getLocale())</span></li>
@@ -203,7 +209,7 @@
 
                     <li><a href="{{route('settings-manager')}}">@autotranslate("Systemsettings", app()->getLocale())</a></li>
 
-
+                    <li><a href="{{route('pages-manager')}}">@autotranslate("Pages Manager", app()->getLocale())</a></li>
 
                     <li class="another-level">
                         <a class="" data-bs-toggle="collapse" href="#projects-page" aria-expanded="false">
@@ -214,7 +220,9 @@
                             <li><a href="{{route('project_details')}}">projects Details</a></li>
                         </ul>
                     </li>
-                    <li><a href="{{route('to_do')}}">To-Do</a></li>
+                    <li><a href="{{route('todo-manager')}}">@autotranslate("To-Do", app()->getLocale())</a></li>
+
+
                     <li><a href="{{route('team')}}">Team</a></li>
                     <li><a href="{{route('api')}}">API</a></li>
                     <li class="another-level">
@@ -222,7 +230,7 @@
                             Ticket
                         </a>
                         <ul class="collapse" id="ticket-page">
-                            <li><a href="{{route('ticket')}}">Ticket</a></li>
+                            <li><a href="{{route('ticket-manager')}}">Ticket</a></li>
                             <li><a href="{{route('ticket_details')}}">Ticket Details</a></li>
                         </ul>
                     </li>
@@ -253,7 +261,7 @@
                         </ul>
                     </li>
                     <li><a href="{{route('invoice')}}">Invoice</a></li>
-                    <li><a href="{{route('chat')}}">Chat</a></li>
+                    <li><a href="{{route('chat-manager')}}">Chat</a></li>
                     <li><a href="{{route('file_manager')}}">File manager</a></li>
                     <li><a href="{{route('bookmark')}}">Bookmark</a></li>
                     <li><a href="{{route('kanban_board')}}">Kanban board</a></li>

@@ -4,6 +4,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\LogPageAccess;
 use App\Http\Controllers\WeatherController;
+use App\Http\Controllers\BlogSystem\PostController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Livewire\Backend\Admin\EInvoiceManager\UserCertificateManager;
 
@@ -45,6 +46,39 @@ Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
     Route::view('e-invoice-manager', 'backend.livewirepages.e-invoices._e-invoice-manager')->name('e-invoice-manager');
     Route::view('e-invoice-pdf-manager', 'backend.livewirepages.e-invoices._e-invoice-pdf-manager')->name('e-invoice-pdf-manager');
     Route::get('/user-certificates', UserCertificateManager::class)->name('user.certificates');
+
+
+
+
+    // Block Manager Routes (Admin Area for CRUD operations)
+    // ----------------------------------------------------------------
+    Route::prefix('blog-manager')->group(function () {
+        Route::get('/', [PostController::class, 'index'])->name('blog-manager.index');
+        Route::get('/create', [PostController::class, 'create'])->name('post.create');
+        Route::post('/store', [PostController::class, 'store'])->name('post.store');
+        Route::get('/edit/{id}', [PostController::class, 'edit'])->name('post.edit')->where('id', '[0-9]+');
+        Route::put('/update/{id}', [PostController::class, 'update'])->name('post.update')->where('id', '[0-9]+');
+        Route::delete('/delete/{id}', [PostController::class, 'destroy'])->name('post.destroy')->where('id', '[0-9]+');
+    });
+
+
+    // Page Manager Routes (Admin Area for CRUD operations)
+    // ----------------------------------------------------------------
+    Route::view('pages-manager', 'backend.livewirepages.pagemanager._page-manager-form')->name('pages-manager');
+
+    // Ticket management
+    // ----------------------------------------------------------------
+    Route::view('ticket-manager', 'backend.livewirepages.ticketmanager._ticket-manager')->name('ticket-manager');
+
+    // Todo for future  enhancement
+    // ----------------------------------------------------------------
+    Route::view('todo-manager', 'backend.livewirepages.todomanager._to-do-manager')->name('todo-manager');
+
+    Route::view('chat-manager', 'backend.livewirepages.chatmanager._chat-manager')->name('chat-manager');
+
+
+
+
 });
 
 

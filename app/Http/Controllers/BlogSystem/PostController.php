@@ -16,14 +16,14 @@ class PostController extends Controller
     public function index()
     {
         $posts = BlogPost::paginate(10); // Paginierung
-        return view('rentalobj.pageslivewire.blogmanager.index', compact('posts'));
+        return view('backend.livewirepages.blogmanager.index', compact('posts'));
     }
 
     public function create()
     {
         $categories = BlogCategory::all(); // Kategorien laden
         $tags = BlogTag::all(); // Tags laden
-        return view('rentalobj.pageslivewire.blogmanager.create', compact('categories', 'tags'));
+        return view('backend.livewirepages.blogmanager.create', compact('categories', 'tags'));
     }
 
     public function store(Request $request)
@@ -87,7 +87,7 @@ class PostController extends Controller
         $post = BlogPost::findOrFail($id);
         $categories = BlogCategory::all();
         $tags = BlogTag::all();
-        return view('rentalobj.pageslivewire.blogmanager.edit', compact('post', 'categories', 'tags'));
+        return view('backend.livewirepages.blogmanager.edit', compact('post', 'categories', 'tags'));
     }
 
     public function update(Request $request, $id)
@@ -183,7 +183,7 @@ class PostController extends Controller
     {
         $post = BlogPost::where('slug', $slug)->firstOrFail();
        // dd($post);
-        return view('rentalobj.pageslivewire.blogmanager._blog-details-manager', compact('post'));
+        return view('backend.livewirepages.blogmanager._blog-details-manager', compact('post'));
     }
 
 

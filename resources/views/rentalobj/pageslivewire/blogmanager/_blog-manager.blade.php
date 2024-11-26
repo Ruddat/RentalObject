@@ -23,4 +23,9 @@
 
 
 
+    <!-- popup login -->
+    <livewire:auth.login-user />
+    <!-- popup register -->
+    <livewire:auth.register-user />
+
 @endsection
