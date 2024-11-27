@@ -5,26 +5,30 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 export default defineConfig({
     build: {
         manifest: true,
-        rtl: true,
-        outDir: 'public/build/',
-        cssCodeSplit: true,
+        outDir: 'public/build/', // Output directory for build
+        cssCodeSplit: true,      // Split CSS into separate files
         rollupOptions: {
             output: {
-                assetFileNames: (css) => {
-                    if (css.name.split('.').pop() === 'css') {
+                assetFileNames: (asset) => {
+                    if (asset.name.split('.').pop() === 'css') {
                         return 'css/[name].min.css';
                     } else {
-                        return 'icons/' + css.name;
+                        return 'icons/' + asset.name;
                     }
                 },
                 entryFileNames: 'js/[name].js',
             },
         },
     },
-    publicDir: 'resources/assets', // Define a specific directory for assets only
+    publicDir: 'resources/assets', // Define a specific directory for public assets
     plugins: [
         laravel({
-            input: ['resources/css/styles.css', 'resources/js/script.js', 'resources/assets/scss/style.scss'],
+            input: [
+                'resources/css/styles.css',
+                'resources/js/script.js',
+                'resources/assets/scss/style.scss',
+                'resources/js/echo.js', // Ensure Echo is included
+            ],
             refresh: true,
         }),
 
@@ -32,37 +36,52 @@ export default defineConfig({
             targets: [
                 {
                     src: 'resources/css',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/fonts',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/images',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/js',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/json',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/plugins',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/scss',
-                    dest: ''
+                    dest: '',
                 },
                 {
                     src: 'resources/assets',
-                    dest: '../backend'  // Moves to `public/assets` outside of `public/build`
+                    dest: '../backend', // Moves to `public/assets` outside of `public/build`
                 },
-            ]
+            ],
         }),
     ],
+    server: {
+        watch: {
+            usePolling: true, // Enable polling to support file changes in all environments
+        },
+        host: 'localhost', // Define server host
+        port: 5173,        // Default Vite port
+    },
+    define: {
+        'process.env': {
+            VITE_REVERB_APP_KEY: process.env.VITE_REVERB_APP_KEY || '',
+            VITE_REVERB_HOST: process.env.VITE_REVERB_HOST || 'localhost',
+            VITE_REVERB_PORT: process.env.VITE_REVERB_PORT || '6001',
+            VITE_REVERB_SCHEME: process.env.VITE_REVERB_SCHEME || 'http',
+        },
+    },
 });

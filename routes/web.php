@@ -42,6 +42,10 @@ Route::get('/custom-verify-email/{id}/{token}', [EmailVerificationController::cl
     Route::post('/room/create', [VideoChatController::class, 'createRoom'])->name('video.room.create');
 
 
+    Route::get('/video-chat', function () {
+        return view('video-chat');
+    });
+    
 
 Route::view('forgot-passwort', 'backend.livewirepages.auth._forgot-password')->name('forgot-password');
 Route::view('reset-password/{token}', 'backend.livewirepages.auth._reset-password')->name('reset-password');

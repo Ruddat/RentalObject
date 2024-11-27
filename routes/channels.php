@@ -7,5 +7,8 @@ Broadcast::channel('App.Models.User.{id}', function ($user, $id) {
 });
 
 Broadcast::channel('room.{roomId}', function ($user, $roomId) {
-    return $user->rooms->contains($roomId);
+    return \DB::table('mod_room_users')
+        ->where('user_id', $user->id)
+        ->where('room_id', $roomId)
+        ->exists();
 });
