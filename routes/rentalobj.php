@@ -30,6 +30,10 @@ Route::view('/dashboard', 'rentalobj.dashboard')->name('dashboard');
 Route::post('/log-time', [UserTimeLogController::class, 'logTime']);
 });
 
+
+Route::view('multi-step', 'rentalobj.pageslivewire.multistepform._multi-step-form')->name('multi-step');
+
+
 Route::view('home-02', 'rentalobj.home-02')->name('home-02');
 Route::view('home-03', 'rentalobj.home-03')->name('home-03');
 

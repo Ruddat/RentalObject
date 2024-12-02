@@ -749,6 +749,8 @@
 
             @livewire('backend.admin.chat-manager.chat-component')
 
+            @livewire('backend.admin.chat-manager.video-chat')
+
             @if(isset($room) && $room->id)
             @livewire('backend.admin.chat-manager.video-chat-component', ['roomId' => $room->id])
         @else

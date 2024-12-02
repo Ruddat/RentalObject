@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Helpers\MailHelper;
 use App\Models\ModVideoRoom;
 use App\Models\ModChatMessage;
+use Illuminate\Support\Facades\Broadcast;
 
 class VideoChatComponent extends Component
 {
@@ -22,10 +23,8 @@ class VideoChatComponent extends Component
         'messageText' => 'required|string|max:255',
     ];
 
-
     public function mount($roomId)
     {
-
         $this->roomId = $roomId;
         $this->loadMessages();
         $this->loadRoomMembers();
@@ -51,7 +50,6 @@ class VideoChatComponent extends Component
 
     public function sendMessage()
     {
-
         // Validierung
         $this->validate();
 
@@ -63,7 +61,7 @@ class VideoChatComponent extends Component
         ]);
 
         // Nachricht zurücksetzen
-        $this->message = '';
+        $this->messageText = '';
 
         // Neue Nachricht zur bestehenden Liste hinzufügen
         $this->messages[] = $newMessage->load('user')->toArray();
@@ -79,13 +77,11 @@ class VideoChatComponent extends Component
         if (!$room->users()->where('user_id', $userId)->exists()) {
             $room->users()->attach($userId);
 
-            $this->dispatch('userAdded', $userId);
+            $this->dispatch('userAdded', ['userId' => $userId]);
         } else {
-
-            $this->dispatch('userAlreadyInRoom', $userId);
+            $this->dispatch('userAlreadyInRoom', ['userId' => $userId]);
         }
     }
-
 
     public function inviteUser()
     {
@@ -98,7 +94,7 @@ class VideoChatComponent extends Component
         $user = User::where('email', $this->email)->first();
 
         if (!$user) {
-            $this->dispatch('userNotFound', $this->email);
+            $this->dispatch('userNotFound', ['email' => $this->email]);
             return;
         }
 
@@ -115,36 +111,11 @@ class VideoChatComponent extends Component
 
         // E-Mail mit dem MailHelper senden
         if (MailHelper::sendEmail($user->email, $subject, $body, $user->name)) {
-            $this->dispatch('invitationSent', $this->email);
+            $this->dispatchBrowserEvent('invitationSent', ['email' => $this->email]);
         } else {
-            $this->dispatch('mailFailed', $this->email);
+            $this->dispatchBrowserEvent('mailFailed', ['email' => $this->email]);
         }
     }
-
-    public function handleIceCandidate($candidate)
-    {
-        // Broadcast den ICE-Kandidaten
-        broadcast(new IceCandidateEvent($this->roomId, $candidate));
-        // Dispatch für Livewire
-        $this->dispatch('candidateReceived', $candidate);
-    }
-
-    public function handleOffer($offer)
-    {
-        // Broadcast das Offer
-        broadcast(new OfferEvent($this->roomId, $offer));
-        // Dispatch für Livewire
-        $this->dispatch('offerReceived', $offer);
-    }
-
-    public function handleAnswer($answer)
-    {
-        // Broadcast die Answer
-        broadcast(new AnswerEvent($this->roomId, $answer));
-        // Dispatch für Livewire
-        $this->dispatch('answerReceived', $answer);
-    }
-
 
     public function render()
     {

@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Ready To Use Form')
 @section('css')
     <!-- filepond css -->

@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Scrollbar')
 @section('css')
     <!-- simplebar css-->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/simplebar/simplebar.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/simplebar/simplebar.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -180,5 +180,5 @@
 <div id="customizer"></div>
 
 <!-- Simple bar js-->
-<script src="{{asset('assets/js/simplebar.js')}}"></script>
+<script src="{{asset('backend/assets/js/simplebar.js')}}"></script>
 @endsection

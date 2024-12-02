@@ -62,46 +62,50 @@
     </ul>
 </li>
 
-    <!-- Inserieren und Makler finden -->
-    <li class="dropdown2">
-        <div class="grid-flex grid-item grid-justify-end padding-top-xs">
-            <!-- Inserieren Button -->
-            <a href="#"
-               title="Inserieren ab 0 €"
-               class="button-secondary inserieren-badge"
-               data-event="evtrack"
-               data-tracking='{
-                   "evt_ga_category": "navigation",
-                   "evt_ga_action": "header",
-                   "evt_ga_label": "click_fuer0€inserieren",
-                   "event_name": "navigation_click",
-                   "event_product": "search",
-                   "event_parameter_1": "click_fuer0€inserieren"
-               }'>
-                <span class="palm-hide">Inserieren ab 0 €</span>
-            </a>
-        </div>
-    </li>
+<!-- Inserieren Button mit Modal -->
+<li class="dropdown2">
+    <div class="grid-flex grid-item grid-justify-end padding-top-xs">
+        <!-- Inserieren Button -->
+        <a href="#"
+           title="Inserieren ab 0 €"
+           class="button-secondary inserieren-badge"
+           data-event="evtrack"
+           data-bs-toggle="modal"
+           data-bs-target="#insertModal"
+           data-tracking='{
+               "evt_ga_category": "navigation",
+               "evt_ga_action": "header",
+               "evt_ga_label": "click_fuer0€inserieren",
+               "event_name": "navigation_click",
+               "event_product": "search",
+               "event_parameter_1": "click_fuer0€inserieren"
+           }'>
+            <span class="palm-hide">Inserieren ab 0 €</span>
+        </a>
+    </div>
+</li>
 
-    <li class="dropdown2">
-            <!-- Makler finden Button -->
-            <div class="grid-flex grid-item grid-justify-end padding-top-xs">
-                <a href="#"
-                   title="Makler:in finden"
-                   class="button makler-button"
-                   data-event="evtrack"
-                   data-tracking='{
-                       "evt_ga_category": "navigation",
-                       "evt_ga_action": "header",
-                       "evt_ga_label": "click_maklerfinden",
-                       "event_name": "navigation_click",
-                       "event_product": "search",
-                       "event_parameter_1": "click_maklerfinden"
-                   }'>
-                    Makler:in finden
-                </a>
-            </div>
-        </li>
+<!-- Makler finden Button bleibt unverändert -->
+<li class="dropdown2">
+    <div class="grid-flex grid-item grid-justify-end padding-top-xs">
+        <a href="#"
+           title="Makler:in finden"
+           class="button makler-button"
+           data-event="evtrack"
+           data-tracking='{
+               "evt_ga_category": "navigation",
+               "evt_ga_action": "header",
+               "evt_ga_label": "click_maklerfinden",
+               "event_name": "navigation_click",
+               "event_product": "search",
+               "event_parameter_1": "click_maklerfinden"
+           }'>
+            Makler:in finden
+        </a>
+    </div>
+</li>
+
+
 
 
 
@@ -112,6 +116,13 @@
         window.location.href = url + "?lang=" + locale;
     }
 </script>
+
+
+
+
+
+
+
 
 
 <style>
@@ -177,6 +188,76 @@
 .makler-button:hover {
     background-color: #1563df;
     color: white;
+}
+
+.modal .tf-grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.box-service {
+    width: 30%;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-service:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.box-service .image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.box-service .content {
+    padding: 20px;
+}
+
+.box-service .content .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.box-service .content .description {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.box-service .tf-btn.btn-line {
+    font-size: 14px;
+    font-weight: bold;
+    color: #1563df;
+    border: 1px solid #1563df;
+    padding: 10px 20px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.box-service .tf-btn.btn-line:hover {
+    background-color: #1563df;
+    color: #fff;
+}
+.modal-dialog {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Vollbildhöhe, um vertikal zu zentrieren */
+}
+
+.modal-content {
+    border-radius: 10px; /* Abgerundete Ecken */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schatten für einen modernen Look */
 }
 
 </style>

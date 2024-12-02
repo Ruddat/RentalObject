@@ -117,6 +117,11 @@
                 </a>
             </li>
 
+            <li class="no-sub">
+                <a class="" href="{{route('multi-step')}}">
+                    <i class="ph-duotone  ph-squares-four"></i> @autotranslate("Mieten & Verkaufen", app()->getLocale())
+                </a>
+            </li>
 
             <li class="menu-title"> <span>@autotranslate("Papierkram", app()->getLocale())</span></li>
             <li>

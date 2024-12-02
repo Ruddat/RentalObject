@@ -1,6 +1,8 @@
 <div class="widget-box-2 mb-20" x-data="{ isDropping: false }">
     <h5 class="title mb-4">Upload Media</h5>
 
+    <p class="text-muted">You can upload a maximum of {{ $maxPhotos }} photos, each up to {{ $maxFileSize }}.</p>
+
     <!-- Drag-and-Drop Upload Box -->
     <div class="box-uploadfile text-center"
         x-on:dragover.prevent="isDropping = true"
@@ -9,36 +11,59 @@
         :class="{ 'hover': isDropping }"
     >
         <div class="uploadfile">
-            <!-- Hidden File Input -->
             <input type="file" wire:model="photos" multiple style="display: none;" x-ref="fileInput">
             <div class="btn-upload tf-btn primary" x-on:click="$refs.fileInput.click()">
-                <i class="ti ti-upload"></i>
+                <i class="fa fa-upload fa-fw"></i>
+
                 Select photos
             </div>
-            <p class="file-name fw-5">or drag photos here<br><span>(Up to 10 photos)</span></p>
+            <p class="file-name fw-5">or drag photos here<br><span>(Up to {{ $maxPhotos }} photos)</span></p>
         </div>
     </div>
 
+    <!-- Loading Spinner -->
+    <div wire:loading wire:target="uploadPhotos" class="loading-overlay">
+        <div class="spinner">
+            <div class="spinner-inner"></div>
+        </div>
+        <p class="loading-text">Please wait...</p>
+    </div>
+
+
+
     <!-- Image Preview and Reordering -->
     <div id="sortable-container" class="box-img-upload mt-4">
-        @foreach($photos as $index => $photo)
-            <div class="item-upload file-delete" data-index="{{ $index }}">
-                <img src="{{ $photo->temporaryUrl() }}" alt="Uploaded Image">
-                <span class="icon-trash remove-file" wire:click="removePhoto({{ $index }})">
+        <!-- Persistente Fotos -->
+        @if(!empty($persistedPhotos))
+        @foreach($persistedPhotos as $index => $photo)
+            <div class="item-upload file-delete" data-index="{{ $index }}" data-type="persisted">
+                <img src="{{ asset('storage/' . $photo['file_path']) }}" alt="Uploaded Image">
+                <span class="icon-trash remove-file" wire:click="removePhoto({{ $photo['id'] }}, 'persisted')">
                     <i class="ti ti-trash"></i>
                 </span>
-                <div class="image-order">#{{ $index + 1 }}</div> <!-- Zeigt die Nummer an -->
+                <div class="image-order">#{{ $index + 1 }}</div>
             </div>
+        @endforeach
+    @else
+        <p class="text-muted">No photos have been uploaded yet.</p>
+    @endif
+
+        <!-- Temporäre Fotos -->
+        @foreach($photos as $index => $photo)
+        <div class="item-upload file-delete" data-index="{{ $index }}" data-type="temporary">
+            <img src="{{ $photo->temporaryUrl() }}" alt="Uploaded Image">
+            <span class="icon-trash remove-file" wire:click="removePhoto({{ $index }}, 'temporary')">
+                <i class="ti ti-trash"></i>
+            </span>
+            <div class="image-order">#{{ $index + 1 }}</div>
+        </div>
         @endforeach
     </div>
 
-    @error('photos.*')
-        <span class="text-danger">{{ $message }}</span>
-    @enderror
+    <div class="mt-4">
+        <button wire:click="uploadPhotos" class="btn btn-primary w-100">Save Photos</button>
+    </div>
 
-<div class="mt-4">
-    <button wire:click="uploadPhotos" class="btn btn-primary w-100">Save Photos</button>
-</div>
 
     <style>
 /* Allgemeine Upload-Box */
@@ -146,6 +171,8 @@
     overflow: hidden;
     border-radius: 10px;
     cursor: grab;
+    z-index: 10;
+
 }
 
 .item-upload.dragging {
@@ -162,34 +189,79 @@
     border-radius: 3px;
     font-size: 12px;
 }
+#sortable-container {
+    z-index: 10; /* Höher als alle anderen Container */
+    position: relative; /* Sicherstellen, dass der z-index angewendet wird */
+}
+
+.loading-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid #ddd;
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-text {
+            margin-top: 10px;
+            font-size: 16px;
+            color: #007bff;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
 
     </style>
 
 </div>
+
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
 
 <script>
-    function handleDrop(event) {
-        const fileInput = document.querySelector('input[type="file"]');
-        const files = event.dataTransfer.files;
+document.addEventListener('DOMContentLoaded', initializeSortable);
 
-        // Assign dropped files to the file input
-        fileInput.files = files;
+document.addEventListener('livewire:load', () => {
+    initializeSortable();
+    Livewire.hook('message.processed', initializeSortable);
+});
 
-        // Trigger change event to notify Livewire
-        fileInput.dispatchEvent(new Event('change', { bubbles: true }));
-    }
-
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const sortable = new Sortable(document.getElementById('sortable-container'), {
+function initializeSortable() {
+    const container = document.getElementById('sortable-container');
+    if (container) {
+        new Sortable(container, {
             animation: 150,
             onEnd: (event) => {
-                const order = Array.from(document.querySelectorAll('.item-upload')).map(el => el.dataset.index);
-                @this.call('updateOrder', order); // Ruft eine Livewire-Methode auf
+                const order = Array.from(container.children).map(el => ({
+                    index: el.dataset.index,
+                    type: el.dataset.type,
+                }));
+
+                @this.call('updateOrder', order);
             },
         });
-    });
+    }
+}
 
 </script>
 

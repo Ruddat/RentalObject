@@ -54,94 +54,136 @@
         </ul>
     </div>
 
-    <!-- Include Echo and Pusher -->
-<!-- Include Pusher and Echo -->
-<!-- Include Laravel Echo and Pusher -->
-<script type="module">
-    import { echoInstance } from "../build/js/echo.js";
+    @assets
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/laravel-echo/1.11.1/echo.iife.min.js"></script>
+Pizza Express Food Service    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
 
-    // Example Usage
-    const roomId = "{{ $roomId }}";
-    echoInstance.private(`room.${roomId}`)
-        .listenForWhisper("iceCandidate", (data) => {
-            console.log("Received ICE Candidate:", data);
-        })
-        .listenForWhisper("offer", (data) => {
-            console.log("Received Offer:", data);
-        })
-        .listenForWhisper("answer", (data) => {
-            console.log("Received Answer:", data);
-        });
-</script>
+    @endassets
 
+
+@script
 <script>
-    // Initialize Echo
-    const roomId = "{{ $roomId }}";
+    window.io = io;
 
-    // WebRTC Example
-    const localVideo = document.getElementById('localVideo');
-    const remoteVideo = document.getElementById('remoteVideo');
-    let localStream, peerConnection;
+    window.Echo = new Echo({
+        broadcaster: 'socket.io',
+        host: window.location.hostname + ':6001'
+    });
 
-    const config = {
-        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }],
+    let localStream;
+    let remoteStream;
+    let peerConnection;
+    const servers = {
+        iceServers: [
+            {
+                urls: "stun:stun.l.google.com:19302", // STUN-Server von Google
+            },
+        ],
     };
 
-    async function initVideoChat() {
+    const localVideo = document.getElementById("localVideo");
+    const remoteVideo = document.getElementById("remoteVideo");
+
+    // Hole lokale Medien
+    async function startLocalStream() {
         try {
             localStream = await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
             localVideo.srcObject = localStream;
-
-            peerConnection = new RTCPeerConnection(config);
-
-            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
-
-            peerConnection.ontrack = event => {
-                remoteVideo.srcObject = event.streams[0];
-            };
-
-            peerConnection.onicecandidate = event => {
-                if (event.candidate) {
-                    window.Echo.channel(`room.${roomId}`).whisper('iceCandidate', {
-                        candidate: event.candidate.toJSON(),
-                    });
-                }
-            };
-
-            window.Echo.private(`room.${roomId}`)
-                .listenForWhisper('offer', async ({ offer }) => {
-                    await peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-                    const answer = await peerConnection.createAnswer();
-                    await peerConnection.setLocalDescription(answer);
-                    window.Echo.channel(`room.${roomId}`).whisper('answer', {
-                        answer: peerConnection.localDescription.toJSON(),
-                    });
-                })
-                .listenForWhisper('answer', async ({ answer }) => {
-                    await peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-                })
-                .listenForWhisper('iceCandidate', async ({ candidate }) => {
-                    await peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-                });
-
-            if (isInitiator()) {
-                const offer = await peerConnection.createOffer();
-                await peerConnection.setLocalDescription(offer);
-                window.Echo.channel(`room.${roomId}`).whisper('offer', {
-                    offer: peerConnection.localDescription.toJSON(),
-                });
-            }
         } catch (error) {
-            console.error('Error initializing video chat:', error);
+            console.error("Fehler beim Abrufen des lokalen Streams:", error);
         }
     }
 
-    function isInitiator() {
-        return Math.random() < 0.5;
+    // Erstelle eine Peer-Verbindung
+    function createPeerConnection() {
+        peerConnection = new RTCPeerConnection(servers);
+
+        // Lokale Tracks hinzufügen
+        if (localStream) {
+            localStream.getTracks().forEach((track) => {
+                peerConnection.addTrack(track, localStream);
+            });
+        }
+
+        peerConnection.ontrack = (event) => {
+            if (!remoteStream) {
+                remoteStream = new MediaStream();
+                remoteVideo.srcObject = remoteStream;
+            }
+            remoteStream.addTrack(event.track);
+        };
+
+        peerConnection.onicecandidate = (event) => {
+            if (event.candidate) {
+                // Schicke den ICE-Kandidaten an den Signalisierungsserver
+                sendToServer({
+                    type: "ice-candidate",
+                    candidate: event.candidate,
+                });
+            }
+        };
     }
 
-    initVideoChat();
+    // Beispielhafte Signalisierung (funktioniert mit Laravel Echo)
+    function sendToServer(message) {
+        window.Echo.private('video-room.' + @json($roomId))
+            .whisper('signaling', message);
+    }
+
+    // Erstelle ein Angebot für die Verbindung
+    async function createOffer() {
+        try {
+            const offer = await peerConnection.createOffer();
+            await peerConnection.setLocalDescription(offer);
+            sendToServer({
+                type: "offer",
+                offer: offer,
+            });
+        } catch (error) {
+            console.error("Fehler beim Erstellen des Angebots:", error);
+        }
+    }
+
+    // Beispiel für die Reaktion auf eingehende Signalisierung
+    function handleSignalingMessage(message) {
+        switch (message.type) {
+            case "offer":
+                peerConnection.setRemoteDescription(new RTCSessionDescription(message.offer));
+                createAnswer();
+                break;
+            case "answer":
+                peerConnection.setRemoteDescription(new RTCSessionDescription(message.answer));
+                break;
+            case "ice-candidate":
+                peerConnection.addIceCandidate(new RTCIceCandidate(message.candidate));
+                break;
+        }
+    }
+
+    // Antwort auf das Angebot erstellen
+    async function createAnswer() {
+        try {
+            const answer = await peerConnection.createAnswer();
+            await peerConnection.setLocalDescription(answer);
+            sendToServer({
+                type: "answer",
+                answer: answer,
+            });
+        } catch (error) {
+            console.error("Fehler beim Erstellen der Antwort:", error);
+        }
+    }
+
+    // Starte den lokalen Stream
+    startLocalStream().then(() => {
+        createPeerConnection();
+    });
+
+    // Empfange Signalisierung über Laravel Echo
+    window.Echo.private('video-room.' + @json($roomId))
+        .listenForWhisper('signaling', (e) => {
+            handleSignalingMessage(e);
+        });
 </script>
-
-
+@endscript
 </div>

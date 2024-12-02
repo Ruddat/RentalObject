@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Animation')
 @section('css')
 
@@ -38,16 +38,16 @@
                                 <div class="col-12">
                                     <div class="d-flex flex-wrap gap-3">
                                         <div class="h-45 w-45 d-flex-center b-r-50 overflow-hidden text-bg-primary">
-                                            <img src="{{asset('assets/images/avtar/2.png')}}" alt=""
+                                            <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt=""
                                                  class="img-fluid animate__pulse animate__animated animate__infinite animate__faster">
                                         </div>
                                         <span class="bg-secondary h-45 w-45 d-flex-center b-r-50 position-relative">
-                            <img src="{{asset('assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
+                            <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
                             <span
                                 class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle animate__animated animate__zoomIn animate__infinite animate__fast"></span>
                           </span>
                                         <span class="bg-secondary h-45 w-45 d-flex-center b-r-50 position-relative">
-                            <img src="{{asset('assets/images/avtar/6.png')}}" alt="" class="img-fluid b-r-50">
+                            <img src="{{asset('backend/assets/images/avtar/6.png')}}" alt="" class="img-fluid b-r-50">
                             <span
                                 class="position-absolute top-10 start-40 translate-middle d-flex-center bg-danger border border-light rounded-circle text-center h-20 w-20 f-s-10">
                               <i
@@ -552,8 +552,8 @@
     <div id="customizer"></div>
 
     <!-- masonry js-->
-    <script src="{{asset('assets/vendor/masonry/masonry.pkgd.min.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/masonry/masonry.pkgd.min.js')}}"></script>
 
     <!-- animation page js-->
-    <script src="{{asset('assets/js/animation.js')}}"></script>
+    <script src="{{asset('backend/assets/js/animation.js')}}"></script>
 @endsection

@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
 
         $this->call(RolesAndPermissionsSeeder::class);
         $this->call(UtilityCostsSeeder::class);
+        $this->call([
+            PropertyTypeSeeder::class,
+            PropertyCategorySeeder::class,
+        ]);
+        $this->call(AttributeGroupsAndAttributesSeeder::class);
+
     }
 
 }

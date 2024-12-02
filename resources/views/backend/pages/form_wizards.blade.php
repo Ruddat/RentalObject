@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Form Wizards')
 @section('css')
 
@@ -596,5 +596,5 @@
 <div id="customizer"></div>
 
 <!-- js -->
-<script src="{{asset('assets/js/form_wizard.js')}}"></script>
+<script src="{{asset('backend/assets/js/form_wizard.js')}}"></script>
 @endsection

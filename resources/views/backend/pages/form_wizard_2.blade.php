@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Form Wizard 2')
 @section('css')
     <!-- flatpickr css -->
-    <link rel="stylesheet" type="text/css" href="{{asset('assets/vendor/datepikar/flatpickr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/datepikar/flatpickr.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -1482,11 +1482,11 @@
 <div id="customizer"></div>
 
 <!--js-->
-<script src="{{asset('assets/vendor/datepikar/flatpickr.js')}}"></script>
-<script src="{{asset('assets/js/date_picker.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/datepikar/flatpickr.js')}}"></script>
+<script src="{{asset('backend/assets/js/date_picker.js')}}"></script>
 
 
 <!-- js -->
-<script src="{{asset('assets/js/form_wizard_2.js')}}"></script>
+<script src="{{asset('backend/assets/js/form_wizard_2.js')}}"></script>
 @endsection
 
