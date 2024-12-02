@@ -66,39 +66,6 @@ class TabDescription extends Component
     }
 
 
-    public function generateDescription($index)
-    {
-        $keywords = $this->sections[$index]['keywords'] ?? '';
-
-        // Überprüfen, ob Stichwörter eingegeben wurden
-        if (empty($keywords)) {
-            session()->flash('error', 'Bitte geben Sie Stichwörter ein, um eine Beschreibung zu generieren.');
-            return;
-        }
-
-        // Beispiel für KI-basierte Generierung (z. B. mit OpenAI)
-        try {
-            $response = \Http::withHeaders([
-                'Authorization' => 'Bearer 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',
-            ])->post('https://api.openai.com/v1/chat/completions', [
-                'model' => 'gpt-3.5-turbo', // Aktualisiertes Modell
-                'messages' => [
-                    ['role' => 'system', 'content' => 'Du bist ein KI-Assistent, der Immobilienbeschreibungen erstellt.'],
-                    ['role' => 'user', 'content' => "Erstelle eine Immobilienbeschreibung basierend auf diesen Stichwörtern: $keywords"],
-                ],
-                'max_tokens' => 200,
-                'temperature' => 0.7,
-            ]);
-
-            // Debugging: Logge die API-Antwort
-            \Log::info('OpenAI API Response:', $response->json());
-
-            $this->sections[$index]['description'] = $response->json()['choices'][0]['message']['content'] ?? 'Keine Beschreibung generiert.';
-        } catch (\Exception $e) {
-            \Log::error('API Error:', ['message' => $e->getMessage()]);
-            session()->flash('error', 'Fehler bei der Generierung der Beschreibung: ' . $e->getMessage());
-        }
-    }
 
 
 
