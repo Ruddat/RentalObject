@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Attribute;
 use App\Models\ObjSections;
 use App\Models\PropertyType;
+use App\Models\ObjNearbyPlaces;
 use App\Models\PropertyCategory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -34,4 +35,10 @@ class ObjProperties extends Model
         return $this->hasMany(ObjSections::class, 'property_id');
     }
 
+    public function nearbyPlaces()
+    {
+        return $this->hasMany(ObjNearbyPlaces::class, 'property_id')
+        ->withPivot('distance')
+        ->withTimestamps();
+    }
 }

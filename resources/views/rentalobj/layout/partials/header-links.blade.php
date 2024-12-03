@@ -22,26 +22,8 @@
             </li>
         </ul>
     </li>
-    <li class="dropdown2"><a href="#">Listing</a>
-        <ul>
-            <li><a href="property-halfmap-grid.html">Property Half Map Grid</a></li>
-            <li><a href="property-halfmap-list.html">Property Half Map List</a></li>
-            <li><a href="topmap-grid.html">Find Topmap Grid</a></li>
-            <li><a href="topmap-list.html">Find Topmap List</a></li>
-            <li><a href="sidebar-grid.html">Find Sidebar Grid</a></li>
-            <li><a href="sidebar-list.html">Find Sidebar List</a></li>
 
-        </ul>
-    </li>
 
-    <li class="dropdown2"><a href="#">Properties</a>
-        <ul>
-            <li><a href="property-details-v1.html">Property Details 1</a></li>
-            <li><a href="property-details-v2.html">Property Details 2</a></li>
-            <li><a href="property-details-v3.html">Property Details 3</a></li>
-            <li><a href="property-details-v4.html">Property Details 4</a></li>
-        </ul>
-    </li>
     <li class="dropdown {{ Request::is('manager/blog-manager-12') ? 'current' : '' }}"><a href="{{ route('blog-manager-12') }}">Blog</a>
     </li>
 
@@ -81,26 +63,6 @@
                "event_parameter_1": "click_fuer0€inserieren"
            }'>
             <span class="palm-hide">Inserieren ab 0 €</span>
-        </a>
-    </div>
-</li>
-
-<!-- Makler finden Button bleibt unverändert -->
-<li class="dropdown2">
-    <div class="grid-flex grid-item grid-justify-end padding-top-xs">
-        <a href="#"
-           title="Makler:in finden"
-           class="button makler-button"
-           data-event="evtrack"
-           data-tracking='{
-               "evt_ga_category": "navigation",
-               "evt_ga_action": "header",
-               "evt_ga_label": "click_maklerfinden",
-               "event_name": "navigation_click",
-               "event_product": "search",
-               "event_parameter_1": "click_maklerfinden"
-           }'>
-            Makler:in finden
         </a>
     </div>
 </li>
@@ -259,6 +221,11 @@
     border-radius: 10px; /* Abgerundete Ecken */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Schatten für einen modernen Look */
 }
+
+.header-account .tf-btn {
+    min-width: 40px;
+}
+
 
 </style>
 

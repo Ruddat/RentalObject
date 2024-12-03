@@ -11,6 +11,7 @@ use Illuminate\Support\Str;
 use App\Models\PropertyType;
 use App\Models\ObjProperties;
 use Livewire\WithFileUploads;
+use App\Models\ObjNearbyPlaces;
 use App\Models\PropertyCategory;
 use App\Services\GeocodeService;
 use Illuminate\Support\Facades\DB;
@@ -43,6 +44,7 @@ class MultiStepForm extends Component
 
     public $temporaryUuid;
 
+    public $previewData;
 
     public $collectedData = [
         'stepOne' => [],
@@ -135,10 +137,26 @@ class MultiStepForm extends Component
 
         // Initialisiere Sections mit Standardwerten
         $this->sections = [
-            ['headline' => 'Objektbeschreibung', 'description' => ''],
-            ['headline' => 'Lagebeschreibung', 'description' => ''],
-            ['headline' => 'Raumaufteilung', 'description' => ''],
-            ['headline' => 'Besichtigungstermine', 'description' => ''],
+            [
+                'headline' => 'Objektbeschreibung',
+                'description' => '',
+                'backgroundImage' => asset('build/images/sections/objektbeschreibung.png'),
+            ],
+            [
+                'headline' => 'Lagebeschreibung',
+                'description' => '',
+                'backgroundImage' => asset('build/images/sections/lagebeschreibung.png'),
+            ],
+            [
+                'headline' => 'Raumaufteilung',
+                'description' => '',
+                'backgroundImage' => asset('build/images/sections/raumaufteilung.png'),
+            ],
+            [
+                'headline' => 'Besichtigungstermine',
+                'description' => '',
+                'backgroundImage' => asset('build/images/sections/besichtigungstermine.png'),
+            ],
         ];
     }
 
@@ -146,7 +164,11 @@ class MultiStepForm extends Component
     public function addSection()
     {
         if (count($this->sections) < $this->maxSections) {
-            $this->sections[] = ['headline' => '', 'description' => ''];
+            $this->sections[] = [
+                'headline' => '',
+                'description' => '',
+                'backgroundImage' => asset('build/images/sections/Real_Estate_Additional_Fields_400x250.png'), // Standardbild hinzufügen
+            ];
         }
     }
 
@@ -302,6 +324,7 @@ class MultiStepForm extends Component
                         // Bestimme die Kategorie
                         $type = $place['tags']['amenity']
                         ?? $place['tags']['shop']
+                        ?? $place['tags']['scool']
                         ?? $place['tags']['healthcare']
                         ?? $place['tags']['leisure']          // Freizeitorte (z. B. Parks, Fitnessstudios)
                         ?? $place['tags']['tourism']          // Touristische Orte (z. B. Museen, Sehenswürdigkeiten)
@@ -617,10 +640,12 @@ class MultiStepForm extends Component
         $detailData = $this->collectedData['stepTwo']['data'];
         $energyCertificates = $this->collectedData['stepTwo']['energyCertificates'];
         $attributes = $this->collectedData['stepTwo']['attributes']; // Array mit Attribut-IDs
-      //  $sections = $this->collectedData['stepTwo']['sections']; // Dynamische Sections
+        $sections = $this->collectedData['stepTwo']['sections']; // Dynamische Sections
+        $nearbyPlacesData = $this->collectedData['stepOne']['nearbyPlaces'];
+        //   dd($this->collectedData);
+        //dd($nearbyPlacesData);
 
-     //   dd($this->collectedData);
-
+       // \Log::info('Nearby Places:', $nearbyPlacesData);
         \Log::info('Property Data:', $propertyData);
         \Log::info('Price Data:', $priceData);
         \Log::info('Energy Certificates:', $energyCertificates);
@@ -677,7 +702,16 @@ ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->update([
     'file_path' => DB::raw("REPLACE(file_path, '{$this->temporaryUuid}', '{$property->id}')"),
 ]);
 
-
+// Nearby Places speichern
+if (!empty($nearbyPlacesData)) {
+    foreach ($nearbyPlacesData as $place) {
+        ObjNearbyPlaces::create([
+            'property_id' => $property->id,
+            'place_id' => $place->id, // Verwende -> statt []
+            'distance' => $place->distance, // Verwende -> statt []
+        ]);
+    }
+}
 
             // Attribute speichern
             if (!empty($attributes)) {
@@ -694,6 +728,37 @@ ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->update([
                     ]);
                 }
             }
+
+
+        // **3. Detaildaten speichern**
+        if (!empty($detailData)) {
+        ObjDetails::create([
+            'property_id' => $property->id,
+            'area' => $detailData['area'] ?? null,
+            'land_area' => $detailData['land_area'] ?? null,
+            'rooms' => $detailData['rooms'] ?? null,
+            'reference_number' => $detailData['reference_number'] ?? null,
+            'divisible_min' => $detailData['divisible_min'] ?? null,
+            'divisible_max' => $detailData['divisible_max'] ?? null,
+            'furniture' => $detailData['furniture'] ?? null,
+            'position' => $detailData['position'] ?? null,
+            'available_from' => $detailData['available_from'] ?? null,
+            'available_to' => $detailData['available_to'] ?? null,
+            'max_persons' => $detailData['max_persons'] ?? null,
+            'wg_size' => $detailData['wg_size'] ?? null,
+            'build_year' => $detailData['build_year'] ?? null,
+            'move_in' => $detailData['move_in'] ?? null,
+            'seats' => $detailData['seats'] ?? null,
+            'floor' => $detailData['floor'] ?? null,
+            'window_area' => $detailData['window_area'] ?? null,
+            'min_lease' => $detailData['min_lease'] ?? null,
+            'preferences_gender' => $detailData['preferences_gender'] ?? null,
+            'preferences_age_from' => $detailData['preferences_age_from'] ?? null,
+            'preferences_age_to' => $detailData['preferences_age_to'] ?? null,
+        ]);
+
+    }
+
 
 
             // Preisdaten speichern
@@ -759,6 +824,30 @@ ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->update([
         }
     }
 
+    public function openPreviewModal()
+    {
+        // Daten für die Vorschau laden
+        $this->refreshCollectedDataForPreview();
+
+        // Event auslösen
+        $this->dispatch('open-preview-modal');
+    }
+
+    public function closePreviewModal()
+{
+    $this->dispatch('close-preview-modal');
+}
+
+    public function loadPreview()
+    {
+       // dd($this->collectedData);
+        $this->dispatch('openPreview', $this->collectedData);
+    }
+
+    public function refreshCollectedDataForPreview()
+{
+    $this->dispatch('updatePreviewData', $this->collectedData);
+}
 
    public function render()
     {

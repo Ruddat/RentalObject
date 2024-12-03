@@ -23,11 +23,16 @@
 
     <!-- Loading Spinner -->
     <div wire:loading wire:target="uploadPhotos" class="loading-overlay">
-        <div class="spinner">
-            <div class="spinner-inner"></div>
-        </div>
-        <p class="loading-text">Please wait...</p>
+   <!-- preload -->
+   <div class="preload preload-container blur-overlay">
+    <div class="preload-logo">
+        <div class="spinner"></div>
+        <span class="icon icon-villa-fill"></span>
     </div>
+</div>
+<!-- /preload -->
+<p class="loading-text">Please wait...</p>
+</div>
 
 
 
@@ -194,43 +199,35 @@
     position: relative; /* Sicherstellen, dass der z-index angewendet wird */
 }
 
-.loading-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-        }
+.preload-container {
+    display: flex
+;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999999999;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    blur: revert;
+}
 
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid #ddd;
-            border-top: 4px solid #007bff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
 
-        .loading-text {
-            margin-top: 10px;
-            font-size: 16px;
-            color: #007bff;
-        }
-
-        @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
-        }
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* Halbtransparente weiße Überlagerung */
+    backdrop-filter: blur(10px); /* Stärke der Unschärfe */
+    z-index: 9999; /* Damit es über anderen Elementen liegt */
+}
 
     </style>
 

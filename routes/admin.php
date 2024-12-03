@@ -10,9 +10,11 @@ use App\Livewire\Backend\Admin\EInvoiceManager\UserCertificateManager;
 
 
 
-Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
+Route::middleware(['web', 'auth', 'verified', LogPageAccess::class])->group(function () {
 
     Route::view('index', 'backend.pages.index')->name('index');
+
+    Route::view('dashboard', 'backend.pages.index')->name('dashboard');
 
     Route::view('project_dashboard', 'backend.pages.project_dashboard')->name('project_dashboard');
     Route::view('crypto_dashboard', 'backend.pages.crypto_dashboard')->name('crypto_dashboard');

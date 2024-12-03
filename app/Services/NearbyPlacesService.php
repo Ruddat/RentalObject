@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Http;
 
 class NearbyPlacesService
 {
-    public function fetchNearbyPlacesFromAPI($latitude, $longitude, $radius = 5000, $categories = [], $limitPerCategory = 3)
+    public function fetchNearbyPlacesFromAPI($latitude, $longitude, $radius = 5000, $categories = [], $limitPerCategory = 6)
     {
         $url = "https://overpass-api.de/api/interpreter";
 

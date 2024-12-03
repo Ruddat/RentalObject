@@ -236,7 +236,7 @@
 
                 @foreach ($sections as $index => $section)
                     <div class="widget-box-2 mb-20 bg-primary-new">
-                        <div class="boxtop">
+                        <div class="boxtop" style="background: url('{{ $section['backgroundImage'] }}') no-repeat center center; background-size: cover; height: 250px;">
                             <span class="inner"></span>
                         </div>
                         <div class="boxcontent bg-primary-new">
@@ -366,36 +366,56 @@
 
     <!-- Schritt 3 -->
 
-    <div x-data="{ isSaving: false, message: '' }" @form-saving.window="isSaving = true; message = $event.detail.message;" @form-saved.window="isSaving = false; message = ''; alert($event.detail.message);" @form-save-failed.window="isSaving = false; alert($event.detail.message);">
+    <div x-data="{
+        isSaving: false,
+        isPreviewOpen: false,
+        message: '',
+        previewData: {},
+        async fetchPreviewData() {
+            this.isPreviewOpen = true;
+            this.previewData = await @this.call('getPreviewData');
+        }
+    }"
+    @form-saving.window="isSaving = true; message = $event.detail.message;"
+    @form-saved.window="isSaving = false; message = ''; alert($event.detail.message);"
+    @form-save-failed.window="isSaving = false; alert($event.detail.message);">
 
-        <!-- Ladeanzeige -->
-        <div x-show="isSaving" class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-75 flex items-center justify-center">
-            <div class="text-white text-xl">
-                <i class="fa fa-spinner fa-spin"></i> <span x-text="message"></span>
-            </div>
-        </div>
-
-        <!-- Schritt 3 Inhalte -->
-        <div id="Step-3 Container" style="display: {{ $currentStep === 3 ? 'block' : 'none' }};">
-            <!-- Inhalte -->
-            <div class="row">
-                <div class="col-md-6">
-                    <!-- Media Upload Component -->
-                    <livewire:backend.property-system.media-upload-component :temporaryUuid="$temporaryUuid" />
-                </div>
-                <div class="col-md-6">
-                    <!-- Virtual Tour Component -->
-                    @livewire('backend.property-system.virtual-tour-component')
-                    <!-- Video Component -->
-                    @livewire('backend.property-system.video-component')
-                </div>
-            </div>
-
-            <!-- Buttons -->
-            <button wire:click="previousStep" class="btn btn-secondary mt-3">Zurück</button>
-            <button wire:click="submitForm" class="btn btn-success mt-3" x-on:click="isSaving = true">Abschließen</button>
+    <!-- Ladeanzeige -->
+    <div x-show="isSaving" class="fixed top-0 left-0 w-full h-full bg-gray-500 bg-opacity-75 flex items-center justify-center">
+        <div class="text-white text-xl">
+            <i class="fa fa-spinner fa-spin"></i> <span x-text="message"></span>
         </div>
     </div>
+
+    <!-- Schritt 3 Inhalte -->
+    <div id="Step-3 Container" style="display: {{ $currentStep === 3 ? 'block' : 'none' }};">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- Media Upload Component -->
+                <livewire:backend.property-system.media-upload-component :temporaryUuid="$temporaryUuid" />
+            </div>
+            <div class="col-md-6">
+                <!-- Virtual Tour Component -->
+                @livewire('backend.property-system.virtual-tour-component')
+                <!-- Video Component -->
+                @livewire('backend.property-system.video-component')
+            </div>
+        </div>
+
+        <!-- Buttons -->
+        <button wire:click="previousStep" class="btn btn-secondary mt-3">Zurück</button>
+        <button wire:click="submitForm" class="btn btn-success mt-3" x-on:click="isSaving = true">Abschließen</button>
+        <button type="button" class="btn btn-info mt-3" wire:click="openPreviewModal">
+            Vorschau
+        </button>
+
+    </div>
+
+
+
+</div>
+
+
 
 
 
@@ -429,11 +449,12 @@
 
     <div>
         <div wire:loading wire:target="nextStep, previousStep, goToStep" class="preload preload-container">
-            <div class="preload-logo">
-                <div class="spinner"></div>
-                <span class="icon icon-villa-fill"></span>
+            <div class="preload preload-container blur-overlay">
+                <div class="preload-logo">
+                    <div class="spinner"></div>
+                    <span class="icon icon-villa-fill"></span>
+                </div>
             </div>
-        </div>
     </div>
 
 <style>
@@ -464,6 +485,67 @@
 .map-preview .overlay {
     display: none;
 }
+
+
+/* Modal Overlay */
+
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0; /* top: 0; right: 0; bottom: 0; left: 0; */
+    background: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+    backdrop-filter: blur(5px); /* Weichzeichner für Hintergrund */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Sicherstellen, dass das Modal oben ist */
+}
+
+/* Modal Container */
+.modal-container {
+    background: #fff;
+    width: 90%; /* Standardbreite */
+    max-width: 800px; /* Maximale Breite */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    max-height: 90vh; /* Begrenzung der Höhe */
+    overflow-y: auto; /* Scrollen für lange Inhalte */
+}
+
+/* Close Button */
+.modal-close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.modal-close-button:hover {
+    color: #000;
+}
+
+/* Modal Title */
+.modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* Modal Content */
+.modal-content {
+    font-size: 1rem;
+    color: #555;
+}
+
 
 /* --------------------------------
 Step 1: Allgemeine Angaben
@@ -570,33 +652,7 @@ Step 1: Allgemeine Angaben
 }
 
 
-.fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 9999;
-}
 
-.bg-gray-500 {
-    background-color: rgba(128, 128, 128, 0.5);
-}
-
-.text-white {
-    color: #fff;
-}
-
-.fa-spin {
-    animation: spin 1s infinite linear;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
 
 
 /* --------------------------------
@@ -643,7 +699,6 @@ Step 2: Beschreibung
 }
 
 .boxtop {
-    background: url('https://via.placeholder.com/400x250') no-repeat center center;
     background-size: cover;
     height: 250px;
     position: relative;
@@ -655,7 +710,7 @@ Step 2: Beschreibung
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgb(0 0 0 / 24%);
 }
 
 .boxcontent {
@@ -712,7 +767,158 @@ Step 3: Veröffentlichung
 
 
 
+.preload-container {
+    display: flex
+;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99999999999;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    blur: revert;
+}
 
+
+.blur-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5); /* Halbtransparente weiße Überlagerung */
+    backdrop-filter: blur(10px); /* Stärke der Unschärfe */
+    z-index: 9999; /* Damit es über anderen Elementen liegt */
+}
+
+
+
+.preview-wrapper {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 900px;
+    margin: 0 auto;
+}
+.preview-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.preview-header h1 {
+    font-size: 2rem;
+    color: #333;
+}
+.preview-header p {
+    color: #555;
+}
+.property-overview,
+.nearby-places,
+.property-sections {
+    margin-bottom: 20px;
+}
+.property-overview h2,
+.nearby-places h2,
+.property-sections h2 {
+    font-size: 1.5rem;
+    color: #007BFF;
+    border-bottom: 2px solid #007BFF;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+.property-sections .section {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+}
+.property-sections .section img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+ul li {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* --------------------------------
+Debugging-Container
+-------------------------------- */
+pre {
+    font-size: 14px;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* --------------------------------
+Map-Modal
+-------------------------------- */
+#mapModal .modal-dialog {
+    max-width: 90%;
+}
+
+#mapModal .modal-body {
+    height: 500px;
+    padding: 0;
+}
+
+#mapModal .modal-body #map-1234 {
+    height: 100%;
+}
+
+/* --------------------------------
+Map-Preview
+-------------------------------- */
+.map-preview {
+    position: relative;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    height: 250px;
+    background: url('https://via.placeholder.com/400x250') no-repeat center center;
+    background-size: cover;
+}
+
+.map-preview .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.map-preview .overlay:hover {
+    background: rgba(0, 0, 0, 0.7);
+
+}
+
+/* --------------------------------
+Media-Upload-Component
+-------------------------------- */
+.box-img-upload {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
 
     </style>
 
@@ -735,9 +941,29 @@ Step 3: Veröffentlichung
 </section>
 
 
+<div class="modal fade" id="previewModal" tabindex="-1" aria-labelledby="previewModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="previewModalLabel">Vorschau Ihrer Immobilie</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Vorschau-Inhalte -->
+                <livewire:frontend.rental-object.preview-component :collectedData="$previewData" />
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Schließen</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 </div>
-</div>
+
+
+
 
 @assets
 
@@ -750,6 +976,25 @@ Step 3: Veröffentlichung
 
 
 @endassets
+<script>
+    // Event für das Öffnen des Vorschau-Modals
+    window.addEventListener('open-preview-modal', () => {
+        const previewModalElement = document.getElementById('previewModal');
+        if (previewModalElement) {
+            const previewModal = bootstrap.Modal.getOrCreateInstance(previewModalElement);
+            previewModal.show();
+        }
+    });
+
+    // Event für das Schließen des Vorschau-Modals
+    window.addEventListener('close-preview-modal', () => {
+        const previewModalElement = document.getElementById('previewModal');
+        if (previewModalElement) {
+            const previewModal = bootstrap.Modal.getOrCreateInstance(previewModalElement);
+            previewModal.hide();
+        }
+    });
+</script>
 
 
 <script>

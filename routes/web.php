@@ -14,9 +14,9 @@ use App\Http\Controllers\Backend\Admin\VideoChatSystem\VideoChatController;
 
 Route::view('/', 'welcome');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+//Route::view('dashboard', 'dashboard')
+//    ->middleware(['auth', 'verified'])
+//    ->name('dashboard');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
@@ -45,7 +45,7 @@ Route::get('/custom-verify-email/{id}/{token}', [EmailVerificationController::cl
     Route::get('/video-chat', function () {
         return view('video-chat');
     });
-    
+
 
 Route::view('forgot-passwort', 'backend.livewirepages.auth._forgot-password')->name('forgot-password');
 Route::view('reset-password/{token}', 'backend.livewirepages.auth._reset-password')->name('reset-password');
