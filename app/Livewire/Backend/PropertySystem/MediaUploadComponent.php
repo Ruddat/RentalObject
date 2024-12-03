@@ -62,8 +62,12 @@ class MediaUploadComponent extends Component
             $baseDir = 'uploads/' . $this->temporaryUuid;
             $originalPath = $baseDir . '/original/' . $uniqueName;
 
-            // Speichere das Originalbild
-            $photo->storeAs('public/' . $baseDir . '/original', $uniqueName);
+            // Speichere das Originalbild temporär
+            $tempPath = $photo->storeAs('uploads/' . $baseDir . '/original', $uniqueName);
+
+            // Verschiebe die Datei in den öffentlichen Bereich
+            $publicPath = 'public/' . $baseDir . '/original/' . $uniqueName;
+            Storage::move($tempPath, $publicPath);
 
             // Erstelle Varianten in allen Größen
             foreach ($sizes as $sizeName => [$width, $height]) {
@@ -86,7 +90,7 @@ class MediaUploadComponent extends Component
                 'property_id' => $this->propertyId,
                 'user_id' => auth()->id(),
                 'size_name' => 'original',
-                'file_path' => $originalPath,
+                'file_path' => $baseDir . '/original/' . $uniqueName,
                 'sort_order' => ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->max('sort_order') + 1,
             ]);
         }
@@ -95,6 +99,7 @@ class MediaUploadComponent extends Component
         $this->syncPersistedPhotos();
         session()->flash('message', 'Fotos wurden erfolgreich hochgeladen!');
     }
+
 
     public function removePhoto($photoId, $type)
     {

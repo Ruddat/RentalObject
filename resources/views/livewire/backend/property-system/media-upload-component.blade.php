@@ -42,7 +42,7 @@
         @if(!empty($persistedPhotos))
         @foreach($persistedPhotos as $index => $photo)
             <div class="item-upload file-delete" data-index="{{ $index }}" data-type="persisted">
-                <img src="{{ asset('storage/' . $photo['file_path']) }}" alt="Uploaded Image">
+                <img src="{{ Storage::url($photo['file_path']) }}" alt="Uploaded Image">
                 <span class="icon-trash remove-file" wire:click="removePhoto({{ $photo['id'] }}, 'persisted')">
                     <i class="ti ti-trash"></i>
                 </span>
