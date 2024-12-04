@@ -48,7 +48,8 @@
         "files": [
             "app/Helpers/helpers.php",
             "app/Helpers/MailHelper.php",
-            "app/Helpers/ContentHelper.php"
+            "app/Helpers/ContentHelper.php",
+            "app/Helpers/FileHelper.php"
         ]
     },
     "autoload-dev": {

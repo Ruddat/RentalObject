@@ -5,9 +5,10 @@ namespace App\Livewire\Backend\PropertySystem;
 use Storage;
 use Livewire\Component;
 use App\Models\ObjPhotos;
+use App\Helpers\FileHelper;
 use Livewire\WithFileUploads;
-use Intervention\Image\Laravel\Facades\Image;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Laravel\Facades\Image;
 
 class MediaUploadComponent extends Component
 {
@@ -63,11 +64,10 @@ class MediaUploadComponent extends Component
             $originalPath = $baseDir . '/original/' . $uniqueName;
 
             // Speichere das Originalbild temporär
-            $tempPath = $photo->storeAs('uploads/' . $baseDir . '/original', $uniqueName);
+            $tempPath = $photo->storeAs('uploads/' . $baseDir . '/original', $uniqueName, 'public');
 
-            // Verschiebe die Datei in den öffentlichen Bereich
-            $publicPath = 'public/' . $baseDir . '/original/' . $uniqueName;
-            Storage::move($tempPath, $publicPath);
+            // Verwende den Helper, um die Datei in den öffentlichen Bereich zu verschieben
+            FileHelper::moveToPublic($tempPath, $originalPath);
 
             // Erstelle Varianten in allen Größen
             foreach ($sizes as $sizeName => [$width, $height]) {
@@ -79,9 +79,9 @@ class MediaUploadComponent extends Component
                     });
 
                 $filename = uniqid() . $suffix . '.' . $photo->extension();
-                $path = $baseDir . '/' . $sizeName . '/' . $filename;
+                $path = 'public/' . $baseDir . '/' . $sizeName . '/' . $filename;
 
-                Storage::put('public/' . $path, (string) $resizedImage->encode());
+                Storage::put($path, (string) $resizedImage->encode());
             }
 
             // Speichere in der Datenbank
@@ -106,33 +106,30 @@ class MediaUploadComponent extends Component
         $sizes = config('image_sizes.sizes', []);
 
         if ($type === 'persisted') {
-            // Suche das Foto anhand der ID
             $photo = collect($this->persistedPhotos)->firstWhere('id', $photoId);
 
             if ($photo) {
                 DB::transaction(function () use ($photo, $sizes) {
-                    // Lösche alle Varianten
                     foreach ($sizes as $sizeName => $_) {
                         $filePath = str_replace('original', $sizeName, $photo['file_path']);
-                        if (Storage::disk('public')->exists($filePath)) {
+                        if (FileHelper::fileExists($filePath)) {
                             Storage::disk('public')->delete($filePath);
                         }
                     }
 
                     // Originalbild löschen
-                    Storage::disk('public')->delete($photo['file_path']);
+                    if (FileHelper::fileExists($photo['file_path'])) {
+                        Storage::disk('public')->delete($photo['file_path']);
+                    }
 
-                    // Foto aus der Datenbank löschen
                     ObjPhotos::where('id', $photo['id'])->delete();
                 });
 
-                // Array aktualisieren
                 $this->syncPersistedPhotos();
             } else {
                 \Log::error("Photo not found in persistedPhotos for ID: $photoId");
             }
         } elseif ($type === 'temporary') {
-            // Entferne das temporäre Foto
             unset($this->photos[$photoId]);
             $this->photos = array_values($this->photos);
         }
@@ -170,7 +167,6 @@ class MediaUploadComponent extends Component
 
     private function syncPersistedPhotos()
     {
-        // Lade nur Fotos, die zur aktuellen UUID oder Property-ID gehören
         $query = ObjPhotos::query()
             ->where('temporary_uuid', $this->temporaryUuid);
 
@@ -181,6 +177,11 @@ class MediaUploadComponent extends Component
         $this->persistedPhotos = $query
             ->orderBy('sort_order', 'asc')
             ->get()
+            ->map(function ($photo) {
+                // Füge die URL mit dem Helper hinzu
+                $photo->url = FileHelper::getPublicUrl($photo->file_path);
+                return $photo;
+            })
             ->toArray();
 
         \Log::info('Synced persisted photos', ['persistedPhotos' => $this->persistedPhotos]);
