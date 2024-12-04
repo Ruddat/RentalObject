@@ -63,11 +63,8 @@ class MediaUploadComponent extends Component
             $baseDir = 'uploads/' . $this->temporaryUuid;
             $originalPath = $baseDir . '/original/' . $uniqueName;
 
-            // Speichere das Originalbild temporär
-            $tempPath = $photo->storeAs('uploads/' . $baseDir . '/original', $uniqueName, 'public');
-
-            // Verwende den Helper, um die Datei in den öffentlichen Bereich zu verschieben
-            FileHelper::moveToPublic($tempPath, $originalPath);
+            // Speichere das Originalbild direkt in der öffentlichen Disk
+            $photo->storeAs($baseDir . '/original', $uniqueName, 'public');
 
             // Erstelle Varianten in allen Größen
             foreach ($sizes as $sizeName => [$width, $height]) {
@@ -79,18 +76,19 @@ class MediaUploadComponent extends Component
                     });
 
                 $filename = uniqid() . $suffix . '.' . $photo->extension();
-                $path = 'public/' . $baseDir . '/' . $sizeName . '/' . $filename;
+                $path = $baseDir . '/' . $sizeName . '/' . $filename;
 
-                Storage::put($path, (string) $resizedImage->encode());
+                // Speichere die Varianten direkt in der öffentlichen Disk
+                Storage::disk('public')->put($path, (string) $resizedImage->encode());
             }
 
-            // Speichere in der Datenbank
+            // Speichere den Pfad des Originalbilds in der Datenbank
             ObjPhotos::create([
                 'temporary_uuid' => $this->temporaryUuid,
                 'property_id' => $this->propertyId,
                 'user_id' => auth()->id(),
                 'size_name' => 'original',
-                'file_path' => $baseDir . '/original/' . $uniqueName,
+                'file_path' => $originalPath,
                 'sort_order' => ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->max('sort_order') + 1,
             ]);
         }
@@ -99,6 +97,7 @@ class MediaUploadComponent extends Component
         $this->syncPersistedPhotos();
         session()->flash('message', 'Fotos wurden erfolgreich hochgeladen!');
     }
+
 
 
     public function removePhoto($photoId, $type)
