@@ -1,6 +1,6 @@
 <div id="basisdaten" class="widget-box-2 mb-20 bg-primary-yellow">
     <div class="widget-box-2-title">
-        <h4 class="widget-title">Basisdaten für: {{ $propertyTypeName }}</h4>
+        <h4 class="widget-title">@autotranslate("Basisdaten für:", app()->getLocale()) {{ $propertyTypeName }}</h4>
     </div>
     <div>
 
@@ -11,15 +11,15 @@
         @foreach ($fields as $field)
             @if ($field === 'area')
                 <div class="form-group">
-                    <label for="area">Area (m²)</label>
-                    <input type="text" wire:model.lazy="data.area" id="area" class="form-control">
+                    <label for="area">@autotranslate("Area m²", app()->getLocale())</label>
+                    <input type="number" wire:model.lazy="data.area" id="area" class="form-control">
                     @error('data.area') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             @endif
 
             @if ($field === 'landArea')
                 <div class="form-group">
-                    <label for="landArea">Land Area (m²)</label>
+                    <label for="landArea">@autotranslate("Land Area m²", app()->getLocale())</label>
                     <input type="text" wire:model.lazy="data.landArea" id="landArea" class="form-control">
                     @error('data.landArea') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -27,15 +27,15 @@
 
             @if ($field === 'rooms')
                 <div class="form-group">
-                    <label for="rooms">Rooms</label>
-                    <input type="text" wire:model.lazy="data.rooms" id="rooms" class="form-control">
+                    <label for="rooms">@autotranslate("Rooms", app()->getLocale())</label>
+                    <input type="number" wire:model.lazy="data.rooms" id="rooms" class="form-control">
                     @error('data.rooms') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             @endif
 
             @if ($field === 'referenceNumber')
                 <div class="form-group  {{ $field === 'referenceNumber' ? '' : 'd-none' }}">
-                    <label for="referenceNumber">Reference Number</label>
+                    <label for="referenceNumber">@autotranslate("Reference Number", app()->getLocale())</label>
                     <input type="text" wire:model.lazy="data.referenceNumber" id="referenceNumber" class="form-control">
                     @error('data.referenceNumber') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -59,7 +59,7 @@
 
             @if ($field === 'furniture')
                 <div class="form-group">
-                    <label for="furniture">Furniture</label>
+                    <label for="furniture">@autotranslate("Furniture", app()->getLocale())</label>
                     <select wire:model.lazy="data.furniture" id="furniture" class="form-control">
                         <option value="False">Unfurnished</option>
                         <option value="True">Furnished</option>
@@ -70,7 +70,7 @@
 
             @if ($field === 'availableFrom')
                 <div class="form-group {{ $field === 'availableFrom' ? '' : 'd-none' }}">
-                    <label for="availableFrom">Available From</label>
+                    <label for="availableFrom">@autotranslate("Available From", app()->getLocale())</label>
                     <input type="date" wire:model.lazy="data.availableFrom" id="availableFrom" class="form-control">
                     @error('data.availableFrom') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -120,15 +120,15 @@
 
             @if ($field === 'buildYear')
                 <div class="form-group {{ $field === 'buildYear' ? '' : 'd-none' }}">
-                    <label for="buildYear">Build Year</label>
-                    <input type="text" wire:model.lazy="data.buildYear" id="buildYear" class="form-control">
+                    <label for="buildYear">@autotranslate("Build Year", app()->getLocale())</label>
+                    <input type="number" wire:model.lazy="data.buildYear" id="buildYear" class="form-control">
                     @error('data.buildYear') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
             @endif
 
             @if ($field === 'moveIn')
             <div class="form-group">
-                <label for="moveIn">Move In</label>
+                <label for="moveIn">@autotranslate("Move In", app()->getLocale())</label>
                 <input type="date" wire:model.lazy="data.moveIn" id="moveIn" class="form-control">
                 @error('data.moveIn') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
@@ -137,7 +137,7 @@
 
             @if ($field === 'seats')
                 <div class="form-group {{ $field === 'seats' ? '' : 'd-none' }}">
-                    <label for="seats">Seats</label>
+                    <label for="seats">@autotranslate("Seats", app()->getLocale())</label>
                     <input type="text" wire:model.lazy="data.seats" id="seats" class="form-control">
                     @error('data.seats') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -145,7 +145,7 @@
 
             @if ($field === 'floor')
                 <div class="form-group {{ $field === 'floor' ? '' : 'd-none' }}">
-                    <label for="floor">Floor</label>
+                    <label for="floor">@autotranslate("Etage", app()->getLocale())</label>
                     <select wire:model.lazy="data.floor" id="floor" class="form-control">
                         @for ($i = 0; $i <= 50; $i++)
                             <option value="{{ $i }}">{{ $i }}</option>

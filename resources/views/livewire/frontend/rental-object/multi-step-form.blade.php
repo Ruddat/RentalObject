@@ -344,17 +344,16 @@
                     </div>
                 @endif
 
-                <!-- Beschreibung Inhalt -->
-                <h4>Beschreibung</h4>
-                <div class="form-group">
-                    <label>Beschreibung der Immobilie</label>
-                    <textarea wire:model="stepTwo.floors" class="form-control"></textarea>
-                    @error('stepTwo.floors') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
             </div>
             @endif
         </div>
-
+<div>
+    @if($errors->has('prices'))
+        <div class="alert alert-danger">
+            {{ $errors->first('prices') }}
+        </div>
+    @endif
+</div>
         <button wire:click="previousStep" class="btn btn-secondary mt-3">Zurück</button>
         <button wire:click="nextStep" class="btn btn-primary mt-3">Weiter</button>
     </div>
@@ -395,10 +394,21 @@
                 <livewire:backend.property-system.media-upload-component :temporaryUuid="$temporaryUuid" />
             </div>
             <div class="col-md-6">
-                <!-- Virtual Tour Component -->
-                @livewire('backend.property-system.virtual-tour-component')
-                <!-- Video Component -->
-                @livewire('backend.property-system.video-component')
+                <!-- 360°-Rundgang -->
+                <div class="mb-4">
+                <livewire:frontend.rental-object.external-tour-form />
+                </div>
+
+                <!-- YouTube-Video -->
+                <div class="mb-4">
+                    <livewire:frontend.rental-object.external-video-form />
+                </div>
+
+                <!-- Dokumente hochladen -->
+                <div class="mb-4">
+                    <livewire:frontend.rental-object.external-docu-form :temporaryUuid="$temporaryUuid" />
+                </div>
+
             </div>
         </div>
 
@@ -409,7 +419,10 @@
             Vorschau
         </button>
 
+        <!-- Modals -->
+
     </div>
+
 
 
 
@@ -960,12 +973,23 @@ Media-Upload-Component
 </div>
 
 
+
+    <!-- popup login -->
+    <livewire:auth.login-user />
+    <!-- popup register -->
+    <livewire:auth.register-user />
+    
+
 </div>
 
 
 
 
+
 @assets
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
 <!-- Leaflet CSS -->
@@ -977,24 +1001,84 @@ Media-Upload-Component
 
 @endassets
 <script>
-    // Event für das Öffnen des Vorschau-Modals
-    window.addEventListener('open-preview-modal', () => {
-        const previewModalElement = document.getElementById('previewModal');
-        if (previewModalElement) {
-            const previewModal = bootstrap.Modal.getOrCreateInstance(previewModalElement);
-            previewModal.show();
-        }
-    });
+    document.addEventListener('DOMContentLoaded', () => {
+        // Allgemeine Funktion zum Öffnen eines Modals
+        const openModal = (modalId) => {
+            const modalElement = document.getElementById(modalId);
+            if (modalElement) {
+                const modalInstance = bootstrap.Modal.getOrCreateInstance(modalElement);
+                modalInstance.show();
+                modalElement.setAttribute('aria-hidden', 'false');
+                modalElement.removeAttribute('inert');
+                console.log(`Modal ${modalId} geöffnet.`);
+            } else {
+                console.warn(`Modal mit ID "${modalId}" nicht gefunden.`);
+            }
+        };
 
-    // Event für das Schließen des Vorschau-Modals
-    window.addEventListener('close-preview-modal', () => {
+        // Allgemeine Funktion zum Schließen eines Modals
+        const closeModal = (modalId) => {
+            const modalElement = document.getElementById(modalId);
+            if (modalElement) {
+                const modalInstance = bootstrap.Modal.getInstance(modalElement);
+                if (modalInstance) {
+                    modalInstance.hide();
+                }
+                modalElement.setAttribute('aria-hidden', 'true');
+                modalElement.setAttribute('inert', '');
+                console.log(`Modal ${modalId} geschlossen.`);
+            }
+
+            // Entferne eventuell verbleibende Backdrops
+            document.querySelectorAll('.modal-backdrop').forEach((backdrop) => backdrop.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = ''; // Zurücksetzen
+        };
+
+        // Listener für Modals öffnen
+        window.addEventListener('open-modal', (event) => {
+            const modalId = event.detail.modalId;
+            openModal(modalId);
+        });
+
+        // Listener für Modals schließen
+        window.addEventListener('close-modal', (event) => {
+            const modalId = event.detail.modalId;
+            closeModal(modalId);
+        });
+
+        // Spezifischer Preview-Modal-Handler
         const previewModalElement = document.getElementById('previewModal');
-        if (previewModalElement) {
-            const previewModal = bootstrap.Modal.getOrCreateInstance(previewModalElement);
-            previewModal.hide();
-        }
+        const temporaryUuid = @json($previewData['stepOne']['temporaryUuid'] ?? '');
+
+        window.addEventListener('open-preview-modal', () => {
+            if (previewModalElement) {
+                const previewModal = bootstrap.Modal.getOrCreateInstance(previewModalElement);
+                previewModal.show();
+                console.log('Temporary UUID beim Öffnen:', temporaryUuid);
+                if (temporaryUuid) {
+                    Livewire.emit('updatePreviewData', { temporaryUuid: temporaryUuid });
+                } else {
+                    console.warn('Keine temporaryUuid verfügbar.');
+                }
+            }
+        });
+
+        window.addEventListener('close-preview-modal', () => {
+            if (previewModalElement) {
+                const previewModal = bootstrap.Modal.getInstance(previewModalElement);
+                if (previewModal) {
+                    previewModal.hide();
+                }
+            }
+
+            // Entferne eventuell verbleibende Backdrops
+            document.querySelectorAll('.modal-backdrop').forEach((backdrop) => backdrop.remove());
+            document.body.classList.remove('modal-open');
+            document.body.style.overflow = ''; // Zurücksetzen
+        });
     });
-</script>
+    </script>
 
 
 <script>
@@ -1010,4 +1094,10 @@ function openMapPopup() {
         }
     }, 500);
 }
+</script>
+<script>
+    document.addEventListener('show-login-modal', () => {
+    const loginModal = new bootstrap.Modal(document.getElementById('modalLogin'));
+    loginModal.show();
+});
 </script>

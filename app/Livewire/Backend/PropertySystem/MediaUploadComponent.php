@@ -63,26 +63,26 @@ class MediaUploadComponent extends Component
             $baseDir = 'uploads/' . $this->temporaryUuid;
             $originalPath = $baseDir . '/original/' . $uniqueName;
 
-            // Speichere das Originalbild direkt in der öffentlichen Disk
+            // Speichere das Originalbild
             $photo->storeAs($baseDir . '/original', $uniqueName, 'public');
 
-            // Erstelle Varianten in allen Größen
+            // Erstelle Varianten (alle behalten denselben Basisnamen wie das Originalbild)
             foreach ($sizes as $sizeName => [$width, $height]) {
                 $suffix = '_' . $sizeName;
+                $variantPath = $baseDir . "/{$sizeName}/" . pathinfo($uniqueName, PATHINFO_FILENAME) . $suffix . '.' . $photo->extension();
+
+                // Resized Image erstellen
                 $resizedImage = Image::read($photo->getRealPath())
                     ->resize($width, $height, function ($constraint) {
                         $constraint->aspectRatio();
                         $constraint->upsize();
                     });
 
-                $filename = uniqid() . $suffix . '.' . $photo->extension();
-                $path = $baseDir . '/' . $sizeName . '/' . $filename;
-
-                // Speichere die Varianten direkt in der öffentlichen Disk
-                Storage::disk('public')->put($path, (string) $resizedImage->encode());
+                // Speichere die Variante
+                Storage::disk('public')->put($variantPath, (string) $resizedImage->encode());
             }
 
-            // Speichere den Pfad des Originalbilds in der Datenbank
+            // Speichere das Originalbild in der Datenbank
             ObjPhotos::create([
                 'temporary_uuid' => $this->temporaryUuid,
                 'property_id' => $this->propertyId,
@@ -97,6 +97,7 @@ class MediaUploadComponent extends Component
         $this->syncPersistedPhotos();
         session()->flash('message', 'Fotos wurden erfolgreich hochgeladen!');
     }
+
 
 
 

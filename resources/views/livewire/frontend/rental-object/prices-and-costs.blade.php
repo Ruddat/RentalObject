@@ -18,10 +18,10 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="purchasePrice">
-                    Kaufpreis  (€)
+                    @autotranslate("Kaufpreis  €", app()->getLocale())
                     <i class="fa fa-info-circle" data-bs-toggle="tooltip" title="Enter the total purchase price for the property."></i>
                 </label>
-                <input type="text" wire:model.lazy="prices.purchasePrice" id="purchasePrice" class="form-control" maxlength="17">
+                <input type="number" wire:model.lazy="prices.purchasePrice" id="purchasePrice" class="form-control" maxlength="17">
                 @error('prices.purchasePrice') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
         </div>
@@ -29,12 +29,12 @@
         <!-- Additional Information -->
         <div class="col-md-4">
             <div class="form-group">
-                <label>Additional Information</label>
+                <label>@autotranslate("Additional Information", app()->getLocale())</label>
                 <select wire:model.lazy="prices.additionalInformation" class="form-control">
-                    <option value="">No Additional Information</option>
-                    <option value="onRequest">On Request</option>
-                    <option value="negotiable">Negotiable</option>
-                    <option value="minimumPrice">Minimum Price</option>
+                    <option value="">@autotranslate("No Additional Information", app()->getLocale())</option>
+                    <option value="onRequest">@autotranslate("On Request", app()->getLocale())</option>
+                    <option value="negotiable">@autotranslate("Negotiable", app()->getLocale())</option>
+                    <option value="minimumPrice">@autotranslate("Minimum Price", app()->getLocale())</option>
                 </select>
                 @error('prices.additionalInformation') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
@@ -131,10 +131,10 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="coldRent">
-                    Cold Rent (€)
+                    @autotranslate("Kalt Miete", app()->getLocale())
                     <i class="fa fa-info-circle" data-bs-toggle="tooltip" title="Enter the total purchase price for the property."></i>
                 </label>
-                <input type="text" wire:model.lazy="prices.coldRent" id="coldRent" class="form-control" maxlength="17">
+                <input type="number" wire:model.lazy="prices.coldRent" id="coldRent" class="form-control" maxlength="17">
                 @error('prices.coldRent') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
         </div>
@@ -142,12 +142,12 @@
         <!-- Additional Information -->
         <div class="col-md-4">
             <div class="form-group">
-                <label>Additional Information</label>
+                <label>@autotranslate("Additional Information", app()->getLocale())</label>
                 <select wire:model.lazy="prices.additionalInformation" class="form-control">
-                    <option value="">No Additional Information</option>
-                    <option value="onRequest">On Request</option>
-                    <option value="negotiable">Negotiable</option>
-                    <option value="minimumPrice">Minimum Price</option>
+                    <option value="">@autotranslate("No Additional Information", app()->getLocale())</option>
+                    <option value="onRequest">@autotranslate("On Request", app()->getLocale())</option>
+                    <option value="negotiable">@autotranslate("Negotiable", app()->getLocale())</option>
+                    <option value="minimumPrice">@autotranslate("Minimum Price", app()->getLocale())</option>
                 </select>
                 @error('prices.additionalInformation') <span class="text-danger">{{ $message }}</span> @enderror
             </div>
@@ -160,7 +160,7 @@
                 <!-- Utilities -->
                 <div class="col-md-6">
                 <div class="form-group">
-                    <label for="utilities">Utilities (€)</label>
+                    <label for="utilities">@autotranslate("Nebenkosten", app()->getLocale())</label>
                     <input type="text" wire:model.lazy="prices.utilities" id="utilities" class="form-control" maxlength="17">
                     @error('prices.utilities') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -172,7 +172,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="coldRent">
-                                Heating Costs (€)
+                                @autotranslate("Heating Costs", app()->getLocale())
                                 <i class="fa fa-info-circle" data-bs-toggle="tooltip" title="Enter the total purchase price for the property."></i>
                             </label>
                             <input type="text" wire:model.lazy="prices.heatingCosts" id="heatingCosts" class="form-control" maxlength="17">
@@ -183,7 +183,7 @@
                     <!-- No Specification -->
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>No Specification</label>
+                            <label>@autotranslate("No Specification", app()->getLocale())</label>
                             <select wire:model.lazy="prices.noSpecification" class="form-control">
                                 <option value="">No Specification</option>
                                 <option value="in Warmiete enhalten">in Warmmiete enhalten</option>

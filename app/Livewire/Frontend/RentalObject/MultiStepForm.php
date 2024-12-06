@@ -19,6 +19,7 @@ use App\Models\ObjEnergyCertificate;
 use App\Services\NearbyPlacesService;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class MultiStepForm extends Component
 {
@@ -40,11 +41,21 @@ class MultiStepForm extends Component
     public $selectedCertificates = [];
     public $slectedSections = [];
 
+    public $pricesValidationPassed = false; // Status der Validierung
+
+
     public $maxSections = 10;
 
     public $temporaryUuid;
 
     public $previewData;
+
+    public $virtualTourLink;
+    public $tourLink;
+    public $description;
+
+    public $videoLink;
+    public $videoDescription;
 
     public $collectedData = [
         'stepOne' => [],
@@ -53,14 +64,19 @@ class MultiStepForm extends Component
     ];
 
     protected $listeners = [
-        'floorAdded',
-        'removeFloor',
+        'floorAdded' => 'handleFloorAdded',
+        //'removeFloor',
         'updatePrices' => 'handlePricesUpdate',
+        //'pricesValidationResponse' => 'updateCanProceed',
+        'pricesValidationResponse',
         'updateFloors' => 'handleFloorsUpdate',
         'updateSections' => 'handleSectionsUpdate',
         'updateBasisData' => 'handleBasisDataUpdate',
         'syncEnergyCertificates' => 'handleEnergyCertificatesUpdate',
         'updateAttributes' => 'handleAttributesUpdate',
+        'handleVideoLinkUpdate' => 'handleVideoLinkUpdate',
+        'handleTourLinkUpdate' => 'handleTourLinkUpdate',
+
     ];
 
 
@@ -106,11 +122,16 @@ class MultiStepForm extends Component
             'stepOne.contactDetails' => 'required',
         ],
         2 => [
-            'stepTwo.address' => 'nullable',
+           // 'stepTwo.coldRent' => 'required|min:3',
             'stepTwo.city' => 'nullable',
             'stepTwo.zip' => 'nullable|digits:5',
         ],
         3 => [
+            'tourLink' => 'required|url',
+            'description' => 'nullable|string',
+            'videoLink' => 'nullable|url|max:255',
+            'videoDescription' => 'nullable|string|max:500',
+            'virtualTourLink' => 'nullable|url|max:255',
             'stepThree.payment_method' => 'nullable',
             'stepThree.card_number' => 'nullable',
             'stepThree.photos.*' => 'image|max:5120',
@@ -119,24 +140,88 @@ class MultiStepForm extends Component
 
     public function mount()
     {
-        $this->temporaryUuid = (string) \Illuminate\Support\Str::uuid();
-        session(['temporary_uuid' => $this->temporaryUuid]);
-
-        // Formular-Daten aus der Session wiederherstellen
+        // Prüfe, ob es Daten in der Session gibt
         $sessionData = session()->get('multiStepFormData', []);
+
         if (!empty($sessionData)) {
-            $this->stepOne = $sessionData['stepOne'] ?? $this->stepOne;
-            $this->stepTwo = $sessionData['stepTwo'] ?? $this->stepTwo;
-            $this->stepThree = $sessionData['stepThree'] ?? $this->stepThree;
+            // Daten aus der Session wiederherstellen
+            $this->stepOne = $sessionData['stepOne'] ?? $this->getDefaultStepOne();
+            $this->stepTwo = $sessionData['stepTwo'] ?? [];
+            $this->stepThree = $sessionData['stepThree'] ?? $this->getDefaultStepThree();
+
+            // UUID aus der Session wiederherstellen oder neue UUID generieren
+            $this->temporaryUuid = $sessionData['stepOne']['temporaryUuid'] ?? (string) \Illuminate\Support\Str::uuid();
+
+            // Zusätzliche Werte initialisieren
+            $this->videoLink = $this->stepThree['videoLink'] ?? null;
+            $this->videoDescription = $this->stepThree['videoDescription'] ?? null;
+            $this->tourLink = $this->stepThree['tourLink'] ?? null;
+            $this->tourDescription = $this->stepThree['tourDescription'] ?? null;
 
             // Session-Daten nach Wiederherstellung löschen
             session()->forget('multiStepFormData');
+        } else {
+            // Standardwerte initialisieren
+            $this->temporaryUuid = (string) \Illuminate\Support\Str::uuid();
+            $this->stepOne = $this->getDefaultStepOne();
+            $this->stepTwo = [];
+            $this->stepThree = $this->getDefaultStepThree();
+            $this->videoLink = null;
+            $this->videoDescription = null;
+            $this->tourLink = null;
+            $this->tourDescription = null;
         }
 
+        // Initialisiere propertyTypes und sections
         $this->propertyTypes = PropertyType::all();
+        $this->sections = $this->getDefaultSections();
+    }
 
-        // Initialisiere Sections mit Standardwerten
-        $this->sections = [
+    /**
+     * Gibt die Standardwerte für Step One zurück.
+     */
+    protected function getDefaultStepOne()
+    {
+        return [
+            'userType' => '',
+            'title' => '',
+            'propertyType' => '',
+            'category' => '',
+            'transactionType' => '',
+            'lookingForTenant' => false,
+            'country' => '',
+            'street' => '',
+            'zip' => '',
+            'city' => '',
+            'latitude' => '',
+            'longitude' => '',
+            'contactDetails' => '',
+            'propertyTypeName' => '',
+            'temporaryUuid' => $this->temporaryUuid,
+            'nearbyPlaces' => collect(),
+        ];
+    }
+
+    /**
+     * Gibt die Standardwerte für Step Three zurück.
+     */
+    protected function getDefaultStepThree()
+    {
+        return [
+            'videoLink' => null,
+            'videoDescription' => null,
+            'tourLink' => null,
+            'tourDescription' => null,
+            'photos' => [],
+        ];
+    }
+
+    /**
+     * Gibt die Standardwerte für die Sections zurück.
+     */
+    protected function getDefaultSections()
+    {
+        return [
             [
                 'headline' => 'Objektbeschreibung',
                 'description' => '',
@@ -158,6 +243,15 @@ class MultiStepForm extends Component
                 'backgroundImage' => asset('build/images/sections/besichtigungstermine.png'),
             ],
         ];
+    }
+
+    public function pricesValidationResponse($isValid)
+    {
+        if ($isValid) {
+            $this->nextStepConfirmed(); // Weiter zum nächsten Schritt
+        } else {
+            session()->flash('error', 'Bitte füllen Sie alle erforderlichen Felder in den Preisen aus.');
+        }
     }
 
 
@@ -184,6 +278,66 @@ class MultiStepForm extends Component
         $this->collectedData['stepTwo']['sections'] = $this->sections;
         \Log::info('Updated Sections:', $this->sections);
     }
+
+
+    // Video Section
+    public function saveVideo()
+    {
+        $this->validate();
+        session()->flash('message', 'YouTube-Video erfolgreich hinzugefügt.');
+        $this->dispatch('close-modal', 'videoModal');
+    }
+
+
+
+    public function openExternalTourModal()
+    {
+        $htmlContent = '<input type="text" class="form-control" placeholder="Externer Rundgang-Link" wire:model="externalTourLink">';
+
+        $this->dispatch('openModal', [
+            'modalId' => 'externalTourModal',
+            'title' => 'Externen Rundgang hinzufügen',
+            'body' => $htmlContent, // Achte darauf, dass dies ein String ist
+        ]);
+    }
+
+
+    // Virtual Tour
+    public function saveVirtualTour()
+    {
+        try {
+            $this->validate([
+                'tourLink' => 'required|url',
+                'description' => 'nullable|string',
+            ]);
+
+            // Speichern der Daten
+            // ...
+
+            // Modal schließen
+            $this->dispatch('close-modal', ['modalId' => 'virtualTourModal']);
+
+            // Rückmeldung
+            session()->flash('message', '360°-Rundgang erfolgreich gespeichert.');
+        } catch (ValidationException $e) {
+
+          //  dd($e->getMessage(), $e->errors());
+            // Modal erneut öffnen
+           // $this->dispatch('close-modal', ['modalId' => 'virtualTourModal']);
+         //   $this->dispatch('open-modal', ['modalId' => 'virtualTourModal']);
+
+            // Fehler anzeigen
+            $this->addError('tourLink', 'Bitte einen gültigen Link eingeben.');
+        }
+    }
+
+
+    public function removeVirtualTour()
+    {
+        $this->virtualTourLink = null;
+        session()->flash('message', '360°-Rundgang erfolgreich entfernt.');
+    }
+
 
 
 
@@ -228,6 +382,7 @@ class MultiStepForm extends Component
             $this->disableSell = $propertyType->no_sell;
             $this->stepOne['propertyTypeName'] = $propertyType->name ?? 'Unknown';
             $this->stepOne['transactionType'] = ($this->disableBuy && $this->disableSell) ? null : '';
+            $this->stepOne['temporaryUuid'] = $this->temporaryUuid;
         } else {
             $this->categories = [];
             $this->disableBuy = false;
@@ -403,6 +558,8 @@ class MultiStepForm extends Component
                 $propertyType = PropertyType::find($this->stepOne['propertyType']);
                 $this->stepOne['propertyTypeName'] = $propertyType->name ?? 'Unknown';
                 $this->collectedData['stepOne'] = $this->stepOne;
+                $this->dispatch('validatePricesRequest', to: 'frontend.rental-object.prices-and-costs');
+
                 break;
             case 2:
                 $this->collectedData['stepTwo'] = $this->stepTwo;
@@ -412,8 +569,14 @@ class MultiStepForm extends Component
                 $this->collectedData['stepTwo']['energyCertificates'] = $this->selectedCertificates;
                 $this->collectedData['stepTwo']['attributes'] = $this->selectedAttributes;
                 $this->collectedData['stepTwo']['sections'] = $this->slectedSections;
+                // Validierungsanfrage an die externe Komponente senden
+                //$this->dispatch('validatePricesRequest');
+                $this->dispatch('validatePricesRequest', to: 'frontend.rental-object.prices-and-costs');
+
+
                 break;
             case 3:
+
                 $this->collectedData['stepThree'] = $this->stepThree;
                 $this->collectedData['stepThree']['photos'] = $this->stepThree['photos'];
                 $this->collectedData['stepThree']['energyCertificates'] = $this->selectedCertificates;
@@ -444,8 +607,10 @@ class MultiStepForm extends Component
                 $this->data = $this->collectedData['stepTwo']['data'] ?? $this->data;
                 $this->dispatch('syncData', $this->data);
                 $this->dispatch('updateDataType', $this->stepOne['transactionType']);
+
                 $this->floors = $this->collectedData['stepTwo']['floors'] ?? $this->floors;
                 $this->dispatch('syncFloors', $this->floors);
+
                 $this->selectedCertificates = $this->collectedData['stepTwo']['energyCertificates'] ?? [];
                 $this->dispatch('syncLoadedCertificates', $this->collectedData['stepTwo']['energyCertificates'] ?? []);
 
@@ -484,7 +649,13 @@ class MultiStepForm extends Component
 
             // Benutzer zur Login-/Registrierungsseite weiterleiten
             session()->flash('message', 'Bitte melden Sie sich an oder erstellen Sie einen kostenlosen Account, um fortzufahren.');
-            return redirect()->route('login');
+
+
+            // Event auslösen, um das Modal zu öffnen
+            $this->dispatch('show-login-modal');
+            return;
+
+//            return redirect()->route('login');
         }
 
         // Validierung und Speicherung der Daten
@@ -563,9 +734,11 @@ class MultiStepForm extends Component
 
     }
 
-    public function floorAdded($floor)
+
+    public function handleFloorAdded($floorData)
     {
-        $this->floors[] = $floor;
+        \Log::info('Event floorAdded empfangen in MultiStepForm.', $floorData);
+        $this->floors[] = $floorData;
     }
 
     public function removeFloor($index)
@@ -604,6 +777,38 @@ class MultiStepForm extends Component
     {
         $this->prices = $prices;
         $this->collectedData['stepTwo']['prices'] = $prices;
+    }
+
+
+    public function handleVideoLinkUpdate($videoLink = null, $videoDescription = null)
+    {
+        $this->videoLink = $videoLink;
+     //   $this->videoDescription = $videoDescription;
+
+        // Speichere die Werte korrekt in stepThree
+        $this->stepThree['videoLink'] = $videoLink;
+       // $this->stepThree['videoDescription'] = $videoDescription;
+
+        // Optional: Aktualisiere auch collectedData
+        $this->collectedData['stepThree']['videoLink'] = $videoLink;
+       // $this->collectedData['stepThree']['videoDescription'] = $videoDescription;
+
+        // Feedback für den Benutzer
+        session()->flash('success', 'YouTube-Video wurde erfolgreich aktualisiert!');
+    }
+
+    public function handleTourLinkUpdate($tourLink = null)
+    {
+        $this->tourLink = $tourLink;
+
+        // Optional: Speichere die Werte in stepThree oder einer anderen Struktur
+        $this->stepThree['tourLink'] = $tourLink;
+
+        // Optional: Aktualisiere auch collectedData
+        $this->collectedData['stepThree']['tourLink'] = $tourLink;
+
+        // Feedback für den Benutzer
+        session()->flash('success', '360° Rundgang wurde erfolgreich aktualisiert!');
     }
 
     public function handleAttributesUpdate($attributes)
@@ -845,9 +1050,19 @@ if (!empty($nearbyPlacesData)) {
     }
 
     public function refreshCollectedDataForPreview()
-{
-    $this->dispatch('updatePreviewData', $this->collectedData);
-}
+    {
+        $this->dispatch('updatePreviewData', $this->collectedData);
+    }
+
+    public function getPreviewData()
+    {
+        return [
+            'temporaryUuid' => $this->temporaryUuid,
+            'stepOne' => $this->stepOne,
+            'stepTwo' => $this->stepTwo,
+            'stepThree' => $this->stepThree,
+        ];
+    }
 
    public function render()
     {

@@ -100,106 +100,58 @@
                 </div>
             </div>
             <div>
-                <div class="container">
-                    <div class="single-property-gallery">
-                        <div class="position-relative">
-                            <div class="swiper sw-single">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-12.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-11.jpg" alt="images">
 
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-10.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-13.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-10.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-11.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-10.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <div class="image-sw-single">
-                                            <img src="images/banner/banner-property-13.jpg" alt="images">
-                                        </div>
-                                    </div>
-                                </div>
 
-                            </div>
-                            <div class="box-navigation">
-                                <div class="navigation swiper-nav-next nav-next-single"><span class="icon icon-arr-l"></span></div>
-                                <div class="navigation swiper-nav-prev nav-prev-single"><span class="icon icon-arr-r"></span></div>
-                            </div>
-                        </div>
-                        <div class="swiper thumbs-sw-pagi">
+
+                <div class="single-property-gallery">
+                    <div class="position-relative">
+                        <div class="swiper sw-single">
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw1.jpg" alt="images">
+                                @if (!empty($photos['sliderImages']))
+                                    @foreach ($photos['sliderImages'] as $image)
+                                        <div class="swiper-slide">
+                                            <div class="image-sw-single">
+                                                <img src="{{ $image }}" alt="Property Image">
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                @else
+                                    <div class="swiper-slide">
+                                        <div class="image-sw-single">
+                                            <img src="{{ asset('images/no-image-available.png') }}" alt="No Image Available">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw2.jpg" alt="images">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw3.jpg" alt="images">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw4.jpg" alt="images">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw5.jpg" alt="images">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw6.jpg" alt="images">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw7.jpg" alt="images">
-                                    </div>
-                                </div>
-                                <div class="swiper-slide">
-                                    <div class="img-thumb-pagi">
-                                        <img src="images/banner/thumb-sw8.jpg" alt="images">
-                                    </div>
-                                </div>
+                                @endif
                             </div>
+
+                        </div>
+                        <div class="box-navigation">
+                            <div class="navigation swiper-nav-next nav-next-single"><span class="icon icon-arr-l"></span></div>
+                            <div class="navigation swiper-nav-prev nav-prev-single"><span class="icon icon-arr-r"></span></div>
+                        </div>
+                    </div>
+                    <div class="swiper thumbs-sw-pagi">
+                        <div class="swiper-wrapper">
+
+                            @if (!empty($photos['thumbnailImages']))
+                                @foreach ($photos['thumbnailImages'] as $thumbnail)
+                                    <div class="swiper-slide">
+                                        <div class="img-thumb-pagi">
+                                            <img src="{{ $thumbnail }}" alt="images">
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="swiper-slide">
+                                    <div class="img-thumb-pagi">
+                                        <img src="{{ asset('images/no-image-available.png') }}" alt="No Thumbnail Available">
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <section class="flat-section-v3 flat-property-detail">
@@ -700,7 +652,62 @@
     line-height: 1.5;
     margin-bottom: 5px;
 }
+
+
+
+.sw-single .swiper-slide img,
+.sw-thumbnails .swiper-slide img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.sw-thumbnails {
+    margin-top: 15px;
+}
+
+.sw-thumbnails .swiper-slide {
+    width: auto;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.sw-thumbnails .swiper-slide-active img {
+    border: 2px solid #007bff;
+}
+
+
 </style>
+
+
+
+<script>
+    let mainSlider, thumbSlider;
+
+    function initializeSwipers() {
+        if (mainSlider) mainSlider.destroy();
+        if (thumbSlider) thumbSlider.destroy();
+
+        mainSlider = new Swiper('.sw-single', {
+            slidesPerView: 1,
+            navigation: {
+                nextEl: '.swiper-nav-next',
+                prevEl: '.swiper-nav-prev',
+            },
+        });
+
+        thumbSlider = new Swiper('.thumbs-sw-pagi', {
+            slidesPerView: 4,
+            spaceBetween: 10,
+            slideToClickedSlide: true,
+        });
+
+        mainSlider.controller.control = thumbSlider;
+        thumbSlider.controller.control = mainSlider;
+    }
+
+    document.addEventListener('livewire:load', initializeSwipers);
+    document.addEventListener('livewire:update', initializeSwipers);
+</script>
 
 
 </div>

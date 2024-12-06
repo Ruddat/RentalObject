@@ -31,7 +31,7 @@ class PricesAndCosts extends Component
     public $transactionType = null;
 
     protected $rules = [
-        'prices.purchasePrice' => 'nullable|numeric|max:100000000000',
+        'prices.purchasePrice' => 'required|numeric|max:100000000000',
         'prices.additionalInformation' => 'nullable|string|in:onRequest,negotiable,minimumPrice',
         'prices.maintenanceFee' => 'nullable|numeric|max:100000000000',
         'prices.pricePerSquareMeter' => 'nullable|numeric|max:100000000000',
@@ -41,8 +41,8 @@ class PricesAndCosts extends Component
         'prices.historicPreservation' => 'boolean',
         'prices.renovationDepreciation' => 'boolean',
         'prices.capitalInvestment' => 'boolean',
-        'prices.coldRent' => 'nullable|numeric|max:100000000000',
-        'prices.utilities' => 'nullable|numeric|max:100000000000',
+        'prices.coldRent' => 'required|numeric|max:100000000000',
+        'prices.utilities' => 'required|numeric|max:100000000000',
         'prices.heatingCosts' => 'nullable|numeric|max:100000000000',
         'prices.noSpecification' => 'nullable|string',
         'prices.warmRent' => 'nullable|numeric|max:100000000000',
@@ -52,7 +52,7 @@ class PricesAndCosts extends Component
         'prices.Deposit' => 'nullable|numeric|max:100000000000',
     ];
 
-    protected $listeners = ['syncPrices', 'updateTransactionType'];
+    protected $listeners = ['syncPrices', 'updateTransactionType', 'validatePricesRequest'];
 
     public function syncPrices($prices)
     {
@@ -69,6 +69,20 @@ class PricesAndCosts extends Component
             $this->prices = array_fill_keys(array_keys($this->prices), null);
         }
     }
+
+    public function validatePricesRequest()
+    {
+
+      //  dd($this->prices);
+
+        try {
+            $this->validate(); // Validierung ausführen
+            $this->dispatch('pricesValidationResponse', true); // Validierung erfolgreich
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            $this->dispatch('pricesValidationResponse', false); // Validierung fehlgeschlagen
+        }
+    }
+
 
     public function updated($propertyName)
     {
