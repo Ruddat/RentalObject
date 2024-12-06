@@ -2,6 +2,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
 
+            @if (session('warning'))
+            <div class="alert alert-success mt-3">
+                {{ session('warning') }}
+            </div>
+        @endif
+
             <div class="flat-account">
                 <div class="banner-account">
                     <img src="{{ URL::asset('/build/images/banner/banner-account1.jpg') }}" alt="banner">

@@ -648,7 +648,7 @@ class MultiStepForm extends Component
             ]);
 
             // Benutzer zur Login-/Registrierungsseite weiterleiten
-            session()->flash('message', 'Bitte melden Sie sich an oder erstellen Sie einen kostenlosen Account, um fortzufahren.');
+            session()->flash('warning', 'Bitte melden Sie sich an oder erstellen Sie einen kostenlosen Account, um fortzufahren.');
 
 
             // Event auslösen, um das Modal zu öffnen
