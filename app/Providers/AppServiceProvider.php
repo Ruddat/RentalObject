@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(SettingLoaderService $settingLoaderService): void
     {
         // Lädt die Einstellungen mithilfe des neuen Services
-        $settingLoaderService->load();
+        //$settingLoaderService->load();
 
         // Route für Wartungsmodus
         Route::middleware('maintenance')->group(function () {
