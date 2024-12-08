@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use App\Listeners\RunUtilityCostsSeeder;
-use App\Models\SysSetting;  // Richtiges Modell importieren
+use App\Services\SettingLoaderService; // Importiere den neuen Service
 use App\Http\Controllers\Backend\Admin\PagesSystem\FooterLinksController;
 
 class AppServiceProvider extends ServiceProvider
@@ -29,41 +29,31 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot(SettingLoaderService $settingLoaderService): void
     {
+        // Lädt die Einstellungen mithilfe des neuen Services
+        $settingLoaderService->load();
+
+        // Route für Wartungsmodus
         Route::middleware('maintenance')->group(function () {
             Route::post('/newsletter-signup', 'App\Http\Controllers\NewsletterController@signup');
         });
 
-        // Überprüfen, ob die Tabelle 'sys_settings' existiert
-        if (Schema::hasTable('sys_settings')) {
-            // Verwende das korrekte Modell, um Einstellungen zu laden
-            $settings = SysSetting::all()->pluck('value', 'key')->toArray();
-
-            // Speichere die Einstellungen in der app-Konfiguration
-            config(['app.settings' => $settings]);
-        }
-
-            // Überprüfen, ob ein Cookie gesetzt ist und die Spracheinstellung speichern
-
-            // Sprache aus der Session setzen
+        // Sprache aus der Session setzen
         $locale = Session::get('locale', config('app.locale'));
-      // dd($locale);
+        App::setLocale($locale);
 
-        // App::setLocale($locale);
+        // Event-Listener manuell registrieren
+        Event::listen(UserVerified::class, RunUtilityCostsSeeder::class);
 
-    // Manuelle Registrierung des Listeners
-    Event::listen(UserVerified::class, RunUtilityCostsSeeder::class);
+        // View Composer für Footer
+        view()->composer('rentalobj.layout.partials.footer', function ($view) {
+            // Kategorien mit aktiven Links laden
+            $footerLinks = ModCategory::with(['links' => function ($query) {
+                $query->where('active', true);
+            }])->get();
 
-    view()->composer('rentalobj.layout.partials.footer', function ($view) {
-        // Kategorien mit aktiven Links laden
-        $footerLinks = ModCategory::with(['links' => function ($query) {
-            $query->where('active', true);
-        }])->get();
-
-        $view->with('footerLinks', $footerLinks);
-    });
-
-}
-
+            $view->with('footerLinks', $footerLinks);
+        });
+    }
 }
