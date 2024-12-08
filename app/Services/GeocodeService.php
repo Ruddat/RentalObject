@@ -56,6 +56,21 @@ class GeocodeService
         return $this->sendRequest($url, $params);
     }
 
+    protected function sendRequest($url, $params)
+    {
+        try {
+            $response = $this->client->get($url, $params);
+
+            if ($response->getStatusCode() == 200) {
+                return json_decode($response->getBody(), true);
+            } else {
+                throw new \Exception('Failed to fetch data from API', $response->getStatusCode());
+            }
+        } catch (\Exception $e) {
+            throw new \Exception('An error occurred: ' . $e->getMessage(), 500);
+        }
+    }
+
     /**
      * Hole den aktuellen Standort des Benutzers.
      */
@@ -90,18 +105,5 @@ class GeocodeService
     /**
      * HTTP-Anfrage senden.
      */
-    protected function sendRequest($url, $params)
-    {
-        try {
-            $response = $this->client->get($url, $params);
 
-            if ($response->getStatusCode() == 200) {
-                return json_decode($response->getBody(), true);
-            } else {
-                throw new \Exception('Failed to fetch data from API', $response->getStatusCode());
-            }
-        } catch (\Exception $e) {
-            throw new \Exception('An error occurred: ' . $e->getMessage(), 500);
-        }
-    }
 }

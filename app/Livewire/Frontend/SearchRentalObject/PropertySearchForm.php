@@ -148,7 +148,7 @@ class PropertySearchForm extends Component
                 $this->longitude = $locationData['longitude'];
                 $this->location = $locationData['address'] ?? 'Unknown Location';
 
-                $this->dispatchBrowserEvent('location-updated', [
+                $this->dispatch('location-updated', [
                     'latitude' => $this->latitude,
                     'longitude' => $this->longitude,
                 ]);

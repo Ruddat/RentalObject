@@ -215,49 +215,59 @@
 
     </div>
     <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const locationInput = document.querySelector('input[wire\\:model="location"]');
-        const getLocationButton = document.getElementById('get-location');
+document.addEventListener('DOMContentLoaded', function () {
+    const locationInput = document.querySelector('input[wire\\:model="location"]');
+    const getLocationButton = document.getElementById('get-location');
 
-        if (getLocationButton) {
-            getLocationButton.addEventListener('click', function (e) {
-                e.preventDefault();
+    if (getLocationButton) {
+        getLocationButton.addEventListener('click', async function (e) {
+            e.preventDefault();
 
-                if (navigator.geolocation) {
+            if (navigator.geolocation) {
+                try {
                     navigator.geolocation.getCurrentPosition(
                         async function (position) {
                             const latitude = position.coords.latitude;
                             const longitude = position.coords.longitude;
 
-                            // Senden der Geodaten an den Controller
-                            const response = await fetch('/get-current-location', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json',
-                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                },
-                                body: JSON.stringify({ latitude, longitude }),
-                            });
+                            try {
+                                const response = await fetch('/get-current-location', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    },
+                                    body: JSON.stringify({ latitude, longitude }),
+                                });
 
-                            const data = await response.json();
+                                if (!response.ok) throw new Error('Failed to fetch location');
 
-                            if (response.ok && data.address) {
-                                locationInput.value = data.address;
-                                locationInput.dispatchEvent(new Event('input')); // Triggert Livewire, um den Wert zu aktualisieren
-                            } else {
-                                alert('Failed to fetch address from server.');
+                                const data = await response.json();
+
+                                if (data.location) {
+                                    locationInput.value = data.location;
+                                    locationInput.dispatchEvent(new Event('input')); // Trigger Livewire
+                                } else {
+                                    alert('Location not found');
+                                }
+                            } catch (error) {
+                                console.error('Error fetching location:', error);
+                                alert('Error fetching location from server.');
                             }
                         },
                         function (error) {
+                            console.error('Geolocation error:', error);
                             alert('Error getting location: ' + error.message);
                         }
                     );
-                } else {
-                    alert('Geolocation is not supported by your browser.');
+                } catch (error) {
+                    alert('Unexpected error: ' + error.message);
                 }
-            });
-        }
-    });
-
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+    }
+});
     </script>
 

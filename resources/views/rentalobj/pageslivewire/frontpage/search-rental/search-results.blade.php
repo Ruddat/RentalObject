@@ -60,7 +60,10 @@
         </div>
         <div class="row">
             <div class="col-xl-4 col-lg-5">
-                <div class="widget-sidebar fixed-sidebar">
+                <button id="toggle-filters" class="btn btn-primary d-lg-none mb-3">
+                    Show Filters
+                </button>
+                <div id="filters" class="widget-sidebar fixed-sidebar d-none d-lg-block">
                     <div class="flat-tab flat-tab-form widget-filter-search widget-box">
                         <ul class="nav-tab-form" role="tablist">
                             <li class="nav-tab-item" role="presentation">
@@ -438,6 +441,8 @@
                     </div>
                 </div>
             </div>
+
+
             <div class="col-xl-8 col-lg-7 flat-animate-tab">
                 <div class="tab-content">
                     <div class="tab-pane active show" id="gridLayout" role="tabpanel">
@@ -1663,5 +1668,44 @@
     <livewire:auth.login-user />
     <!-- popup register -->
     <livewire:auth.register-user />
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggleButton = document.getElementById('toggle-filters');
+    const filters = document.getElementById('filters');
+
+    if (toggleButton && filters) {
+        toggleButton.addEventListener('click', function () {
+            if (filters.classList.contains('d-none')) {
+                // Filter sichtbar machen
+                filters.classList.remove('d-none');
+                toggleButton.textContent = 'Hide Filters';
+            } else {
+                // Filter ausblenden
+                filters.classList.add('d-none');
+                toggleButton.textContent = 'Show Filters';
+            }
+        });
+    }
+});
+
+</script>
+
+<style>
+@media (max-width: 991.98px) {
+    #filters {
+        display: none; /* Standardmäßig ausgeblendet */
+    }
+
+    #filters.d-none {
+        display: none; /* Bleibt ausgeblendet, wenn d-none aktiv */
+    }
+
+    #filters {
+        display: block; /* Sichtbar, wenn d-none entfernt wird */
+    }
+}
+</style>
+
 
 @endsection

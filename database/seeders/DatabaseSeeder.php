@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory()->create([
             'name' => 'Test User',
-            'email' => 'test@example.com',
+            'email' => 'test1234@example.com',
         ]);
 
         $this->call(RolesAndPermissionsSeeder::class);
@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             PropertyCategorySeeder::class,
         ]);
         $this->call(AttributeGroupsAndAttributesSeeder::class);
+        $this->call(ObjPropertiesSeeder::class);
 
     }
 

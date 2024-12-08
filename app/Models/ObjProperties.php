@@ -8,9 +8,11 @@ use App\Models\PropertyType;
 use App\Models\ObjNearbyPlaces;
 use App\Models\PropertyCategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ObjProperties extends Model
 {
+    use HasFactory;
 
     protected $guarded = [];
 

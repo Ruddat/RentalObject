@@ -37,7 +37,10 @@ Route::post('/export-pdf', [ExposeController::class, 'exportPdf'])->name('export
 Route::view('multi-step', 'rentalobj.pageslivewire.multistepform._multi-step-form')->name('multi-step');
 
 // Search for rental objects
-Route::post('/get-current-location', [LocationController::class, 'getLocation']);
+//Route::post('/get-current-location', [LocationController::class, 'getLocation']);
+Route::post('/get-current-location', [LocationController::class, 'getLocation'])->name('location.get');
+
+
 Route::get('/search-results', function () {
     return view('rentalobj.pageslivewire.frontpage.search-rental.search-results');
 })->name('search.results');

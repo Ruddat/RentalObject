@@ -28,11 +28,16 @@ class SearchResults extends Component
         $this->rooms = request('rooms', null);
         $this->selectedAmenities = request('selectedAmenities', []);
 
+       // dd($this->type, $this->keyword, $this->minPrice, $this->maxPrice, $this->minSize, $this->maxSize, $this->rooms, $this->selectedAmenities);
+
+
         $this->search();
     }
 
     public function search()
     {
+
+
         $query = ObjDetails::query();
 
         // Filtern nach Typ

@@ -10,10 +10,10 @@ class PropertyCategory extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['property_type_id', 'name'];
+    protected $fillable = ['name', 'property_type_id'];
 
     public function propertyType()
     {
-        return $this->belongsTo(PropertyType::class);
+        return $this->belongsTo(PropertyType::class, 'property_type_id');
     }
 }
