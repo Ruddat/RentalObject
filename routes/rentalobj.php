@@ -38,7 +38,9 @@ Route::view('multi-step', 'rentalobj.pageslivewire.multistepform._multi-step-for
 
 // Search for rental objects
 Route::post('/get-current-location', [LocationController::class, 'getLocation']);
-
+Route::get('/search-results', function () {
+    return view('rentalobj.pageslivewire.frontpage.search-rental.search-results');
+})->name('search.results');
 
 
 
