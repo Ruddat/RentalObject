@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "72978e455f69e471159194abae07aa23",
+    "content-hash": "c5cfe4de1cdab89df43d98a1a63f9685",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -10038,6 +10038,54 @@
                 "source": "https://github.com/webmozarts/assert/tree/1.11.0"
             },
             "time": "2022-06-03T18:03:27+00:00"
+        },
+        {
+            "name": "ysz/lw-range-slider",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ghostza1209/lw-range-slider.git",
+                "reference": "200ecb7171c2fac5d3aa111fc5766183a7c226c3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ghostza1209/lw-range-slider/zipball/200ecb7171c2fac5d3aa111fc5766183a7c226c3",
+                "reference": "200ecb7171c2fac5d3aa111fc5766183a7c226c3",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^10.0|^11.0",
+                "livewire/livewire": "^3.0",
+                "php": ">=8.1"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "YsZ\\LwRangeSlider\\LwRangeSliderServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "YsZ\\LwRangeSlider\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ysz"
+                }
+            ],
+            "description": "A simple noUiSlider blade component designed specifically for your Livewire Components.",
+            "support": {
+                "issues": "https://github.com/ghostza1209/lw-range-slider/issues",
+                "source": "https://github.com/ghostza1209/lw-range-slider/tree/2.0.0"
+            },
+            "time": "2024-07-14T06:12:25+00:00"
         }
     ],
     "packages-dev": [

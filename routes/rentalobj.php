@@ -12,6 +12,7 @@ use App\Http\Controllers\Utility\NewsletterController;
 use App\Http\Controllers\Utility\UserTimeLogController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Settings\BackupDownloadController;
+use App\Http\Controllers\Frontend\Location\LocationController;
 use App\Http\Controllers\Backend\Vendor\Expose\ExposeController;
 
 
@@ -34,6 +35,12 @@ Route::post('/log-time', [UserTimeLogController::class, 'logTime']);
 Route::post('/export-pdf', [ExposeController::class, 'exportPdf'])->name('export.pdf');
 
 Route::view('multi-step', 'rentalobj.pageslivewire.multistepform._multi-step-form')->name('multi-step');
+
+// Search for rental objects
+Route::post('/get-current-location', [LocationController::class, 'getLocation']);
+
+
+
 
 
 Route::post('/logout', function () {

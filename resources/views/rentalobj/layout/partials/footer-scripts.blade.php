@@ -8,7 +8,6 @@
     <script type="text/javascript" src="{{ URL::asset('/build/js/plugin.js') }}"></script>
 
     <script type="text/javascript" src="{{ URL::asset('/build/js/jquery.nice-select.min.js') }}"></script>
-    <script type="text/javascript" src="{{ URL::asset('/build/js/rangle-slider.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/countto.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/shortcodes.js') }}"></script>
     <script type="text/javascript" src="{{ URL::asset('/build/js/animation_heading.js') }}"></script>

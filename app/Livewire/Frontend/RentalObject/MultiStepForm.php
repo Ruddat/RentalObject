@@ -659,7 +659,7 @@ class MultiStepForm extends Component
         }
 
         // Validierung und Speicherung der Daten
-        $this->validate();
+      //  $this->validate();
         $this->saveData();
 
         session()->flash('message', 'Formular erfolgreich gesendet!');
