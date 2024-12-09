@@ -25,7 +25,8 @@
         "spatie/laravel-backup": "^9.1",
         "spatie/laravel-permission": "^6.10",
         "stichoza/google-translate-php": "^5.2",
-        "ysz/lw-range-slider": "^2.0"
+        "ysz/lw-range-slider": "^2.0",
+        "plesk/ext-laravel-integration": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
