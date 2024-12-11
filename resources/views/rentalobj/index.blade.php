@@ -23,19 +23,8 @@
                                     <p class="subtitle text-white body-2 wow fadeInUp" data-wow-delay=".2s">@autotranslate("We are a real estate agency that will help you find the best residence you dream of, let’s discuss for your dream house?", app()->getLocale())</p>
                                 </div>
                                 <div class="flat-tab flat-tab-form">
-                                    <ul class="nav-tab-form style-1 justify-content-center" role="tablist">
-                                        <li class="nav-tab-item" role="presentation">
-                                            <a href="#forRent" class="nav-link-item active"  data-bs-toggle="tab">@autotranslate("For Rent", app()->getLocale())</a>
-                                        </li>
-                                        <li class="nav-tab-item" role="presentation">
-                                            <a href="#forSale" class="nav-link-item" data-bs-toggle="tab">@autotranslate("For Sale", app()->getLocale())</a>
-                                        </li>
-                                    </ul>
-
 
                                     <livewire:frontend.search-rental-object.property-search-form />
-
-
 
                                 </div>
                             </div>
@@ -3466,6 +3455,7 @@
                     </div>
                     <!-- Verkaufen -->
                     <div class="box-service">
+
                         <div class="image">
                             <img class="lazyload" data-src="{{ URL::asset('/build/images/service/home-2.png') }}" src="{{ URL::asset('/build/images/service/home-2.png') }}" alt="Verkaufen">
                         </div>
@@ -3474,6 +3464,7 @@
                             <p class="description">Sie möchten eine Immobilie verkaufen?</p>
                             <a href="{{ route('multi-step') }}" class="tf-btn btn-line">Weiter <span class="icon icon-arrow-right2"></span></a>
                         </div>
+
                     </div>
                     <!-- Mieten -->
                     <div class="box-service">

@@ -3,7 +3,9 @@
 namespace App\Livewire\Frontend\SearchRentalObject;
 
 use Livewire\Component;
+use App\Models\Attribute;
 use App\Models\ObjDetails;
+use App\Models\PropertyType;
 
 class SearchResults extends Component
 {
@@ -13,24 +15,48 @@ class SearchResults extends Component
     public $maxPrice = null;
     public $minSize = null;
     public $maxSize = null;
-    public $rooms = null;
-    public $selectedAmenities = [];
+
+    public $rooms = [];
+    public $bathrooms = [];
+
     public $results = [];
+    public $propertyTypes = [];
+    public $amenities = [];
+    public $selectedType = null; // Für die Vorauswahl von PropertyType
+    public $selectedAmenities = []; // Array für die Vorauswahl von Amenities
+
 
     public function mount()
     {
-        $this->type = request('type', 'all');
-        $this->keyword = request('keyword', '');
-        $this->minPrice = request('minPrice', null);
-        $this->maxPrice = request('maxPrice', null);
-        $this->minSize = request('minSize', null);
-        $this->maxSize = request('maxSize', null);
-        $this->rooms = request('rooms', null);
-        $this->selectedAmenities = request('selectedAmenities', []);
+        // Werte aus der Session abrufen
+        $sessionData = session('search_query', []);
 
-       // dd($this->type, $this->keyword, $this->minPrice, $this->maxPrice, $this->minSize, $this->maxSize, $this->rooms, $this->selectedAmenities);
+        $this->type = $sessionData['type'] ?? 'all';
+        $this->selectedType = $this->type; // Direkt Zuweisung für die Vorauswahl
 
+        $this->keyword = $sessionData['keyword'] ?? '';
+        $this->minPrice = $sessionData['minPrice'] ?? null;
+        $this->maxPrice = $sessionData['maxPrice'] ?? null;
+        $this->minSize = $sessionData['minSize'] ?? null;
+        $this->maxSize = $sessionData['maxSize'] ?? null;
+        $this->rooms = $sessionData['rooms'] ?? null;
+        $this->bathrooms = $sessionData['bathrooms'] ?? null;
 
+        $this->selectedAmenities = $sessionData['selectedAmenities'] ?? [];
+
+        // Debugging: Auslesen der Session-Werte
+        \Log::info('Session data loaded', $sessionData);
+
+        // Daten aus der Datenbank laden
+        $this->propertyTypes = PropertyType::all();
+        $this->amenities = Attribute::all();
+
+        \Log::info('Property Types', $this->propertyTypes->toArray());
+        \Log::info('Property Type', ['type' => $this->type]);
+        \Log::info('Property Rooms', ['rooms' => $this->rooms]);
+        \Log::info('Amenities', $this->amenities->toArray());
+
+        // Initiale Suche starten
         $this->search();
     }
 
@@ -83,7 +109,10 @@ class SearchResults extends Component
 
     public function render()
     {
+
         return view('livewire.frontend.search-rental-object.search-results', [
+            'propertyTypes' => $this->propertyTypes,
+            'amenities' => $this->amenities,
             'results' => $this->results,
         ]);
     }

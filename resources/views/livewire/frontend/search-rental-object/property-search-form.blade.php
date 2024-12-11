@@ -1,4 +1,19 @@
     <div>
+        <ul class="nav-tab-form style-1 justify-content-center" role="tablist">
+            <li class="nav-tab-item" role="presentation">
+                <a href="#" wire:click.prevent="setActiveTab('forRent')"
+                   class="nav-link-item {{ $activeTab === 'forRent' ? 'active' : '' }}">
+                    @autotranslate("For Rent", app()->getLocale())
+                </a>
+            </li>
+            <li class="nav-tab-item" role="presentation">
+                <a href="#" wire:click.prevent="setActiveTab('forSale')"
+                   class="nav-link-item {{ $activeTab === 'forSale' ? 'active' : '' }}">
+                    @autotranslate("For Sale", app()->getLocale())
+                </a>
+            </li>
+        </ul>
+
         <div class="tab-content">
             <div class="tab-pane fade active show" role="tabpanel">
                 <div class="form-sl">
@@ -8,17 +23,30 @@
                                 <div class="form-group-1 search-form form-style">
                                     <label>@autotranslate("Type", app()->getLocale())</label>
                                     <div class="group-select">
-                                        <div class="nice-select" tabindex="0" id="type-select">
-                                            <span class="current">@autotranslate("All", app()->getLocale())</span>
+                                        <div class="nice-select" id="type-select" tabindex="0">
+                                            <span class="current">{{ $selectedTypeName }}</span>
                                             <ul class="list">
-                                                <li data-value="all" class="option selected">@autotranslate("All", app()->getLocale())</li>
-                                                @foreach($propertyTypes as $type)
-                                                    <li data-value="{{ $type->id }}" class="option">{{ $type->name }}</li>
+                                                <li
+                                                    data-value="all"
+                                                    class="option {{ $type === 'all' ? 'selected' : '' }}"
+                                                    wire:click="$set('type', 'all')">
+                                                    @autotranslate("All", app()->getLocale())
+                                                </li>
+                                                @foreach($propertyTypes as $propertyType)
+                                                    <li
+                                                        data-value="{{ $propertyType->id }}"
+                                                        class="option {{ $type == $propertyType->id ? 'selected' : '' }}"
+                                                        wire:click="$set('type', '{{ $propertyType->id }}')">
+                                                        {{ $propertyType->name }}
+                                                    </li>
                                                 @endforeach
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
+
+
+
 
 
                                 <div class="form-group-2 form-style">
@@ -56,103 +84,107 @@
                         </div>
                         <div class="wd-search-form">
                             <div class="grid-2 group-box group-price">
+                                <!-- Preisbereich -->
                                 <div class="widget-price">
                                     <div class="box-title-price">
                                         <span class="title-price fw-6">Price Range:</span>
                                     </div>
-
-
-
-
-
+                                    <livewire:frontend.helper.double-range-slider
+                                        :minValue="$minPrice"
+                                        :maxValue="$maxPrice"
+                                        :minLimit="$minPrice"
+                                        :maxLimit="$maxPrice"
+                                        step="100"
+                                        sliderType="price"
+                                    />
                                 </div>
 
+                                <!-- Größenbereich -->
                                 <div class="widget-price">
                                     <div class="box-title-price">
                                         <span class="title-price fw-6">Size Range:</span>
                                     </div>
-
-
-
+                                    <livewire:frontend.helper.double-range-slider
+                                        :minValue="$minSize"
+                                        :maxValue="$maxSize"
+                                        :minLimit="$minSize"
+                                        :maxLimit="$maxSize"
+                                        step="10"
+                                        sliderType="size"
+                                    />
                                 </div>
                             </div>
-
 
 
                             <div class="grid-2 group-box">
                                 <div class="group-select grid-2">
                                     <div class="box-select">
-                                        <label class="title-select fw-6">Rooms</label>
-                                        <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                            <ul class="list">
-                                                <li data-value="1" class="option">1</li>
-                                                <li data-value="2" class="option selected">2</li>
-                                                <li data-value="3" class="option">3</li>
-                                                <li data-value="4" class="option">4</li>
-                                                <li data-value="5" class="option">5</li>
-                                                <li data-value="6" class="option">6</li>
-                                                <li data-value="7" class="option">7</li>
-                                                <li data-value="8" class="option">8</li>
-                                                <li data-value="9" class="option">9</li>
-                                                <li data-value="10" class="option">10</li>
-                                            </ul>
-                                        </div>
+                                        <label class="title-select fw-6">@autotranslate("Rooms", app()->getLocale())</label>
+                                        <select class="form-control" wire:model="rooms">
+                                            <option value="0">@autotranslate("All", app()->getLocale())</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
                                     </div>
                                     <div class="box-select">
-                                        <label class="title-select fw-6">Bathrooms</label>
-                                        <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                            <ul class="list">
-                                                <li data-value="1" class="option">1</li>
-                                                <li data-value="2" class="option selected">2</li>
-                                                <li data-value="3" class="option">3</li>
-                                                <li data-value="4" class="option">4</li>
-                                                <li data-value="5" class="option">5</li>
-                                                <li data-value="6" class="option">6</li>
-                                                <li data-value="7" class="option">7</li>
-                                                <li data-value="8" class="option">8</li>
-                                                <li data-value="9" class="option">9</li>
-                                                <li data-value="10" class="option">10</li>
-                                            </ul>
-                                        </div>
+                                        <label class="title-select fw-6">@autotranslate("Bathrooms", app()->getLocale())</label>
+                                        <select class="form-control" wire:model="bathrooms">
+                                            <option value="0">@autotranslate("All", app()->getLocale())</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="group-select grid-2">
                                     <div class="box-select">
-                                        <label class="title-select fw-6">Bedrooms</label>
-                                        <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                            <ul class="list">
-                                                <li data-value="1" class="option">1</li>
-                                                <li data-value="2" class="option selected">2</li>
-                                                <li data-value="3" class="option">3</li>
-                                                <li data-value="4" class="option">4</li>
-                                                <li data-value="5" class="option">5</li>
-                                                <li data-value="6" class="option">6</li>
-                                                <li data-value="7" class="option">7</li>
-                                                <li data-value="8" class="option">8</li>
-                                                <li data-value="9" class="option">9</li>
-                                                <li data-value="10" class="option">10</li>
-                                            </ul>
-                                        </div>
+                                        <label class="title-select fw-6">@autotranslate("Bedrooms", app()->getLocale())</label>
+                                        <select class="form-control" wire:model="bedrooms">
+                                            <option value="0">@autotranslate("All", app()->getLocale())</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                        </select>
                                     </div>
                                     <div class="box-select">
-                                        <label class="title-select fw-6">Type</label>
-                                        <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                            <ul class="list">
-                                                <li data-value="1" class="option">1</li>
-                                                <li data-value="2" class="option selected">2</li>
-                                                <li data-value="3" class="option">3</li>
-                                                <li data-value="4" class="option">4</li>
-                                                <li data-value="5" class="option">5</li>
-                                                <li data-value="6" class="option">6</li>
-                                                <li data-value="7" class="option">7</li>
-                                                <li data-value="8" class="option">8</li>
-                                                <li data-value="9" class="option">9</li>
-                                                <li data-value="10" class="option">10</li>
-                                            </ul>
-                                        </div>
+                                        @if ($typeDropdownVisible ?? true)
+                                            <label class="title-select fw-6">@autotranslate("Type", app()->getLocale())</label>
+                                            <select class="form-control" wire:model="future">
+                                                <option value="all">All</option>
+                                                <option value="villa">Villa</option>
+                                                <option value="studio">Studio</option>
+                                                <option value="office">Office</option>
+                                            </select>
+                                        @else
+                                            <label class="title-select fw-6">@autotranslate("For Future", app()->getLocale())</label>
+                                            <select class="form-control" disabled>
+                                                <option value="">N/A</option>
+                                            </select>
+                                        @endif
                                     </div>
                                 </div>
-
                             </div>
 
 
@@ -219,55 +251,58 @@ document.addEventListener('DOMContentLoaded', function () {
     const locationInput = document.querySelector('input[wire\\:model="location"]');
     const getLocationButton = document.getElementById('get-location');
 
+    if (!locationInput) {
+        console.error('Location input field not found.');
+        return;
+    }
+
     if (getLocationButton) {
         getLocationButton.addEventListener('click', async function (e) {
             e.preventDefault();
 
             if (navigator.geolocation) {
-                try {
-                    navigator.geolocation.getCurrentPosition(
-                        async function (position) {
-                            const latitude = position.coords.latitude;
-                            const longitude = position.coords.longitude;
+                navigator.geolocation.getCurrentPosition(
+                    async function (position) {
+                        const latitude = position.coords.latitude;
+                        const longitude = position.coords.longitude;
 
-                            try {
-                                const response = await fetch('/get-current-location', {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/json',
-                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
-                                    },
-                                    body: JSON.stringify({ latitude, longitude }),
-                                });
+                        try {
+                            const response = await fetch('/get-current-location', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json',
+                                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                },
+                                body: JSON.stringify({ latitude, longitude }),
+                            });
 
-                                if (!response.ok) throw new Error('Failed to fetch location');
+                            if (!response.ok) throw new Error('Failed to fetch location');
 
-                                const data = await response.json();
+                            const data = await response.json();
 
-                                if (data.location) {
-                                    locationInput.value = data.location;
-                                    locationInput.dispatchEvent(new Event('input')); // Trigger Livewire
-                                } else {
-                                    alert('Location not found');
-                                }
-                            } catch (error) {
-                                console.error('Error fetching location:', error);
-                                alert('Error fetching location from server.');
+                            if (data && data.location) {
+                                locationInput.value = data.location;
+                                locationInput.dispatchEvent(new Event('input')); // Trigger Livewire
+                            } else {
+                                alert('Location not found.');
                             }
-                        },
-                        function (error) {
-                            console.error('Geolocation error:', error);
-                            alert('Error getting location: ' + error.message);
+                        } catch (error) {
+                            console.error('Error fetching location:', error);
+                            alert('Error fetching location from server.');
                         }
-                    );
-                } catch (error) {
-                    alert('Unexpected error: ' + error.message);
-                }
+                    },
+                    function (error) {
+                        console.error('Geolocation error:', error);
+                        alert('Error getting location: ' + error.message);
+                    },
+                    { timeout: 10000 } // Timeout von 10 Sekunden
+                );
             } else {
                 alert('Geolocation is not supported by your browser.');
             }
         });
     }
 });
+
     </script>
 

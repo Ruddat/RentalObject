@@ -27,11 +27,17 @@ class LocationController extends Controller
         $longitude = $request->longitude;
 
         try {
+            // Simuliere eine echte Benutzeranfrage
+            $headers = [
+                'User-Agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'Accept' => 'application/json',
+            ];
+
             // Erstelle eine Instanz des GeocodeService
             $geocodeService = new GeocodeService();
 
-            // Rufe die Geocode-Antwort basierend auf den Koordinaten ab
-            $response = $geocodeService->searchByCoordinates($latitude, $longitude);
+            // Führe die Anfrage aus, indem du die Header einbindest
+            $response = $geocodeService->searchByCoordinates($latitude, $longitude, $headers);
 
             // Überprüfe, ob die Antwort nicht leer ist und der 'address'-Schlüssel vorhanden ist
             if (!empty($response) && isset($response['address'])) {
@@ -41,21 +47,17 @@ class LocationController extends Controller
                 $location = $address['village'] ?? $address['state'] ?? null;
 
                 if ($location) {
-                    // Gib den 'village' oder 'state' zurück
-                    return response()->json([
-                        'location' => $location,
-                    ]);
+                    return response()->json(['location' => $location]);
                 } else {
-                    // Gib eine Fehlermeldung zurück, wenn 'village' oder 'state' nicht gefunden wurden
                     return response()->json(['error' => 'Village or state not found in address.'], 404);
                 }
             } else {
-                // Gib eine Fehlermeldung zurück, wenn der 'address'-Schlüssel nicht in der Antwort gefunden wurde
                 return response()->json(['error' => 'Address not found in response.'], 404);
             }
         } catch (\Exception $e) {
-            // Gib eine Fehlermeldung zurück, wenn ein Fehler auftritt
-            return response()->json(['error' => $e->getMessage()], 500);
+            \Log::error('GeocodeService Error', ['exception' => $e]);
+
+            return response()->json(['error' => 'An unexpected error occurred while fetching the location.'], 500);
         }
     }
 }

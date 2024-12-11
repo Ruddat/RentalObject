@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
 
 class GeocodeService
 {
@@ -11,8 +12,10 @@ class GeocodeService
 
     public function __construct()
     {
-        $this->client = new Client();
-        $this->userAgent = 'YourAppName/1.0 (your.email@example.com)'; // Setze hier deinen eigenen User-Agent
+        $this->client = new Client([
+            'timeout' => 10.0, // Timeout von 10 Sekunden
+        ]);
+        $this->userAgent = 'YourAppName/1.0 (contact@yourdomain.com)';
     }
 
     /**
@@ -20,16 +23,14 @@ class GeocodeService
      */
     public function searchByAddress($query)
     {
-        $url = "http://nominatim.openstreetmap.org/search";
+        $url = "https://nominatim.openstreetmap.org/search";
         $params = [
             'query' => [
                 'q' => $query,
                 'format' => 'json',
                 'addressdetails' => 1,
             ],
-            'headers' => [
-                'User-Agent' => $this->userAgent,
-            ],
+            'headers' => $this->getDefaultHeaders(),
         ];
 
         return $this->sendRequest($url, $params);
@@ -40,7 +41,7 @@ class GeocodeService
      */
     public function searchByCoordinates($lat, $lon)
     {
-        $url = "http://nominatim.openstreetmap.org/reverse";
+        $url = "https://nominatim.openstreetmap.org/reverse";
         $params = [
             'query' => [
                 'lat' => $lat,
@@ -48,27 +49,10 @@ class GeocodeService
                 'format' => 'json',
                 'addressdetails' => 1,
             ],
-            'headers' => [
-                'User-Agent' => $this->userAgent,
-            ],
+            'headers' => $this->getDefaultHeaders(),
         ];
 
         return $this->sendRequest($url, $params);
-    }
-
-    protected function sendRequest($url, $params)
-    {
-        try {
-            $response = $this->client->get($url, $params);
-
-            if ($response->getStatusCode() == 200) {
-                return json_decode($response->getBody(), true);
-            } else {
-                throw new \Exception('Failed to fetch data from API', $response->getStatusCode());
-            }
-        } catch (\Exception $e) {
-            throw new \Exception('An error occurred: ' . $e->getMessage(), 500);
-        }
     }
 
     /**
@@ -84,9 +68,7 @@ class GeocodeService
         $url = "https://ip-api.com/json/{$ip}"; // Kostenlose API zur Geolocation per IP-Adresse
 
         $params = [
-            'headers' => [
-                'User-Agent' => $this->userAgent,
-            ],
+            'headers' => $this->getDefaultHeaders(),
         ];
 
         $response = $this->sendRequest($url, $params);
@@ -103,7 +85,32 @@ class GeocodeService
     }
 
     /**
-     * HTTP-Anfrage senden.
+     * Sende eine HTTP-Anfrage.
      */
+    protected function sendRequest($url, $params)
+    {
+        try {
+            $response = $this->client->get($url, $params);
 
+            if ($response->getStatusCode() === 200) {
+                return json_decode($response->getBody(), true);
+            }
+
+            throw new \Exception('Unexpected API response status: ' . $response->getStatusCode());
+        } catch (RequestException $e) {
+            $error = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : $e->getMessage();
+            throw new \Exception('Request failed: ' . $error, $e->getCode());
+        }
+    }
+
+    /**
+     * Standard-Header für HTTP-Anfragen.
+     */
+    protected function getDefaultHeaders()
+    {
+        return [
+            'User-Agent' => $this->userAgent,
+            'Accept' => 'application/json',
+        ];
+    }
 }

@@ -88,6 +88,7 @@
 
 
 
+
 @if (Route::is('index', 'home-02', 'blog.show', 'blog-manager-12', 'dashboard'))
 
 @include('rentalobj.layout.partials.footer')

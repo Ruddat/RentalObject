@@ -3,120 +3,124 @@
 namespace App\Livewire\Frontend\SearchRentalObject;
 
 use Livewire\Component;
+use App\Models\Attribute;
 use App\Models\ObjPrices;
 use App\Models\ObjDetails;
-use App\Services\GeocodeService;
+use App\Models\PropertyType;
 
 class PropertySearchForm extends Component
 {
     public $type = 'all';
-    public $keyword = '';
-    public $rooms = null;
+    public $selectedTypeName = 'all'; // Name des aktuell ausgewählten Typs
+    public $currentMinPrice;
+    public $currentMaxPrice;
+    public $minPrice;
+    public $maxPrice;
+
+    public $currentMinSize;
+    public $currentMaxSize;
+    public $minSize;
+    public $maxSize;
+
+    public $activeTab = 'forSale';
+
+    // Neu
+    public $propertyTypes;
     public $selectedAmenities = [];
     public $location = '';
     public $latitude = '';
     public $longitude = '';
+    public $keyword = '';
+    public $rooms = null;
+    public $bathrooms = null;
+    public $bedrooms = null;
+    public $amenities = '';
+    public $typeDropdownVisible = false;
 
-    // Preisbereich
-    public $minPrice;
-    public $maxPrice;
-    public $currentMinPrice;
-    public $currentMaxPrice;
-
-    // Größenbereich
-    public $minSize;
-    public $maxSize;
-    public $currentMinSize;
-    public $currentMaxSize;
 
     protected $listeners = [
-        'updateMinPrice' => 'setMinPrice',
-        'updateMaxPrice' => 'setMaxPrice',
-        'updateMinSize' => 'setMinSize',
-        'updateMaxSize' => 'setMaxSize',
-        'updatePrice' => 'setPriceRange',
-        'updateSize' => 'setSizeRange',
+        'updateSliderValues' => 'handleSliderUpdate',
     ];
-
-
-
-    public $priceOptions = [
-        'start' => [0, 10000], // Initialer Bereich
-        'range' => [
-            'min' => 0,
-            'max' => 10000,
-        ],
-        'connect' => true,
-        'tooltips' => [true, true], // Zeigt Tooltips an
-        'behaviour' => 'tap-drag',
-    ];
-
-    public $sizeOptions = [
-        'start' => [0, 1000],
-        'range' => [
-            'min' => 0,
-            'max' => 1000,
-        ],
-        'connect' => true,
-        'tooltips' => [true, true],
-        'behaviour' => 'tap-drag',
-    ];
-    public $options = [
-        'start' => [
-            20,
-            50
-        ],
-        'range' => [
-            'min' =>  [1],
-            'max' => [100]
-        ],
-        'connect' => true,
-        'behaviour' => 'tap-drag',
-        'tooltips' => true,
-        'pips' => [
-            'mode' => 'steps',
-            'stepped' => true,
-            'density' => 4
-        ],
-    ];
-
-    public array $sliderValues;
 
     public function mount()
     {
-        $this->minPrice = ObjPrices::min('purchase_price') ?? 0;
-        $this->maxPrice = ObjPrices::max('purchase_price') ?? 10000;
-        $this->sliderValues['price'] = [$this->minPrice, $this->maxPrice];
-        $this->priceOptions['range'] = ['min' => $this->minPrice, 'max' => $this->maxPrice];
-        $this->priceOptions['start'] = [$this->minPrice, $this->maxPrice];
+
+        // Lade die Eigenschaftstypen
+        $this->propertyTypes = PropertyType::all();
+
+
+        // Initialisiere den ausgewählten Typnamen
+
+        if ($this->type === 'all') {
+            $this->selectedTypeName = __('All');
+        } else {
+            $selectedType = $this->propertyTypes->firstWhere('id', $this->type);
+            $this->selectedTypeName = $selectedType ? $selectedType->name : __('All');
+        }
+
+        // Lade die Ausstattungsmerkmale
+        $this->amenities = Attribute::all();
+
+
+        $this->initializeRanges();
+    }
+
+    private function initializeRanges()
+    {
+        if ($this->activeTab === 'forRent') {
+            $this->minPrice = ObjPrices::min('cold_rent') ?? 0;
+            $this->maxPrice = ObjPrices::max('cold_rent') ?? 10000;
+        } else {
+            $this->minPrice = ObjPrices::min('purchase_price') ?? 0;
+            $this->maxPrice = ObjPrices::max('purchase_price') ?? 10000;
+        }
 
         $this->minSize = ObjDetails::min('area') ?? 0;
         $this->maxSize = ObjDetails::max('area') ?? 1000;
-        $this->sliderValues['size'] = [$this->minSize, $this->maxSize];
-        $this->sizeOptions['range'] = ['min' => $this->minSize, 'max' => $this->maxSize];
-        $this->sizeOptions['start'] = [$this->minSize, $this->maxSize];
+
+        $this->currentMinPrice = $this->minPrice;
+        $this->currentMaxPrice = $this->maxPrice;
+
+        $this->currentMinSize = $this->minSize;
+        $this->currentMaxSize = $this->maxSize;
     }
 
-
-
-    public function setPriceRange($range)
+    public function handleSliderUpdate($sliderType, $minValue, $maxValue)
     {
-        $this->sliderValues['price'] = $range;
-        $this->currentMinPrice = $range[0];
-        $this->currentMaxPrice = $range[1];
-        \Log::info('Price range updated', $range);
+        if ($sliderType === 'price') {
+            $this->currentMinPrice = $minValue;
+            $this->currentMaxPrice = $maxValue;
+        } elseif ($sliderType === 'size') {
+            $this->currentMinSize = $minValue;
+            $this->currentMaxSize = $maxValue;
+        }
+
+        \Log::info("Slider updated: $sliderType, Min: $minValue, Max: $maxValue");
     }
 
-    public function setSizeRange($range)
+    public function setActiveTab($tab)
     {
-        $this->sliderValues['size'] = $range;
-        $this->currentMinSize = $range[0];
-        $this->currentMaxSize = $range[1];
-        \Log::info('Size range updated', $range);
+        $this->activeTab = $tab;
+        $this->initializeRanges();
     }
 
+    public function updatedSelectedAmenities($value)
+    {
+        if (!is_array($value)) {
+            \Log::warning('Invalid selectedAmenities value', ['value' => $value]);
+           // $this->selectedAmenities = []; // Zurücksetzen auf leeres Array
+        }
+    }
 
-
+    public function updatedType($value)
+    {
+        if ($value === 'all') {
+            $this->selectedTypeName = __('All');
+        } else {
+            $selectedType = $this->propertyTypes->firstWhere('id', $value);
+            $this->selectedTypeName = $selectedType ? $selectedType->name : __('All');
+        }
+    }
 
     public function search()
     {
@@ -129,75 +133,34 @@ class PropertySearchForm extends Component
             'minSize' => is_numeric($this->currentMinSize) ? $this->currentMinSize : $this->minSize,
             'maxSize' => is_numeric($this->currentMaxSize) ? $this->currentMaxSize : $this->maxSize,
             'rooms' => $this->rooms,
+            'bathrooms' => $this->bathrooms,
+            'bedrooms' => $this->bedrooms,
             'selectedAmenities' => is_array($this->selectedAmenities) ? $this->selectedAmenities : [],
         ];
 
+        // Speichere die Suchparameter in der Session
+        session(['search_query' => $query]);
+
+  //  dd( $this->activeTab, $this->type, $this->currentMinSize,
+  //   $this->currentMaxSize, $this->location, $this->latitude, $this->keyword, $this->currentMinPrice, $this->currentMaxPrice,
+  //   $this->rooms, $this->bathrooms, $this->bedrooms, $this->selectedAmenities);
+
         \Log::info('Search query', $query);
 
-        return redirect()->route('search.results', $query);
+    // Weiterleitung ohne Query-Parameter
+    return redirect()->route('search.results');
     }
 
-    public function getCurrentLocation()
-    {
-        try {
-            $geocodeService = new GeocodeService();
-            $locationData = $geocodeService->getCurrentPosition();
-
-            if (!empty($locationData)) {
-                $this->latitude = $locationData['latitude'];
-                $this->longitude = $locationData['longitude'];
-                $this->location = $locationData['address'] ?? 'Unknown Location';
-
-                $this->dispatch('location-updated', [
-                    'latitude' => $this->latitude,
-                    'longitude' => $this->longitude,
-                ]);
-            } else {
-                session()->flash('error', 'Standort konnte nicht ermittelt werden.');
-            }
-        } catch (\Exception $e) {
-            session()->flash('error', 'Fehler beim Abrufen des Standorts: ' . $e->getMessage());
-        }
-    }
-
-    public function updatedSelectedAmenities($value)
-    {
-        if (!is_array($value)) {
-            \Log::warning('Invalid selectedAmenities value', ['value' => $value]);
-            $this->selectedAmenities = []; // Zurücksetzen auf leeres Array
-        }
-    }
-
-    public function setMinPrice($value)
-    {
-        \Log::info('setMinPrice called', ['value' => $value, 'type' => gettype($value)]);
-        $this->currentMinPrice = is_numeric($value) ? floatval($value) : $this->minPrice;
-    }
-
-    public function setMaxPrice($value)
-    {
-        \Log::info('setMaxPrice called', ['value' => $value]);
-        $this->currentMaxPrice = is_numeric($value) ? floatval($value) : $this->maxPrice;
-    }
-
-    public function setMinSize($value)
-    {
-        \Log::info('setMinSize called', ['value' => $value]);
-        $this->currentMinSize = is_numeric($value) ? floatval($value) : $this->minSize;
-    }
-
-    public function setMaxSize($value)
-    {
-        \Log::info('setMaxSize called', ['value' => $value]);
-        $this->currentMaxSize = is_numeric($value) ? floatval($value) : $this->maxSize;
-    }
 
 
     public function render()
     {
         return view('livewire.frontend.search-rental-object.property-search-form', [
-            'propertyTypes' => \App\Models\PropertyType::all(),
-            'amenities' => \App\Models\Attribute::all(),
+            'minPrice' => $this->minPrice,
+            'maxPrice' => $this->maxPrice,
+            'minSize' => $this->minSize,
+            'maxSize' => $this->maxSize,
+            'amenities' => $this->amenities,
         ]);
     }
 }
