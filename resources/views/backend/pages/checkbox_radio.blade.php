@@ -556,7 +556,7 @@
                                 <label class="form-checkimage">
                                     <input type="radio" value="1" name="radioimage" class="checkimage-input">
                                     <span class="check-box radiobox">
-                            <img src="{{asset('../assets/images/bootstrapslider/02.jpg')}}" class="checkbox-image w-100" alt="">
+                            <img src="{{asset('backend/assets/images/bootstrapslider/02.jpg')}}" class="checkbox-image w-100" alt="">
                           </span>
                                 </label>
                             </div>
@@ -564,7 +564,7 @@
                                 <label class="form-checkimage">
                                     <input type="radio" value="1" name="radioimage" class="checkimage-input">
                                     <span class="check-box radiobox">
-                            <img src="{{asset('../assets/images/bootstrapslider/04.jpg')}}" class="checkbox-image w-100" alt="">
+                            <img src="{{asset('backend/assets/images/bootstrapslider/04.jpg')}}" class="checkbox-image w-100" alt="">
                           </span>
                                 </label>
                             </div>
@@ -572,7 +572,7 @@
                                 <label class="form-checkimage">
                                     <input type="radio" value="1" name="radioimage" class="checkimage-input" checked disabled>
                                     <span class="check-box radiobox">
-                            <img src="{{asset('../assets/images/bootstrapslider/05.jpg')}}" class="checkbox-image w-100" alt="">
+                            <img src="{{asset('backend/assets/images/bootstrapslider/05.jpg')}}" class="checkbox-image w-100" alt="">
                           </span>
                                 </label>
                             </div>
@@ -593,7 +593,7 @@
                                 <label class="form-checkimage">
                                     <input type="checkbox" value="1" class="checkimage-input">
                                     <span class="check-box">
-                            <img src="{{asset('../assets/images/bootstrapslider/01.jpg')}}" class="checkbox-image w-100" alt="">
+                            <img src="{{asset('backend/assets/images/bootstrapslider/01.jpg')}}" class="checkbox-image w-100" alt="">
                           </span>
                                 </label>
                             </div>
@@ -601,7 +601,7 @@
                                 <label class="form-checkimage">
                                     <input type="checkbox" value="2" class="checkimage-input" checked>
                                     <span class="check-box">
-                            <img src="{{asset('../assets/images/bootstrapslider/08.jpg')}}" class="checkbox-image w-100" alt="">
+                            <img src="{{asset('backend/assets/images/bootstrapslider/08.jpg')}}" class="checkbox-image w-100" alt="">
                           </span>
                                 </label>
                             </div>
@@ -609,7 +609,7 @@
                                 <label class="form-checkimage">
                                     <input type="checkbox" value="3" class="checkimage-input" checked disabled>
                                     <span class="check-box">
-                            <img src="{{asset('../assets/images/bootstrapslider/03.jpg')}}" class="checkbox-image w-100" alt="">
+                            <img src="{{asset('backend/assets/images/bootstrapslider/03.jpg')}}" class="checkbox-image w-100" alt="">
                           </span>
                                 </label>
                             </div>
@@ -630,7 +630,7 @@
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
                                 <label class="form-check-label" for="inlineRadio1">
                           <span class="d-flex align-items-center">
-                            <img src="{{asset('../assets/images/checkbox-radio/logo1.png')}}" class="w-30 h-30" alt="">
+                            <img src="{{asset('backend/assets/images/checkbox-radio/logo1.png')}}" class="w-30 h-30" alt="">
                             <span class="ms-2">
                               <span class="fs-6 ">Visa Card</span>
                               <span class="d-block text-secondary">Select Visa card payment method</span>
@@ -642,7 +642,7 @@
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
                                 <label class="form-check-label" for="inlineRadio2">
                           <span class="d-flex align-items-center">
-                            <img src="{{asset('../assets/images/checkbox-radio/logo2.png')}}" class="w-30 h-30" alt="">
+                            <img src="{{asset('backend/assets/images/checkbox-radio/logo2.png')}}" class="w-30 h-30" alt="">
                             <span class="ms-2">
                               <span class="fs-6">Credit / Debit Card</span>
                               <span class="d-block text-secondary">Select Credit/Debit card payment method</span>
@@ -654,7 +654,7 @@
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3" >
                                 <label class="form-check-label" for="inlineRadio3">
                           <span class="d-flex align-items-center">
-                            <img src="{{asset('../assets/images/checkbox-radio/logo3.png')}}" class="w-30 h-30" alt="">
+                            <img src="{{asset('backend/assets/images/checkbox-radio/logo3.png')}}" class="w-30 h-30" alt="">
                             <span class="ms-2">
                                 <span class="fs-6">Paypal</span>
                                 <span class="d-block text-secondary">Select Paypal payment method</span>
@@ -666,7 +666,7 @@
                                 <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4" >
                                 <label class="form-check-label" for="inlineRadio4">
                           <span class="d-flex align-items-center">
-                            <img src="{{asset('../assets/images/checkbox-radio/logo4.png')}}" class="w-30 h-30" alt="">
+                            <img src="{{asset('backend/assets/images/checkbox-radio/logo4.png')}}" class="w-30 h-30" alt="">
                             <span class="ms-2">
                                 <span class="fs-6">Other UPI Apps</span>
                                 <span class="d-block text-secondary">Select Other UPI Apps for payment</span>
@@ -692,7 +692,7 @@
                                 <label class="form-check-label" for="inlineCheckbox1">
                             <span class="d-flex align-items-center">
                               <span class="bg-secondary h-30 w-30 d-flex-center b-r-50 position-relative">
-                                <img src="{{asset('../assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
+                                <img src="{{asset('backend/assets/images/avtar/1.png')}}" alt="" class="img-fluid b-r-50">
                                 <span class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                               </span>
                               <span class="ms-2">
@@ -707,7 +707,7 @@
                                 <label class="form-check-label" for="inlineCheckbox2">
                           <span class="d-flex align-items-center">
                             <span class="bg-secondary h-30 w-30 d-flex-center b-r-50 position-relative">
-                              <img src="{{asset('../assets/images/avtar/2.png')}}" alt="" class="img-fluid b-r-50">
+                              <img src="{{asset('backend/assets/images/avtar/2.png')}}" alt="" class="img-fluid b-r-50">
                               <span class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                             </span>
                             <span class="ms-2">
@@ -722,7 +722,7 @@
                                 <label class="form-check-label" for="inlineCheckbox3">
                           <span class="d-flex align-items-center">
                             <span class="bg-secondary h-30 w-30 d-flex-center b-r-50 position-relative">
-                              <img src="{{asset('../assets/images/avtar/3.png')}}" alt="" class="img-fluid b-r-50">
+                              <img src="{{asset('backend/assets/images/avtar/3.png')}}" alt="" class="img-fluid b-r-50">
                               <span class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                             </span>
                             <span class="ms-2">
@@ -737,7 +737,7 @@
                                 <label class="form-check-label" for="inlineCheckbox4">
                           <span class="d-flex align-items-center">
                             <span class="bg-secondary h-30 w-30 d-flex-center b-r-50 position-relative">
-                              <img src="{{asset('../assets/images/avtar/16.png')}}" alt="" class="img-fluid b-r-50">
+                              <img src="{{asset('backend/assets/images/avtar/16.png')}}" alt="" class="img-fluid b-r-50">
                               <span class="position-absolute top-0 end-0 p-1 bg-success border border-light rounded-circle"></span>
                             </span>
                             <span class="ms-2">
@@ -771,7 +771,7 @@
                                             </label>
                                         </div>
                                         <div>
-                                        <!-- <img src="{{asset('../assets/images/form/16.png')}}" alt=""> -->
+                                        <!-- <img src="{{asset('backend/assets/images/form/16.png')}}" alt=""> -->
                                             <i class="ti ti-brand-appstore icon-bg"></i>
                                             <p class="text-muted">Mobile app development is the act or process by which a
                                                 mobile app is developed for one or more mobile devices.</p>

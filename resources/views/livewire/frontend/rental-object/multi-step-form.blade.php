@@ -217,19 +217,6 @@
                 <!-- Übergabe der Attribute an die untergeordnete Komponente -->
                 @livewire('frontend.rental-object.attribute-form', ['selectedAttributes' => $selectedAttributes])
 
-                <!-- Basisdaten Inhalt -->
-                <h4>Basisdaten</h4>
-                <div class="form-group">
-                    <label>Adresse</label>
-                    <input type="text" wire:model="stepTwo.address" class="form-control">
-                    @error('stepTwo.address') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
-
-                <div class="form-group mt-3">
-                    <label>Stadt</label>
-                    <input type="text" wire:model="stepTwo.city" class="form-control">
-                    @error('stepTwo.city') <span class="text-danger">{{ $message }}</span> @enderror
-                </div>
             </div>
             @elseif($activeTab === 'data_description')
             <div class="tab-pane active" id="data_description" role="tabpanel">
@@ -410,6 +397,73 @@
                 </div>
 
             </div>
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>Images With Radio Buttons</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Image 1 -->
+                                    <div class="col-sm-6 col-xl-3">
+                                        <label class="form-checkimage">
+                                            <input type="radio" value="1" name="radioimage" class="checkimage-input">
+                                            <span class="check-box radiobox">
+                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/02.jpg" class="checkbox-image w-100" alt="Image 1">
+                                                <span class="check-icon">
+                                                    <i class="fa fa-check-circle"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <!-- Image 2 -->
+                                    <div class="col-sm-6 col-xl-3">
+                                        <label class="form-checkimage">
+                                            <input type="radio" value="2" name="radioimage" class="checkimage-input">
+                                            <span class="check-box radiobox">
+                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/04.jpg" class="checkbox-image w-100" alt="Image 2">
+                                                <span class="check-icon">
+                                                    <i class="fa fa-check-circle"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <!-- Image 3 -->
+                                    <div class="col-sm-6 col-xl-3">
+                                        <label class="form-checkimage">
+                                            <input type="radio" value="3" name="radioimage" class="checkimage-input" checked>
+                                            <span class="check-box radiobox">
+                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/05.jpg" class="checkbox-image w-100" alt="Image 3">
+                                                <span class="check-icon">
+                                                    <i class="fa fa-check-circle"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <!-- Image 4 -->
+                                    <div class="col-sm-6 col-xl-3">
+                                        <label class="form-checkimage">
+                                            <input type="radio" value="3" name="radioimage" class="checkimage-input" checked>
+                                            <span class="check-box radiobox">
+                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/05.jpg" class="checkbox-image w-100" alt="Image 3">
+                                                <span class="check-icon">
+                                                    <i class="fa fa-check-circle"></i>
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
         <!-- Buttons -->
@@ -933,6 +987,86 @@ Media-Upload-Component
     gap: 10px;
 }
 
+/* --------------------------------
+Ckeck-Image-Component
+-------------------------------- */
+/* Form Check Image Styles */
+.form-checkimage {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+.form-checkimage .check-box {
+    position: relative;
+    display: block;
+    overflow: hidden;
+    border: 2px solid transparent;
+    border-radius: var(--bs-border-radius, 5px);
+    transition: border-color 0.3s ease-in-out;
+}
+
+.form-checkimage .check-box:hover {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+.form-checkimage .checkbox-image {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    border-radius: inherit;
+    filter: grayscale(50%);
+}
+
+.form-checkimage .checkimage-input {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.form-checkimage .checkimage-input:checked ~ .check-box {
+    border-color: #007bff;
+}
+
+.form-checkimage .checkimage-input:checked ~ .check-box .checkbox-image {
+    transform: scale(1.05);
+    filter: grayscale(0%);
+}
+
+/* Check-Icon Styling */
+.form-checkimage .check-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    background: white;
+    border-radius: 50%;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    opacity: 0;
+    transform: scale(0.8);
+}
+
+.form-checkimage .checkimage-input:checked ~ .check-box .check-icon {
+    opacity: 1;
+    transform: scale(1);
+    color: #007bff;
+}
+
+.form-checkimage .check-icon i {
+    font-size: 18px;
+}
+
+
     </style>
 
 @auth
@@ -978,7 +1112,7 @@ Media-Upload-Component
     <livewire:auth.login-user />
     <!-- popup register -->
     <livewire:auth.register-user />
-    
+
 
 </div>
 

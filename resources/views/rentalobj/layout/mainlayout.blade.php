@@ -89,8 +89,10 @@
 
 
 
-@if (Route::is('index', 'home-02', 'blog.show', 'blog-manager-12', 'dashboard'))
+@if (Route::is('index', 'home-02', 'blog.show', 'blog-manager-12', 'dashboard', 'login', 'search.results', 'multi-step'))
 
+
+@include('rentalobj.layout.modals.addproperty')
 @include('rentalobj.layout.partials.footer')
 @include('rentalobj.layout.partials.footer-scripts')
 @else

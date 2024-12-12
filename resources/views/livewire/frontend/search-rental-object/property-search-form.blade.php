@@ -1,4 +1,6 @@
     <div>
+
+
         <ul class="nav-tab-form style-1 justify-content-center" role="tablist">
             <li class="nav-tab-item" role="presentation">
                 <a href="#" wire:click.prevent="setActiveTab('forRent')"

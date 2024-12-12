@@ -5,7 +5,7 @@
     background-size: cover;
     z-index: 123;
     &.home-1 {
-        background-image: url(../images/slider/slider-1-1.jpg);
+        background-image: url(../images/slider/slider-1.jpg);
         background-attachment: fixed;
         .overlay {
             background: $on-surface;
@@ -76,11 +76,11 @@
                 }
             }
             a {
-
+                
                 color: $on-surface;
             }
         }
-
+        
     }
     .slider-sw-home2,
     .slider-home2 {
@@ -113,7 +113,7 @@
             background: #000000;
             opacity: 0.4;
         }
-
+        
     }
 
     &.home-5 {
@@ -182,7 +182,7 @@
             z-index: 30;
         }
     }
-
+    
 }
 .wrap-search-link {
     margin-top: 24px;

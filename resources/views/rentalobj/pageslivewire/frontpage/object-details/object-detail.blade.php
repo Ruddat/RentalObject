@@ -8,9 +8,7 @@
 @livewire('frontend.search-rental-object.search-results') <!-- Die Livewire-Komponente einbinden -->
 
 
-<livewire:frontend.object-details.property-details :property="'premium-3'" />
-
-
+<livewire:frontend.onject-details :template="'premium'" />
 
 
 

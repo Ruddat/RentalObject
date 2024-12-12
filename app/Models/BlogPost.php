@@ -35,6 +35,11 @@ class BlogPost extends Model
             ]
         ];
     }
-
+    
+    protected $dates = [
+        'published_at', // Automatische Carbon-Instanz
+        'start_date',
+        'end_date',
+    ];
 
 }

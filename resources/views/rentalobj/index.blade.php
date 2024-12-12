@@ -38,6 +38,7 @@
 
 
 
+
             <!-- Recommended -->
             <section class="flat-section flat-recommended">
                 <div class="container">
@@ -3337,71 +3338,11 @@
             </section>
             <!-- End partner -->
             <!-- Latest New -->
-            <section class="flat-section bg-primary-new">
-                <div class="container">
-                    <div class="box-title text-center wow fadeInUp">
-                        <div class="text-subtitle text-primary">Latest New</div>
-                        <h3 class="title mt-4">From Our Blog</h3>
-                    </div>
-                    <div class="swiper tf-sw-latest wow fadeInUp" data-wow-delay=".2s" data-preview="3" data-tablet="2" data-mobile-sm="2" data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <a href="blog-detail.html" class="flat-blog-item hover-img">
-                                    <div class="img-style">
-                                        <img class="lazyload" data-src="{{ URL::asset('/build/images/blog/blog-10.jpg') }}" src="{{ URL::asset('/build/images/blog/blog-10.jpg') }}" alt="img-blog">
-                                        <span class="date-post">January 28, 2024</span>
-                                    </div>
-                                    <div class="content-box">
-                                        <div class="post-author">
-                                            <span class="fw-6">Jerome Bell</span>
-                                            <span>Furniture</span>
-                                        </div>
-                                        <h5 class="title link">Building gains into housing stocks and how to trade the sector</h5>
-                                        <p class="description">The average contract interest rate for 30-year fixed-rate mortgages with conforming loan balances...</p>
-                                    </div>
 
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="blog-detail.html" class="flat-blog-item hover-img">
-                                    <div class="img-style">
-                                        <img class="lazyload" data-src="{{ URL::asset('/build/images/blog/blog-11.jpg') }}" src="{{ URL::asset('/build/images/blog/blog-11.jpg') }}" alt="img-blog">
-                                        <span class="date-post">January 28, 2024</span>
-                                    </div>
-                                    <div class="content-box">
-                                        <div class="post-author">
-                                            <span class="fw-6">Jerome Bell</span>
-                                            <span>Furniture</span>
-                                        </div>
-                                        <h5 class="title link">Building gains into housing stocks and how to trade the sector</h5>
-                                        <p class="description">The average contract interest rate for 30-year fixed-rate mortgages with conforming loan balances...</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="blog-detail.html" class="flat-blog-item hover-img">
-                                    <div class="img-style">
-                                        <img class="lazyload" data-src="{{ URL::asset('/build/images/blog/blog-12.jpg') }}" src="{{ URL::asset('/build/images/blog/blog-12.jpg') }}" alt="img-blog">
-                                        <span class="date-post">January 28, 2024</span>
-                                    </div>
-                                    <div class="content-box">
-                                        <div class="post-author">
-                                            <span class="fw-6">Jerome Bell</span>
-                                            <span>Furniture</span>
-                                        </div>
-                                        <h5 class="title link">Building gains into housing stocks and how to trade the sector</h5>
-                                        <p class="description">The average contract interest rate for 30-year fixed-rate mortgages with conforming loan balances...</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="sw-pagination sw-pagination-latest text-center"></div>
-                    </div>
-                </div>
-            </section>
+            <livewire:frontend.section-componets.blog-section />
+
             <!-- End Latest New -->
 
-            @include('rentalobj.layout.partials.footer')
 
         </div>
         <!-- /#page -->
@@ -3431,57 +3372,6 @@
     <livewire:auth.register-user />
 
 
-
-<!-- Modal für Vorauswahl -->
-<div class="modal fade" id="insertModal" tabindex="-1" aria-labelledby="insertModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered"> <!-- Hinzugefügt: modal-dialog-centered -->
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="insertModalLabel">Inserieren ab 0 €</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Schließen"></button>
-            </div>
-            <div class="modal-body">
-                <div class="tf-grid-layout md-col-3 wow fadeInUp" style="visibility: visible;">
-                    <!-- Kaufen -->
-                    <div class="box-service">
-                        <div class="image">
-                            <img class="lazyload" data-src="{{ asset('/build/images/service/home-1.png') }}" src="{{ asset('/build/images/service/home-1.png') }}" alt="Kaufen">
-                        </div>
-                        <div class="content text-center">
-                            <h5 class="title">Kaufen</h5>
-                            <p class="description">Sie möchten eine Immobilie kaufen?</p>
-                            <a href="kaufen.html" class="tf-btn btn-line">Weiter <span class="icon icon-arrow-right2"></span></a>
-                        </div>
-                    </div>
-                    <!-- Verkaufen -->
-                    <div class="box-service">
-
-                        <div class="image">
-                            <img class="lazyload" data-src="{{ URL::asset('/build/images/service/home-2.png') }}" src="{{ URL::asset('/build/images/service/home-2.png') }}" alt="Verkaufen">
-                        </div>
-                        <div class="content text-center">
-                            <h5 class="title">Verkaufen</h5>
-                            <p class="description">Sie möchten eine Immobilie verkaufen?</p>
-                            <a href="{{ route('multi-step') }}" class="tf-btn btn-line">Weiter <span class="icon icon-arrow-right2"></span></a>
-                        </div>
-
-                    </div>
-                    <!-- Mieten -->
-                    <div class="box-service">
-                        <div class="image">
-                            <img class="lazyload" data-src="{{ URL::asset('/build/images/service/home-3.png') }}" src="{{ URL::asset('/build/images/service/home-3.png') }}" alt="Mieten">
-                        </div>
-                        <div class="content text-center">
-                            <h5 class="title">Mieten</h5>
-                            <p class="description">Sie möchten eine Immobilie mieten?</p>
-                            <a href="mieten.html" class="tf-btn btn-line">Weiter <span class="icon icon-arrow-right2"></span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 

@@ -43,8 +43,8 @@
             <header id="header" class="main-header header-fixed fixed-header header-style-2">
                 <!-- Header Lower -->
                 <div class="header-lower">
-                    <div class="row">                      
-                        <div class="col-lg-12">         
+                    <div class="row">
+                        <div class="col-lg-12">
                             <div class="inner-header">
                                 <div class="inner-header-left">
                                     <div class="logo-box flex">
@@ -73,7 +73,7 @@
                                                                 <li><a href="topmap-list.html">Find Topmap List</a></li>
                                                                 <li><a href="sidebar-grid.html">Find Sidebar Grid</a></li>
                                                                 <li><a href="sidebar-list.html">Find Sidebar List</a></li>
-    
+
                                                             </ul>
                                                         </li>
                                                         <li class="dropdown2"><a href="#">Properties</a>
@@ -92,7 +92,7 @@
                                                                 <li><a href="contact.html">Contact Us</a></li>
                                                                 <li><a href="faq.html">FAQs</a></li>
                                                                 <li><a href="privacy-policy.html">Privacy Policy</a></li>
-                                                                
+
                                                             </ul>
                                                         </li>
                                                         <li class="dropdown2"><a href="#">Blog</a>
@@ -102,7 +102,7 @@
                                                                 <li><a href="blog-detail.html">Blog Post Details</a></li>
                                                             </ul>
                                                         </li>
-                                                        
+
                                                         <li class="dropdown2"><a href="#">Dashboard</a>
                                                             <ul>
                                                                 <li><a href="dashboard.html">Dashboard</a></li>
@@ -125,7 +125,7 @@
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M13.1251 5C13.1251 5.8288 12.7959 6.62366 12.2099 7.20971C11.6238 7.79576 10.8289 8.125 10.0001 8.125C9.17134 8.125 8.37649 7.79576 7.79043 7.20971C7.20438 6.62366 6.87514 5.8288 6.87514 5C6.87514 4.1712 7.20438 3.37634 7.79043 2.79029C8.37649 2.20424 9.17134 1.875 10.0001 1.875C10.8289 1.875 11.6238 2.20424 12.2099 2.79029C12.7959 3.37634 13.1251 4.1712 13.1251 5ZM3.75098 16.765C3.77776 15.1253 4.44792 13.5618 5.61696 12.4117C6.78599 11.2616 8.36022 10.6171 10.0001 10.6171C11.6401 10.6171 13.2143 11.2616 14.3833 12.4117C15.5524 13.5618 16.2225 15.1253 16.2493 16.765C14.2888 17.664 12.1569 18.1279 10.0001 18.125C7.77014 18.125 5.65348 17.6383 3.75098 16.765Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                             </svg>
-                                            Sign in  
+                                            Sign in
                                         </a>
                                         <div class="flat-bt-top">
                                             <a class="tf-btn primary" href="add-property.html">
@@ -134,21 +134,21 @@
                                                 </svg>
                                                 Submit Property
                                             </a>
-                                        </div>  
+                                        </div>
                                 </div>
-                                    
+
                                 <div class="mobile-nav-toggler mobile-button"><span></span></div>
-                                    
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- End Header Lower -->
-            
+
                 <!-- Mobile Menu  -->
-                <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>    
+                <div class="close-btn"><span class="icon flaticon-cancel-1"></span></div>
                 <div class="mobile-menu">
-                    <div class="menu-backdrop"></div>                            
+                    <div class="menu-backdrop"></div>
                     <nav class="menu-box">
                         <div class="nav-logo"><a href="index.html"><img src="images/logo/logo@2x.png" alt="nav-logo" width="174" height="44"></a></div>
                         <div class="bottom-canvas">
@@ -160,7 +160,7 @@
                             <div class="menu-outer"></div>
                             <div class="button-mobi-sell">
                                 <a class="tf-btn primary" href="add-property.html">Submit Property</a>
-                            </div> 
+                            </div>
                             <div class="mobi-icon-box">
                                 <div class="box d-flex align-items-center">
                                     <span class="icon icon-phone2"></span>
@@ -172,10 +172,10 @@
                                 </div>
                             </div>
                         </div>
-                    </nav>                
+                    </nav>
                 </div>
                 <!-- End Mobile Menu -->
-            
+
             </header>
             <!-- End Main Header -->
             <!-- Slider -->
@@ -217,10 +217,10 @@
                                             <h1 class="title-large title text-white wow fadeIn animationtext clip" data-wow-delay=".2s" data-wow-duration="2000ms">
                                                 Indulge in Your
                                                 <br>
-                                                <span class="tf-text s1 cd-words-wrapper"> 
+                                                <span class="tf-text s1 cd-words-wrapper">
                                                     <span class="item-text is-visible">Sanctuary</span>
                                                     <span class="item-text is-hidden">Safe House</span>
-                                                </span> 
+                                                </span>
                                             </h1>
                                             <p class="subtitle text-white body-2 wow fadeInUp" data-wow-delay=".2s">Discover your private oasis at Homelengo, where every corner, from the spacious garden to the relaxing pool, is crafted for your comfort and enjoyment.</p>
                                         </div>
@@ -231,7 +231,7 @@
                                                 <a href="#"><i class="icon icon-office-fill"></i> Office</a>
                                                 <a href="#"><i class="icon icon-apartment"></i> Apartments</a>
                                             </div>
-                                            
+
                                         </div>
                                     </div>
                                 </div>
@@ -258,7 +258,7 @@
                                                     <img src="images/slider/slider-pagi4.jpg" alt="images">
                                                 </div>
                                             </div>
-                
+
                                         </div>
                                     </div>
                                 </div>
@@ -274,7 +274,7 @@
                 <div class="container">
                     <div class="flat-tab flat-tab-form">
                         <ul class="nav-tab-form style-1 justify-content-center" role="tablist">
-                            <li class="nav-tab-item" role="presentation">   
+                            <li class="nav-tab-item" role="presentation">
                                 <a href="#forRent" class="nav-link-item active"  data-bs-toggle="tab">For Rent</a>
                             </li>
                             <li class="nav-tab-item" role="presentation">
@@ -291,8 +291,8 @@
                                                     <label>Type</label>
                                                     <div class="group-select">
                                                         <div class="nice-select" tabindex="0"><span class="current">All</span>
-                                                            <ul class="list">  
-                                                                <li data-value class="option selected">All</li>                                                        
+                                                            <ul class="list">
+                                                                <li data-value class="option selected">All</li>
                                                                 <li data-value="villa" class="option">Villa</li>
                                                                 <li data-value="studio" class="option">Studio</li>
                                                                 <li data-value="office" class="option">Office</li>
@@ -301,8 +301,8 @@
 
                                                             </ul>
                                                         </div>
-                                                    </div> 
-                                           
+                                                    </div>
+
                                                 </div>
                                                 <div class="form-group-2 form-style">
                                                     <label>Location</label>
@@ -314,9 +314,9 @@
                                                 </div>
                                                 <div class="form-group-3 form-style">
                                                     <label>Keyword</label>
-                                                    <input type="text" class="form-control" placeholder="Search Keyword." value="" name="s" title="Search for" required="">                                                   
+                                                    <input type="text" class="form-control" placeholder="Search Keyword." value="" name="s" title="Search for" required="">
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="box-btn-advanced">
                                                 <div class="form-group-4 box-filter">
@@ -324,12 +324,12 @@
                                                         <span class="text-1">Advanced</span>
                                                         <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M5.5 12.375V3.4375M5.5 12.375C5.86467 12.375 6.21441 12.5199 6.47227 12.7777C6.73013 13.0356 6.875 13.3853 6.875 13.75C6.875 14.1147 6.73013 14.4644 6.47227 14.7223C6.21441 14.9801 5.86467 15.125 5.5 15.125M5.5 12.375C5.13533 12.375 4.78559 12.5199 4.52773 12.7777C4.26987 13.0356 4.125 13.3853 4.125 13.75C4.125 14.1147 4.26987 14.4644 4.52773 14.7223C4.78559 14.9801 5.13533 15.125 5.5 15.125M5.5 15.125V18.5625M16.5 12.375V3.4375M16.5 12.375C16.8647 12.375 17.2144 12.5199 17.4723 12.7777C17.7301 13.0356 17.875 13.3853 17.875 13.75C17.875 14.1147 17.7301 14.4644 17.4723 14.7223C17.2144 14.9801 16.8647 15.125 16.5 15.125M16.5 12.375C16.1353 12.375 15.7856 12.5199 15.5277 12.7777C15.2699 13.0356 15.125 13.3853 15.125 13.75C15.125 14.1147 15.2699 14.4644 15.5277 14.7223C15.7856 14.9801 16.1353 15.125 16.5 15.125M16.5 15.125V18.5625M11 6.875V3.4375M11 6.875C11.3647 6.875 11.7144 7.01987 11.9723 7.27773C12.2301 7.53559 12.375 7.88533 12.375 8.25C12.375 8.61467 12.2301 8.96441 11.9723 9.22227C11.7144 9.48013 11.3647 9.625 11 9.625M11 6.875C10.6353 6.875 10.2856 7.01987 10.0277 7.27773C9.76987 7.53559 9.625 7.88533 9.625 8.25C9.625 8.61467 9.76987 8.96441 10.0277 9.22227C10.2856 9.48013 10.6353 9.625 11 9.625M11 9.625V18.5625" stroke="#161E2D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                        </svg>                                                                          
+                                                        </svg>
                                                     </a>
                                                 </div>
                                                 <button type="submit" class="tf-btn btn-search primary">Search <i class="icon icon-search"></i> </button>
                                             </div>
-                                            
+
                                         </div>
                                         <div class="wd-search-form">
                                             <div class="grid-2 group-box group-price">
@@ -346,11 +346,11 @@
                                                     <div class="slider-labels">
                                                         <div>
                                                             <input type="hidden" name="min-value" value="">
-                                                            <input type="hidden" name="max-value" value="">                                                                                  
+                                                            <input type="hidden" name="max-value" value="">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="widget-price">
                                                     <div class="box-title-price">
                                                         <span class="title-price fw-6">Size:</span>
@@ -362,9 +362,9 @@
                                                     </div>
                                                     <div id="slider-range2"></div>
                                                     <div class="slider-labels">
-                                                    <div>                                                                             
+                                                    <div>
                                                         <input type="hidden" name="min-value2" value="">
-                                                        <input type="hidden" name="max-value2" value="">      
+                                                        <input type="hidden" name="max-value2" value="">
                                                     </div>
                                                     </div>
                                                 </div>
@@ -374,7 +374,7 @@
                                                     <div class="box-select">
                                                         <label class="title-select fw-6">Rooms</label>
                                                         <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                                            <ul class="list"> 
+                                                            <ul class="list">
                                                                 <li data-value="1" class="option">1</li>
                                                                 <li data-value="2" class="option selected">2</li>
                                                                 <li data-value="3" class="option">3</li>
@@ -391,7 +391,7 @@
                                                     <div class="box-select">
                                                         <label class="title-select fw-6">Bathrooms</label>
                                                         <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                                            <ul class="list"> 
+                                                            <ul class="list">
                                                                 <li data-value="1" class="option">1</li>
                                                                 <li data-value="2" class="option selected">2</li>
                                                                 <li data-value="3" class="option">3</li>
@@ -410,7 +410,7 @@
                                                     <div class="box-select">
                                                         <label class="title-select fw-6">Bedrooms</label>
                                                         <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                                            <ul class="list"> 
+                                                            <ul class="list">
                                                                 <li data-value="1" class="option">1</li>
                                                                 <li data-value="2" class="option selected">2</li>
                                                                 <li data-value="3" class="option">3</li>
@@ -427,7 +427,7 @@
                                                     <div class="box-select">
                                                         <label class="title-select fw-6">Type</label>
                                                         <div class="nice-select" tabindex="0"><span class="current">2</span>
-                                                            <ul class="list"> 
+                                                            <ul class="list">
                                                                 <li data-value="1" class="option">1</li>
                                                                 <li data-value="2" class="option selected">2</li>
                                                                 <li data-value="3" class="option">3</li>
@@ -442,116 +442,116 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                               
+
                                             </div>
-                                           
+
                                             <div class="group-checkbox">
                                                 <div class="text-1 text-black-2">Amenities:</div>
                                                 <div class="group-amenities grid-6">
                                                     <div class="box-amenities">
                                                         <fieldset class="amenities-item">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb1" checked> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb1" checked>
                                                             <label for="cb1" class="text-cb-amenities">Air Condition</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb2"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb2">
                                                             <label for="cb2" class="text-cb-amenities">Cable TV</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb3"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb3">
                                                             <label for="cb3" class="text-cb-amenities">Ceiling Height</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb4"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb4">
                                                             <label for="cb4" class="text-cb-amenities">Fireplace</label>
                                                         </fieldset>
                                                     </div>
                                                     <div class="box-amenities">
                                                         <fieldset class="amenities-item">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb5"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb5">
                                                             <label for="cb5" class="text-cb-amenities">Disabled Access</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb6" checked> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb6" checked>
                                                             <label for="cb6" class="text-cb-amenities">Elevator</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb7"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb7">
                                                             <label for="cb7" class="text-cb-amenities">Fence</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb8"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb8">
                                                             <label for="cb8" class="text-cb-amenities">Garden</label>
                                                         </fieldset>
                                                     </div>
                                                     <div class="box-amenities">
                                                         <fieldset class="amenities-item">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb9" checked> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb9" checked>
                                                             <label for="cb9" class="text-cb-amenities">Floor</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb10"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb10">
                                                             <label for="cb10" class="text-cb-amenities">Furnishing</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb11" checked> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb11" checked>
                                                             <label for="cb11" class="text-cb-amenities">Garage</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb12"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb12">
                                                             <label for="cb12" class="text-cb-amenities">Pet Friendly</label>
                                                         </fieldset>
                                                     </div>
                                                     <div class="box-amenities">
                                                         <fieldset class="amenities-item">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb13"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb13">
                                                             <label for="cb13" class="text-cb-amenities">Heating</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb14"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb14">
                                                             <label for="cb14" class="text-cb-amenities">Intercom</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb15"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb15">
                                                             <label for="cb15" class="text-cb-amenities">Parking</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb16"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb16">
                                                             <label for="cb16" class="text-cb-amenities">WiFi</label>
                                                         </fieldset>
                                                     </div>
                                                     <div class="box-amenities">
                                                         <fieldset class="amenities-item">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb17"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb17">
                                                             <label for="cb17" class="text-cb-amenities">Renovation</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb18"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb18">
                                                             <label for="cb18" class="text-cb-amenities">Security</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb19"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb19">
                                                             <label for="cb19" class="text-cb-amenities">Swimming Pool</label>
                                                         </fieldset>
-                                                        
+
                                                     </div>
                                                     <div class="box-amenities">
                                                         <fieldset class="amenities-item">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb20"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb20">
                                                             <label for="cb20" class="text-cb-amenities">Window Type</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb21"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb21">
                                                             <label for="cb21" class="text-cb-amenities">Search property</label>
                                                         </fieldset>
                                                         <fieldset class="amenities-item mt-16">
-                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb22"> 
+                                                            <input type="checkbox" class="tf-checkbox style-1" id="cb22">
                                                             <label for="cb22" class="text-cb-amenities">Construction Year</label>
                                                         </fieldset>
                                                     </div>
 
                                                 </div>
-                                                
+
                                             </div>
                                         </div>
                                     </form>
@@ -601,7 +601,7 @@
                             </div>
                         </div>
                     </div>
-                     
+
                 </div>
             </section>
             <!-- End Service -->
@@ -614,7 +614,7 @@
                     </div>
                     <div class="flat-tab-recommended flat-animate-tab wow fadeInUp" data-wow-delay=".2s">
                         <ul class="nav-tab-recommended justify-content-md-center" role="tablist">
-                            <li class="nav-tab-item" role="presentation">   
+                            <li class="nav-tab-item" role="presentation">
                                 <a href="#viewAll" class="nav-link-item"  data-bs-toggle="tab">View All</a>
                             </li>
                             <li class="nav-tab-item" role="presentation">
@@ -648,17 +648,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -680,9 +680,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -707,17 +707,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -739,9 +739,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -766,17 +766,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -798,9 +798,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -825,17 +825,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -857,9 +857,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -884,17 +884,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -916,9 +916,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -943,17 +943,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -975,9 +975,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1009,17 +1009,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1041,9 +1041,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1068,17 +1068,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1100,9 +1100,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1127,17 +1127,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1159,9 +1159,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1186,17 +1186,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1218,9 +1218,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1245,17 +1245,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1277,9 +1277,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1304,17 +1304,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1336,9 +1336,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1370,17 +1370,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1402,9 +1402,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1429,17 +1429,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1461,9 +1461,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1488,17 +1488,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1520,9 +1520,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1547,17 +1547,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1579,9 +1579,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1606,17 +1606,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1638,9 +1638,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1665,17 +1665,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1697,9 +1697,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1731,17 +1731,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1763,9 +1763,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1790,17 +1790,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1822,9 +1822,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1849,17 +1849,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1881,9 +1881,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1908,17 +1908,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1940,9 +1940,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -1967,17 +1967,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -1999,9 +1999,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2026,17 +2026,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2058,9 +2058,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2092,17 +2092,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2124,9 +2124,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2151,17 +2151,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2183,9 +2183,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2210,17 +2210,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2242,9 +2242,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2269,17 +2269,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2301,9 +2301,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2328,17 +2328,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2360,9 +2360,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2387,17 +2387,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2419,9 +2419,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2453,17 +2453,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2485,9 +2485,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2512,17 +2512,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2544,9 +2544,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2571,17 +2571,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2603,9 +2603,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2630,17 +2630,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2662,9 +2662,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2689,17 +2689,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2721,9 +2721,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2748,17 +2748,17 @@
                                                             <li class="flag-tag primary">Featured</li>
                                                             <li class="flag-tag style-1">For Sale</li>
                                                         </ul>
-                                                        
+
                                                     </div>
                                                     <div class="bottom">
                                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path d="M10 7C10 7.53043 9.78929 8.03914 9.41421 8.41421C9.03914 8.78929 8.53043 9 8 9C7.46957 9 6.96086 8.78929 6.58579 8.41421C6.21071 8.03914 6 7.53043 6 7C6 6.46957 6.21071 5.96086 6.58579 5.58579C6.96086 5.21071 7.46957 5 8 5C8.53043 5 9.03914 5.21071 9.41421 5.58579C9.78929 5.96086 10 6.46957 10 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                             <path d="M13 7C13 11.7613 8 14.5 8 14.5C8 14.5 3 11.7613 3 7C3 5.67392 3.52678 4.40215 4.46447 3.46447C5.40215 2.52678 6.67392 2 8 2C9.32608 2 10.5979 2.52678 11.5355 3.46447C12.4732 4.40215 13 5.67392 13 7Z" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                         </svg>
-                                                        145 Brooklyn Ave, Califonia, New York   
+                                                        145 Brooklyn Ave, Califonia, New York
                                                     </div>
                                                 </a>
-                                                
+
                                             </div>
                                             <div class="archive-bottom">
                                                 <div class="content-top">
@@ -2780,9 +2780,9 @@
                                                                 <span class="fw-6">1150</span>
                                                             </li>
                                                         </ul>
-                                                    
+
                                                 </div>
-                                                
+
                                                 <div class="content-bottom">
                                                     <div class="d-flex gap-8 align-items-center">
                                                         <div class="avatar avt-40 round">
@@ -2802,7 +2802,7 @@
                             </div>
                         </div>
                     </div>
-   
+
                 </div>
 
             </section>
@@ -2840,7 +2840,7 @@
                                             <span class="sub-title fw-6">321 Property</span>
                                             <h6 class="title text-line-clamp-1 link">Pembroke Pines</h6>
                                         </div>
-                                        <a href="topmap-grid.html" class="box-icon line w-44 round"><i class="icon icon-arrow-right2"></i></a> 
+                                        <a href="topmap-grid.html" class="box-icon line w-44 round"><i class="icon icon-arrow-right2"></i></a>
                                     </div>
                                 </div>
                             </div>
@@ -2857,7 +2857,7 @@
                                         <a href="topmap-grid.html" class="box-icon line w-44 round"><i class="icon icon-arrow-right2"></i></a>
                                     </div>
                                 </div>
-                            </div>                            
+                            </div>
                             <div class="swiper-slide">
                                 <div class="box-location">
                                     <a href="topmap-grid.html" class="image img-style">
@@ -2991,7 +2991,7 @@
                         </div>
                     </div>
                 </div>
-                 
+
             </section>
             <!-- End Property  -->
             <!-- Testimonial -->
@@ -3003,7 +3003,7 @@
                             <h3 class="title mt-4">What’s people say’s</h3>
                             <p class="desc text-variant-1">Our seasoned team excels in real estate with years of successful market navigation, offering informed decisions and optimal results.</p>
                         </div>
-                    </div>        
+                    </div>
                     <div class="swiper tf-sw-testimonial" data-preview="3" data-tablet="3" data-mobile-sm="2" data-mobile="1" data-space="15" data-space-md="30" data-space-lg="30" data-centered="false" data-loop="false">
                         <div class="swiper-wrapper wow fadeInUp" data-wow-delay=".2s">
                             <div class="swiper-slide">
@@ -3102,10 +3102,10 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                         <div class="sw-pagination sw-pagination-testimonial text-center"></div>
-                    </div>     
+                    </div>
                 </div>
             </section>
             <!-- End Testimonial -->
@@ -3210,8 +3210,8 @@
                                         <path d="M111.459 71.3751C111.459 71.1205 111.374 70.9084 111.204 70.7811C111.077 70.6538 110.865 70.6113 110.653 70.6113H109.592V73.3695H110.016V72.1814H110.568L111.12 73.3695H111.629L110.992 72.1389C111.289 72.0116 111.459 71.757 111.459 71.3751ZM109.974 71.7995V70.9508H110.61C110.738 70.9508 110.865 70.9932 110.907 71.0357C110.992 71.1205 111.035 71.2054 111.035 71.3327C111.035 71.46 110.992 71.5449 110.907 71.6297C110.822 71.7146 110.695 71.757 110.568 71.757H109.974V71.7995Z" fill="#B9B9B9"/>
                                         <path d="M114.218 73.3695H116V72.9876H114.642V72.1814H115.788V71.7995H114.642V70.9932H116V70.6113H114.218V73.3695Z" fill="#B9B9B9"/>
                                         </svg>
-                                        
-                                            
+
+
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -3237,7 +3237,7 @@
                                         </clipPath>
                                         </defs>
                                     </svg>
-                                    
+
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -3277,8 +3277,8 @@
                                         <path d="M43.2187 64.2095H41.4812L46.5068 50.5228H48.2176L53.2432 64.2095H51.5056L47.4156 52.6881H47.3087L43.2187 64.2095ZM43.8603 58.8631H50.864V60.3334H43.8603V58.8631ZM59.3314 64.4233C58.369 64.4233 57.5403 64.1961 56.8453 63.7417C56.1503 63.2872 55.6156 62.6613 55.2414 61.8638C54.8671 61.0663 54.68 60.1551 54.68 59.1304C54.68 58.0879 54.8716 57.1679 55.2548 56.3704C55.6424 55.5684 56.1815 54.9424 56.872 54.4925C57.5671 54.038 58.3779 53.8108 59.3046 53.8108C60.0264 53.8108 60.6769 53.9444 61.256 54.2118C61.8352 54.4791 62.3097 54.8533 62.6795 55.3345C63.0493 55.8157 63.2788 56.377 63.3679 57.0186H61.7907C61.6704 56.5508 61.4031 56.1365 60.9887 55.7756C60.5788 55.4102 60.0264 55.2276 59.3314 55.2276C58.7165 55.2276 58.1774 55.388 57.7141 55.7087C57.2552 56.0251 56.8965 56.4728 56.6381 57.052C56.3842 57.6268 56.2572 58.3017 56.2572 59.077C56.2572 59.87 56.3819 60.5606 56.6314 61.1487C56.8854 61.7368 57.2418 62.1934 57.7007 62.5187C58.1641 62.8439 58.7076 63.0065 59.3314 63.0065C59.7412 63.0065 60.1133 62.9353 60.4474 62.7927C60.7816 62.6501 61.0645 62.4452 61.2961 62.1779C61.5278 61.9105 61.6927 61.5898 61.7907 61.2155H63.3679C63.2788 61.8214 63.0582 62.3672 62.7063 62.8528C62.3587 63.334 61.8976 63.7172 61.3229 64.0023C60.7526 64.283 60.0888 64.4233 59.3314 64.4233ZM69.8437 64.4233C68.8813 64.4233 68.0526 64.1961 67.3576 63.7417C66.6626 63.2872 66.1279 62.6613 65.7537 61.8638C65.3794 61.0663 65.1923 60.1551 65.1923 59.1304C65.1923 58.0879 65.3839 57.1679 65.767 56.3704C66.1547 55.5684 66.6937 54.9424 67.3843 54.4925C68.0793 54.038 68.8902 53.8108 69.8169 53.8108C70.5387 53.8108 71.1892 53.9444 71.7683 54.2118C72.3475 54.4791 72.822 54.8533 73.1918 55.3345C73.5616 55.8157 73.7911 56.377 73.8802 57.0186H72.303C72.1827 56.5508 71.9154 56.1365 71.501 55.7756C71.0911 55.4102 70.5387 55.2276 69.8437 55.2276C69.2288 55.2276 68.6897 55.388 68.2264 55.7087C67.7675 56.0251 67.4088 56.4728 67.1504 57.052C66.8965 57.6268 66.7695 58.3017 66.7695 59.077C66.7695 59.87 66.8942 60.5606 67.1437 61.1487C67.3977 61.7368 67.7541 62.1934 68.213 62.5187C68.6764 62.8439 69.2199 63.0065 69.8437 63.0065C70.2535 63.0065 70.6256 62.9353 70.9597 62.7927C71.2939 62.6501 71.5768 62.4452 71.8084 62.1779C72.0401 61.9105 72.205 61.5898 72.303 61.2155H73.8802C73.7911 61.8214 73.5705 62.3672 73.2185 62.8528C72.871 63.334 72.4099 63.7172 71.8352 64.0023C71.2649 64.283 70.6011 64.4233 69.8437 64.4233ZM82.6549 60.0126V53.9444H84.2321V64.2095H82.6549V62.4719H82.548C82.3074 62.9932 81.9331 63.4365 81.4252 63.8018C80.9173 64.1627 80.2757 64.3431 79.5005 64.3431C78.859 64.3431 78.2887 64.2028 77.7897 63.9221C77.2907 63.637 76.8986 63.2093 76.6135 62.639C76.3283 62.0642 76.1858 61.3403 76.1858 60.467V53.9444H77.763V60.3601C77.763 61.1086 77.9724 61.7056 78.3912 62.1511C78.8144 62.5967 79.3535 62.8194 80.0084 62.8194C80.4005 62.8194 80.7992 62.7192 81.2047 62.5187C81.6146 62.3182 81.9576 62.0108 82.2339 61.5964C82.5145 61.1821 82.6549 60.6541 82.6549 60.0126ZM94.3918 56.2434L92.975 56.6444C92.8859 56.4082 92.7545 56.1788 92.5807 55.956C92.4114 55.7288 92.1798 55.5417 91.8857 55.3946C91.5917 55.2476 91.2152 55.1741 90.7563 55.1741C90.1281 55.1741 89.6046 55.3189 89.1858 55.6085C88.7715 55.8936 88.5643 56.2568 88.5643 56.6978C88.5643 57.0899 88.7069 57.3995 88.992 57.6268C89.2771 57.854 89.7227 58.0433 90.3286 58.1948L91.8523 58.5691C92.7701 58.7918 93.454 59.1327 93.904 59.5915C94.354 60.046 94.579 60.6319 94.579 61.3492C94.579 61.9373 94.4096 62.463 94.071 62.9263C93.7369 63.3897 93.2691 63.755 92.6676 64.0223C92.0662 64.2897 91.3667 64.4233 90.5692 64.4233C89.5222 64.4233 88.6556 64.1961 87.9695 63.7417C87.2834 63.2872 86.849 62.6234 86.6663 61.7501L88.1633 61.3759C88.3059 61.9284 88.5754 62.3427 88.9719 62.6189C89.3729 62.8952 89.8964 63.0333 90.5424 63.0333C91.2776 63.0333 91.8612 62.8773 92.2934 62.5655C92.73 62.2491 92.9483 61.8704 92.9483 61.4294C92.9483 61.0729 92.8236 60.7744 92.5741 60.5338C92.3246 60.2888 91.9414 60.1061 91.4246 59.9858L89.7138 59.5849C88.7737 59.3621 88.0831 59.0168 87.642 58.549C87.2054 58.0767 86.9871 57.4864 86.9871 56.778C86.9871 56.1988 87.1497 55.6865 87.475 55.2409C87.8047 54.7954 88.2524 54.4457 88.8182 54.1917C89.3885 53.9378 90.0345 53.8108 90.7563 53.8108C91.7721 53.8108 92.5696 54.0336 93.1488 54.4791C93.7324 54.9246 94.1468 55.5127 94.3918 56.2434ZM99.9738 64.4501C99.3233 64.4501 98.733 64.3275 98.2028 64.0825C97.6726 63.833 97.2516 63.4743 96.9397 63.0065C96.6278 62.5343 96.4719 61.964 96.4719 61.2957C96.4719 60.7076 96.5877 60.2309 96.8194 59.8655C97.0511 59.4958 97.3607 59.2062 97.7483 58.9968C98.136 58.7874 98.5637 58.6314 99.0315 58.529C99.5037 58.422 99.9782 58.3374 100.455 58.275C101.079 58.1948 101.584 58.1347 101.972 58.0946C102.364 58.05 102.649 57.9765 102.827 57.874C103.01 57.7716 103.101 57.5933 103.101 57.3394V57.2859C103.101 56.6265 102.921 56.1142 102.56 55.7488C102.204 55.3835 101.662 55.2008 100.936 55.2008C100.183 55.2008 99.5928 55.3657 99.1651 55.6954C98.7374 56.0251 98.4367 56.377 98.2629 56.7513L96.7659 56.2167C97.0333 55.5929 97.3897 55.1073 97.8352 54.7598C98.2852 54.4078 98.7753 54.1628 99.3055 54.0246C99.8401 53.8821 100.366 53.8108 100.883 53.8108C101.212 53.8108 101.591 53.8509 102.019 53.9311C102.451 54.0068 102.867 54.165 103.268 54.4056C103.674 54.6462 104.01 55.0093 104.278 55.4949C104.545 55.9805 104.679 56.631 104.679 57.4463V64.2095H103.101V62.8194H103.021C102.914 63.0422 102.736 63.2805 102.487 63.5345C102.237 63.7884 101.905 64.0045 101.491 64.1827C101.076 64.361 100.571 64.4501 99.9738 64.4501ZM100.214 63.0333C100.838 63.0333 101.364 62.9108 101.792 62.6657C102.224 62.4207 102.549 62.1043 102.767 61.7167C102.99 61.3291 103.101 60.9215 103.101 60.4937V59.0502C103.035 59.1304 102.888 59.2039 102.66 59.2708C102.438 59.3331 102.179 59.3888 101.885 59.4378C101.595 59.4824 101.313 59.5225 101.036 59.5581C100.765 59.5893 100.544 59.6161 100.375 59.6383C99.9649 59.6918 99.5817 59.7787 99.2253 59.899C98.8733 60.0148 98.5882 60.1908 98.3699 60.4269C98.156 60.6586 98.0491 60.9749 98.0491 61.3759C98.0491 61.9239 98.2518 62.3382 98.6572 62.6189C99.0671 62.8952 99.5862 63.0333 100.214 63.0333ZM112.128 53.9444V55.281H106.595V53.9444H112.128ZM108.252 64.2095V52.5277C108.252 51.9396 108.39 51.4495 108.667 51.0574C108.943 50.6653 109.302 50.3713 109.743 50.1753C110.184 49.9792 110.649 49.8812 111.139 49.8812C111.527 49.8812 111.843 49.9124 112.088 49.9748C112.333 50.0371 112.516 50.0951 112.636 50.1485L112.182 51.5119C112.102 51.4851 111.99 51.4517 111.848 51.4116C111.71 51.3715 111.527 51.3515 111.3 51.3515C110.778 51.3515 110.402 51.4829 110.17 51.7458C109.943 52.0086 109.829 52.394 109.829 52.9019V64.2095H108.252Z" fill="#B9B9B9"/>
                                         <path d="M42.2901 73.0542C42.1434 73.0542 42.0103 73.0266 41.8907 72.9714C41.7712 72.9151 41.6762 72.8342 41.6059 72.7288C41.5356 72.6223 41.5004 72.4937 41.5004 72.343C41.5004 72.2104 41.5266 72.1029 41.5788 72.0205C41.631 71.9371 41.7009 71.8718 41.7883 71.8246C41.8757 71.7774 41.9721 71.7422 42.0776 71.7191C42.1841 71.695 42.2911 71.6759 42.3986 71.6619C42.5392 71.6438 42.6532 71.6302 42.7406 71.6212C42.829 71.6111 42.8933 71.5946 42.9335 71.5714C42.9747 71.5483 42.9953 71.5082 42.9953 71.4509V71.4388C42.9953 71.2902 42.9546 71.1746 42.8732 71.0922C42.7929 71.0099 42.6708 70.9687 42.5071 70.9687C42.3373 70.9687 42.2042 71.0059 42.1077 71.0802C42.0113 71.1545 41.9435 71.2339 41.9043 71.3183L41.5667 71.1977C41.627 71.0571 41.7074 70.9476 41.8079 70.8692C41.9093 70.7899 42.0198 70.7346 42.1394 70.7035C42.2599 70.6713 42.3785 70.6552 42.495 70.6552C42.5693 70.6552 42.6547 70.6643 42.7512 70.6824C42.8486 70.6994 42.9426 70.7351 43.033 70.7894C43.1244 70.8436 43.2002 70.9255 43.2605 71.035C43.3208 71.1445 43.3509 71.2912 43.3509 71.475V73H42.9953V72.6866H42.9772C42.9531 72.7368 42.9129 72.7905 42.8567 72.8478C42.8004 72.9051 42.7256 72.9538 42.6321 72.994C42.5387 73.0342 42.4247 73.0542 42.2901 73.0542ZM42.3443 72.7348C42.485 72.7348 42.6035 72.7072 42.6999 72.6519C42.7974 72.5966 42.8707 72.5253 42.92 72.4379C42.9702 72.3505 42.9953 72.2586 42.9953 72.1622V71.8367C42.9802 71.8547 42.9471 71.8713 42.8958 71.8864C42.8456 71.9005 42.7873 71.913 42.721 71.9241C42.6557 71.9341 42.5919 71.9432 42.5297 71.9512C42.4684 71.9582 42.4187 71.9642 42.3805 71.9693C42.2881 71.9813 42.2017 72.0009 42.1213 72.028C42.0419 72.0542 41.9776 72.0938 41.9284 72.1471C41.8802 72.1993 41.8561 72.2707 41.8561 72.3611C41.8561 72.4846 41.9018 72.5781 41.9932 72.6414C42.0856 72.7036 42.2027 72.7348 42.3443 72.7348ZM44.9403 73.0482C44.7234 73.0482 44.5365 72.997 44.3798 72.8945C44.2231 72.792 44.1025 72.6509 44.0181 72.4711C43.9337 72.2912 43.8915 72.0858 43.8915 71.8547C43.8915 71.6197 43.9347 71.4122 44.0211 71.2324C44.1085 71.0516 44.2301 70.9104 44.3858 70.8089C44.5425 70.7065 44.7254 70.6552 44.9343 70.6552C45.0971 70.6552 45.2437 70.6854 45.3743 70.7457C45.5049 70.8059 45.6119 70.8903 45.6953 70.9988C45.7787 71.1073 45.8304 71.2339 45.8505 71.3786H45.4949C45.4678 71.2731 45.4075 71.1797 45.3141 71.0983C45.2216 71.0159 45.0971 70.9747 44.9403 70.9747C44.8017 70.9747 44.6802 71.0109 44.5757 71.0832C44.4722 71.1545 44.3913 71.2555 44.3331 71.3861C44.2758 71.5157 44.2472 71.6679 44.2472 71.8427C44.2472 72.0215 44.2753 72.1772 44.3316 72.3098C44.3888 72.4424 44.4692 72.5454 44.5727 72.6188C44.6771 72.6921 44.7997 72.7288 44.9403 72.7288C45.0328 72.7288 45.1167 72.7127 45.192 72.6805C45.2673 72.6484 45.3311 72.6022 45.3834 72.5419C45.4356 72.4816 45.4728 72.4093 45.4949 72.3249H45.8505C45.8304 72.4615 45.7807 72.5846 45.7013 72.6941C45.623 72.8026 45.519 72.889 45.3894 72.9533C45.2608 73.0166 45.1111 73.0482 44.9403 73.0482ZM47.3107 73.0482C47.0937 73.0482 46.9069 72.997 46.7501 72.8945C46.5934 72.792 46.4729 72.6509 46.3885 72.4711C46.3041 72.2912 46.2619 72.0858 46.2619 71.8547C46.2619 71.6197 46.3051 71.4122 46.3915 71.2324C46.4789 71.0516 46.6005 70.9104 46.7562 70.8089C46.9129 70.7065 47.0957 70.6552 47.3047 70.6552C47.4674 70.6552 47.6141 70.6854 47.7447 70.7457C47.8753 70.8059 47.9823 70.8903 48.0657 70.9988C48.1491 71.1073 48.2008 71.2339 48.2209 71.3786H47.8653C47.8381 71.2731 47.7779 71.1797 47.6844 71.0983C47.592 71.0159 47.4674 70.9747 47.3107 70.9747C47.1721 70.9747 47.0505 71.0109 46.946 71.0832C46.8426 71.1545 46.7617 71.2555 46.7034 71.3861C46.6462 71.5157 46.6175 71.6679 46.6175 71.8427C46.6175 72.0215 46.6457 72.1772 46.7019 72.3098C46.7592 72.4424 46.8396 72.5454 46.943 72.6188C47.0475 72.6921 47.1701 72.7288 47.3107 72.7288C47.4031 72.7288 47.487 72.7127 47.5624 72.6805C47.6377 72.6484 47.7015 72.6022 47.7538 72.5419C47.806 72.4816 47.8432 72.4093 47.8653 72.3249H48.2209C48.2008 72.4615 48.1511 72.5846 48.0717 72.6941C47.9934 72.8026 47.8894 72.889 47.7598 72.9533C47.6312 73.0166 47.4815 73.0482 47.3107 73.0482ZM49.6811 73.0482C49.4721 73.0482 49.2888 72.9985 49.1311 72.899C48.9743 72.7996 48.8518 72.6604 48.7634 72.4816C48.676 72.3028 48.6323 72.0938 48.6323 71.8547C48.6323 71.6136 48.676 71.4032 48.7634 71.2234C48.8518 71.0435 48.9743 70.9039 49.1311 70.8044C49.2888 70.705 49.4721 70.6552 49.6811 70.6552C49.8901 70.6552 50.0729 70.705 50.2296 70.8044C50.3873 70.9039 50.5099 71.0435 50.5973 71.2234C50.6857 71.4032 50.7299 71.6136 50.7299 71.8547C50.7299 72.0938 50.6857 72.3028 50.5973 72.4816C50.5099 72.6604 50.3873 72.7996 50.2296 72.899C50.0729 72.9985 49.8901 73.0482 49.6811 73.0482ZM49.6811 72.7288C49.8398 72.7288 49.9704 72.6881 50.0729 72.6067C50.1754 72.5253 50.2512 72.4183 50.3004 72.2857C50.3497 72.1531 50.3743 72.0095 50.3743 71.8547C50.3743 71.7 50.3497 71.5559 50.3004 71.4223C50.2512 71.2887 50.1754 71.1807 50.0729 71.0983C49.9704 71.0159 49.8398 70.9747 49.6811 70.9747C49.5224 70.9747 49.3918 71.0159 49.2893 71.0983C49.1868 71.1807 49.111 71.2887 49.0618 71.4223C49.0125 71.5559 48.9879 71.7 48.9879 71.8547C48.9879 72.0095 49.0125 72.1531 49.0618 72.2857C49.111 72.4183 49.1868 72.5253 49.2893 72.6067C49.3918 72.6881 49.5224 72.7288 49.6811 72.7288ZM52.7315 72.0537V70.6854H53.0871V73H52.7315V72.6082H52.7073C52.6531 72.7257 52.5687 72.8257 52.4542 72.9081C52.3397 72.9895 52.195 73.0301 52.0202 73.0301C51.8755 73.0301 51.7469 72.9985 51.6344 72.9352C51.5219 72.8709 51.4335 72.7745 51.3692 72.6459C51.3049 72.5163 51.2728 72.353 51.2728 72.1561V70.6854H51.6284V72.132C51.6284 72.3008 51.6756 72.4354 51.77 72.5359C51.8655 72.6363 51.987 72.6866 52.1347 72.6866C52.2231 72.6866 52.313 72.664 52.4045 72.6188C52.4969 72.5735 52.5742 72.5042 52.6365 72.4108C52.6998 72.3174 52.7315 72.1983 52.7315 72.0537ZM54.0941 71.6076V73H53.7385V70.6854H54.082V71.047H54.1122C54.1664 70.9295 54.2488 70.8351 54.3593 70.7637C54.4698 70.6914 54.6125 70.6552 54.7873 70.6552C54.944 70.6552 55.0811 70.6874 55.1987 70.7517C55.3162 70.815 55.4076 70.9114 55.4729 71.041C55.5382 71.1696 55.5709 71.3324 55.5709 71.5293V73H55.2152V71.5534C55.2152 71.3715 55.168 71.2299 55.0736 71.1284C54.9791 71.0259 54.8495 70.9747 54.6848 70.9747C54.5713 70.9747 54.4698 70.9993 54.3804 71.0485C54.292 71.0978 54.2222 71.1696 54.1709 71.264C54.1197 71.3585 54.0941 71.473 54.0941 71.6076ZM57.2273 70.6854V70.9868H56.0278V70.6854H57.2273ZM56.3774 70.1308H56.7331V72.337C56.7331 72.4374 56.7476 72.5128 56.7768 72.563C56.8069 72.6122 56.8451 72.6454 56.8913 72.6625C56.9385 72.6785 56.9882 72.6866 57.0405 72.6866C57.0797 72.6866 57.1118 72.6846 57.1369 72.6805C57.162 72.6755 57.1821 72.6715 57.1972 72.6685L57.2695 72.9879C57.2454 72.997 57.2118 73.006 57.1686 73.0151C57.1254 73.0251 57.0706 73.0301 57.0043 73.0301C56.9038 73.0301 56.8054 73.0085 56.709 72.9653C56.6135 72.9221 56.5342 72.8563 56.4709 72.7679C56.4086 72.6795 56.3774 72.568 56.3774 72.4334V70.1308ZM57.7623 73V70.6854H58.1179V73H57.7623ZM57.9431 70.2996C57.8738 70.2996 57.814 70.276 57.7638 70.2288C57.7146 70.1816 57.69 70.1248 57.69 70.0585C57.69 69.9922 57.7146 69.9354 57.7638 69.8882C57.814 69.841 57.8738 69.8174 57.9431 69.8174C58.0124 69.8174 58.0717 69.841 58.1209 69.8882C58.1712 69.9354 58.1963 69.9922 58.1963 70.0585C58.1963 70.1248 58.1712 70.1816 58.1209 70.2288C58.0717 70.276 58.0124 70.2996 57.9431 70.2996ZM59.1249 71.6076V73H58.7693V70.6854H59.1129V71.047H59.143C59.1972 70.9295 59.2796 70.8351 59.3901 70.7637C59.5006 70.6914 59.6433 70.6552 59.8181 70.6552C59.9748 70.6552 60.1119 70.6874 60.2295 70.7517C60.347 70.815 60.4384 70.9114 60.5037 71.041C60.569 71.1696 60.6017 71.3324 60.6017 71.5293V73H60.2461V71.5534C60.2461 71.3715 60.1988 71.2299 60.1044 71.1284C60.01 71.0259 59.8804 70.9747 59.7156 70.9747C59.6021 70.9747 59.5006 70.9993 59.4112 71.0485C59.3228 71.0978 59.253 71.1696 59.2018 71.264C59.1505 71.3585 59.1249 71.473 59.1249 71.6076ZM62.1858 73.9162C62.014 73.9162 61.8664 73.8941 61.7428 73.8499C61.6192 73.8067 61.5163 73.7494 61.4339 73.6781C61.3525 73.6078 61.2877 73.5324 61.2395 73.4521L61.5228 73.2532C61.5549 73.2954 61.5956 73.3436 61.6448 73.3978C61.6941 73.4531 61.7614 73.5008 61.8468 73.541C61.9332 73.5822 62.0462 73.6028 62.1858 73.6028C62.3727 73.6028 62.5269 73.5576 62.6484 73.4671C62.77 73.3767 62.8308 73.2351 62.8308 73.0422V72.572H62.8006C62.7745 72.6142 62.7374 72.6665 62.6891 72.7288C62.6419 72.79 62.5736 72.8448 62.4842 72.893C62.3958 72.9402 62.2762 72.9638 62.1255 72.9638C61.9387 72.9638 61.7709 72.9196 61.6222 72.8312C61.4746 72.7428 61.3575 72.6142 61.2711 72.4455C61.1857 72.2767 61.143 72.0717 61.143 71.8306C61.143 71.5935 61.1847 71.3871 61.2681 71.2113C61.3515 71.0345 61.4675 70.8979 61.6162 70.8014C61.7649 70.704 61.9367 70.6552 62.1316 70.6552C62.2823 70.6552 62.4018 70.6804 62.4902 70.7306C62.5796 70.7798 62.6479 70.8361 62.6952 70.8994C62.7434 70.9617 62.7806 71.0129 62.8067 71.0531H62.8428V70.6854H63.1864V73.0663C63.1864 73.2652 63.1412 73.427 63.0508 73.5515C62.9614 73.6771 62.8408 73.769 62.6891 73.8273C62.5384 73.8866 62.3707 73.9162 62.1858 73.9162ZM62.1738 72.6444C62.3164 72.6444 62.437 72.6117 62.5354 72.5464C62.6339 72.4811 62.7087 72.3872 62.76 72.2646C62.8112 72.1421 62.8368 71.9954 62.8368 71.8246C62.8368 71.6578 62.8117 71.5107 62.7615 71.3831C62.7112 71.2555 62.6369 71.1555 62.5384 71.0832C62.44 71.0109 62.3184 70.9747 62.1738 70.9747C62.0231 70.9747 61.8975 71.0129 61.797 71.0892C61.6976 71.1656 61.6227 71.2681 61.5725 71.3966C61.5233 71.5252 61.4987 71.6679 61.4987 71.8246C61.4987 71.9853 61.5238 72.1275 61.574 72.2511C61.6253 72.3736 61.7006 72.4701 61.8001 72.5404C61.9005 72.6097 62.0251 72.6444 62.1738 72.6444ZM65.9049 73.0422C65.702 73.0422 65.5272 73.005 65.3805 72.9307C65.2338 72.8563 65.1208 72.7544 65.0414 72.6248C64.9621 72.4952 64.9224 72.347 64.9224 72.1802C64.9224 72.0516 64.9495 71.9376 65.0037 71.8382C65.059 71.7377 65.1349 71.6448 65.2313 71.5594C65.3287 71.473 65.4408 71.3866 65.5673 71.3002L66.0134 70.9687C66.1008 70.9114 66.1706 70.8501 66.2228 70.7848C66.2761 70.7195 66.3027 70.6341 66.3027 70.5287C66.3027 70.4503 66.268 70.3745 66.1987 70.3011C66.1304 70.2278 66.0405 70.1911 65.929 70.1911C65.8506 70.1911 65.7813 70.2112 65.721 70.2514C65.6618 70.2906 65.6151 70.3408 65.5809 70.4021C65.5477 70.4624 65.5312 70.5246 65.5312 70.5889C65.5312 70.6613 65.5508 70.7346 65.5899 70.8089C65.6301 70.8823 65.6809 70.9576 65.7421 71.035C65.8044 71.1113 65.8687 71.1897 65.935 71.2701L67.3515 73H66.9236L65.7542 71.5895C65.6457 71.4589 65.5472 71.3404 65.4588 71.2339C65.3704 71.1274 65.3001 71.0224 65.2479 70.919C65.1956 70.8155 65.1695 70.7035 65.1695 70.5829C65.1695 70.4443 65.2002 70.3227 65.2614 70.2182C65.3237 70.1128 65.4106 70.0309 65.5221 69.9726C65.6346 69.9133 65.7662 69.8837 65.9169 69.8837C66.0716 69.8837 66.2048 69.9138 66.3163 69.9741C66.4278 70.0334 66.5137 70.1123 66.574 70.2107C66.6342 70.3082 66.6644 70.4141 66.6644 70.5287C66.6644 70.6763 66.6277 70.8044 66.5544 70.9129C66.481 71.0214 66.3811 71.1224 66.2545 71.2158L65.6397 71.6739C65.501 71.7764 65.4071 71.8758 65.3579 71.9723C65.3086 72.0687 65.284 72.138 65.284 72.1802C65.284 72.2767 65.3092 72.3666 65.3594 72.45C65.4096 72.5334 65.4804 72.6007 65.5719 72.6519C65.6633 72.7031 65.7703 72.7288 65.8928 72.7288C66.0094 72.7288 66.1229 72.7041 66.2334 72.6549C66.3439 72.6047 66.4439 72.5324 66.5333 72.4379C66.6237 72.3435 66.695 72.23 66.7472 72.0974C66.8005 71.9648 66.8271 71.8156 66.8271 71.6498H67.1707C67.1707 71.8547 67.1471 72.022 67.0999 72.1516C67.0526 72.2812 66.9994 72.3827 66.9401 72.456C66.8809 72.5293 66.8331 72.5841 66.797 72.6203C66.7849 72.6353 66.7739 72.6504 66.7638 72.6655C66.7538 72.6805 66.7427 72.6956 66.7307 72.7107C66.6312 72.8222 66.5056 72.9056 66.3539 72.9608C66.2022 73.0151 66.0526 73.0422 65.9049 73.0422ZM69.9694 70.6854V70.9868H68.7217V70.6854H69.9694ZM69.0954 73V70.3659C69.0954 70.2333 69.1265 70.1228 69.1888 70.0344C69.2511 69.946 69.332 69.8797 69.4314 69.8355C69.5309 69.7913 69.6359 69.7692 69.7464 69.7692C69.8338 69.7692 69.9051 69.7762 69.9604 69.7903C70.0156 69.8043 70.0568 69.8174 70.0839 69.8295L69.9815 70.1369C69.9634 70.1308 69.9383 70.1233 69.9061 70.1143C69.875 70.1052 69.8338 70.1007 69.7825 70.1007C69.665 70.1007 69.5801 70.1303 69.5279 70.1896C69.4766 70.2489 69.451 70.3358 69.451 70.4503V73H69.0954ZM70.4678 73V70.6854H70.8234V73H70.4678ZM70.6486 70.2996C70.5793 70.2996 70.5196 70.276 70.4693 70.2288C70.4201 70.1816 70.3955 70.1248 70.3955 70.0585C70.3955 69.9922 70.4201 69.9354 70.4693 69.8882C70.5196 69.841 70.5793 69.8174 70.6486 69.8174C70.718 69.8174 70.7772 69.841 70.8265 69.8882C70.8767 69.9354 70.9018 69.9922 70.9018 70.0585C70.9018 70.1248 70.8767 70.1816 70.8265 70.2288C70.7772 70.276 70.718 70.2996 70.6486 70.2996ZM71.8304 71.6076V73H71.4748V70.6854H71.8184V71.047H71.8485C71.9028 70.9295 71.9851 70.8351 72.0957 70.7637C72.2062 70.6914 72.3488 70.6552 72.5236 70.6552C72.6803 70.6552 72.8175 70.6874 72.935 70.7517C73.0525 70.815 73.144 70.9114 73.2093 71.041C73.2746 71.1696 73.3072 71.3324 73.3072 71.5293V73H72.9516V71.5534C72.9516 71.3715 72.9044 71.2299 72.8099 71.1284C72.7155 71.0259 72.5859 70.9747 72.4211 70.9747C72.3076 70.9747 72.2062 70.9993 72.1168 71.0485C72.0283 71.0978 71.9585 71.1696 71.9073 71.264C71.8561 71.3585 71.8304 71.473 71.8304 71.6076ZM74.6382 73.0542C74.4915 73.0542 74.3584 73.0266 74.2389 72.9714C74.1193 72.9151 74.0244 72.8342 73.9541 72.7288C73.8837 72.6223 73.8486 72.4937 73.8486 72.343C73.8486 72.2104 73.8747 72.1029 73.9269 72.0205C73.9792 71.9371 74.049 71.8718 74.1364 71.8246C74.2238 71.7774 74.3202 71.7422 74.4257 71.7191C74.5322 71.695 74.6392 71.6759 74.7467 71.6619C74.8873 71.6438 75.0014 71.6302 75.0888 71.6212C75.1772 71.6111 75.2415 71.5946 75.2816 71.5714C75.3228 71.5483 75.3434 71.5082 75.3434 71.4509V71.4388C75.3434 71.2902 75.3027 71.1746 75.2214 71.0922C75.141 71.0099 75.0189 70.9687 74.8552 70.9687C74.6854 70.9687 74.5523 71.0059 74.4559 71.0802C74.3594 71.1545 74.2916 71.2339 74.2524 71.3183L73.9149 71.1977C73.9752 71.0571 74.0555 70.9476 74.156 70.8692C74.2574 70.7899 74.368 70.7346 74.4875 70.7035C74.6081 70.6713 74.7266 70.6552 74.8431 70.6552C74.9175 70.6552 75.0029 70.6643 75.0993 70.6824C75.1968 70.6994 75.2907 70.7351 75.3811 70.7894C75.4725 70.8436 75.5484 70.9255 75.6086 71.035C75.6689 71.1445 75.6991 71.2912 75.6991 71.475V73H75.3434V72.6866H75.3253C75.3012 72.7368 75.2611 72.7905 75.2048 72.8478C75.1485 72.9051 75.0737 72.9538 74.9803 72.994C74.8868 73.0342 74.7728 73.0542 74.6382 73.0542ZM74.6924 72.7348C74.8331 72.7348 74.9516 72.7072 75.0481 72.6519C75.1455 72.5966 75.2189 72.5253 75.2681 72.4379C75.3183 72.3505 75.3434 72.2586 75.3434 72.1622V71.8367C75.3284 71.8547 75.2952 71.8713 75.244 71.8864C75.1937 71.9005 75.1355 71.913 75.0692 71.9241C75.0039 71.9341 74.9401 71.9432 74.8778 71.9512C74.8165 71.9582 74.7668 71.9642 74.7286 71.9693C74.6362 71.9813 74.5498 72.0009 74.4694 72.028C74.3901 72.0542 74.3258 72.0938 74.2765 72.1471C74.2283 72.1993 74.2042 72.2707 74.2042 72.3611C74.2042 72.4846 74.2499 72.5781 74.3413 72.6414C74.4338 72.7036 74.5508 72.7348 74.6924 72.7348ZM76.7038 71.6076V73H76.3482V70.6854H76.6917V71.047H76.7219C76.7761 70.9295 76.8585 70.8351 76.969 70.7637C77.0795 70.6914 77.2222 70.6552 77.397 70.6552C77.5537 70.6552 77.6908 70.6874 77.8084 70.7517C77.9259 70.815 78.0173 70.9114 78.0826 71.041C78.1479 71.1696 78.1806 71.3324 78.1806 71.5293V73H77.8249V71.5534C77.8249 71.3715 77.7777 71.2299 77.6833 71.1284C77.5889 71.0259 77.4593 70.9747 77.2945 70.9747C77.181 70.9747 77.0795 70.9993 76.9901 71.0485C76.9017 71.0978 76.8319 71.1696 76.7806 71.264C76.7294 71.3585 76.7038 71.473 76.7038 71.6076ZM79.7707 73.0482C79.5537 73.0482 79.3669 72.997 79.2102 72.8945C79.0534 72.792 78.9329 72.6509 78.8485 72.4711C78.7641 72.2912 78.7219 72.0858 78.7219 71.8547C78.7219 71.6197 78.7651 71.4122 78.8515 71.2324C78.9389 71.0516 79.0605 70.9104 79.2162 70.8089C79.3729 70.7065 79.5557 70.6552 79.7647 70.6552C79.9275 70.6552 80.0741 70.6854 80.2047 70.7457C80.3353 70.8059 80.4423 70.8903 80.5257 70.9988C80.6091 71.1073 80.6608 71.2339 80.6809 71.3786H80.3253C80.2982 71.2731 80.2379 71.1797 80.1444 71.0983C80.052 71.0159 79.9275 70.9747 79.7707 70.9747C79.6321 70.9747 79.5105 71.0109 79.4061 71.0832C79.3026 71.1545 79.2217 71.2555 79.1634 71.3861C79.1062 71.5157 79.0776 71.6679 79.0776 71.8427C79.0776 72.0215 79.1057 72.1772 79.1619 72.3098C79.2192 72.4424 79.2996 72.5454 79.403 72.6188C79.5075 72.6921 79.6301 72.7288 79.7707 72.7288C79.8632 72.7288 79.947 72.7127 80.0224 72.6805C80.0977 72.6484 80.1615 72.6022 80.2138 72.5419C80.266 72.4816 80.3032 72.4093 80.3253 72.3249H80.6809C80.6608 72.4615 80.6111 72.5846 80.5317 72.6941C80.4534 72.8026 80.3494 72.889 80.2198 72.9533C80.0912 73.0166 79.9415 73.0482 79.7707 73.0482ZM81.2008 73V70.6854H81.5564V73H81.2008ZM81.3816 70.2996C81.3123 70.2996 81.2525 70.276 81.2023 70.2288C81.1531 70.1816 81.1285 70.1248 81.1285 70.0585C81.1285 69.9922 81.1531 69.9354 81.2023 69.8882C81.2525 69.841 81.3123 69.8174 81.3816 69.8174C81.4509 69.8174 81.5102 69.841 81.5594 69.8882C81.6097 69.9354 81.6348 69.9922 81.6348 70.0585C81.6348 70.1248 81.6097 70.1816 81.5594 70.2288C81.5102 70.276 81.4509 70.2996 81.3816 70.2996ZM82.8889 73.0542C82.7422 73.0542 82.6091 73.0266 82.4896 72.9714C82.37 72.9151 82.2751 72.8342 82.2048 72.7288C82.1345 72.6223 82.0993 72.4937 82.0993 72.343C82.0993 72.2104 82.1254 72.1029 82.1777 72.0205C82.2299 71.9371 82.2997 71.8718 82.3871 71.8246C82.4745 71.7774 82.571 71.7422 82.6764 71.7191C82.7829 71.695 82.8899 71.6759 82.9974 71.6619C83.1381 71.6438 83.2521 71.6302 83.3395 71.6212C83.4279 71.6111 83.4922 71.5946 83.5324 71.5714C83.5736 71.5483 83.5941 71.5082 83.5941 71.4509V71.4388C83.5941 71.2902 83.5535 71.1746 83.4721 71.0922C83.3917 71.0099 83.2697 70.9687 83.1059 70.9687C82.9361 70.9687 82.803 71.0059 82.7066 71.0802C82.6101 71.1545 82.5423 71.2339 82.5031 71.3183L82.1656 71.1977C82.2259 71.0571 82.3062 70.9476 82.4067 70.8692C82.5082 70.7899 82.6187 70.7346 82.7382 70.7035C82.8588 70.6713 82.9773 70.6552 83.0939 70.6552C83.1682 70.6552 83.2536 70.6643 83.35 70.6824C83.4475 70.6994 83.5414 70.7351 83.6318 70.7894C83.7232 70.8436 83.7991 70.9255 83.8594 71.035C83.9196 71.1445 83.9498 71.2912 83.9498 71.475V73H83.5941V72.6866H83.5761C83.552 72.7368 83.5118 72.7905 83.4555 72.8478C83.3993 72.9051 83.3244 72.9538 83.231 72.994C83.1376 73.0342 83.0235 73.0542 82.8889 73.0542ZM82.9432 72.7348C83.0838 72.7348 83.2024 72.7072 83.2988 72.6519C83.3962 72.5966 83.4696 72.5253 83.5188 72.4379C83.569 72.3505 83.5941 72.2586 83.5941 72.1622V71.8367C83.5791 71.8547 83.5459 71.8713 83.4947 71.8864C83.4445 71.9005 83.3862 71.913 83.3199 71.9241C83.2546 71.9341 83.1908 71.9432 83.1285 71.9512C83.0672 71.9582 83.0175 71.9642 82.9793 71.9693C82.8869 71.9813 82.8005 72.0009 82.7201 72.028C82.6408 72.0542 82.5765 72.0938 82.5273 72.1471C82.479 72.1993 82.4549 72.2707 82.4549 72.3611C82.4549 72.4846 82.5006 72.5781 82.5921 72.6414C82.6845 72.7036 82.8015 72.7348 82.9432 72.7348ZM84.9545 69.9138V73H84.5989V69.9138H84.9545ZM86.7994 73V70.6854H87.1429V71.047H87.1731C87.2213 70.9235 87.2991 70.8275 87.4066 70.7592C87.5141 70.6899 87.6432 70.6552 87.7939 70.6552C87.9466 70.6552 88.0737 70.6899 88.1752 70.7592C88.2776 70.8275 88.3575 70.9235 88.4148 71.047H88.4389C88.4981 70.9275 88.5871 70.8326 88.7056 70.7622C88.8241 70.6909 88.9663 70.6552 89.1321 70.6552C89.339 70.6552 89.5083 70.72 89.6399 70.8496C89.7715 70.9782 89.8373 71.1786 89.8373 71.4509V73H89.4817V71.4509C89.4817 71.2801 89.4349 71.1581 89.3415 71.0847C89.2481 71.0114 89.1381 70.9747 89.0115 70.9747C88.8488 70.9747 88.7227 71.0239 88.6333 71.1224C88.5439 71.2198 88.4991 71.3434 88.4991 71.4931V73H88.1375V71.4147C88.1375 71.2831 88.0948 71.1771 88.0094 71.0968C87.924 71.0154 87.814 70.9747 87.6794 70.9747C87.587 70.9747 87.5006 70.9993 87.4202 71.0485C87.3408 71.0978 87.2765 71.1661 87.2273 71.2535C87.1791 71.3399 87.155 71.4398 87.155 71.5534V73H86.7994ZM91.1686 73.0542C91.022 73.0542 90.8889 73.0266 90.7693 72.9714C90.6498 72.9151 90.5548 72.8342 90.4845 72.7288C90.4142 72.6223 90.379 72.4937 90.379 72.343C90.379 72.2104 90.4051 72.1029 90.4574 72.0205C90.5096 71.9371 90.5794 71.8718 90.6668 71.8246C90.7542 71.7774 90.8507 71.7422 90.9562 71.7191C91.0627 71.695 91.1696 71.6759 91.2771 71.6619C91.4178 71.6438 91.5318 71.6302 91.6192 71.6212C91.7076 71.6111 91.7719 71.5946 91.8121 71.5714C91.8533 71.5483 91.8739 71.5082 91.8739 71.4509V71.4388C91.8739 71.2902 91.8332 71.1746 91.7518 71.0922C91.6714 71.0099 91.5494 70.9687 91.3856 70.9687C91.2159 70.9687 91.0827 71.0059 90.9863 71.0802C90.8899 71.1545 90.8221 71.2339 90.7829 71.3183L90.4453 71.1977C90.5056 71.0571 90.586 70.9476 90.6864 70.8692C90.7879 70.7899 90.8984 70.7346 91.018 70.7035C91.1385 70.6713 91.257 70.6552 91.3736 70.6552C91.4479 70.6552 91.5333 70.6643 91.6298 70.6824C91.7272 70.6994 91.8211 70.7351 91.9116 70.7894C92.003 70.8436 92.0788 70.9255 92.1391 71.035C92.1994 71.1445 92.2295 71.2912 92.2295 71.475V73H91.8739V72.6866H91.8558C91.8317 72.7368 91.7915 72.7905 91.7352 72.8478C91.679 72.9051 91.6041 72.9538 91.5107 72.994C91.4173 73.0342 91.3033 73.0542 91.1686 73.0542ZM91.2229 72.7348C91.3635 72.7348 91.4821 72.7072 91.5785 72.6519C91.676 72.5966 91.7493 72.5253 91.7985 72.4379C91.8488 72.3505 91.8739 72.2586 91.8739 72.1622V71.8367C91.8588 71.8547 91.8257 71.8713 91.7744 71.8864C91.7242 71.9005 91.6659 71.913 91.5996 71.9241C91.5343 71.9341 91.4705 71.9432 91.4082 71.9512C91.347 71.9582 91.2972 71.9642 91.2591 71.9693C91.1666 71.9813 91.0802 72.0009 90.9999 72.028C90.9205 72.0542 90.8562 72.0938 90.807 72.1471C90.7588 72.1993 90.7347 72.2707 90.7347 72.3611C90.7347 72.4846 90.7804 72.5781 90.8718 72.6414C90.9642 72.7036 91.0812 72.7348 91.2229 72.7348ZM93.2342 71.6076V73H92.8786V70.6854H93.2222V71.047H93.2523C93.3066 70.9295 93.3889 70.8351 93.4995 70.7637C93.61 70.6914 93.7526 70.6552 93.9274 70.6552C94.0841 70.6552 94.2213 70.6874 94.3388 70.7517C94.4563 70.815 94.5478 70.9114 94.6131 71.041C94.6784 71.1696 94.711 71.3324 94.711 71.5293V73H94.3554V71.5534C94.3554 71.3715 94.3082 71.2299 94.2137 71.1284C94.1193 71.0259 93.9897 70.9747 93.8249 70.9747C93.7114 70.9747 93.61 70.9993 93.5206 71.0485C93.4321 71.0978 93.3623 71.1696 93.3111 71.264C93.2599 71.3585 93.2342 71.473 93.2342 71.6076ZM96.042 73.0542C95.8953 73.0542 95.7622 73.0266 95.6427 72.9714C95.5231 72.9151 95.4282 72.8342 95.3579 72.7288C95.2875 72.6223 95.2524 72.4937 95.2524 72.343C95.2524 72.2104 95.2785 72.1029 95.3307 72.0205C95.383 71.9371 95.4528 71.8718 95.5402 71.8246C95.6276 71.7774 95.724 71.7422 95.8295 71.7191C95.936 71.695 96.043 71.6759 96.1505 71.6619C96.2911 71.6438 96.4052 71.6302 96.4926 71.6212C96.581 71.6111 96.6453 71.5946 96.6854 71.5714C96.7266 71.5483 96.7472 71.5082 96.7472 71.4509V71.4388C96.7472 71.2902 96.7065 71.1746 96.6252 71.0922C96.5448 71.0099 96.4227 70.9687 96.259 70.9687C96.0892 70.9687 95.9561 71.0059 95.8597 71.0802C95.7632 71.1545 95.6954 71.2339 95.6562 71.3183L95.3187 71.1977C95.379 71.0571 95.4593 70.9476 95.5598 70.8692C95.6612 70.7899 95.7718 70.7346 95.8913 70.7035C96.0119 70.6713 96.1304 70.6552 96.2469 70.6552C96.3213 70.6552 96.4067 70.6643 96.5031 70.6824C96.6006 70.6994 96.6945 70.7351 96.7849 70.7894C96.8763 70.8436 96.9522 70.9255 97.0124 71.035C97.0727 71.1445 97.1029 71.2912 97.1029 71.475V73H96.7472V72.6866H96.7291C96.705 72.7368 96.6649 72.7905 96.6086 72.8478C96.5523 72.9051 96.4775 72.9538 96.3841 72.994C96.2906 73.0342 96.1766 73.0542 96.042 73.0542ZM96.0962 72.7348C96.2369 72.7348 96.3554 72.7072 96.4519 72.6519C96.5493 72.5966 96.6227 72.5253 96.6719 72.4379C96.7221 72.3505 96.7472 72.2586 96.7472 72.1622V71.8367C96.7322 71.8547 96.699 71.8713 96.6478 71.8864C96.5975 71.9005 96.5393 71.913 96.473 71.9241C96.4077 71.9341 96.3439 71.9432 96.2816 71.9512C96.2203 71.9582 96.1706 71.9642 96.1324 71.9693C96.04 71.9813 95.9536 72.0009 95.8732 72.028C95.7939 72.0542 95.7296 72.0938 95.6803 72.1471C95.6321 72.1993 95.608 72.2707 95.608 72.3611C95.608 72.4846 95.6537 72.5781 95.7451 72.6414C95.8376 72.7036 95.9546 72.7348 96.0962 72.7348ZM98.6863 73.9162C98.5145 73.9162 98.3668 73.8941 98.2432 73.8499C98.1197 73.8067 98.0167 73.7494 97.9343 73.6781C97.8529 73.6078 97.7881 73.5324 97.7399 73.4521L98.0232 73.2532C98.0554 73.2954 98.096 73.3436 98.1453 73.3978C98.1945 73.4531 98.2618 73.5008 98.3472 73.541C98.4336 73.5822 98.5466 73.6028 98.6863 73.6028C98.8731 73.6028 99.0273 73.5576 99.1489 73.4671C99.2704 73.3767 99.3312 73.2351 99.3312 73.0422V72.572H99.3011C99.275 72.6142 99.2378 72.6665 99.1896 72.7288C99.1423 72.79 99.074 72.8448 98.9846 72.893C98.8962 72.9402 98.7767 72.9638 98.626 72.9638C98.4391 72.9638 98.2713 72.9196 98.1227 72.8312C97.975 72.7428 97.858 72.6142 97.7716 72.4455C97.6862 72.2767 97.6435 72.0717 97.6435 71.8306C97.6435 71.5935 97.6852 71.3871 97.7685 71.2113C97.8519 71.0345 97.968 70.8979 98.1166 70.8014C98.2653 70.704 98.4371 70.6552 98.632 70.6552C98.7827 70.6552 98.9022 70.6804 98.9906 70.7306C99.0801 70.7798 99.1484 70.8361 99.1956 70.8994C99.2438 70.9617 99.281 71.0129 99.3071 71.0531H99.3433V70.6854H99.6868V73.0663C99.6868 73.2652 99.6416 73.427 99.5512 73.5515C99.4618 73.6771 99.3413 73.769 99.1896 73.8273C99.0389 73.8866 98.8711 73.9162 98.6863 73.9162ZM98.6742 72.6444C98.8168 72.6444 98.9374 72.6117 99.0359 72.5464C99.1343 72.4811 99.2091 72.3872 99.2604 72.2646C99.3116 72.1421 99.3372 71.9954 99.3372 71.8246C99.3372 71.6578 99.3121 71.5107 99.2619 71.3831C99.2117 71.2555 99.1373 71.1555 99.0389 71.0832C98.9404 71.0109 98.8189 70.9747 98.6742 70.9747C98.5235 70.9747 98.3979 71.0129 98.2975 71.0892C98.198 71.1656 98.1232 71.2681 98.0729 71.3966C98.0237 71.5252 97.9991 71.6679 97.9991 71.8246C97.9991 71.9853 98.0242 72.1275 98.0744 72.2511C98.1257 72.3736 98.201 72.4701 98.3005 72.5404C98.4009 72.6097 98.5255 72.6444 98.6742 72.6444ZM101.308 73.0482C101.085 73.0482 100.893 72.999 100.731 72.9005C100.57 72.8011 100.446 72.6625 100.359 72.4846C100.273 72.3058 100.229 72.0979 100.229 71.8608C100.229 71.6237 100.273 71.4147 100.359 71.2339C100.446 71.0521 100.568 70.9104 100.724 70.8089C100.88 70.7065 101.063 70.6552 101.272 70.6552C101.393 70.6552 101.512 70.6753 101.629 70.7155C101.747 70.7557 101.854 70.821 101.95 70.9114C102.047 71.0008 102.124 71.1194 102.181 71.2671C102.238 71.4147 102.267 71.5966 102.267 71.8126V71.9632H100.482V71.6558H101.905C101.905 71.5252 101.879 71.4087 101.827 71.3062C101.775 71.2038 101.702 71.1229 101.607 71.0636C101.512 71.0043 101.401 70.9747 101.272 70.9747C101.13 70.9747 101.008 71.0099 100.904 71.0802C100.802 71.1495 100.723 71.2399 100.668 71.3514C100.613 71.4629 100.585 71.5825 100.585 71.7101V71.915C100.585 72.0898 100.615 72.238 100.675 72.3596C100.737 72.4801 100.822 72.572 100.93 72.6353C101.039 72.6976 101.165 72.7288 101.308 72.7288C101.402 72.7288 101.486 72.7157 101.561 72.6896C101.638 72.6625 101.704 72.6223 101.759 72.569C101.814 72.5148 101.857 72.4475 101.887 72.3671L102.231 72.4635C102.194 72.5801 102.134 72.6825 102.048 72.7709C101.963 72.8584 101.857 72.9267 101.732 72.9759C101.606 73.0241 101.465 73.0482 101.308 73.0482ZM102.808 73V70.6854H103.151V71.047H103.181C103.23 70.9235 103.307 70.8275 103.415 70.7592C103.522 70.6899 103.652 70.6552 103.802 70.6552C103.955 70.6552 104.082 70.6899 104.183 70.7592C104.286 70.8275 104.366 70.9235 104.423 71.047H104.447C104.506 70.9275 104.595 70.8326 104.714 70.7622C104.832 70.6909 104.975 70.6552 105.14 70.6552C105.347 70.6552 105.517 70.72 105.648 70.8496C105.78 70.9782 105.846 71.1786 105.846 71.4509V73H105.49V71.4509C105.49 71.2801 105.443 71.1581 105.35 71.0847C105.256 71.0114 105.146 70.9747 105.02 70.9747C104.857 70.9747 104.731 71.0239 104.642 71.1224C104.552 71.2198 104.507 71.3434 104.507 71.4931V73H104.146V71.4147C104.146 71.2831 104.103 71.1771 104.018 71.0968C103.932 71.0154 103.822 70.9747 103.688 70.9747C103.595 70.9747 103.509 70.9993 103.429 71.0485C103.349 71.0978 103.285 71.1661 103.236 71.2535C103.187 71.3399 103.163 71.4398 103.163 71.5534V73H102.808ZM107.466 73.0482C107.243 73.0482 107.051 72.999 106.889 72.9005C106.728 72.8011 106.604 72.6625 106.517 72.4846C106.431 72.3058 106.387 72.0979 106.387 71.8608C106.387 71.6237 106.431 71.4147 106.517 71.2339C106.604 71.0521 106.726 70.9104 106.882 70.8089C107.038 70.7065 107.221 70.6552 107.43 70.6552C107.551 70.6552 107.67 70.6753 107.787 70.7155C107.905 70.7557 108.012 70.821 108.108 70.9114C108.205 71.0008 108.282 71.1194 108.339 71.2671C108.396 71.4147 108.425 71.5966 108.425 71.8126V71.9632H106.64V71.6558H108.063C108.063 71.5252 108.037 71.4087 107.985 71.3062C107.933 71.2038 107.86 71.1229 107.765 71.0636C107.67 71.0043 107.559 70.9747 107.43 70.9747C107.288 70.9747 107.166 71.0099 107.062 71.0802C106.96 71.1495 106.881 71.2399 106.826 71.3514C106.771 71.4629 106.743 71.5825 106.743 71.7101V71.915C106.743 72.0898 106.773 72.238 106.833 72.3596C106.895 72.4801 106.98 72.572 107.088 72.6353C107.197 72.6976 107.323 72.7288 107.466 72.7288C107.56 72.7288 107.644 72.7157 107.719 72.6896C107.796 72.6625 107.862 72.6223 107.917 72.569C107.972 72.5148 108.015 72.4475 108.045 72.3671L108.389 72.4635C108.352 72.5801 108.292 72.6825 108.206 72.7709C108.121 72.8584 108.015 72.9267 107.89 72.9759C107.764 73.0241 107.623 73.0482 107.466 73.0482ZM109.321 71.6076V73H108.966V70.6854H109.309V71.047H109.339C109.394 70.9295 109.476 70.8351 109.587 70.7637C109.697 70.6914 109.84 70.6552 110.014 70.6552C110.171 70.6552 110.308 70.6874 110.426 70.7517C110.543 70.815 110.635 70.9114 110.7 71.041C110.765 71.1696 110.798 71.3324 110.798 71.5293V73H110.442V71.5534C110.442 71.3715 110.395 71.2299 110.301 71.1284C110.206 71.0259 110.077 70.9747 109.912 70.9747C109.798 70.9747 109.697 70.9993 109.608 71.0485C109.519 71.0978 109.449 71.1696 109.398 71.264C109.347 71.3585 109.321 71.473 109.321 71.6076ZM112.455 70.6854V70.9868H111.255V70.6854H112.455ZM111.605 70.1308H111.96V72.337C111.96 72.4374 111.975 72.5128 112.004 72.563C112.034 72.6122 112.072 72.6454 112.118 72.6625C112.166 72.6785 112.215 72.6866 112.268 72.6866C112.307 72.6866 112.339 72.6846 112.364 72.6805C112.389 72.6755 112.409 72.6715 112.424 72.6685L112.497 72.9879C112.473 72.997 112.439 73.006 112.396 73.0151C112.353 73.0251 112.298 73.0301 112.232 73.0301C112.131 73.0301 112.033 73.0085 111.936 72.9653C111.841 72.9221 111.761 72.8563 111.698 72.7679C111.636 72.6795 111.605 72.568 111.605 72.4334V70.1308Z" fill="#B9B9B9"/>
                                     </svg>
-                                        
-  
+
+
                                 </div>
                             </div>
                             <div class="swiper-slide">
@@ -3326,7 +3326,7 @@
                                         <path d="M146.178 46.8154C146.178 46.4703 146.04 46.2632 145.832 46.0562C145.624 45.9181 145.416 45.8491 145.139 45.8491H143.754V49.3691H144.308V47.8507H145.001L145.763 49.3691H146.386L145.555 47.7817C145.971 47.5746 146.178 47.2985 146.178 46.8154ZM145.555 47.1605C145.486 47.2985 145.278 47.2986 145.07 47.3676H144.239V46.3323H145.07C145.209 46.3323 145.347 46.4013 145.486 46.4703C145.624 46.5393 145.694 46.6774 145.694 46.8844C145.694 46.9534 145.624 47.0915 145.555 47.1605Z" fill="#BBBBBB"/>
                                         <path d="M152 46.333V45.7808H149.783V49.3008H152V48.8177H150.268V47.7824H151.792V47.2992H150.268V46.333H152Z" fill="#BBBBBB"/>
                                     </svg>
-                                        
+
 
                                 </div>
                             </div>
@@ -3353,7 +3353,7 @@
                                         </clipPath>
                                         </defs>
                                     </svg>
-                                                               
+
                                 </div>
                             </div>
                         </div>
@@ -3403,7 +3403,7 @@
                             </a>
                         </div>
                     </div>
-                </div> 
+                </div>
             </section>
             <!-- End Benefit -->
             <!-- Agents -->
@@ -3434,7 +3434,7 @@
                                         <div class="box-icon">
                                             <span class="icon icon-phone"></span>
                                             <span class="icon icon-mail"></span>
-        
+
                                         </div>
                                     </div>
                                 </div>
@@ -3458,7 +3458,7 @@
                                         <div class="box-icon">
                                             <span class="icon icon-phone"></span>
                                             <span class="icon icon-mail"></span>
-        
+
                                         </div>
                                     </div>
                                 </div>
@@ -3482,7 +3482,7 @@
                                         <div class="box-icon">
                                             <span class="icon icon-phone"></span>
                                             <span class="icon icon-mail"></span>
-        
+
                                         </div>
                                     </div>
                                 </div>
@@ -3506,7 +3506,7 @@
                                         <div class="box-icon">
                                             <span class="icon icon-phone"></span>
                                             <span class="icon icon-mail"></span>
-        
+
                                         </div>
                                     </div>
                                 </div>
@@ -3586,71 +3586,7 @@
                 </div>
             </section>
             <!-- /Latest new -->
-             <!-- Latest New -->
-            <section class="flat-section bg-primary-new">
-                <div class="container">
-                    <div class="box-title text-center wow fadeInUp">
-                        <div class="text-subtitle text-primary">Latest New</div>
-                        <h3 class="title mt-4">From Our Blog</h3>
-                    </div>
-                    <div class="swiper tf-sw-latest" data-preview="3" data-tablet="2" data-mobile-sm="2" data-mobile="1" data-space-lg="30" data-space-md="15" data-space="15">
-                        <div class="swiper-wrapper wow fadeInUp" data-wow-delay=".2s">
-                            <div class="swiper-slide">
-                                <a href="blog-detail.html" class="flat-blog-item hover-img">
-                                    <div class="img-style">
-                                        <img class="lazyload" data-src="images/blog/blog-17.jpg" src="images/blog/blog-17.jpg" alt="img-blog">
-                                        <span class="date-post">January 28, 2024</span>
-                                    </div>
-                                    <div class="content-box">
-                                        <div class="post-author">
-                                            <span class="fw-6">Jerome Bell</span>
-                                            <span>Furniture</span>
-                                        </div>
-                                        <h5 class="title link">Building gains into housing stocks and how to trade the sector</h5>
-                                        <p class="description">The average contract interest rate for 30-year fixed-rate mortgages with conforming loan balances...</p>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="blog-detail.html" class="flat-blog-item hover-img">
-                                    <div class="img-style">
-                                        <img class="lazyload" data-src="images/blog/blog-18.jpg" src="images/blog/blog-18.jpg" alt="img-blog">
-                                        <span class="date-post">January 28, 2024</span>
-                                    </div>
-                                    <div class="content-box">
-                                        <div class="post-author">
-                                            <span class="fw-6">Jerome Bell</span>
-                                            <span>Furniture</span>
-                                        </div>
-                                        <h5 class="title link">Building gains into housing stocks and how to trade the sector</h5>
-                                        <p class="description">The average contract interest rate for 30-year fixed-rate mortgages with conforming loan balances...</p>
-                                    </div>
-        
-                                </a>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="blog-detail.html" class="flat-blog-item hover-img">
-                                    <div class="img-style">
-                                        <img class="lazyload" data-src="images/blog/blog-19.jpg" src="images/blog/blog-19.jpg" alt="img-blog">
-                                        <span class="date-post">January 28, 2024</span>
-                                    </div>
-                                    <div class="content-box">
-                                        <div class="post-author">
-                                            <span class="fw-6">Jerome Bell</span>
-                                            <span>Furniture</span>
-                                        </div>
-                                        <h5 class="title link">Building gains into housing stocks and how to trade the sector</h5>
-                                        <p class="description">The average contract interest rate for 30-year fixed-rate mortgages with conforming loan balances...</p>
-                                    </div>
-        
-                                </a>
-                            </div>
-                        </div>
-                        <div class="sw-pagination sw-pagination-latest text-center"></div>
-                    </div>
-                </div>
-            </section>
-            <!-- End Latest New -->
+
             <!-- footer -->
             <footer class="footer">
                 <div class="top-footer">
@@ -3671,31 +3607,31 @@
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M3.58151 16H0.264292V5.31762H3.58151V16ZM1.92111 3.86044C0.860376 3.86044 0 2.98185 0 1.92111C7.59231e-09 1.4116 0.202403 0.92296 0.562681 0.562681C0.92296 0.202403 1.4116 0 1.92111 0C2.43063 0 2.91927 0.202403 3.27955 0.562681C3.63983 0.92296 3.84223 1.4116 3.84223 1.92111C3.84223 2.98185 2.98149 3.86044 1.92111 3.86044ZM15.9968 16H12.6867V10.7999C12.6867 9.56057 12.6617 7.97125 10.962 7.97125C9.23735 7.97125 8.97306 9.31771 8.97306 10.7106V16H5.65941V5.31762H8.84091V6.77479H8.88734C9.33021 5.93549 10.412 5.04976 12.026 5.04976C15.3832 5.04976 16.0004 7.26052 16.0004 10.132V16H15.9968Z" fill="white"/>
                                 </svg>
-                                    
+
                             </a></li>
                             <li><a href="#" class="box-icon w-40 social">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M8.30314 5.92804L13.4029 0H12.1944L7.7663 5.14724L4.22958 0H0.150391L5.4986 7.78354L0.150391 14H1.35894L6.03514 8.56434L9.77017 14H13.8494L8.30284 5.92804H8.30314ZM6.64787 7.85211L6.10598 7.07705L1.79439 0.909771H3.65065L7.13015 5.88696L7.67204 6.66202L12.195 13.1316H10.3387L6.64787 7.85241V7.85211Z" fill="white"/>
                                 </svg>
-                                    
+
                             </a></li>
                             <li><a href="#" class="box-icon w-40 social">
                                 <svg width="13" height="16" viewBox="0 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.53967 0C3.2506 0 0 2.19271 0 5.74145C0 7.99827 1.26947 9.28056 2.03884 9.28056C2.3562 9.28056 2.53893 8.39578 2.53893 8.14574C2.53893 7.8476 1.77918 7.21287 1.77918 5.97226C1.77918 3.39486 3.74108 1.5676 6.28001 1.5676C8.4631 1.5676 10.0788 2.80821 10.0788 5.08748C10.0788 6.78972 9.39597 9.98261 7.18402 9.98261C6.3858 9.98261 5.70298 9.40558 5.70298 8.57851C5.70298 7.36675 6.54929 6.19345 6.54929 4.94322C6.54929 2.82103 3.53912 3.20572 3.53912 5.7703C3.53912 6.30886 3.60644 6.90512 3.84686 7.3956C3.40448 9.2998 2.50046 12.1369 2.50046 14.0988C2.50046 14.7046 2.58702 15.3009 2.64472 15.9068C2.75371 16.0286 2.69922 16.0158 2.86591 15.9549C4.4816 13.7429 4.42389 13.3102 5.1548 10.4154C5.5491 11.1655 6.56852 11.5694 7.37636 11.5694C10.7808 11.5694 12.31 8.25152 12.31 5.26059C12.31 2.07731 9.55946 0 6.53967 0Z" fill="white"/>
                                 </svg>
-                                    
+
                             </a></li>
                             <li><a href="#" class="box-icon w-40 social">
                                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M6.99812 4.66567C5.71277 4.66567 4.66383 5.71463 4.66383 7C4.66383 8.28537 5.71277 9.33433 6.99812 9.33433C8.28346 9.33433 9.3324 8.28537 9.3324 7C9.3324 5.71463 8.28346 4.66567 6.99812 4.66567ZM13.9992 7C13.9992 6.03335 14.008 5.07545 13.9537 4.11055C13.8994 2.98979 13.6437 1.99512 12.8242 1.17556C12.0029 0.35426 11.01 0.100338 9.88927 0.0460516C8.92263 -0.00823506 7.96475 0.000520879 6.99987 0.000520879C6.03323 0.000520879 5.07536 -0.00823506 4.11047 0.0460516C2.98973 0.100338 1.99508 0.356011 1.17554 1.17556C0.354253 1.99687 0.100336 2.98979 0.0460508 4.11055C-0.00823491 5.0772 0.00052087 6.0351 0.00052087 7C0.00052087 7.9649 -0.00823491 8.92455 0.0460508 9.88945C0.100336 11.0102 0.356004 12.0049 1.17554 12.8244C1.99683 13.6457 2.98973 13.8997 4.11047 13.9539C5.07711 14.0082 6.03499 13.9995 6.99987 13.9995C7.9665 13.9995 8.92438 14.0082 9.88927 13.9539C11.01 13.8997 12.0047 13.644 12.8242 12.8244C13.6455 12.0031 13.8994 11.0102 13.9537 9.88945C14.0097 8.92455 13.9992 7.96665 13.9992 7ZM6.99812 10.5917C5.01056 10.5917 3.40651 8.98759 3.40651 7C3.40651 5.01241 5.01056 3.40832 6.99812 3.40832C8.98567 3.40832 10.5897 5.01241 10.5897 7C10.5897 8.98759 8.98567 10.5917 6.99812 10.5917ZM10.7368 4.10004C10.2728 4.10004 9.89802 3.72529 9.89802 3.26122C9.89802 2.79716 10.2728 2.42241 10.7368 2.42241C11.2009 2.42241 11.5756 2.79716 11.5756 3.26122C11.5758 3.37142 11.5542 3.48056 11.5121 3.58239C11.47 3.68422 11.4082 3.77675 11.3303 3.85467C11.2523 3.93258 11.1598 3.99437 11.058 4.03647C10.9562 4.07858 10.847 4.10018 10.7368 4.10004Z" fill="white"/>
                                 </svg>
-                                    
+
                             </a></li>
                             <li><a href="#" class="box-icon w-40 social">
                                 <svg width="16" height="12" viewBox="0 0 16 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M15.6657 1.76024C15.4817 1.06737 14.9395 0.521689 14.2511 0.336504C13.0033 0 8 0 8 0C8 0 2.99669 0 1.7489 0.336504C1.06052 0.521718 0.518349 1.06737 0.334336 1.76024C0 3.01611 0 5.63636 0 5.63636C0 5.63636 0 8.25661 0.334336 9.51248C0.518349 10.2053 1.06052 10.7283 1.7489 10.9135C2.99669 11.25 8 11.25 8 11.25C8 11.25 13.0033 11.25 14.2511 10.9135C14.9395 10.7283 15.4817 10.2053 15.6657 9.51248C16 8.25661 16 5.63636 16 5.63636C16 5.63636 16 3.01611 15.6657 1.76024ZM6.36363 8.01535V3.25737L10.5454 5.63642L6.36363 8.01535Z" fill="white"/>
                                 </svg>
-                                    
+
                             </a></li>
                           </ul>
                         </div>
@@ -3730,15 +3666,15 @@
                             <div class="tf-collapse-content">
                                 <ul class="mt-10 navigation-menu-footer">
                                     <li> <a href="pricing.html" class="caption-1 text-variant-2">Pricing Plans</a> </li>
-    
+
                                     <li> <a href="our-service.html" class="caption-1 text-variant-2">Our Services</a> </li>
-    
+
                                     <li> <a href="about-us.html" class="caption-1 text-variant-2">About Us</a> </li>
-    
+
                                     <li> <a href="contact.html" class="caption-1 text-variant-2">Contact Us</a> </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                       </div>
                       <div class="col-lg-2 col-md-6">
@@ -3752,7 +3688,7 @@
                                     <li> <a href="topmap-grid.html" class="caption-1 text-variant-2">Our Agents</a> </li>
                                 </ul>
                             </div>
-                            
+
                         </div>
                       </div>
                       <div class="col-lg-4 col-md-6">
@@ -3774,7 +3710,7 @@
                             </div>
                         </div>
                       </div>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -3782,7 +3718,7 @@
                   <div class="container">
                     <div class="content-footer-bottom">
                         <div class="copyright">©2024 Homelengo. All Rights Reserved.</div>
-                          
+
                         <ul class="menu-bottom">
                           <li><a href="our-service.html">Terms Of Services</a> </li>
 
@@ -3831,7 +3767,7 @@
                                 <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M13.4869 14.0435C12.9628 13.3497 12.2848 12.787 11.5063 12.3998C10.7277 12.0126 9.86989 11.8115 9.00038 11.8123C8.13086 11.8115 7.27304 12.0126 6.49449 12.3998C5.71594 12.787 5.03793 13.3497 4.51388 14.0435M13.4869 14.0435C14.5095 13.1339 15.2307 11.9349 15.5563 10.6056C15.8818 9.27625 15.7956 7.87934 15.309 6.60014C14.8224 5.32093 13.9584 4.21986 12.8317 3.44295C11.7049 2.66604 10.3686 2.25 9 2.25C7.63137 2.25 6.29508 2.66604 5.16833 3.44295C4.04158 4.21986 3.17762 5.32093 2.69103 6.60014C2.20443 7.87934 2.11819 9.27625 2.44374 10.6056C2.76929 11.9349 3.49125 13.1339 4.51388 14.0435M13.4869 14.0435C12.2524 15.1447 10.6546 15.7521 9.00038 15.7498C7.3459 15.7523 5.74855 15.1448 4.51388 14.0435M11.2504 7.31228C11.2504 7.90902 11.0133 8.48131 10.5914 8.90327C10.1694 9.32523 9.59711 9.56228 9.00038 9.56228C8.40364 9.56228 7.83134 9.32523 7.40939 8.90327C6.98743 8.48131 6.75038 7.90902 6.75038 7.31228C6.75038 6.71554 6.98743 6.14325 7.40939 5.72129C7.83134 5.29933 8.40364 5.06228 9.00038 5.06228C9.59711 5.06228 10.1694 5.29933 10.5914 5.72129C11.0133 6.14325 11.2504 6.71554 11.2504 7.31228Z" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                <input type="text" class="form-control" placeholder="Your name">   
+                                <input type="text" class="form-control" placeholder="Your name">
                             </div>
                         </fieldset>
                         <fieldset class="box-fieldset">
@@ -3840,7 +3776,7 @@
                                 <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path d="M12.375 7.875V5.0625C12.375 4.16739 12.0194 3.30895 11.3865 2.67601C10.7535 2.04308 9.89511 1.6875 9 1.6875C8.10489 1.6875 7.24645 2.04308 6.61351 2.67601C5.98058 3.30895 5.625 4.16739 5.625 5.0625V7.875M5.0625 16.3125H12.9375C13.3851 16.3125 13.8143 16.1347 14.1307 15.8182C14.4472 15.5018 14.625 15.0726 14.625 14.625V9.5625C14.625 9.11495 14.4472 8.68573 14.1307 8.36926C13.8143 8.05279 13.3851 7.875 12.9375 7.875H5.0625C4.61495 7.875 4.18573 8.05279 3.86926 8.36926C3.55279 8.68573 3.375 9.11495 3.375 9.5625V14.625C3.375 15.0726 3.55279 15.5018 3.86926 15.8182C4.18573 16.1347 4.61495 16.3125 5.0625 16.3125Z" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                 </svg>
-                                <input type="text" class="form-control" placeholder="Your password">   
+                                <input type="text" class="form-control" placeholder="Your password">
                             </div>
                             <div class="text-forgot text-end"><a href="#">Forgot password</a></div>
 
@@ -3860,13 +3796,13 @@
                             <img src="images/logo/fb.jpg" alt="img">
                             Facebook
                         </a>
-                        
+
                     </div>
                 </form>
-               
-              
+
+
             </div>
-        </div> 
+        </div>
     </div>
     </div>
     <!-- popup register -->
@@ -3889,7 +3825,7 @@
                                     <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M13.4869 14.0435C12.9628 13.3497 12.2848 12.787 11.5063 12.3998C10.7277 12.0126 9.86989 11.8115 9.00038 11.8123C8.13086 11.8115 7.27304 12.0126 6.49449 12.3998C5.71594 12.787 5.03793 13.3497 4.51388 14.0435M13.4869 14.0435C14.5095 13.1339 15.2307 11.9349 15.5563 10.6056C15.8818 9.27625 15.7956 7.87934 15.309 6.60014C14.8224 5.32093 13.9584 4.21986 12.8317 3.44295C11.7049 2.66604 10.3686 2.25 9 2.25C7.63137 2.25 6.29508 2.66604 5.16833 3.44295C4.04158 4.21986 3.17762 5.32093 2.69103 6.60014C2.20443 7.87934 2.11819 9.27625 2.44374 10.6056C2.76929 11.9349 3.49125 13.1339 4.51388 14.0435M13.4869 14.0435C12.2524 15.1447 10.6546 15.7521 9.00038 15.7498C7.3459 15.7523 5.74855 15.1448 4.51388 14.0435M11.2504 7.31228C11.2504 7.90902 11.0133 8.48131 10.5914 8.90327C10.1694 9.32523 9.59711 9.56228 9.00038 9.56228C8.40364 9.56228 7.83134 9.32523 7.40939 8.90327C6.98743 8.48131 6.75038 7.90902 6.75038 7.31228C6.75038 6.71554 6.98743 6.14325 7.40939 5.72129C7.83134 5.29933 8.40364 5.06228 9.00038 5.06228C9.59711 5.06228 10.1694 5.29933 10.5914 5.72129C11.0133 6.14325 11.2504 6.71554 11.2504 7.31228Z" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                    <input type="text" class="form-control" placeholder="User name">   
+                                    <input type="text" class="form-control" placeholder="User name">
                                 </div>
                             </fieldset>
                             <fieldset class="box-fieldset">
@@ -3898,8 +3834,8 @@
                                     <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M16.3125 5.0625V12.9375C16.3125 13.3851 16.1347 13.8143 15.8182 14.1307C15.5018 14.4472 15.0726 14.625 14.625 14.625H3.375C2.92745 14.625 2.49822 14.4472 2.18176 14.1307C1.86529 13.8143 1.6875 13.3851 1.6875 12.9375V5.0625M16.3125 5.0625C16.3125 4.61495 16.1347 4.18573 15.8182 3.86926C15.5018 3.55279 15.0726 3.375 14.625 3.375H3.375C2.92745 3.375 2.49822 3.55279 2.18176 3.86926C1.86529 4.18573 1.6875 4.61495 1.6875 5.0625M16.3125 5.0625V5.24475C16.3125 5.53286 16.2388 5.81618 16.0983 6.06772C15.9578 6.31926 15.7553 6.53065 15.51 6.68175L9.885 10.143C9.61891 10.3069 9.31252 10.3937 9 10.3937C8.68748 10.3937 8.38109 10.3069 8.115 10.143L2.49 6.6825C2.24469 6.5314 2.04215 6.32001 1.90168 6.06847C1.7612 5.81693 1.68747 5.53361 1.6875 5.2455V5.0625" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                    
-                                    <input type="text" class="form-control" placeholder="Email address">   
+
+                                    <input type="text" class="form-control" placeholder="Email address">
                                 </div>
 
                             </fieldset>
@@ -3909,7 +3845,7 @@
                                     <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12.375 7.875V5.0625C12.375 4.16739 12.0194 3.30895 11.3865 2.67601C10.7535 2.04308 9.89511 1.6875 9 1.6875C8.10489 1.6875 7.24645 2.04308 6.61351 2.67601C5.98058 3.30895 5.625 4.16739 5.625 5.0625V7.875M5.0625 16.3125H12.9375C13.3851 16.3125 13.8143 16.1347 14.1307 15.8182C14.4472 15.5018 14.625 15.0726 14.625 14.625V9.5625C14.625 9.11495 14.4472 8.68573 14.1307 8.36926C13.8143 8.05279 13.3851 7.875 12.9375 7.875H5.0625C4.61495 7.875 4.18573 8.05279 3.86926 8.36926C3.55279 8.68573 3.375 9.11495 3.375 9.5625V14.625C3.375 15.0726 3.55279 15.5018 3.86926 15.8182C4.18573 16.1347 4.61495 16.3125 5.0625 16.3125Z" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                    <input type="password" class="form-control" placeholder="Your password">   
+                                    <input type="password" class="form-control" placeholder="Your password">
                                 </div>
                             </fieldset>
                             <fieldset class="box-fieldset">
@@ -3918,7 +3854,7 @@
                                     <svg class="icon" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M12.375 7.875V5.0625C12.375 4.16739 12.0194 3.30895 11.3865 2.67601C10.7535 2.04308 9.89511 1.6875 9 1.6875C8.10489 1.6875 7.24645 2.04308 6.61351 2.67601C5.98058 3.30895 5.625 4.16739 5.625 5.0625V7.875M5.0625 16.3125H12.9375C13.3851 16.3125 13.8143 16.1347 14.1307 15.8182C14.4472 15.5018 14.625 15.0726 14.625 14.625V9.5625C14.625 9.11495 14.4472 8.68573 14.1307 8.36926C13.8143 8.05279 13.3851 7.875 12.9375 7.875H5.0625C4.61495 7.875 4.18573 8.05279 3.86926 8.36926C3.55279 8.68573 3.375 9.11495 3.375 9.5625V14.625C3.375 15.0726 3.55279 15.5018 3.86926 15.8182C4.18573 16.1347 4.61495 16.3125 5.0625 16.3125Z" stroke="#A3ABB0" stroke-linecap="round" stroke-linejoin="round"/>
                                     </svg>
-                                    <input type="password" class="form-control" placeholder="Confirm password">   
+                                    <input type="password" class="form-control" placeholder="Confirm password">
                                 </div>
                             </fieldset>
                         </div>
@@ -3936,13 +3872,13 @@
                                 <img src="images/logo/fb.jpg" alt="img">
                                 Facebook
                             </a>
-                            
+
                         </div>
                     </form>
-                
-                
+
+
                 </div>
-            </div> 
+            </div>
         </div>
     </div>
 

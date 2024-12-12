@@ -54,6 +54,7 @@ class PostController extends Controller
         $post->approval_status = $validated['approval_status'];
         $post->start_date = $validated['start_date'];
         $post->end_date = $validated['end_date'];
+        $post->published_at = $validated['start_date'] ?? now(); // Fülle `published_at`
         $post->save();
 
         // Bild speichern und verarbeiten
@@ -125,6 +126,9 @@ class PostController extends Controller
             $post->image_thumbnail = $this->storeImage($imageFile, 110, 74, '_thumb');
             $post->image_grid = $this->storeImage($imageFile, 410, 231, '_grid');
         }
+
+        // Setze das `published_at`-Feld basierend auf dem `start_date` oder dem ursprünglichen `published_at`
+        $post->published_at = $validated['start_date'] ?? $post->published_at ?? now();
 
         $post->save();
 
