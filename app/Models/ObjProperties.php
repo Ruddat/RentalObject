@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Attribute;
+use App\Models\ObjPhotos;
 use App\Models\ObjSections;
 use App\Models\PropertyType;
 use App\Models\ObjNearbyPlaces;
@@ -43,4 +44,26 @@ class ObjProperties extends Model
         ->withPivot('distance')
         ->withTimestamps();
     }
+
+    public function mainPhoto()
+    {
+        return $this->hasOne(ObjPhotos::class, 'property_id')
+        ->where('sort_order', 1);
+    }
+
+    public function getMediumPhotoPath()
+    {
+        if ($this->mainPhoto) {
+            $originalPath = $this->mainPhoto->file_path;
+
+            // Medium-Pfad erstellen
+            $mediumPath = str_replace(['original/', '.png', '.jpg'], ['medium/', '_medium.png', '_medium.jpg'], $originalPath);
+
+            return asset('storage/' . $mediumPath);
+        }
+
+        // Fallback-Bild
+        return asset('build/images/home/kein_bild_default.jpg');
+    }
+
 }
