@@ -89,7 +89,7 @@
 
 
 
-@if (Route::is('index', 'home', 'home-02', 'blog.show', 'blog-manager-12', 'dashboard', 'login', 'search.results', 'multi-step'))
+@if (Route::is('index', 'home', 'home-02', 'blog.show', 'blog-manager-12', 'dashboard', 'login', 'search.results', 'multi-step', 'properties.index'))
 
 
 @include('rentalobj.layout.modals.addproperty')

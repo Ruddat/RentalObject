@@ -3,6 +3,7 @@
 namespace App\Livewire\Frontend\RentalObject;
 
 use Livewire\Component;
+use App\Models\ObjFloor;
 use App\Models\ObjPhotos;
 use App\Models\ObjPrices;
 use App\Models\ObjDetails;
@@ -103,23 +104,29 @@ class MultiStepForm extends Component
     ];
 
     public $stepThree = [
+        'selectedDesign' => '1',
+        'videoLink' => null,
+        'videoDescription' => null,
+        'tourLink' => null,
+        'tourDescription' => null,
+        'photos' => [],
+
         'payment_method' => '',
         'card_number' => '',
-        'photos' => [],
     ];
 
     protected $validationRules = [
         1 => [
-            'stepOne.userType' => 'required',
+            'stepOne.userType' => 'required|in:privat,gewerblich',
             'stepOne.title' => 'required|min:3',
             'stepOne.propertyType' => 'required',
+            'stepOne.category' => 'nullable|required_if:categories,!empty',
             'stepOne.transactionType' => 'required_unless:disableBuy,true|required_unless:disableSell,true',
-            'stepOne.category' => 'required_if:categories,!empty',
             'stepOne.street' => 'required',
             'stepOne.zip' => 'required|digits:5',
             'stepOne.city' => 'required',
-            'stepOne.country' => 'required',
-            'stepOne.contactDetails' => 'required',
+            'stepOne.country' => 'required|in:deutschland,österreich,schweiz',
+            'stepOne.contactDetails' => 'required|in:none,name_phone,full_address',
         ],
         2 => [
            // 'stepTwo.coldRent' => 'required|min:3',
@@ -132,6 +139,8 @@ class MultiStepForm extends Component
             'videoLink' => 'nullable|url|max:255',
             'videoDescription' => 'nullable|string|max:500',
             'virtualTourLink' => 'nullable|url|max:255',
+            'virtualTourDescription' => 'nullable|string|max:500',
+            'stepThree.selectedDesign' => 'required|in:1,2,3', // Validierung für Designauswahl
             'stepThree.payment_method' => 'nullable',
             'stepThree.card_number' => 'nullable',
             'stepThree.photos.*' => 'image|max:5120',
@@ -183,19 +192,19 @@ class MultiStepForm extends Component
     protected function getDefaultStepOne()
     {
         return [
-            'userType' => '',
-            'title' => '',
-            'propertyType' => '',
-            'category' => '',
-            'transactionType' => '',
-            'lookingForTenant' => false,
-            'country' => '',
-            'street' => '',
-            'zip' => '',
-            'city' => '',
-            'latitude' => '',
-            'longitude' => '',
-            'contactDetails' => '',
+            'userType' => 'privat', // Standard: Privatperson
+            'title' => '', // Muss vom Benutzer ausgefüllt werden
+            'propertyType' => null, // Auswahl erforderlich
+            'category' => null, // Dynamisch je nach Typ
+            'transactionType' => null, // Verkauf oder Vermietung
+            'lookingForTenant' => false, // Standardmäßig "Nicht gesucht"
+            'country' => 'deutschland', // Standardland
+            'street' => '', // Adresse erforderlich
+            'zip' => '', // PLZ erforderlich
+            'city' => '', // Stadt erforderlich
+            'latitude' => '', // Wird von Geocoding-Dienst gesetzt
+            'longitude' => '', // Wird von Geocoding-Dienst gesetzt
+            'contactDetails' => 'none', // Standardkontakt
             'propertyTypeName' => '',
             'temporaryUuid' => $this->temporaryUuid,
             'nearbyPlaces' => collect(),
@@ -212,6 +221,7 @@ class MultiStepForm extends Component
             'videoDescription' => null,
             'tourLink' => null,
             'tourDescription' => null,
+            'selectedDesign' => '1',
             'photos' => [],
         ];
     }
@@ -408,32 +418,50 @@ class MultiStepForm extends Component
     public function geocodeAddress()
     {
         $geocodeService = new GeocodeService();
-        $fullAddress = $this->stepOne['street'] . ', ' . $this->stepOne['zip'] . ' ' . $this->stepOne['city'] . ', ' . $this->stepOne['country'];
+        $fullAddress = $this->stepOne['street'] . ', ' . $this->stepOne['zip'] . ' ' . $this->stepOne['city'];
 
         try {
             $response = $geocodeService->searchByAddress($fullAddress);
             if (!empty($response)) {
+                \Log::info('Geocode Response:', $response);
+
+                // Latitude und Longitude setzen
                 $this->stepOne['latitude'] = $response[0]['lat'] ?? '';
                 $this->stepOne['longitude'] = $response[0]['lon'] ?? '';
+
+                // Nearby Places abrufen
+                $nearbyPlaces = $this->getNearbyPlaces(
+                    $this->stepOne['latitude'],
+                    $this->stepOne['longitude']
+                );
+
+                // Orte in das JSON einfügen
+                $this->stepOne['nearbyPlaces'] = $nearbyPlaces;
+
+                // Karte und Orte aktualisieren
                 $this->dispatch('updateMap', [
                     'latitude' => $this->stepOne['latitude'],
                     'longitude' => $this->stepOne['longitude'],
+                    'nearbyPlaces' => $nearbyPlaces,
                 ]);
 
-
-                // Suche nach Orten in der Nähe
-                $nearbyPlaces = $this->getNearbyPlaces($this->stepOne['latitude'], $this->stepOne['longitude']);
-                $this->stepOne['nearbyPlaces'] = $nearbyPlaces;
-
+                session()->flash('success', 'Adresse erfolgreich validiert und nahegelegene Orte aktualisiert.');
             } else {
-                $this->stepOne['latitude'] = '';
-                $this->stepOne['longitude'] = '';
-                session()->flash('error', 'Adresse konnte nicht geokodiert werden. Bitte Koordinaten manuell eingeben.');
+                throw new \Exception('Adresse konnte nicht geokodiert werden.');
             }
         } catch (\Exception $e) {
+            \Log::error('Geocode API Error:', ['message' => $e->getMessage()]);
             session()->flash('error', 'Fehler beim Abrufen der Geodaten: ' . $e->getMessage());
+
+            // Standardwerte zurücksetzen
+            $this->stepOne['latitude'] = '';
+            $this->stepOne['longitude'] = '';
+            $this->stepOne['nearbyPlaces'] = [];
         }
     }
+
+
+
 
 
     public function getNearbyPlaces($latitude, $longitude, $radius = 5000, $categories = [])
@@ -553,38 +581,22 @@ class MultiStepForm extends Component
         $rules = $this->rules();
         $this->validate($rules);
 
-        switch ($this->currentStep) {
-            case 1:
-                $propertyType = PropertyType::find($this->stepOne['propertyType']);
-                $this->stepOne['propertyTypeName'] = $propertyType->name ?? 'Unknown';
-                $this->collectedData['stepOne'] = $this->stepOne;
-                $this->dispatch('validatePricesRequest', to: 'frontend.rental-object.prices-and-costs');
-
-                break;
-            case 2:
-                $this->collectedData['stepTwo'] = $this->stepTwo;
-                $this->collectedData['stepTwo']['prices'] = $this->prices;
-                $this->collectedData['stepTwo']['data'] = $this->data;
-                $this->collectedData['stepTwo']['floors'] = $this->floors;
-                $this->collectedData['stepTwo']['energyCertificates'] = $this->selectedCertificates;
-                $this->collectedData['stepTwo']['attributes'] = $this->selectedAttributes;
-                $this->collectedData['stepTwo']['sections'] = $this->slectedSections;
-                // Validierungsanfrage an die externe Komponente senden
-                //$this->dispatch('validatePricesRequest');
-                $this->dispatch('validatePricesRequest', to: 'frontend.rental-object.prices-and-costs');
-
-
-                break;
-            case 3:
-
-                $this->collectedData['stepThree'] = $this->stepThree;
-                $this->collectedData['stepThree']['photos'] = $this->stepThree['photos'];
-                $this->collectedData['stepThree']['energyCertificates'] = $this->selectedCertificates;
-                break;
-        }
-
+        $this->synchronizeData();
         $this->currentStep++;
-        $this->loadStepData();
+    }
+
+    private function synchronizeData()
+    {
+        $this->collectedData['stepOne'] = $this->stepOne;
+        $this->collectedData['stepTwo'] = [
+            'prices' => $this->prices,
+            'data' => $this->data,
+            'floors' => $this->floors,
+            'attributes' => $this->selectedAttributes,
+            'sections' => $this->slectedSections,
+            'energyCertificates' => $this->selectedCertificates,
+        ];
+        $this->collectedData['stepThree'] = $this->stepThree;
     }
 
     public function previousStep()
@@ -847,13 +859,16 @@ class MultiStepForm extends Component
         $attributes = $this->collectedData['stepTwo']['attributes']; // Array mit Attribut-IDs
         $sections = $this->collectedData['stepTwo']['sections']; // Dynamische Sections
         $nearbyPlacesData = $this->collectedData['stepOne']['nearbyPlaces'];
+        $floors = $this->collectedData['stepTwo']['floors']; // Floors-Daten
+
         //   dd($this->collectedData);
         //dd($nearbyPlacesData);
 
        // \Log::info('Nearby Places:', $nearbyPlacesData);
         \Log::info('Property Data:', $propertyData);
         \Log::info('Price Data:', $priceData);
-        \Log::info('Energy Certificates:', $energyCertificates);
+      //  \Log::info('Energy Certificates:', $energyCertificates);
+        \Log::info('Floors:', $floors);
     //    \Log::info('Sections:', $sections);
 
         if (!auth()->check()) {
@@ -882,41 +897,73 @@ class MultiStepForm extends Component
                 'contact_details' => $propertyData['contactDetails'],
                 'ad_number' => strtoupper(uniqid('AD-')),
                 'status' => 'pending',
+                'selected_design' => $this->stepThree['selectedDesign'], // Speichere das ausgewählte Design
             ]);
 
-// **2. Fotos verknüpfen**
-$temporaryDir = 'uploads/' . $this->temporaryUuid;
-$finalDir = 'uploads/' . $property->id;
 
-if (Storage::disk('public')->exists($temporaryDir)) {
-    // Verschiebe alle Dateien und Unterverzeichnisse aus dem temporären Verzeichnis
-    $files = Storage::disk('public')->allFiles($temporaryDir);
 
-    foreach ($files as $file) {
-        $newPath = str_replace($this->temporaryUuid, $property->id, $file);
-        Storage::disk('public')->move($file, $newPath);
-    }
 
-    // Lösche das temporäre Verzeichnis
-    Storage::disk('public')->deleteDirectory($temporaryDir);
-}
 
-// Aktualisiere die Datenbankeinträge
-ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->update([
-    'property_id' => $property->id,
-    'file_path' => DB::raw("REPLACE(file_path, '{$this->temporaryUuid}', '{$property->id}')"),
-]);
 
-// Nearby Places speichern
-if (!empty($nearbyPlacesData)) {
-    foreach ($nearbyPlacesData as $place) {
-        ObjNearbyPlaces::create([
+
+// Floors aktualisieren
+if (!empty($floors)) {
+    // Logge den Wert von $this->temporaryUuid
+    \Log::info('Temporary UUID:', ['uuid' => $this->temporaryUuid]);
+
+    // Alle Einträge mit temporary_uuid abrufen
+    $floorRecords = ObjFloor::where('temporary_uuid', $this->temporaryUuid)->get();
+
+    // Logge die Anzahl der abgerufenen Floors
+    \Log::info('Gefundene Floor-Einträge:', ['count' => $floorRecords->count()]);
+
+    foreach ($floorRecords as $floor) {
+        $oldPath = $floor->floor_plan_path;
+        $newPath = str_replace($this->temporaryUuid, $property->id, $oldPath);
+
+        // Logge den aktuellen Pfad und den neuen Pfad
+        \Log::info('Floor Pfade:', [
+            'old_path' => $oldPath,
+            'new_path' => $newPath,
+        ]);
+
+        // Prüfen, ob die Datei existiert
+        if (Storage::disk('public')->exists($oldPath)) {
+            \Log::info('Datei existiert, wird verschoben:', ['path' => $oldPath]);
+            Storage::disk('public')->move($oldPath, $newPath);
+        } else {
+            \Log::warning('Datei nicht gefunden:', ['path' => $oldPath]);
+        }
+
+        // Aktualisiere den Pfad in der Datenbank
+        $floor->update([
             'property_id' => $property->id,
-            'place_id' => $place->id, // Verwende -> statt []
-            'distance' => $place->distance, // Verwende -> statt []
+            'floor_plan_path' => $newPath,
+        ]);
+
+        // Logge erfolgreiche Aktualisierung
+        \Log::info('Floor aktualisiert:', [
+            'floor_id' => $floor->id,
+            'new_property_id' => $property->id,
+            'new_floor_plan_path' => $newPath,
         ]);
     }
+} else {
+    \Log::info('Keine Floors zum Aktualisieren vorhanden.');
 }
+
+
+
+            // Nearby Places speichern
+            if (!empty($nearbyPlacesData)) {
+                foreach ($nearbyPlacesData as $place) {
+                    ObjNearbyPlaces::create([
+                        'property_id' => $property->id,
+                        'place_id' => $place->id, // Verwende -> statt []
+                        'distance' => $place->distance, // Verwende -> statt []
+                    ]);
+                }
+            }
 
             // Attribute speichern
             if (!empty($attributes)) {
@@ -1013,6 +1060,60 @@ if (!empty($nearbyPlacesData)) {
                 }
             }
 
+            // Step 3:
+
+
+            // **2. Fotos verknüpfen**
+            $temporaryDir = 'uploads/' . $this->temporaryUuid;
+            $finalDir = 'uploads/' . $property->id;
+
+            if (Storage::disk('public')->exists($temporaryDir)) {
+                // Verschiebe alle Dateien und Unterverzeichnisse aus dem temporären Verzeichnis
+                $files = Storage::disk('public')->allFiles($temporaryDir);
+
+                foreach ($files as $file) {
+                    $newPath = str_replace($this->temporaryUuid, $property->id, $file);
+                    Storage::disk('public')->move($file, $newPath);
+                }
+
+                // Lösche das temporäre Verzeichnis
+                Storage::disk('public')->deleteDirectory($temporaryDir);
+            }
+
+            // Aktualisiere die Datenbankeinträge
+            ObjPhotos::where('temporary_uuid', $this->temporaryUuid)->update([
+                'property_id' => $property->id,
+                'file_path' => DB::raw("REPLACE(file_path, '{$this->temporaryUuid}', '{$property->id}')"),
+            ]);
+
+
+
+
+
+
+
+
+            // Video-Link speichern
+            if (!empty($this->stepThree['videoLink']['videoLink'])) {
+                $property->mediaLinks()->create([
+                    'type' => 'video',
+                    'link' => $this->stepThree['videoLink']['videoLink'],
+                    'description' => $this->stepThree['videoLink']['videoDescription'],
+                ]);
+            }
+
+            // Tour-Link speichern
+            if (!empty($this->stepThree['tourLink'])) {
+                $property->mediaLinks()->create([
+                    'type' => 'tour',
+                    'link' => $this->stepThree['tourLink'],
+                    'description' => $this->stepThree['tourDescription'],
+                ]);
+            }
+
+
+
+
             DB::commit();
 
             session()->flash('success', 'Die Daten wurden erfolgreich gespeichert.');
@@ -1023,7 +1124,7 @@ if (!empty($nearbyPlacesData)) {
                 'message' => $e->getMessage(),
                 'propertyData' => $propertyData,
                 'priceData' => $priceData,
-                'energyCertificates' => $energyCertificates,
+            //    'energyCertificates' => $energyCertificates,
             ]);
             session()->flash('error', 'Es gab einen Fehler beim Speichern: ' . $e->getMessage());
         }

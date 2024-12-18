@@ -4,11 +4,16 @@ namespace App\Livewire\Backend\PropertySystem;
 
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+use App\Models\ObjFloor as ObjFloors;
 
 class FloorComponent extends Component
 {
     use WithFileUploads;
 
+    public $temporaryUuid;
+    public $propertyId; // Objekt-ID für das Zielverzeichnis
     public $floorName;
     public $floorPrice;
     public $pricePostfix;
@@ -18,7 +23,7 @@ class FloorComponent extends Component
     public $bathrooms;
     public $description;
     public $floorPlan; // Für den Datei-Upload
-    public $showForm = false; // Steuerung der Sichtbarkeit des Formulars
+    public $showForm = false;
 
     protected $rules = [
         'floorName' => 'required|string|max:255',
@@ -29,22 +34,47 @@ class FloorComponent extends Component
         'bedrooms' => 'nullable|integer',
         'bathrooms' => 'nullable|integer',
         'description' => 'nullable|string',
-        'floorPlan' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240', // Maximal 10 MB
+        'floorPlan' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:10240',
     ];
 
-    public function toggleForm()
+    public function mount($temporaryUuid = null, $propertyId = null)
     {
-        $this->showForm = !$this->showForm;
+        $this->temporaryUuid = $temporaryUuid ?? Str::uuid()->toString();
+        $this->propertyId = $propertyId; // Falls vorhanden
     }
 
     public function addFloor()
     {
         $this->validate();
 
-        // Speichern der Datei, falls hochgeladen
-        $floorPlanPath = $this->floorPlan ? $this->floorPlan->store('floor-plans', 'public') : null;
+        // Speicherort festlegen
+        $directory = $this->propertyId
+            ? "uploads/floorplans/{$this->propertyId}"
+            : "uploads/floorplans/{$this->temporaryUuid}";
 
-        // Floor-Daten inklusive Dateipfad an die Hauptkomponente senden
+        // Datei speichern
+        $floorPlanPath = null;
+        if ($this->floorPlan) {
+            $originalFilename = $this->floorPlan->getClientOriginalName();
+            $floorPlanPath = $this->floorPlan->storeAs($directory, $originalFilename, 'public');
+        }
+
+        // Temporäre Floor-Daten speichern
+        ObjFloors::create([
+            'temporary_uuid' => $this->temporaryUuid,
+            'property_id' => $this->propertyId,
+            'floor_name' => $this->floorName,
+            'floor_price' => $this->floorPrice,
+            'price_postfix' => $this->pricePostfix,
+            'floor_size' => $this->floorSize,
+            'size_postfix' => $this->sizePostfix,
+            'bedrooms' => $this->bedrooms,
+            'bathrooms' => $this->bathrooms,
+            'description' => $this->description,
+            'floor_plan_path' => $floorPlanPath,
+        ]);
+
+        // Event triggern
         $this->dispatch('floorAdded', [
             'floorName' => $this->floorName,
             'floorPrice' => $this->floorPrice,
@@ -57,11 +87,16 @@ class FloorComponent extends Component
             'floorPlanPath' => $floorPlanPath,
         ]);
 
-        // Felder zurücksetzen und Formular ausblenden
+        // Felder zurücksetzen
         $this->reset(['floorName', 'floorPrice', 'pricePostfix', 'floorSize', 'sizePostfix', 'bedrooms', 'bathrooms', 'description', 'floorPlan']);
-        // Rückmeldung nach dem Speichern
-        session()->flash('message', 'Floor saved successfully.');
         $this->showForm = false;
+
+        session()->flash('message', 'Floor saved successfully.');
+    }
+
+    public function toggleForm()
+    {
+        $this->showForm = !$this->showForm;
     }
 
     public function render()

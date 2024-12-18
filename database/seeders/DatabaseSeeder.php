@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
             PropertyCategorySeeder::class,
         ]);
         $this->call(AttributeGroupsAndAttributesSeeder::class);
-        $this->call(ObjPropertiesSeeder::class);
+       // $this->call(ObjPropertiesSeeder::class);
 
     }
 

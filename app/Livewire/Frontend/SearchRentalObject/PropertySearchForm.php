@@ -10,6 +10,7 @@ use App\Models\PropertyType;
 
 class PropertySearchForm extends Component
 {
+
     public $type = 'all';
     public $selectedTypeName = 'all'; // Name des aktuell ausgewählten Typs
     public $currentMinPrice;

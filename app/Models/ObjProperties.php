@@ -4,8 +4,10 @@ namespace App\Models;
 
 use App\Models\Attribute;
 use App\Models\ObjPhotos;
+use App\Models\ObjPrices;
 use App\Models\ObjSections;
 use App\Models\PropertyType;
+use App\Models\ObjMediaLinks;
 use App\Models\ObjNearbyPlaces;
 use App\Models\PropertyCategory;
 use Illuminate\Database\Eloquent\Model;
@@ -66,4 +68,16 @@ class ObjProperties extends Model
         return asset('build/images/home/kein_bild_default.jpg');
     }
 
+    /**
+     * Beziehung zu ObjPrices (ein Preis pro Immobilie)
+     */
+    public function prices()
+    {
+        return $this->hasOne(ObjPrices::class, 'property_id', 'id');
+    }
+
+    public function mediaLinks()
+    {
+        return $this->hasMany(ObjMediaLinks::class, 'property_id');
+    }
 }

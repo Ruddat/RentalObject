@@ -14,6 +14,7 @@ use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Settings\BackupDownloadController;
 use App\Http\Controllers\Frontend\Location\LocationController;
 use App\Http\Controllers\Backend\Vendor\Expose\ExposeController;
+use App\Http\Controllers\Frontend\Search\PropertySearchController;
 
 
 
@@ -22,8 +23,10 @@ Route::post('/newsletter-signup', [NewsletterController::class, 'signup'])->name
 
 Route::middleware(['web', 'auth', LogPageAccess::class])->group(function () {
 
-Route::view('/', 'rentalobj.index')->name('index');
-Route::view('home', 'rentalobj.index')->name('home');
+//Route::view('/', 'rentalobj.index')->name('index');
+
+
+
 Route::view('/home-04', 'rentalobj.home-04')->name('home-04');
 Route::view('/home-05', 'rentalobj.home-05')->name('home-05');
 Route::view('/home-06', 'rentalobj.home-06')->name('home-06');

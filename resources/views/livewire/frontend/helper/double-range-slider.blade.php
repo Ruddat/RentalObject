@@ -23,10 +23,6 @@
         <!-- Track -->
         <div class="slider-range-track bg-primary position-absolute" id="sliderTrack"></div>
     </div>
-    <div class="d-flex justify-content-between mt-2">
-        <span id="minValue">{{ $currentMinValue }}</span>
-        <span id="maxValue">{{ $currentMaxValue }}</span>
-    </div>
 
 
 <style>
@@ -94,7 +90,7 @@
     border: 2px solid white;
     border-radius: 50%;
     cursor: pointer;
-    z-index: 6;
+    z-index: 3;
     position: relative;
 }
 
@@ -109,6 +105,12 @@
     position: relative;
 }
 
+.range-input#minRange::-moz-range-thumb {
+    z-index: 3;
+}
+.range-input#maxRange::-moz-range-thumb {
+    z-index: 4;
+}
 
 </style>
 </div>

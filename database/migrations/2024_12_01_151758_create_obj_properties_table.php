@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('contact_details')->default('none'); // none, name_phone, full_address
             $table->string('ad_number')->unique(); // Anzeigenummer
             $table->enum('status', ['pending', 'approved', 'rejected'])->default('pending'); // Status
+            $table->string('selected_design')->nullable();
             $table->timestamps();
 
             // Foreign key constraints

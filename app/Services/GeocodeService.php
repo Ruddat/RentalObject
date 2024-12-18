@@ -15,7 +15,9 @@ class GeocodeService
         $this->client = new Client([
             'timeout' => 10.0, // Timeout von 10 Sekunden
         ]);
-        $this->userAgent = 'YourAppName/1.0 (contact@yourdomain.com)';
+
+        // Korrekte Angabe eines User-Agents, um Blockierung zu vermeiden
+        $this->userAgent = 'MyAppName/1.0 (+https://mywebsite.com; contact@myemail.com)';
     }
 
     /**
@@ -29,6 +31,7 @@ class GeocodeService
                 'q' => $query,
                 'format' => 'json',
                 'addressdetails' => 1,
+                'limit' => 1, // Nur ein Ergebnis
             ],
             'headers' => $this->getDefaultHeaders(),
         ];
@@ -38,6 +41,11 @@ class GeocodeService
 
     /**
      * Suche nach Koordinaten.
+     *
+     * @param float $lat
+     * @param float $lon
+     * @return array
+     * @throws \Exception
      */
     public function searchByCoordinates($lat, $lon)
     {
@@ -56,35 +64,6 @@ class GeocodeService
     }
 
     /**
-     * Hole den aktuellen Standort des Benutzers.
-     */
-    public function getCurrentPosition()
-    {
-        if (!isset($_SERVER['REMOTE_ADDR']) || $_SERVER['REMOTE_ADDR'] === '127.0.0.1') {
-            throw new \Exception('Geolocation not available for local environments.');
-        }
-
-        $ip = $_SERVER['REMOTE_ADDR']; // IP-Adresse des Benutzers
-        $url = "https://ip-api.com/json/{$ip}"; // Kostenlose API zur Geolocation per IP-Adresse
-
-        $params = [
-            'headers' => $this->getDefaultHeaders(),
-        ];
-
-        $response = $this->sendRequest($url, $params);
-
-        if (!empty($response) && isset($response['lat'], $response['lon'])) {
-            return [
-                'latitude' => $response['lat'],
-                'longitude' => $response['lon'],
-                'address' => $this->searchByCoordinates($response['lat'], $response['lon'])['display_name'] ?? '',
-            ];
-        }
-
-        throw new \Exception('Unable to fetch current location.');
-    }
-
-    /**
      * Sende eine HTTP-Anfrage.
      */
     protected function sendRequest($url, $params)
@@ -96,10 +75,10 @@ class GeocodeService
                 return json_decode($response->getBody(), true);
             }
 
-            throw new \Exception('Unexpected API response status: ' . $response->getStatusCode());
+            throw new \Exception('Unerwarteter API-Status: ' . $response->getStatusCode());
         } catch (RequestException $e) {
             $error = $e->getResponse() ? $e->getResponse()->getBody()->getContents() : $e->getMessage();
-            throw new \Exception('Request failed: ' . $error, $e->getCode());
+            throw new \Exception('Anfrage fehlgeschlagen: ' . $error, $e->getCode());
         }
     }
 
@@ -113,4 +92,5 @@ class GeocodeService
             'Accept' => 'application/json',
         ];
     }
+
 }

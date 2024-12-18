@@ -24,7 +24,197 @@
                                 </div>
                                 <div class="flat-tab flat-tab-form">
 
-                                    <livewire:frontend.search-rental-object.property-search-form />
+
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade active show" role="tabpanel">
+                                            <div class="form-sl">
+                                                <form method="GET" action="{{ route('properties.search') }}">
+                                                    <div class="wd-find-select">
+                                                        <div class="inner-group">
+                                                            <!-- Property Type -->
+            <div class="form-group-1 search-form form-style">
+                <label>Type</label>
+                <div class="box-select">
+                    <div class="nice-select" tabindex="0" id="typeSelect">
+                        @php
+                            $sessionType = session('type', 'all');
+                        @endphp
+                        <span class="current">{{ $sessionType === 'all' ? 'All' : $propertyTypes->firstWhere('id', $sessionType)?->name ?? 'Select' }}</span>
+                        <ul class="list">
+                            <li data-value="all" class="option {{ $sessionType === 'all' ? 'selected' : '' }}">All</li>
+                            @foreach($propertyTypes as $propertyType)
+                                <li data-value="{{ $propertyType->id }}" class="option {{ $sessionType == $propertyType->id ? 'selected' : '' }}">
+                                    {{ $propertyType->name }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <input type="hidden" name="type" id="typeInput" value="{{ $sessionType }}" required>
+                </div>
+            </div>
+                                                            <div class="form-group-2 form-style">
+                                                                <label>@autotranslate("Location", app()->getLocale())</label>
+                                                                <div class="group-ip">
+                                                                    <input type="text" name="location" class="form-control" placeholder="Search Location" required>
+                                                                    <a href="#" class="icon icon-location" id="get-location">
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group-3 form-style">
+                                                                <label>Keyword</label>
+                                                                <input type="text" name="keyword" class="form-control" placeholder="Search Keyword" value="{{ $keyword }}">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="box-btn-advanced">
+                                                            <button type="button" class="tf-btn btn-line filter-advanced pull-right" id="toggleAdvancedSearch">
+                                                                <span class="text-1">Search advanced</span>
+                                                                <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path d="M5.5 12.375V3.4375M5.5 12.375C5.86467 12.375 6.21441 12.5199 6.47227 12.7777C6.73013 13.0356 6.875 13.3853 6.875 13.75C6.875 14.1147 6.73013 14.4644 6.47227 14.7223C6.21441 14.9801 5.86467 15.125 5.5 15.125M5.5 12.375C5.13533 12.375 4.78559 12.5199 4.52773 12.7777C4.26987 13.0356 4.125 13.3853 4.125 13.75C4.125 14.1147 4.26987 14.4644 4.52773 14.7223C4.78559 14.9801 5.13533 15.125 5.5 15.125M5.5 15.125V18.5625M16.5 12.375V3.4375M16.5 12.375C16.8647 12.375 17.2144 12.5199 17.4723 12.7777C17.7301 13.0356 17.875 13.3853 17.875 13.75C17.875 14.1147 17.7301 14.4644 17.4723 14.7223C17.2144 14.9801 16.8647 15.125 16.5 15.125M16.5 12.375C16.1353 12.375 15.7856 12.5199 15.5277 12.7777C15.2699 13.0356 15.125 13.3853 15.125 13.75C15.125 14.1147 15.2699 14.4644 15.5277 14.7223C15.7856 14.9801 16.1353 15.125 16.5 15.125M16.5 15.125V18.5625M11 6.875V3.4375M11 6.875C11.3647 6.875 11.7144 7.01987 11.9723 7.27773C12.2301 7.53559 12.375 7.88533 12.375 8.25C12.375 8.61467 12.2301 8.96441 11.9723 9.22227C11.7144 9.48013 11.3647 9.625 11 9.625M11 6.875C10.6353 6.875 10.2856 7.01987 10.0277 7.27773C9.76987 7.53559 9.625 7.88533 9.625 8.25C9.625 8.61467 9.76987 8.96441 10.0277 9.22227C10.2856 9.48013 10.6353 9.625 11 9.625M11 9.625V18.5625" stroke="#161E2D" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                                                                </svg>
+                                                            </button>
+                                                            <button type="submit" class="tf-btn btn-search primary">Search <i class="icon icon-search"></i></button>
+                                                        </div>
+                                                    </div>
+
+                                                    <!-- Advanced Search Form -->
+                                                    <div id="advancedSearchForm" class="wd-search-form" style="display: none;">
+                                                        <div class="grid-2 group-box group-price">
+<!-- Price Filter -->
+<div class="widget-price">
+    <label>Price Range:</label>
+    <div id="price-slider" class="range-slider"></div>
+    <div class="slider-values">
+        <span>Min:</span> <span id="price-min">{{ $minPrice }}</span>
+        <span>Max:</span> <span id="price-max">{{ $maxPrice }}</span>
+    </div>
+    <!-- Hidden inputs for the slider values -->
+    <input type="hidden" name="min-value" id="price-min-input" value="{{ $minPrice }}">
+    <input type="hidden" name="max-value" id="price-max-input" value="{{ $maxPrice }}">
+</div>
+
+<!-- Size Filter -->
+<div class="widget-price">
+    <label>Size Range:</label>
+    <div id="size-slider" class="range-slider"></div>
+    <div class="slider-values">
+        <span>Min:</span> <span id="size-min">{{ $minSize }}</span>
+        <span>Max:</span> <span id="size-max">{{ $maxSize }}</span>
+    </div>
+    <!-- Hidden inputs for the slider values -->
+    <input type="hidden" name="min-value2" id="size-min-input" value="{{ $minSize }}">
+    <input type="hidden" name="max-value2" id="size-max-input" value="{{ $maxSize }}">
+</div>
+
+                                                        </div>
+
+
+
+                                                        <div class="grid-2 group-box">
+                                                            @php
+                                                                $sessionRooms = session('rooms', null);
+                                                                $sessionBathrooms = session('bathrooms', null);
+                                                                $sessionBedrooms = session('bedrooms', null);
+                                                            @endphp
+
+                                                            <div class="group-select grid-2">
+                                                                <!-- Rooms -->
+                                                                <div class="box-select">
+                                                                    <label class="title-select fw-6">Rooms</label>
+                                                                    <div class="nice-select" tabindex="0">
+                                                                        <span class="current">{{ $sessionRooms ?? 'Select' }}</span>
+                                                                        <ul class="list">
+                                                                            @for ($i = 1; $i <= 10; $i++)
+                                                                                <li data-value="{{ $i }}" class="option {{ $sessionRooms == $i ? 'selected' : '' }}">
+                                                                                    {{ $i }}
+                                                                                </li>
+                                                                            @endfor
+                                                                        </ul>
+                                                                    </div>
+                                                                    <!-- Hidden Input for Form Submission -->
+                                                                    <input type="hidden" name="rooms" value="{{ $sessionRooms }}">
+                                                                </div>
+
+                                                                <!-- Bathrooms -->
+                                                                <div class="box-select">
+                                                                    <label class="title-select fw-6">Bathrooms</label>
+                                                                    <div class="nice-select" tabindex="0">
+                                                                        <span class="current">{{ $sessionBathrooms ?? 'Select' }}</span>
+                                                                        <ul class="list">
+                                                                            @for ($i = 1; $i <= 10; $i++)
+                                                                                <li data-value="{{ $i }}" class="option {{ $sessionBathrooms == $i ? 'selected' : '' }}">
+                                                                                    {{ $i }}
+                                                                                </li>
+                                                                            @endfor
+                                                                        </ul>
+                                                                    </div>
+                                                                    <!-- Hidden Input for Form Submission -->
+                                                                    <input type="hidden" name="bathrooms" value="{{ $sessionBathrooms }}">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="group-select grid-1">
+                                                                <!-- Bedrooms -->
+                                                                <div class="box-select">
+                                                                    <label class="title-select fw-6">Bedrooms</label>
+                                                                    <div class="nice-select" tabindex="0">
+                                                                        <span class="current">{{ $sessionBedrooms ?? 'Select' }}</span>
+                                                                        <ul class="list">
+                                                                            @for ($i = 1; $i <= 10; $i++)
+                                                                                <li data-value="{{ $i }}" class="option {{ $sessionBedrooms == $i ? 'selected' : '' }}">
+                                                                                    {{ $i }}
+                                                                                </li>
+                                                                            @endfor
+                                                                        </ul>
+                                                                    </div>
+                                                                    <!-- Hidden Input for Form Submission -->
+                                                                    <input type="hidden" name="bedrooms" value="{{ $sessionBedrooms }}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                                        <div class="group-checkbox">
+                                                            <div class="text-1 text-black-2">Amenities:</div>
+                                                            <div class="group-amenities grid-6">
+                                                                @foreach($amenities as $index => $amenity)
+                                                                    <div class="box-amenities">
+                                                                        <fieldset class="amenities-item">
+                                                                            <input
+                                                                                type="checkbox"
+                                                                                class="tf-checkbox style-1"
+                                                                                id="cb{{ $index }}"
+                                                                                name="selectedAmenities[]"
+                                                                                value="{{ $amenity->id }}"
+                                                                                {{ in_array($amenity->id, $selectedAmenities) ? 'checked' : '' }}
+                                                                            >
+                                                                            <label for="cb{{ $index }}" class="text-cb-amenities">{{ $amenity->name }}</label>
+                                                                        </fieldset>
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <script>
+                                        document.getElementById('toggleAdvancedSearch').addEventListener('click', function () {
+                                            const advancedSearchForm = document.getElementById('advancedSearchForm');
+                                            if (advancedSearchForm.style.display === 'none') {
+                                                advancedSearchForm.style.display = 'block';
+                                            } else {
+                                                advancedSearchForm.style.display = 'none';
+                                            }
+                                        });
+                                    </script>
+
+
+
+
 
                                 </div>
                             </div>
@@ -35,6 +225,14 @@
                 <div class="overlay"></div>
             </section>
             <!-- End Slider -->
+
+
+
+
+
+
+
+
 
 
             <livewire:frontend.section-componets.recommended-section />
@@ -757,6 +955,170 @@
                 </div>
             </section>
             <!-- End Agents -->
+
+
+            <!-- Testimonial -->
+            <section class="flat-section bg-primary-new flat-testimonial">
+                <div class="box-title px-15 wow fadeInUp">
+                    <div class="text-center wow fadeInUpSmall" data-wow-delay=".2s" data-wow-duration="2000ms">
+                        <div class="text-subtitle text-primary">Our Testimonials</div>
+                        <h3 class="title mt-4">What’s people say’s</h3>
+                        <p class="desc text-variant-1">Our seasoned team excels in real estate with years of successful market navigation, offering informed decisions and optimal results.</p>
+                    </div>
+                </div>
+                <div class="swiper tf-sw-testimonial wow fadeInUp" data-wow-delay=".2s" data-preview="4.5" data-tablet="2" data-mobile-sm="1" data-mobile="1" data-space="15" data-space-md="30" data-space-lg="30" data-centered="true" data-loop="true">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="box-tes-item">
+                                <span class="icon icon-quote"></span>
+                                <p class="note body-2">
+                                    "My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."
+                                </p>
+                                <div class="box-avt d-flex align-items-center gap-12">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/avatar/avt-png1.png" alt="avatar">
+                                    </div>
+                                    <div class="info">
+                                        <h6>Courtney Henry</h6>
+                                        <p class="caption-2 text-variant-1 mt-4">CEO Themesflat</p>
+                                        <ul class="list-star">
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box-tes-item">
+                                <span class="icon icon-quote"></span>
+                                <p class="note body-2">
+                                    "My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."
+                                </p>
+                                <div class="box-avt d-flex align-items-center gap-12">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/avatar/avt-png2.png" alt="avatar">
+                                    </div>
+                                    <div class="info">
+                                        <h6>Esther Howard</h6>
+                                        <p class="caption-2 text-variant-1 mt-4">CEO Themesflat</p>
+                                        <ul class="list-star">
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box-tes-item">
+                                <span class="icon icon-quote"></span>
+                                <p class="note body-2">
+                                    "My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."
+                                </p>
+                                <div class="box-avt d-flex align-items-center gap-12">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/avatar/avt-png4.png" alt="avatar">
+                                    </div>
+                                    <div class="info">
+                                        <h6>Annette Black</h6>
+                                        <p class="caption-2 text-variant-1 mt-4">CEO Themesflat</p>
+                                        <ul class="list-star">
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box-tes-item">
+                                <span class="icon icon-quote"></span>
+                                <p class="note body-2">
+                                    "My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."
+                                </p>
+                                <div class="box-avt d-flex align-items-center gap-12">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/avatar/avt-png6.png" alt="avatar">
+                                    </div>
+                                    <div class="info">
+                                        <h6>Bessie Cooper</h6>
+                                        <p class="caption-2 text-variant-1 mt-4">CEO Themesflat</p>
+                                        <ul class="list-star">
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box-tes-item">
+                                <span class="icon icon-quote"></span>
+                                <p class="note body-2">
+                                    "My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."
+                                </p>
+                                <div class="box-avt d-flex align-items-center gap-12">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/avatar/avt-png3.png" alt="avatar">
+                                    </div>
+                                    <div class="info">
+                                        <h6>Courtney Henry</h6>
+                                        <p class="caption-2 text-variant-1 mt-4">CEO Themesflat</p>
+                                        <ul class="list-star">
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="box-tes-item">
+                                <span class="icon icon-quote"></span>
+                                <p class="note body-2">
+                                    "My experience with property management services has exceeded expectations. They efficiently manage properties with a professional and attentive approach in every situation. I feel reassured that any issue will be resolved promptly and effectively."
+                                </p>
+                                <div class="box-avt d-flex align-items-center gap-12">
+                                    <div class="avatar avt-60 round">
+                                        <img src="images/avatar/avt-png5.png" alt="avatar">
+                                    </div>
+                                    <div class="info">
+                                        <h6>Courtney Henry</h6>
+                                        <p class="caption-2 text-variant-1 mt-4">CEO Themesflat</p>
+                                        <ul class="list-star">
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                            <li class="icon icon-star"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sw-pagination sw-pagination-testimonial text-center"></div>
+                </div>
+            </section>
+            <!-- End Testimonial -->
+
+
             <!-- partner -->
             <section class="flat-section pt-0">
                 <div class="container2">
@@ -1061,7 +1423,60 @@
     background-color: #0056b3;
     transform: translateY(-3px);
 }
+
+.range-slider .ui-slider-range {
+    background-color: #007bff; /* Track Farbe */
+}
+
+.range-slider .ui-slider-handle {
+    background-color: #fff;
+    border: 2px solid #007bff; /* Griffrand */
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
 </style>
+<!-- Include jQuery and jQuery UI -->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+<script>
+$(document).ready(function () {
+    // Initialize Price Slider
+    $("#price-slider").slider({
+        range: true,
+        min: {{ $minPrice }},
+        max: {{ $maxPrice }},
+        values: [{{ $minPrice }}, {{ $maxPrice }}],
+        slide: function (event, ui) {
+            $("#price-min").text(ui.values[0]);
+            $("#price-max").text(ui.values[1]);
+            $("#price-min-input").val(ui.values[0]);
+            $("#price-max-input").val(ui.values[1]);
+        }
+    });
+
+    // Initialize Size Slider
+    $("#size-slider").slider({
+        range: true,
+        min: {{ $minSize }},
+        max: {{ $maxSize }},
+        values: [{{ $minSize }}, {{ $maxSize }}],
+        slide: function (event, ui) {
+            $("#size-min").text(ui.values[0]);
+            $("#size-max").text(ui.values[1]);
+            $("#size-min-input").val(ui.values[0]);
+            $("#size-max-input").val(ui.values[1]);
+        }
+    });
+});
+</script>
+
+
+
+
 
 
 
@@ -1076,22 +1491,35 @@
             el: '.sw-pagination-testimonial',
             clickable: true,
         },
+        autoplay: {
+            delay: 5000, // Automatischer Wechsel alle 5 Sekunden
+            disableOnInteraction: false, // Autoplay läuft weiter nach User-Interaktion
+        },
+
         breakpoints: {
             1024: {
-                slidesPerView: 4,
+                slidesPerView: 4.5,
                 spaceBetween: 30,
             },
             768: {
-                slidesPerView: 2,
+                slidesPerView: 3.5,
                 spaceBetween: 20,
             },
             576: {
-                slidesPerView: 1,
+                slidesPerView: 2.5,
                 spaceBetween: 15,
+            },
+            375: {
+                slidesPerView: 1.5,
+                spaceBetween: 10,
             },
         },
     });
 });
+
+</script>
+
+<script>
 document.addEventListener('DOMContentLoaded', function () {
     new Swiper('.tf-sw-partner', {
         slidesPerView: 6, // Standardansicht
@@ -1124,6 +1552,131 @@ document.addEventListener('DOMContentLoaded', function () {
 
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const locationInput = document.querySelector('input[name="location"]');
+        const getLocationButton = document.getElementById('get-location');
+
+        if (!locationInput) {
+            console.error('Location input field not found.');
+            return;
+        }
+
+        if (getLocationButton) {
+            getLocationButton.addEventListener('click', async function (e) {
+                e.preventDefault();
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(
+                        async function (position) {
+                            const latitude = position.coords.latitude;
+                            const longitude = position.coords.longitude;
+
+                            try {
+                                const response = await fetch('/get-current-location', {
+                                    method: 'POST',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                    },
+                                    body: JSON.stringify({ latitude, longitude }),
+                                });
+
+                                if (!response.ok) throw new Error('Failed to fetch location');
+
+                                const data = await response.json();
+
+                                if (data && data.location) {
+                                    locationInput.value = data.location;
+                                    locationInput.dispatchEvent(new Event('input')); // Trigger Livewire
+                                } else {
+                                    alert('Location not found.');
+                                }
+                            } catch (error) {
+                                console.error('Error fetching location:', error);
+                                alert('Error fetching location from server.');
+                            }
+                        },
+                        function (error) {
+                            console.error('Geolocation error:', error);
+                            alert('Error getting location: ' + error.message);
+                        },
+                        { timeout: 10000 } // Timeout von 10 Sekunden
+                    );
+                } else {
+                    alert('Geolocation is not supported by your browser.');
+                }
+            });
+        }
+    });
+
+        </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const typeSelect = document.getElementById('typeSelect');
+        const typeInput = document.getElementById('typeInput');
+        const typeError = document.getElementById('typeError');
+        const form = typeInput.closest('form'); // Find the form element
+
+        typeSelect.addEventListener('click', function (event) {
+            if (event.target.classList.contains('option')) {
+                const selectedOption = event.target;
+                const selectedValue = selectedOption.getAttribute('data-value');
+
+                // Setze den ausgewählten Wert im Hidden Input
+                typeInput.value = selectedValue;
+
+                // Aktualisiere die Anzeige im Dropdown
+                typeSelect.querySelector('.current').innerText = selectedOption.innerText;
+
+                // Entferne 'selected' von allen Optionen und setze es für die aktuelle Option
+                typeSelect.querySelectorAll('.option').forEach(option => option.classList.remove('selected'));
+                selectedOption.classList.add('selected');
+
+                // Entferne den Fehler, falls vorhanden
+                typeInput.setCustomValidity('');
+                typeError.style.display = 'none';
+            }
+        });
+
+        // Validierung beim Absenden des Formulars
+        form.addEventListener('submit', function (event) {
+            if (!typeInput.value || typeInput.value === 'all') {
+                event.preventDefault(); // Verhindert das Absenden des Formulars
+                typeInput.setCustomValidity('Please select a valid type.');
+                typeError.style.display = 'block';
+            } else {
+                typeInput.setCustomValidity('');
+                typeError.style.display = 'none';
+            }
+        });
+    });
+</script>
+<script>
+    document.querySelectorAll('.nice-select').forEach(select => {
+    select.addEventListener('click', function (e) {
+        if (e.target.classList.contains('option')) {
+            const value = e.target.getAttribute('data-value');
+            const hiddenInput = this.nextElementSibling;
+            const currentSpan = this.querySelector('.current');
+
+            if (hiddenInput && currentSpan) {
+                hiddenInput.value = value;
+                currentSpan.textContent = e.target.textContent;
+
+                // Remove 'selected' class from other options
+                this.querySelectorAll('.option').forEach(option => {
+                    option.classList.remove('selected');
+                });
+
+                // Add 'selected' to the clicked option
+                e.target.classList.add('selected');
+            }
+        }
+    });
+});
+</script>
 
 
 @endsection

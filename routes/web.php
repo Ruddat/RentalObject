@@ -10,13 +10,21 @@ use App\Http\Controllers\Utility\UserTimeLogController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\BlogSystem\ImageUploadController;
 use App\Http\Controllers\Backend\Admin\PagesSystem\PageController;
+use App\Http\Controllers\Frontend\Search\PropertySearchController;
 use App\Http\Controllers\Backend\Admin\VideoChatSystem\VideoChatController;
 
-Route::view('/', 'welcome');
+///Route::view('/', 'welcome');
 
 //Route::view('dashboard', 'dashboard')
 //    ->middleware(['auth', 'verified'])
 //    ->name('dashboard');
+
+
+Route::get('/', [PropertySearchController::class, 'index'])->name('properties.index');
+Route::get('home', [PropertySearchController::class, 'index'])->name('home');
+Route::get('/properties/search', [PropertySearchController::class, 'search'])->name('properties.search');
+
+
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])

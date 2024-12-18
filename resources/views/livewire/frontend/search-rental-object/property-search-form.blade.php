@@ -91,7 +91,7 @@
                                     <div class="box-title-price">
                                         <span class="title-price fw-6">Price Range:</span>
                                     </div>
-                                    <livewire:frontend.helper.double-range-slider
+                                    <livewire:frontend.helper.double-range-slider-v3
                                         :minValue="$minPrice"
                                         :maxValue="$maxPrice"
                                         :minLimit="$minPrice"
@@ -106,7 +106,7 @@
                                     <div class="box-title-price">
                                         <span class="title-price fw-6">Size Range:</span>
                                     </div>
-                                    <livewire:frontend.helper.double-range-slider
+                                    <livewire:frontend.helper.double-range-slider-v3
                                         :minValue="$minSize"
                                         :maxValue="$maxSize"
                                         :minLimit="$minSize"
@@ -219,30 +219,6 @@
 
 
 
-        <style>
-    .slider {
-        height: 10px;
-        background-color: #f0f0f0;
-        border-radius: 5px;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .slider-thumb {
-        width: 20px;
-        height: 20px;
-        background-color: #007bff;
-        border-radius: 50%;
-        position: absolute;
-        transform: translate(-50%, -50%);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 12px;
-        cursor: pointer;
-    }
-        </style>
 
 
 

@@ -119,34 +119,43 @@
         </div>
 
         <!-- Standort der Immobilie -->
-        <div class="form-section">
-            <div class="form-group">
-                <label>Land *</label>
-                <select wire:model.lazy="stepOne.country" class="form-control">
-                    <option value="">Bitte wählen</option>
-                    <option value="deutschland">Deutschland</option>
-                    <option value="österreich">Österreich</option>
-                    <option value="schweiz">Schweiz</option>
-                </select>
-                @error('stepOne.country') <span class="error-message">{{ $message }}</span> @enderror
-            </div>
+<!-- Standort der Immobilie -->
+<div class="form-section">
+    <div class="form-group">
+        <label>Land *</label>
+        <select wire:model.defer="stepOne.country" class="form-control">
+            <option value="">Bitte wählen</option>
+            <option value="deutschland">Deutschland</option>
+            <option value="österreich">Österreich</option>
+            <option value="schweiz">Schweiz</option>
+        </select>
+        @error('stepOne.country') <span class="error-message">{{ $message }}</span> @enderror
+    </div>
 
-            <div class="form-group mt-3">
-                <label>Straße *</label>
-                <input type="text" wire:model.lazy="stepOne.street" class="form-control" placeholder="Straße">
-                @error('stepOne.street') <span class="error-message">{{ $message }}</span> @enderror
-            </div>
+    <div class="form-group mt-3">
+        <label>Straße *</label>
+        <input type="text" wire:model.defer="stepOne.street" class="form-control" placeholder="Straße">
+        @error('stepOne.street') <span class="error-message">{{ $message }}</span> @enderror
+    </div>
 
-            <div class="form-group mt-3">
-                <label>PLZ / Ort *</label>
-                <div class="d-flex">
-                    <input type="text" wire:model.lazy="stepOne.zip" class="form-control me-2" placeholder="PLZ">
-                    <input type="text" wire:model.lazy="stepOne.city" class="form-control" placeholder="Ort">
-                </div>
-                @error('stepOne.zip') <span class="error-message">{{ $message }}</span> @enderror
-                @error('stepOne.city') <span class="error-message">{{ $message }}</span> @enderror
-            </div>
+    <div class="form-group mt-3">
+        <label>PLZ / Ort *</label>
+        <div class="d-flex">
+            <input type="text" wire:model.defer="stepOne.zip" class="form-control me-2" placeholder="PLZ">
+            <input type="text" wire:model.defer="stepOne.city" class="form-control" placeholder="Ort">
         </div>
+        @error('stepOne.zip') <span class="error-message">{{ $message }}</span> @enderror
+        @error('stepOne.city') <span class="error-message">{{ $message }}</span> @enderror
+    </div>
+
+    <!-- Geocoding Button -->
+    <div class="form-group mt-3">
+        <button wire:click="geocodeAddress" class="btn btn-primary">
+            Geodaten abrufen
+        </button>
+    </div>
+</div>
+
 
         <!-- Veröffentlichung der Kontaktdaten -->
         <div class="form-section">
@@ -296,7 +305,7 @@
 
             @elseif($activeTab === 'data_floors')
             <div class="tab-pane active" id="data_floors" role="tabpanel">
-                @livewire('backend.property-system.floor-component')
+                @livewire('backend.property-system.floor-component', ['temporaryUuid' => $temporaryUuid])
 
                 <!-- Added Floors Section -->
                 @if($floors)
@@ -399,69 +408,63 @@
             </div>
 
             <div class="container">
+
+            <div class="form-section">
+                <h5>Design auswählen</h5>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                <h5>Images With Radio Buttons</h5>
-                            </div>
-                            <div class="card-body">
-                                <div class="row">
-                                    <!-- Image 1 -->
-                                    <div class="col-sm-6 col-xl-3">
-                                        <label class="form-checkimage">
-                                            <input type="radio" value="1" name="radioimage" class="checkimage-input">
-                                            <span class="check-box radiobox">
-                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/02.jpg" class="checkbox-image w-100" alt="Image 1">
-                                                <span class="check-icon">
-                                                    <i class="fa fa-check-circle"></i>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!-- Image 2 -->
-                                    <div class="col-sm-6 col-xl-3">
-                                        <label class="form-checkimage">
-                                            <input type="radio" value="2" name="radioimage" class="checkimage-input">
-                                            <span class="check-box radiobox">
-                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/04.jpg" class="checkbox-image w-100" alt="Image 2">
-                                                <span class="check-icon">
-                                                    <i class="fa fa-check-circle"></i>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!-- Image 3 -->
-                                    <div class="col-sm-6 col-xl-3">
-                                        <label class="form-checkimage">
-                                            <input type="radio" value="3" name="radioimage" class="checkimage-input" checked>
-                                            <span class="check-box radiobox">
-                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/05.jpg" class="checkbox-image w-100" alt="Image 3">
-                                                <span class="check-icon">
-                                                    <i class="fa fa-check-circle"></i>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <!-- Image 4 -->
-                                    <div class="col-sm-6 col-xl-3">
-                                        <label class="form-checkimage">
-                                            <input type="radio" value="3" name="radioimage" class="checkimage-input" checked>
-                                            <span class="check-box radiobox">
-                                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/05.jpg" class="checkbox-image w-100" alt="Image 3">
-                                                <span class="check-icon">
-                                                    <i class="fa fa-check-circle"></i>
-                                                </span>
-                                            </span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <!-- Design 1 -->
+                    <div class="col-sm-6 col-xl-3">
+                        <label class="form-checkimage">
+                            <input type="radio" wire:model="stepThree.selectedDesign" value="1" class="checkimage-input">
+                            <span class="check-box radiobox">
+                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/02.jpg" class="checkbox-image w-100" alt="Design 1">
+                                <span class="check-icon">
+                                    <i class="fa fa-check-circle"></i>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                    <!-- Design 2 -->
+                    <div class="col-sm-6 col-xl-3">
+                        <label class="form-checkimage">
+                            <input type="radio" wire:model="stepThree.selectedDesign" value="2" class="checkimage-input">
+                            <span class="check-box radiobox">
+                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/04.jpg" class="checkbox-image w-100" alt="Design 2">
+                                <span class="check-icon">
+                                    <i class="fa fa-check-circle"></i>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                    <!-- Design 3 -->
+                    <div class="col-sm-6 col-xl-3">
+                        <label class="form-checkimage">
+                            <input type="radio" wire:model="stepThree.selectedDesign" value="3" class="checkimage-input">
+                            <span class="check-box radiobox">
+                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/05.jpg" class="checkbox-image w-100" alt="Design 3">
+                                <span class="check-icon">
+                                    <i class="fa fa-check-circle"></i>
+                                </span>
+                            </span>
+                        </label>
+                    </div>
+                    <!-- Design 4 -->
+                    <div class="col-sm-6 col-xl-3">
+                        <label class="form-checkimage">
+                            <input type="radio" wire:model="stepThree.selectedDesign" value="4" class="checkimage-input" />
+                            <span class="check-box radiobox">
+                                <img src="https://rentalobject.test/backend/assets/images/bootstrapslider/05.jpg" class="checkbox-image w-100" alt="Design 4">
+                                <span class="check-icon">
+                                    <i class="fa fa-check-circle"></i>
+                                </span>
+                            </span>
+                        </label>
                     </div>
                 </div>
+                @error('stepThree.selectedDesign') <span class="error-message">{{ $message }}</span> @enderror
             </div>
 
+        </div>
 
 
         </div>
