@@ -442,6 +442,8 @@ class MultiStepForm extends Component
                 $this->dispatch('updateMap', [
                     'latitude' => $this->stepOne['latitude'],
                     'longitude' => $this->stepOne['longitude'],
+                    'latitude' => (string) $this->stepOne['latitude'],
+                    'longitude' => (string) $this->stepOne['longitude'],
                     'nearbyPlaces' => $nearbyPlaces,
                 ]);
 
@@ -919,38 +921,54 @@ if (!empty($floors)) {
 
     foreach ($floorRecords as $floor) {
         $oldPath = $floor->floor_plan_path;
-        $newPath = str_replace($this->temporaryUuid, $property->id, $oldPath);
 
-        // Logge den aktuellen Pfad und den neuen Pfad
-        \Log::info('Floor Pfade:', [
-            'old_path' => $oldPath,
-            'new_path' => $newPath,
-        ]);
+        // Prüfe, ob ein `floorPlanPath` vorhanden ist
+        if ($oldPath) {
+            $newPath = str_replace($this->temporaryUuid, $property->id, $oldPath);
 
-        // Prüfen, ob die Datei existiert
-        if (Storage::disk('public')->exists($oldPath)) {
-            \Log::info('Datei existiert, wird verschoben:', ['path' => $oldPath]);
-            Storage::disk('public')->move($oldPath, $newPath);
+            // Logge den aktuellen Pfad und den neuen Pfad
+            \Log::info('Floor Pfade:', [
+                'old_path' => $oldPath,
+                'new_path' => $newPath,
+            ]);
+
+            // Prüfen, ob die Datei existiert
+            if (Storage::disk('public')->exists($oldPath)) {
+                \Log::info('Datei existiert, wird verschoben:', ['path' => $oldPath]);
+                Storage::disk('public')->move($oldPath, $newPath);
+            } else {
+                \Log::warning('Datei nicht gefunden:', ['path' => $oldPath]);
+            }
+
+            // Aktualisiere den Pfad in der Datenbank
+            $floor->update([
+                'property_id' => $property->id,
+                'floor_plan_path' => $newPath,
+            ]);
+
+            // Logge erfolgreiche Aktualisierung
+            \Log::info('Floor aktualisiert:', [
+                'floor_id' => $floor->id,
+                'new_property_id' => $property->id,
+                'new_floor_plan_path' => $newPath,
+            ]);
         } else {
-            \Log::warning('Datei nicht gefunden:', ['path' => $oldPath]);
+            // Wenn kein `floorPlanPath` vorhanden ist, aktualisiere nur die `property_id`
+            $floor->update([
+                'property_id' => $property->id,
+            ]);
+
+            // Logge, dass kein `floorPlanPath` vorhanden war
+            \Log::info('Floor ohne Plan aktualisiert:', [
+                'floor_id' => $floor->id,
+                'new_property_id' => $property->id,
+            ]);
         }
-
-        // Aktualisiere den Pfad in der Datenbank
-        $floor->update([
-            'property_id' => $property->id,
-            'floor_plan_path' => $newPath,
-        ]);
-
-        // Logge erfolgreiche Aktualisierung
-        \Log::info('Floor aktualisiert:', [
-            'floor_id' => $floor->id,
-            'new_property_id' => $property->id,
-            'new_floor_plan_path' => $newPath,
-        ]);
     }
 } else {
     \Log::info('Keine Floors zum Aktualisieren vorhanden.');
 }
+
 
 
 

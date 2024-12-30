@@ -12,6 +12,7 @@
         "concurrently": "^9.0.1",
         "laravel-echo": "^1.17.1",
         "laravel-vite-plugin": "^1.0",
+        "livewire-sortable": "^1.0.0",
         "postcss": "^8.4.31",
         "pusher-js": "^8.4.0-rc2",
         "sass-embedded": "^1.80.6",
@@ -25,6 +26,7 @@
         "nouislider": "^15.8.1",
         "sass": "^1.80.6",
         "socket.io": "^4.8.1",
+        "sortablejs": "^1.15.6",
         "trix": "^2.1.8",
         "vite-plugin-static-copy": "^1.0.0"
     }

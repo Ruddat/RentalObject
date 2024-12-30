@@ -1223,51 +1223,10 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </div>
                     </div>
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-            @livewire('backend.vendor.propertys.property-table')
-
-
-
-
-
         </div>
     </div>
 
@@ -1323,8 +1282,5 @@
 
     <!-- Ecommerce js-->
     <script src="{{asset('backend/assets/js/ecommerce_dashboard.js')}}"></script>
-
-
-
 
 @endsection

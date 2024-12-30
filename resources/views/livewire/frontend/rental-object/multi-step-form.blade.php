@@ -118,42 +118,58 @@
             @endif
         </div>
 
-        <!-- Standort der Immobilie -->
 <!-- Standort der Immobilie -->
-<div class="form-section">
-    <div class="form-group">
-        <label>Land *</label>
-        <select wire:model.defer="stepOne.country" class="form-control">
-            <option value="">Bitte wählen</option>
-            <option value="deutschland">Deutschland</option>
-            <option value="österreich">Österreich</option>
-            <option value="schweiz">Schweiz</option>
-        </select>
-        @error('stepOne.country') <span class="error-message">{{ $message }}</span> @enderror
-    </div>
-
-    <div class="form-group mt-3">
-        <label>Straße *</label>
-        <input type="text" wire:model.defer="stepOne.street" class="form-control" placeholder="Straße">
-        @error('stepOne.street') <span class="error-message">{{ $message }}</span> @enderror
-    </div>
-
-    <div class="form-group mt-3">
-        <label>PLZ / Ort *</label>
-        <div class="d-flex">
-            <input type="text" wire:model.defer="stepOne.zip" class="form-control me-2" placeholder="PLZ">
-            <input type="text" wire:model.defer="stepOne.city" class="form-control" placeholder="Ort">
+<div class="form-section d-flex">
+    <!-- Linke Spalte: Formulare -->
+    <div class="form-container w-100">
+        <div class="form-group">
+            <label>Land *</label>
+            <select wire:model.defer="stepOne.country" class="form-control">
+                <option value="">Bitte wählen</option>
+                <option value="deutschland">Deutschland</option>
+                <option value="österreich">Österreich</option>
+                <option value="schweiz">Schweiz</option>
+            </select>
+            @error('stepOne.country') <span class="error-message">{{ $message }}</span> @enderror
         </div>
-        @error('stepOne.zip') <span class="error-message">{{ $message }}</span> @enderror
-        @error('stepOne.city') <span class="error-message">{{ $message }}</span> @enderror
+
+        <div class="form-group mt-3">
+            <label>Straße *</label>
+            <input type="text" wire:model.defer="stepOne.street" class="form-control" placeholder="Straße">
+            @error('stepOne.street') <span class="error-message">{{ $message }}</span> @enderror
+        </div>
+
+        <div class="form-group mt-3">
+            <label>PLZ / Ort *</label>
+            <div class="d-flex">
+                <input type="text" wire:model.defer="stepOne.zip" class="form-control me-2" placeholder="PLZ">
+                <input type="text" wire:model.defer="stepOne.city" class="form-control" placeholder="Ort">
+            </div>
+            @error('stepOne.zip') <span class="error-message">{{ $message }}</span> @enderror
+            @error('stepOne.city') <span class="error-message">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Geocoding Button -->
+        <div class="form-group mt-3">
+            <button wire:click="geocodeAddress" class="btn btn-primary">
+                Geodaten abrufen
+            </button>
+        </div>
+
+        <!-- Latitude und Longitude Felder -->
+        @if(!empty($stepOne['latitude']) && !empty($stepOne['longitude']))
+        <div class="form-group mt-3">
+            <label>Latitude</label>
+            <input type="text" wire:model="stepOne.latitude" class="form-control" readonly>
+        </div>
+
+        <div class="form-group mt-3">
+            <label>Longitude</label>
+            <input type="text" wire:model="stepOne.longitude" class="form-control" readonly>
+        </div>
+        @endif
     </div>
 
-    <!-- Geocoding Button -->
-    <div class="form-group mt-3">
-        <button wire:click="geocodeAddress" class="btn btn-primary">
-            Geodaten abrufen
-        </button>
-    </div>
 </div>
 
 
@@ -1069,6 +1085,14 @@ Ckeck-Image-Component
     font-size: 18px;
 }
 
+/* Mapping */
+    .map-container {
+        width: 50%;
+    }
+
+
+
+
 
     </style>
 
@@ -1129,14 +1153,18 @@ Ckeck-Image-Component
 <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
 
 
-<!-- Leaflet CSS -->
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-
-<!-- Leaflet JS -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-
 @endassets
+
+
+
+
+
+
+
+
+
+
+
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         // Allgemeine Funktion zum Öffnen eines Modals
@@ -1218,20 +1246,6 @@ Ckeck-Image-Component
     </script>
 
 
-<script>
-
-function openMapPopup() {
-    $('#mapModal').modal('show');
-    setTimeout(() => {
-        if (map) {
-            const lat = {{ $stepOne['latitude'] ?? 51.505 }};
-            const lng = {{ $stepOne['longitude'] ?? -0.09 }};
-            map.setView([lat, lng], 13);
-            marker.setLatLng([lat, lng]);
-        }
-    }, 500);
-}
-</script>
 <script>
     document.addEventListener('show-login-modal', () => {
     const loginModal = new bootstrap.Modal(document.getElementById('modalLogin'));
