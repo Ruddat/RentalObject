@@ -82,18 +82,51 @@ $heatingCosts = DB::table('heating_costs')
     ->where('rental_object_id', $this->selectedRentalObjectId)
     ->where('year', $year)
     ->where('user_id', Auth::id())
-    ->first();
+    ->get(); // `get()` gibt eine Collection zurück
 
-// Define heating data array
+//dd($heatingCosts);
+
+$totalInitialReading = 0;
+$totalFinalReading = 0;
+$totalFuelConsumption = 0;
+$totalFuelCost = 0;
+$totalWarmWaterCost = 0;
+$totalHeatingOnlyCost = 0;
+
+foreach ($heatingCosts as $cost) {
+    // Berechnungen für jeden Eintrag
+    $fuelCost = $cost->total_oil_used * $cost->price_per_unit;
+    $warmWaterCost = $fuelCost * ($cost->warm_water_percentage ?? 0);
+    $heatingOnlyCost = $fuelCost * (1 - ($cost->warm_water_percentage ?? 0));
+
+    // Summieren der Werte
+    $totalInitialReading += $cost->initial_reading ?? 0;
+    $totalFinalReading += $cost->final_reading ?? 0;
+    $totalFuelConsumption += $cost->total_oil_used ?? 0;
+    $totalFuelCost += $fuelCost;
+    $totalWarmWaterCost += $warmWaterCost;
+    $totalHeatingOnlyCost += $heatingOnlyCost;
+}
+
+// Berechnung des Warmwasser-Prozentsatzes relativ zu den Gesamtkosten
+$totalWarmWaterPercentage = $totalFuelCost > 0 ? ($totalWarmWaterCost / $totalFuelCost) * 100 : 0;
+
+// Erstelle das Heating-Data-Array mit den Gesamtsummen
 $heatingData = [
-    'initialReading' => $heatingCosts->initial_reading ?? 0,
-    'finalReading' => $heatingCosts->final_reading ?? 0,
-    'totalFuelConsumption' => $heatingCosts->total_oil_used ?? 0,
-    'price_per_unit' => $heatingCosts->price_per_unit ?? 0,
-    'totalFuelCost' => $heatingCosts ? $heatingCosts->total_oil_used * $heatingCosts->price_per_unit : 0,
-    'warmWaterCost' => $heatingCosts ? ($heatingCosts->total_oil_used * $heatingCosts->price_per_unit) * ($heatingCosts->warm_water_percentage ?? 0) : 0,
-    'heatingOnlyCost' => $heatingCosts ? ($heatingCosts->total_oil_used * $heatingCosts->price_per_unit) * (1 - ($heatingCosts->warm_water_percentage ?? 0)) : 0,
+    'totalInitialReading' => $totalInitialReading,
+    'totalFinalReading' => $totalFinalReading,
+    'totalFuelConsumption' => $totalFuelConsumption,
+    'totalFuelCost' => $totalFuelCost,
+    'totalWarmWaterCost' => $totalWarmWaterCost,
+    'totalHeatingOnlyCost' => $totalHeatingOnlyCost,
+    'warmWaterPercentage' => $totalWarmWaterPercentage, // Warmwasser-Prozentsatz hinzufügen
 ];
+
+
+// Debugging-Ausgabe zur Überprüfung
+//dd($heatingData);
+
+
 
         // Create or update the billing record
         $billingRecord = BillingRecords::create([

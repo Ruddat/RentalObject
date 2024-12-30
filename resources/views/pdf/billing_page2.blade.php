@@ -68,9 +68,9 @@
         <p><strong>Adresse:</strong> {{ $tenant->street ?? '' }}, {{ $tenant->zip_code ?? '' }} {{ $tenant->city ?? '' }}</p>
     </div>
 
+    <!-- Heizkostenaufstellung -->
     <h2>Heizkostenaufstellung</h2>
 
-    <!-- Heating Cost Breakdown Table -->
     <table class="table">
         <thead>
             <tr>
@@ -81,11 +81,11 @@
         <tbody>
             <tr>
                 <td>Anfangsstand</td>
-                <td>{{ number_format($heatingData['initialReading'] ?? 0, 2, ',', '.') }} (Einheiten)</td>
+                <td>{{ number_format($heatingData['totalInitialReading'] ?? 0, 2, ',', '.') }} (Einheiten)</td>
             </tr>
             <tr>
                 <td>Endstand</td>
-                <td>{{ number_format($heatingData['finalReading'] ?? 0, 2, ',', '.') }} (Einheiten)</td>
+                <td>{{ number_format($heatingData['totalFinalReading'] ?? 0, 2, ',', '.') }} (Einheiten)</td>
             </tr>
             <tr>
                 <td>Gesamtverbrauch</td>
@@ -100,12 +100,12 @@
                 <td>{{ number_format($heatingData['totalFuelCost'] ?? 0, 2, ',', '.') }} €</td>
             </tr>
             <tr>
-                <td>Kosten für Warmwasser ({{ number_format(($heatingCosts->warm_water_percentage ?? 0) * 100, 0) }}%)</td>
-                <td>{{ number_format($heatingData['warmWaterCost'] ?? 0, 2, ',', '.') }} €</td>
+                <td>Kosten für Warmwasser ({{ number_format($heatingData['warmWaterPercentage'] ?? 0, 0) }}%)</td>
+                <td>{{ number_format($heatingData['totalWarmWaterCost'] ?? 0, 2, ',', '.') }} €</td>
             </tr>
             <tr>
                 <td>Kosten nur für Heizung</td>
-                <td>{{ number_format($heatingData['heatingOnlyCost'] ?? 0, 2, ',', '.') }} €</td>
+                <td>{{ number_format($heatingData['totalHeatingOnlyCost'] ?? 0, 2, ',', '.') }} €</td>
             </tr>
         </tbody>
     </table>
@@ -128,12 +128,13 @@
             </tr>
             <tr>
                 <td>Warmwasser</td>
-                <td>{{ number_format($heatingData['warmWaterCost'] ?? 0, 2, ',', '.') }} €</td>
+                <td>{{ number_format($heatingData['totalWarmWaterCost'] ?? 0, 2, ',', '.') }} €</td>
                 <td>{{ number_format($calculation['warm_water_share'] ?? 0, 2, ',', '.') }} €</td>
             </tr>
         </tbody>
     </table>
 
+    <!-- Footer Section -->
     <div class="footer">
         <p>Vielen Dank für Ihr Vertrauen!</p>
     </div>
