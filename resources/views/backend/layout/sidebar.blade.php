@@ -136,6 +136,7 @@
                     <li><a href="{{route('rental-object-table')}}">Mietobjekte verwalten</a></li>
                     <li><a href="{{route('tenant-table')}}">Mieter verwalten</a></li>
                     <li><a href="{{route('tenant-payments')}}">Nebenkostenzahlungen verwalten</a></li>
+                    <li><a href="{{route('refund-or-payment')}}">Erstattungen verwalten</a></li>
                     <li><a href="{{route('utility-cost-recording')}}">Nebenkosten erfassen</a></li>
                     <li><a href="{{route('heating-cost-management')}}">Heizkosten</a></li>
                     <li><a href="{{route('billing-calculation')}}">Abrechnung für das Jahr und Mietobjekt</a></li>

@@ -46,7 +46,7 @@
 @endif
 
 
-@if (Route::is('add-property', 'blog-manager.index', 'post.create', 'post.edit', 'sys-settings', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-table', 'tenant-table', 'utility-cost-recording'))
+@if (Route::is('add-property', 'blog-manager.index', 'post.create', 'post.edit', 'sys-settings', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-table', 'tenant-table', 'utility-cost-recording', 'refund-or-payment'))
     <div id="wrapper">
         <div id="page" class="clearfix">
             <div class="layout-wrap">
@@ -62,7 +62,7 @@
 @endif
 
 
-@if(isset($page) && $page === 'add-property' || $page === 'sys-settings' || $page === 'dashboard' || $page === 'utility-cost-table' || $page === 'heating-cost-management' || $page === 'billing-header-form' || $page === 'tenant-payments' || $page === 'rental-object-table' || $page === 'billing-generation' || $page === 'billing-calculation' || $page === 'tenant-table')
+@if(isset($page) && $page === 'add-property' || $page === 'sys-settings' || $page === 'dashboard' || $page === 'utility-cost-table' || $page === 'refund-or-payment' || $page === 'heating-cost-management' || $page === 'billing-header-form' || $page === 'tenant-payments' || $page === 'rental-object-table' || $page === 'billing-generation' || $page === 'billing-calculation' || $page === 'tenant-table')
 @include('rentalobj.layout.partials.inner-header')
 @include('rentalobj.layout.partials.sidebar-dashboard')
 @endif
@@ -72,7 +72,7 @@
 
 
 
-@if (Route::is('sys-settings', 'add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-recording'))
+@if (Route::is('sys-settings', 'add-property', 'dashboard', 'billing-header-form', 'tenant-payments', 'rental-object-table', 'billing-generation', 'billing-calculation', 'heating-cost-management', 'utility-cost-recording', 'refund-or-payment'))
 
 <div class="overlay-dashboard"></div>
 

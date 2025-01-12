@@ -150,6 +150,28 @@ $heatingData = [
             ->where('user_id', Auth::id())
             ->get();
 
+
+// Fetch additional refunds or payments
+$refundsOrPayments = DB::table('refunds_or_payments')
+    ->where('tenant_id', $this->selectedTenantId)
+    ->where('rental_object_id', $this->selectedRentalObjectId)
+    ->where('year', $year)
+    ->where('user_id', Auth::id())
+    ->get();
+
+// Berechnung des Gesamtsaldos mit zusätzlichen Zahlungen und Erstattungen
+$totalPayments = $refundsOrPayments->where('type', 'payment')->sum('amount');
+$totalRefunds = $refundsOrPayments->where('type', 'refund')->sum('amount');
+
+// Angepasster Saldo
+$adjustedBalance = $calculation['balance_due'] - $totalPayments + $totalRefunds;
+
+// Speichere den berechneten Saldowert im billingRecord
+$billingRecord->update([
+    'balance_due' => $adjustedBalance,
+]);
+
+//dd($refundsOrPayments);
         // Prepare data for the PDFs
         $pdfData = [
             'billingRecord' => $billingRecord,
@@ -162,6 +184,8 @@ $heatingData = [
             'heatingCosts' => $heatingCosts,
             'calculation' => $calculation,
             'tenantPayments' => $tenantPayments,
+            'refundsOrPayments' => $refundsOrPayments, // Hinzugefügt
+
         ];
 
         // Generate and store each PDF

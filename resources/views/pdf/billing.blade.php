@@ -128,22 +128,45 @@
         </div>
 
         <!-- Summary -->
-        <div class="summary">
-            <p>Sehr geehrte/r {{ $tenant->last_name }},</p>
-            <p>für Ihre Wohnung am {{ $tenant->street }}, {{ $tenant->zip_code }} {{ $tenant->city }} haben wir Ihren Kostenanteil errechnet:</p>
+<!-- Summary -->
+<div class="summary">
+    <p>Sehr geehrte/r {{ $tenant->last_name }},</p>
+    <p>für Ihre Wohnung am {{ $tenant->street }}, {{ $tenant->zip_code }} {{ $tenant->city }} haben wir Ihren Kostenanteil errechnet:</p>
 
-            <div class="highlight-box">
-                @if($billingRecord->balance_due >= 0)
-                    <p><strong>Ihre Nachzahlung beträgt:</strong></p>
+    <div class="highlight-box">
+        <p>
+            <strong>Kostenzusammenfassung:</strong>
+        </p>
+        <div style="margin-left: 15px;">
+            <p>Gesamtkosten: {{ number_format($billingRecord->total_cost, 2, ',', '.') }} Euro</p>
+            <p>- Vorauszahlungen: {{ number_format($billingRecord->prepayment, 2, ',', '.') }} Euro</p>
+            @if($refundsOrPayments->where('type', 'payment')->sum('amount') > 0)
+                <p>- Zusätzliche Zahlungen: {{ number_format($refundsOrPayments->where('type', 'payment')->sum('amount'), 2, ',', '.') }} Euro</p>
+            @endif
+            @if($refundsOrPayments->where('type', 'refund')->sum('amount') > 0)
+                <p>+ Erstattungen: {{ number_format($refundsOrPayments->where('type', 'refund')->sum('amount'), 2, ',', '.') }} Euro</p>
+            @endif
+            <hr style="border: 1px solid #ccc; margin: 10px 0;">
+            @php
+                $totalPayments = $refundsOrPayments->where('type', 'payment')->sum('amount');
+                $totalRefunds = $refundsOrPayments->where('type', 'refund')->sum('amount');
+                $adjustedBalance = $billingRecord->balance_due - $totalPayments + $totalRefunds;
+            @endphp
+            <p>
+                <strong>Berechneter Saldo:</strong>
+                @if($adjustedBalance >= 0)
+                    Ihre Nachzahlung beträgt:
                 @else
-                    <strong>Ihr Guthaben beträgt:</strong>
+                    Ihr Guthaben beträgt:
                 @endif
-
-                {{ number_format($billingRecord->total_cost, 2, ',', '.') }} Euro<br>
-                - {{ number_format($billingRecord->prepayment, 2, ',', '.') }} Euro<br>
-                = {{ number_format(abs($billingRecord->balance_due), 2, ',', '.') }} Euro
-            </div>
+                {{ number_format(abs($adjustedBalance), 2, ',', '.') }} Euro
+            </p>
         </div>
+    </div>
+</div>
+
+
+
 
         <!-- Detailed Cost Breakdown for Standard Costs -->
         <div class="cost-breakdown">
@@ -255,6 +278,41 @@
                         }, json_decode($billingRecord->standard_costs, true))), 2, ',', '.') }}
                         </td>
                         <td>{{ number_format(array_sum(array_column(json_decode($billingRecord->standard_costs, true), 'amount')), 2, ',', '.') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div style="page-break-after: always;"></div>
+
+        <!-- Additional Payments and Refunds -->
+        <div class="cost-breakdown">
+            <h2>Zusätzliche Zahlungen und Erstattungen</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Typ</th>
+                        <th>Datum</th>
+                        <th>Betrag (€)</th>
+                        <th>Notiz</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($refundsOrPayments as $entry)
+                        <tr>
+                            <td>{{ ucfirst($entry->type) }}</td>
+                            <td>{{ \Carbon\Carbon::parse($entry->payment_date)->format('d.m.Y') }}</td>
+                            <td>{{ number_format($entry->amount, 2, ',', '.') }}</td>
+                            <td>{{ $entry->note ?? '-' }}</td>
+                        </tr>
+                    @endforeach
+                    <tr class="subtotal">
+                        <td colspan="2">Summe Zahlungen</td>
+                        <td colspan="2">{{ number_format($refundsOrPayments->where('type', 'payment')->sum('amount'), 2, ',', '.') }} €</td>
+                    </tr>
+                    <tr class="subtotal">
+                        <td colspan="2">Summe Erstattungen</td>
+                        <td colspan="2">{{ number_format($refundsOrPayments->where('type', 'refund')->sum('amount'), 2, ',', '.') }} €</td>
                     </tr>
                 </tbody>
             </table>
