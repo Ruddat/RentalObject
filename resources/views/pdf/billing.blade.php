@@ -150,7 +150,7 @@
             @php
                 $totalPayments = $refundsOrPayments->where('type', 'payment')->sum('amount');
                 $totalRefunds = $refundsOrPayments->where('type', 'refund')->sum('amount');
-                $adjustedBalance = $billingRecord->balance_due - $totalPayments + $totalRefunds;
+                $adjustedBalance = $billingRecord->balance_due;
             @endphp
             <p>
                 <strong>Berechneter Saldo:</strong>

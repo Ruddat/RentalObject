@@ -161,15 +161,22 @@ $refundsOrPayments = DB::table('refunds_or_payments')
 
 // Berechnung des Gesamtsaldos mit zusätzlichen Zahlungen und Erstattungen
 $totalPayments = $refundsOrPayments->where('type', 'payment')->sum('amount');
+
 $totalRefunds = $refundsOrPayments->where('type', 'refund')->sum('amount');
 
-// Angepasster Saldo
-$adjustedBalance = $calculation['balance_due'] - $totalPayments + $totalRefunds;
+//dd($billingRecord->total_cost, $billingRecord->prepayment, $totalPayments, $totalRefunds);
+//dd($totalPayments, $totalRefunds);
+
+// Berechnung des angepassten Saldos
+$adjustedBalance = $billingRecord->total_cost - $billingRecord->prepayment - $totalPayments + $totalRefunds;
+
+//dd($adjustedBalance);
 
 // Speichere den berechneten Saldowert im billingRecord
 $billingRecord->update([
     'balance_due' => $adjustedBalance,
 ]);
+//dd($adjustedBalance);
 
 //dd($refundsOrPayments);
         // Prepare data for the PDFs
