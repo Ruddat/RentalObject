@@ -35,6 +35,9 @@ Route::middleware(['web', 'auth', 'verified', LogPageAccess::class])->group(func
 
     Route::view('/add-property', 'backend.livewirepages.addproperty._add-property')->name('add-property');
 
+    Route::view('/receipt-manager', 'backend.livewirepages.receiptmanager._receipt-manager')->name('receipt-manager');
+
+
     Route::view('roles-permissions-table', 'backend.admin.rolesandpermission._roles-permissions-table')->name('roles-permissions-table');
     Route::view('user-table', 'backend.admin.users-table')->name('user-table');
     Route::view('profile', 'backend.pages.profile')->name('profile');

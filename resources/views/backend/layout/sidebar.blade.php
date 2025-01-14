@@ -145,6 +145,18 @@
             </li>
 
             <li>
+                <a class="" data-bs-toggle="collapse" href="#receipt-manager-kits" aria-expanded="false">
+
+                    <i class="ph-duotone  ph-briefcase"></i>
+                    @autotranslate("Quittungen", app()->getLocale())
+                </a>
+                <ul class="collapse" id="receipt-manager-kits">
+                    <li><a href="{{route('receipt-manager')}}">@autotranslate("Quittungen", app()->getLocale())</a></li>
+                </ul>
+            </li>
+
+
+            <li>
                 <a class="" data-bs-toggle="collapse" href="#e-invoice-kits" aria-expanded="false">
 
                     <i class="ph-duotone  ph-briefcase"></i>
@@ -155,6 +167,12 @@
                     <li><a href="{{route('e-invoice-pdf-manager')}}">@autotranslate("E Invoices PDF", app()->getLocale())</a></li>
                 </ul>
             </li>
+
+
+
+
+
+
 
 
 
