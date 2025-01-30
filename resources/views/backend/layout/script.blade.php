@@ -19,6 +19,9 @@
 <!-- App js-->
 <script src="{{asset('backend/assets/js/script.js')}}"></script>
 
+<!-- Include the Jodit JS Library -->
+<script src="//unpkg.com/jodit@4.1.16/es2021/jodit.min.js"></script>
+
 <script>
     let startTime = Date.now(); // Zeit beim Laden der Seite
     let timeSpent = 0;

@@ -25,6 +25,9 @@
 <!-- Simplebar css-->
 <link rel="stylesheet" type="text/css" href="{{asset('backend/assets/vendor/simplebar/simplebar.css') }}">
 
+<!-- Include Jodit CSS Styling -->
+<link rel="stylesheet" href="//unpkg.com/jodit@4.1.16/es2021/jodit.min.css">
+
 @yield('css')
 
 

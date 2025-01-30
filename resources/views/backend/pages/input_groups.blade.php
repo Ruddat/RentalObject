@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Input Groups')
 @section('css')
     <!--font-awesome-css-->

@@ -1,4 +1,5 @@
-@extends('layout.master')
+@extends('backend.layout.master')
+
 @section('title', 'Default Forms')
 @section('css')
 

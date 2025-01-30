@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Input Masks')
 @section('css')
 
@@ -187,8 +187,8 @@
 <div id="customizer"></div>
 
 <!--cleave js  -->
-<script src="{{asset('assets/vendor/cleavejs/cleave.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/cleavejs/cleave.min.js')}}"></script>
 
 <!-- js -->
-<script src="{{asset('assets/js/input_masks.js')}}"></script>
+<script src="{{asset('backend/assets/js/input_masks.js')}}"></script>
 @endsection

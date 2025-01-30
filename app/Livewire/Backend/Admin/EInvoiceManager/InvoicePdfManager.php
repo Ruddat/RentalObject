@@ -13,9 +13,18 @@ class InvoicePdfManager extends Component
 {
     public $invoiceId;
 
-    public function generatePdf($id, $zugferd = false)
+    public function generatePdf($id, $zugferd = false, $templatePath = 'public/assets/e-invoice/template-1/')
     {
-        $invoice = ModInvoice::with('customer', 'items')->findOrFail($id);
+        $invoice = ModInvoice::with('recipient', 'items', 'creator')->findOrFail($id);
+        $creator = $invoice->creator;
+        $recipient = $invoice->recipient;
+        $items = $invoice->items;
+
+        // Berechnung von Netto und Steuer
+        $totalNet = $items->sum(fn($item) => $item->quantity * $item->unit_price);
+        $taxRate = 19; // Beispiel für 19% Steuer
+        $totalTax = $totalNet * ($taxRate / 100);
+
         $directory = storage_path('app/public/invoices');
 
         // Verzeichnis erstellen, falls es nicht existiert
@@ -23,13 +32,17 @@ class InvoicePdfManager extends Component
             mkdir($directory, 0755, true);
         }
 
+        // Dynamisches Stylesheet übergeben
+        $stylesheet = "{$templatePath}style.css";
+
+//dd($stylesheet);
+
         // Basis-PDF erstellen
         $basePdfPath = "{$directory}/{$invoice->invoice_number}_base.pdf";
-        $pdf = Pdf::loadView('pdf.invoices.invoice', compact('invoice'));
+        $pdf = Pdf::loadView('pdf.invoices.invoice', compact('invoice', 'creator', 'recipient', 'items', 'totalNet', 'totalTax', 'taxRate', 'stylesheet'));
         $pdf->save($basePdfPath);
 
         if ($zugferd) {
-            // ZUGFeRD-Dokument erstellen und mit Basis-PDF kombinieren
             $pdfPath = $this->generateZugferdPdf($invoice, $basePdfPath, $directory);
             session()->flash('message', 'ZUGFeRD-PDF erfolgreich erstellt!');
         } else {
@@ -40,12 +53,16 @@ class InvoicePdfManager extends Component
         $invoice->update(['pdf_path' => $pdfPath]);
     }
 
+
+
+
     public function generateZugferdPdf($invoice, $basePdfPath, $directory)
     {
-        // ZUGFeRD-Dokument erstellen
+        $creator = $invoice->creator;
+        $recipient = $invoice->recipient;
+
         $document = ZugferdDocumentBuilder::CreateNew(ZugferdProfiles::PROFILE_EN16931);
 
-        // Dokumentinformationen hinzufügen
         $document
             ->setDocumentInformation(
                 $invoice->invoice_number,
@@ -53,14 +70,36 @@ class InvoicePdfManager extends Component
                 new \DateTime($invoice->invoice_date),
                 "EUR"
             )
-            ->setDocumentSeller("Lieferant GmbH", "549910")
-            ->addDocumentSellerTaxRegistration("VA", "DE123456789") // Umsatzsteuer-ID
-            ->setDocumentSellerAddress("Lieferantenstraße 20", "", "", "80333", "München", "DE")
-            ->setDocumentSellerContact("Max Mustermann", "Geschäftsführer", "0800-123456", "0800-123457", "kontakt@lieferant.de")
-           // ->addDocumentSellerLegalOrganization("Handelsregister München", "HRB 12345") // Handelsregistereintrag
-            ->setDocumentBuyer($invoice->customer->name ?? 'Unbekannt', "Kundennummer")
-            ->setDocumentBuyerAddress("Kundenstraße 15", "", "", "69876", "Frankfurt", "DE")
-            ->addDocumentPaymentTerm("Zahlbar innerhalb von 30 Tagen netto.")
+            ->setDocumentSeller(
+                $creator->company_name,
+                "549910"
+            )
+            ->addDocumentSellerTaxRegistration("VA", $creator->tax_number ?? 'Unbekannt') // Umsatzsteuer-ID
+            ->setDocumentSellerAddress(
+                $creator->address,
+                "",
+                "",
+                $creator->postal_code,
+                $creator->city,
+                $creator->country
+            )
+            ->setDocumentSellerContact(
+                "{$creator->first_name} {$creator->last_name}",
+                "Geschäftsführer",
+                $creator->phone ?? '',
+                "",
+                $creator->email ?? ''
+            )
+            ->setDocumentBuyer($recipient->name ?? 'Unbekannt', "Kundennummer")
+            ->setDocumentBuyerAddress(
+                $recipient->address,
+                "",
+                "",
+                $recipient->zip_code,
+                $recipient->city,
+                $recipient->country
+            )
+            ->addDocumentPaymentTerm($recipient->payment_terms ?? 'Zahlbar innerhalb von 30 Tagen netto.')
             ->setDocumentSupplyChainEvent(new \DateTime($invoice->invoice_date))
             ->setDocumentSummation(
                 $invoice->total_amount ?? 0,
@@ -72,12 +111,11 @@ class InvoicePdfManager extends Component
                 0
             );
 
-        // Steuersätze hinzufügen
+        // Steuersätze und Artikelpositionen hinzufügen
         $netAmount = $invoice->items->sum(fn($item) => $item->quantity * $item->unit_price);
         $totalTax = $netAmount * 0.19; // Beispiel für 19% Steuer
         $document->addDocumentTax("S", "VAT", 19.0, $netAmount, 19.0);
 
-        // Positionen hinzufügen
         foreach ($invoice->items as $item) {
             $document->addNewPosition($item->id)
                 ->setDocumentPositionProductDetails(
@@ -94,10 +132,8 @@ class InvoicePdfManager extends Component
                 ->setDocumentPositionLineSummation(($item->unit_price ?? 0) * ($item->quantity ?? 1));
         }
 
-        // Kombiniertes PDF mit ZUGFeRD-XML erstellen
         $mergedPdfPath = "{$directory}/{$invoice->invoice_number}_zugferd.pdf";
 
-        // ZUGFeRD-Dokument mit Basis-PDF verbinden
         $pdfBuilder = new ZugferdDocumentPdfBuilder($document, $basePdfPath);
         $pdfBuilder->generateDocument()->saveDocument($mergedPdfPath);
 
@@ -108,7 +144,7 @@ class InvoicePdfManager extends Component
 
     public function render()
     {
-        $invoices = ModInvoice::with('customer', 'items')->where('user_id', auth()->id())->get();
+        $invoices = ModInvoice::with('recipient', 'creator', 'items')->where('user_id', auth()->id())->get();
         return view('livewire.backend.admin.e-invoice-manager.invoice-pdf-manager', compact('invoices'));
     }
 }

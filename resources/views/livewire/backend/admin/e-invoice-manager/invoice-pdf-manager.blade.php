@@ -21,7 +21,7 @@
             @foreach ($invoices as $invoice)
                 <tr>
                     <td>{{ $invoice->invoice_number }}</td>
-                    <td>{{ $invoice->customer->name }}</td>
+                    <td>{{ $invoice->recipient->name }}</td>
                     <td>{{ $invoice->invoice_date }}</td>
                     <td>{{ $invoice->due_date }}</td>
                     <td>{{ $invoice->total_amount }} €</td>

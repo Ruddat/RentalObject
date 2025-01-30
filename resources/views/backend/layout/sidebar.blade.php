@@ -163,6 +163,7 @@
                     @autotranslate("E-Invoices", app()->getLocale())
                 </a>
                 <ul class="collapse" id="e-invoice-kits">
+                    <li><a href="{{route('e-invoice-header-manager')}}">@autotranslate("E Invoice Header", app()->getLocale())</a></li>
                     <li><a href="{{route('e-invoice-manager')}}">@autotranslate("E Invoices", app()->getLocale())</a></li>
                     <li><a href="{{route('e-invoice-pdf-manager')}}">@autotranslate("E Invoices PDF", app()->getLocale())</a></li>
                 </ul>

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('invoice_number')->unique();
-            $table->unsignedBigInteger('customer_id');
+       //     $table->unsignedBigInteger('customer_id');
             $table->date('invoice_date');
             $table->date('due_date');
             $table->decimal('total_amount', 10, 2);
@@ -26,7 +26,7 @@ return new class extends Migration
 
             // Fremdschlüssel
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('customer_id')->references('id')->on('mod_customers')->onDelete('cascade');
+      //      $table->foreign('customer_id')->references('id')->on('mod_customers')->onDelete('cascade');
         });
     }
 

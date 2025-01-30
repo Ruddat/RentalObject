@@ -1,8 +1,9 @@
-@extends('layout.master')
+@extends('backend.layout.master')
+
 @section('title', 'Dual Listbox')
 @section('css')
     <!--  dual-listbox css-->
-    <link href="{{asset('assets/vendor/dual_listboxes/dual-listbox.css" rel="stylesheet">
+    <link href="{{asset('backend/assets/vendor/dual_listboxes/dual-listbox.css')}}" rel="stylesheet">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -475,9 +476,9 @@
     <div id="customizer"></div>
 
     <!--Dual listbox js-->
-    <script src="{{asset('assets/vendor/dual_listboxes/dual-listbox.js')}}"></script>
+    <script src="{{asset('backend/assets/vendor/dual_listboxes/dual-listbox.js')}}"></script>
 
     <!--js-->
-    <script src="{{asset('assets/js/dual-listbox.js')}}"></script>
+    <script src="{{asset('backend/assets/js/dual-listbox.js')}}"></script>
 @endsection
 

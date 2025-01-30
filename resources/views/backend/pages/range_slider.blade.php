@@ -1,8 +1,8 @@
-@extends('layout.master')
+@extends('backend.layout.master')
 @section('title', 'Range Slider')
 @section('css')
     <!-- nouislider js css -->
-    <link rel="stylesheet" href="{{asset('assets/vendor/nouislider/nouislider.min.css')}}">
+    <link rel="stylesheet" href="{{asset('backend/assets/vendor/nouislider/nouislider.min.css')}}">
 @endsection
 @section('main-content')
     <div class="container-fluid">
@@ -284,9 +284,9 @@
 <div id="customizer"></div>
 
 <!-- nouislider js -->
-<script src="{{asset('assets/vendor/nouislider/nouislider.min.js')}}"></script>
-<script src="{{asset('assets/vendor/nouislider/wNumb.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/nouislider/nouislider.min.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/nouislider/wNumb.min.js')}}"></script>
 
 <!-- js -->
-<script src="{{asset('assets/js/range_slider.js')}}"></script>
+<script src="{{asset('backend/assets/js/range_slider.js')}}"></script>
 @endsection

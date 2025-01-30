@@ -1,4 +1,5 @@
-@extends('layout.master')
+@extends('backend.layout.master')
+
 @section('title', 'Typeahead')
 @section('css')
 
@@ -166,8 +167,8 @@
 <div id="customizer"></div>
 
 <!-- typeahead js -->
-<script src="{{asset('assets/vendor/typeahead/typeahead.bundle.js')}}"></script>
+<script src="{{asset('backend/assets/vendor/typeahead/typeahead.bundle.js')}}"></script>
 
 <!-- js -->
-<script src="{{asset('assets/js/typeahead.js')}}"></script>
+<script src="{{asset('backend/assets/js/typeahead.js')}}"></script>
 @endsection

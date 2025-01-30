@@ -48,6 +48,9 @@ Route::middleware(['web', 'auth', 'verified', LogPageAccess::class])->group(func
     Route::view('settings-manager', 'backend.livewirepages.systemsetting._settings-manager')->name('settings-manager');
     Route::view('translation-editor', 'backend.livewirepages.systemsetting._translation-editor')->name('translation-editor');
 
+    Route::view('e-invoice-header-manager', 'backend.livewirepages.e-invoices._e-invoice-header-manager')->name('e-invoice-header-manager');
+    Route::view('e-invoice-customer-manager', 'backend.livewirepages.e-invoices._e-invoice-customer-manager')->name('e-invoice-customer-manager');
+
     Route::view('e-invoice-manager', 'backend.livewirepages.e-invoices._e-invoice-manager')->name('e-invoice-manager');
     Route::view('e-invoice-pdf-manager', 'backend.livewirepages.e-invoices._e-invoice-pdf-manager')->name('e-invoice-pdf-manager');
     Route::get('/user-certificates', UserCertificateManager::class)->name('user.certificates');
